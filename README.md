@@ -62,135 +62,9 @@ The main goals of Absolute English are:
 
 ---
 
-## 📂 Project Structure
 
-```text
-absolute-english/
-│
-├── manage.py
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── LICENSE
-│
-├── absolute_english/
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-├── apps/
-│   │
-│   ├── accounts/
-│   │   ├── migrations/
-│   │   ├── templates/
-│   │   │   └── accounts/
-│   │   ├── static/
-│   │   │   └── accounts/
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── forms.py
-│   │   ├── models.py
-│   │   ├── permissions.py
-│   │   ├── serializers.py
-│   │   ├── urls.py
-│   │   ├── views.py
-│   │   └── tests.py
-│   │
-│   ├── programs/
-│   ├── faculty/
-│   ├── testimonials/
-│   ├── gallery/
-│   ├── enquiries/
-│   └── chatbot/
-│
-├── media/
-│
-├── static/
-│
-├── templates/
-│
-├── docs/
-│
-├── scripts/
-│
-├── tests/
-│
-└── .github/
-```
 
----
 
-## 📦 Applications
-
-### Accounts
-
-Handles:
-
-* Login
-* Registration
-* User profile
-* Authentication
-* Permissions
-
-### Programs
-
-Handles:
-
-* English courses
-* Program details
-* Course duration
-* Fees
-* Batches
-* Learning outcomes
-
-### Faculty
-
-Handles:
-
-* Teacher profiles
-* Faculty information
-* Qualifications
-* Experience
-* Profile photos
-
-### Testimonials
-
-Handles:
-
-* Student reviews
-* Student feedback
-* Success stories
-
-### Gallery
-
-Handles:
-
-* Class photographs
-* Events
-* Institute activities
-* Gallery management
-
-### Enquiries
-
-Handles:
-
-* Student enquiries
-* Contact forms
-* Demo class requests
-* Enquiry management
-
-### Chatbot
-
-Handles:
-
-* Student questions
-* Institute information
-* Program-related queries
-* Basic student assistance
-
----
 
 ## 🚀 Installation
 
@@ -251,41 +125,9 @@ http://127.0.0.1:8000/admin/
 
 ---
 
-## 🔗 Main Routes
 
-| Route                 | Purpose      |
-| --------------------- | ------------ |
-| `/`                   | Home         |
-| `/admin/`             | Django Admin |
-| `/accounts/`          | Accounts     |
-| `/accounts/login/`    | Login        |
-| `/accounts/register/` | Registration |
-| `/accounts/profile/`  | Profile      |
-| `/programs/`          | Programs     |
-| `/faculty/`           | Faculty      |
-| `/testimonials/`      | Testimonials |
-| `/gallery/`           | Gallery      |
-| `/enquiries/`         | Enquiries    |
-| `/chatbot/`           | Chatbot      |
 
----
 
-## 👥 Development Team
-
-The project follows a team-based Git workflow.
-
-### Recommended workflow
-
-```text
-main
- │
- ├── feature/accounts
- ├── feature/programs
- ├── feature/faculty
- ├── feature/gallery
- ├── feature/enquiries
- └── feature/chatbot
-```
 
 Developers should work on their assigned feature branch and create a Pull Request before merging into `main`.
 
