@@ -1,111 +1,241 @@
-/* ===== PAGE HEADER - CHOTA (NAVBAR SIZE JITNA) ===== */
+/* ========================================
+   TOP HEADER BAR - NORMAL (Scroll par gayab)
+======================================== */
+.top-header {
+    background: #5a4bd1;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;           /* ← FIXED HATAYA */
+    z-index: 1000;
+    width: 100%;
+    transition: transform 0.3s ease; 
+}
 
-.page-header {
-    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-    padding: 12px 0 10px;  /* ← BAHUT CHOTA - Navbar ke size jitna */
-    position: relative;
-    overflow: hidden;
-    min-height: 55px;  /* ← Navbar ke size jitna */
+.top-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+}
+
+.contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.contact-item i {
+    color: #fff;
+    opacity: 0.7;
+    font-size: 0.8rem;
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-item a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+.top-header-right {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.page-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 150px;
-    height: 150px;
-    background: rgba(255,255,255,0.08);
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-}
-
-.page-header::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    left: -5%;
-    width: 120px;
-    height: 120px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 50%;
-}
-
-.page-title {
-    color: white;
-    font-size: 1.3rem;  /* ← CHOTA */
-    font-weight: 700;
-    margin-bottom: 0;
-    position: relative;
-    z-index: 1;
-    line-height: 1.2;
-}
-
-.breadcrumb {
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-}
-
-.breadcrumb-item {
-    font-size: 0.8rem;
-}
-
-.breadcrumb-item a {
-    color: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.08);
     text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.8rem;
 }
 
-.breadcrumb-item a:hover {
-    color: white;
+.social-icons a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
-.breadcrumb-item.active {
-    color: white;
-    font-size: 0.8rem;
+.live-chat-btn {
+    background: #ffffff;
+    color: #5a4bd1;
+    border: none;
+    padding: 4px 16px 4px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.live-chat-btn:hover {
+    background: #ffd700;
+    color: #5a4bd1;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00e676;
+    border-radius: 50%;
+    margin-left: 2px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.6; }
+}
+
+/* ========================================
+   DARK MODE
+======================================== */
+[data-theme="dark"] .top-header {
+    background: #2d1b69 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+[data-theme="dark"] .top-header .contact-item a {
+    color: rgba(255,255,255,0.8);
+}
+
+[data-theme="dark"] .top-header .contact-item a:hover {
+    color: #ffd700;
+}
+
+[data-theme="dark"] .social-icons a {
     color: rgba(255,255,255,0.5);
-    font-size: 0.7rem;
+    background: rgba(255,255,255,0.05);
 }
 
-/* ===== RESPONSIVE ===== */
+[data-theme="dark"] .social-icons a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+}
+
+[data-theme="dark"] .live-chat-btn {
+    background: #1a1a2e;
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .live-chat-btn:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 992px) {
+    .top-header {
+        font-size: 0.8rem;
+        padding: 5px 0;
+    }
+    .contact-item {
+        font-size: 0.8rem;
+    }
+    .social-icons a {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .page-header {
-        padding: 10px 0 8px;
-        min-height: 48px;
+    .top-header {
+        padding: 5px 0;
     }
-    
-    .page-title {
-        font-size: 1.1rem;
+    .top-header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
     }
-    
-    .breadcrumb-item,
-    .breadcrumb-item a,
-    .breadcrumb-item.active {
+    .contact-info {
+        justify-content: center;
+        gap: 8px 15px;
+        font-size: 0.75rem;
+    }
+    .contact-item {
+        font-size: 0.75rem;
+    }
+    .top-header-right {
+        justify-content: center;
+        gap: 10px;
+    }
+    .social-icons a {
+        width: 22px;
+        height: 22px;
         font-size: 0.7rem;
+    }
+    .live-chat-btn {
+        font-size: 0.75rem;
+        padding: 3px 12px;
+    }
+    .pulse-dot {
+        width: 6px;
+        height: 6px;
     }
 }
 
 @media (max-width: 576px) {
-    .page-header {
-        padding: 8px 0 6px;
-        min-height: 42px;
+    .top-header {
+        padding: 4px 0;
     }
-    
-    .page-title {
-        font-size: 0.95rem;
+    .contact-item:nth-child(2),
+    .contact-item:nth-child(3) {
+        display: none !important;
     }
-    
-    .breadcrumb-item,
-    .breadcrumb-item a,
-    .breadcrumb-item.active {
-        font-size: 0.6rem;
+    .contact-item:first-child {
+        font-size: 0.7rem;
+    }
+    .top-header-right {
+        gap: 8px;
+    }
+    .social-icons {
+        gap: 6px;
+    }
+    .social-icons a {
+        width: 20px;
+        height: 20px;
+        font-size: 0.65rem;
+    }
+    .live-chat-btn {
+        font-size: 0.65rem;
+        padding: 2px 10px;
     }
 }
