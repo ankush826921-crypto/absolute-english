@@ -111,41 +111,65 @@
 }
 
 /* ========================================
-   COURSE CARDS
+   COURSE SCROLL - HORIZONTAL
 ======================================== */
-.course-card {
+.courses-scroll-wrapper {
+    position: relative;
+    padding: 0 50px;
+}
+
+.courses-scroll-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 20px 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.courses-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* ========================================
+   COURSE SCROLL CARDS
+======================================== */
+.course-scroll-card {
+    flex: 0 0 280px;
+    min-width: 280px;
     background: var(--bg-white, #ffffff);
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px var(--shadow-color, rgba(0,0,0,0.05));
-    height: 100%;
-    position: relative;
     border: 1px solid var(--border-color, #e9ecef);
+    position: relative;
 }
 
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px var(--shadow-color, rgba(0,0,0,0.1));
+.course-scroll-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+    border-color: var(--primary-color, #6c5ce7);
 }
 
-.course-card.featured {
-    background: linear-gradient(135deg, var(--gradient-start, #6c5ce7), var(--gradient-end, #a29bfe));
+.course-scroll-card.featured {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
     color: white;
     border: none;
 }
 
-.course-card.featured h4,
-.course-card.featured p {
+.course-scroll-card.featured h4,
+.course-scroll-card.featured p {
     color: white;
 }
 
-.course-card.featured .course-meta span {
+.course-scroll-card.featured .course-meta span {
     color: rgba(255,255,255,0.8);
 }
 
-.course-level {
+.course-scroll-card .course-level {
     display: inline-block;
     padding: 5px 20px;
     background: var(--bg-light, #f8f9fa);
@@ -156,47 +180,49 @@
     margin-bottom: 1rem;
 }
 
-.course-card.featured .course-level {
+.course-scroll-card.featured .course-level {
     background: rgba(255,255,255,0.2);
     color: white;
 }
 
-.course-card h4 {
+.course-scroll-card h4 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: var(--text-dark, #2d3436);
 }
 
-.course-card p {
+.course-scroll-card p {
     color: var(--text-light, #636e72);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
 }
 
-.course-card.featured p {
+.course-scroll-card.featured p {
     color: rgba(255,255,255,0.9);
 }
 
-.course-meta {
+.course-scroll-card .course-meta {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
-.course-meta span {
+.course-scroll-card .course-meta span {
     font-size: 0.9rem;
     color: var(--text-light, #636e72);
 }
 
-.course-meta span i {
+.course-scroll-card .course-meta span i {
     margin-right: 5px;
 }
 
-.course-card.featured .course-meta span {
+.course-scroll-card.featured .course-meta span {
     color: rgba(255,255,255,0.8);
 }
 
-.featured-badge {
+.course-scroll-card .featured-badge {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -206,6 +232,52 @@
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
+}
+
+/* Scroll Buttons - Reuse from languages */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color, #6c5ce7);
+    background: var(--bg-white, #ffffff);
+    color: var(--primary-color, #6c5ce7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 18px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.scroll-btn:hover {
+    background: var(--primary-color, #6c5ce7);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-btn-left {
+    left: 0;
+}
+
+.scroll-btn-right {
+    right: 0;
+}
+
+.scroll-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.scroll-btn:disabled:hover {
+    transform: translateY(-50%) scale(1);
+    background: var(--bg-white, #ffffff);
+    color: var(--primary-color, #6c5ce7);
 }
 
 /* ========================================
@@ -406,6 +478,44 @@
     background-color: #16213e !important;
 }
 
+[data-theme="dark"] .course-scroll-card {
+    background: #1e1e3a;
+    border-color: #2d2d4a;
+}
+
+[data-theme="dark"] .course-scroll-card h4 {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .course-scroll-card p {
+    color: #b0b0b0;
+}
+
+[data-theme="dark"] .course-scroll-card .course-meta span {
+    color: #b0b0b0;
+}
+
+[data-theme="dark"] .course-scroll-card.featured {
+    background: linear-gradient(135deg, #2d1b69, #4a2b8a);
+}
+
+[data-theme="dark"] .scroll-btn {
+    background: #1a1a2e;
+    border-color: #a29bfe;
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .scroll-btn:hover {
+    background: #a29bfe;
+    color: #1a1a2e;
+}
+
+[data-theme="dark"] .scroll-btn:disabled {
+    background: #1a1a2e;
+    color: #444;
+    border-color: #444;
+}
+
 /* ========================================
    RESPONSIVE
 ======================================== */
@@ -478,6 +588,22 @@
         padding: 12px 25px;
         width: 100%;
         font-size: 0.95rem;
+    }
+    
+    .courses-scroll-wrapper {
+        padding: 0 40px;
+    }
+    
+    .course-scroll-card {
+        flex: 0 0 230px;
+        min-width: 230px;
+        padding: 1.5rem;
+    }
+    
+    .scroll-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
     }
 }
 
@@ -555,5 +681,29 @@
     .cta-buttons .btn {
         padding: 10px 20px;
         font-size: 0.85rem;
+    }
+    
+    .courses-scroll-wrapper {
+        padding: 0 30px;
+    }
+    
+    .course-scroll-card {
+        flex: 0 0 200px;
+        min-width: 200px;
+        padding: 1.2rem;
+    }
+    
+    .course-scroll-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .course-scroll-card p {
+        font-size: 0.8rem;
+    }
+    
+    .scroll-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
     }
 }

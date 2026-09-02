@@ -1,70 +1,227 @@
-// Navbar scroll effect
-document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.querySelector('.navbar');
-    
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        });
+document.addEventListener("DOMContentLoaded", function () {
+
+    const navbar = document.querySelector(".navbar");
+
+    if (!navbar) {
+        console.log("Navbar not found!");
+        return;
     }
-    
-    // Active link highlighting
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPath || (currentPath === '/' && href === '/')) {
-            link.classList.add('active');
+
+    console.log("Navbar loaded successfully");
+
+
+    // Navbar ki original position
+    let navbarOriginalTop = navbar.offsetTop;
+
+    // Navbar ki height
+    let navbarHeight = navbar.offsetHeight;
+
+
+    // ========================================
+    // SCROLL FUNCTION
+    // ========================================
+
+    function handleNavbar() {
+
+        const scrollY =
+            window.pageYOffset ||
+            document.documentElement.scrollTop;
+
+        /*
+         * Jab navbar ki original position
+         * viewport ke top tak aa jaye
+         */
+        if (scrollY >= navbarOriginalTop) {
+
+            if (!navbar.classList.contains("navbar-fixed")) {
+
+                navbar.classList.add("navbar-fixed");
+
+                /*
+                 * Fixed hone ke baad content jump na kare
+                 */
+                document.body.style.paddingTop =
+                    navbarHeight + "px";
+            }
+
+        } else {
+
+            if (navbar.classList.contains("navbar-fixed")) {
+
+                navbar.classList.remove("navbar-fixed");
+
+                document.body.style.paddingTop = "0px";
+            }
         }
-    });
-    
-    // Mobile menu close on link click
-    const navCollapse = document.querySelector('.navbar-collapse');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 991 && navCollapse) {
-                const bsCollapse = new bootstrap.Collapse(navCollapse, {
-                    toggle: false
-                });
-                bsCollapse.hide();
-            }
-        });
-    });
-});
-// ===== DARK MODE FUNCTIONALITY =====
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    
-    // Check saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
     }
-    
-    // Toggle theme
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+
+
+    // ========================================
+    // SCROLL EVENT
+    // ========================================
+
+    window.addEventListener("scroll", handleNavbar);
+
+
+    // ========================================
+    // RESIZE
+    // ========================================
+
+    window.addEventListener("resize", function () {
+
+        /*
+         * Resize ke baad position dobara calculate
+         */
+        navbarOriginalTop = navbar.offsetTop;
+        navbarHeight = navbar.offsetHeight;
+
+        if (navbar.classList.contains("navbar-fixed")) {
+
+            document.body.style.paddingTop =
+                navbarHeight + "px";
+        }
+
+    });
+
+
+    // Initial check
+    handleNavbar();
+
+
+    // ========================================
+    // ACTIVE LINK
+    // ========================================
+
+    const currentPath = window.location.pathname;
+
+    const navLinks =
+        document.querySelectorAll(
+            ".navbar-nav .nav-link"
+        );
+
+    navLinks.forEach(function (link) {
+
+        const href = link.getAttribute("href");
+
+        if (href === currentPath) {
+            link.classList.add("active");
+        }
+
+    });
+
+
+    // ========================================
+    // MOBILE MENU
+    // ========================================
+
+    const navCollapse =
+        document.querySelector(".navbar-collapse");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (
+                window.innerWidth <= 991 &&
+                navCollapse &&
+                typeof bootstrap !== "undefined"
+            ) {
+
+                const bsCollapse =
+                    bootstrap.Collapse.getInstance(
+                        navCollapse
+                    );
+
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
             }
+
         });
+
+    });
+
+
+    // ========================================
+    // DARK MODE
+    // ========================================
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    const themeIcon =
+        document.getElementById("themeIcon");
+
+
+    if (themeToggle && themeIcon) {
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+
+            document.documentElement
+                .setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+            themeIcon.classList.remove("fa-moon");
+            themeIcon.classList.add("fa-sun");
+        }
+
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                const currentTheme =
+                    document.documentElement
+                        .getAttribute("data-theme");
+
+
+                if (currentTheme === "dark") {
+
+                    document.documentElement
+                        .removeAttribute("data-theme");
+
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+
+                    themeIcon.classList.remove(
+                        "fa-sun"
+                    );
+
+                    themeIcon.classList.add(
+                        "fa-moon"
+                    );
+
+                } else {
+
+                    document.documentElement
+                        .setAttribute(
+                            "data-theme",
+                            "dark"
+                        );
+
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
+
+                    themeIcon.classList.remove(
+                        "fa-moon"
+                    );
+
+                    themeIcon.classList.add(
+                        "fa-sun"
+                    );
+                }
+
+            }
+        );
     }
+
 });
