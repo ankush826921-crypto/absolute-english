@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book a Demo - Absolute English{% endblock %}
+{% block page_title %}Book a Free Demo Class{% endblock %}
+{% block breadcrumb_current %}Book a Demo{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-4">Book Your Free Demo Class</h3>
+                        <p class="text-center text-muted">Experience our teaching methodology before you enroll</p>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter first name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter last name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="Enter phone">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Language</label>
+                                    <select class="form-select">
+                                        <option>Select Language</option>
+                                        <option>Spanish</option>
+                                        <option>French</option>
+                                        <option>German</option>
+                                        <option>Italian</option>
+                                        <option>Japanese</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Date</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Time</label>
+                                    <select class="form-select">
+                                        <option>Morning (9AM - 12PM)</option>
+                                        <option>Afternoon (12PM - 4PM)</option>
+                                        <option>Evening (4PM - 8PM)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Preferred Mode</label>
+                                    <select class="form-select">
+                                        <option>Online</option>
+                                        <option>Offline</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Message (Optional)</label>
+                                    <textarea class="form-control" rows="3" placeholder="Any special requests..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">Book Free Demo</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

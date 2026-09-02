@@ -1,0 +1,28 @@
+{% load static %}
+<!-- Chatbot Widget -->
+<div class="chatbot-widget">
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h5><i class="fas fa-robot"></i> Language Assistant</h5>
+            <button class="btn-close" id="chatbotClose"></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello! I'm here to help you with your language learning journey. How can I assist you today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <div class="input-group">
+                <input type="text" class="form-control" id="chatbotInput" placeholder="Type your message...">
+                <button class="btn btn-primary" id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

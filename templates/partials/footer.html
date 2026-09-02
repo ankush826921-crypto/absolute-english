@@ -1,0 +1,66 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Brand Column -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-brand">
+                    <i class="fas fa-language"></i>
+                    <h4>Absolute English</h4>
+                </div>
+                <p class="footer-text">
+                    Learn languages with expert trainers and flexible batches. Unlock new opportunities with our certified courses.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'languages' %}">Languages</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'trainers' %}">Trainers</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Contact Info</h5>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Language Street, City</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                    <li><i class="fas fa-envelope"></i> info@globalacademy.com</li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Newsletter</h5>
+                <p class="footer-text" style="font-size: 0.85rem;">Subscribe for language tips and updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <hr class="footer-divider">
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Absolute English. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

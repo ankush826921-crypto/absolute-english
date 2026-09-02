@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Absolute English{% endblock %}
+{% block page_title %}Contact Us{% endblock %}
+{% block breadcrumb_current %}Contact{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <h3>Get In Touch</h3>
+                <p class="text-muted">Have questions? We'd love to hear from you.</p>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter your phone">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="4" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-light p-4 rounded">
+                    <h4>Contact Information</h4>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt text-primary fa-2x me-3"></i>
+                            <div>
+                                <h6 class="mb-0">Address</h6>
+                                <p class="text-muted">123 Language Street, City, Country</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-phone text-primary fa-2x me-3"></i>
+                            <div>
+                                <h6 class="mb-0">Phone</h6>
+                                <p class="text-muted">+1 234 567 8900</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope text-primary fa-2x me-3"></i>
+                            <div>
+                                <h6 class="mb-0">Email</h6>
+                                <p class="text-muted">info@absoluteenglish.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-clock text-primary fa-2x me-3"></i>
+                            <div>
+                                <h6 class="mb-0">Working Hours</h6>
+                                <p class="text-muted">Mon-Sat: 9:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

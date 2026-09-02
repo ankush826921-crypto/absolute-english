@@ -1,0 +1,249 @@
+/* ===== FOOTER STYLES ===== */
+.footer {
+    background: #2d3436;
+    color: rgba(255,255,255,0.8);
+    padding: 40px 0 20px;
+    margin-top: 2rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.footer-brand i {
+    font-size: 1.8rem;
+    color: #6c5ce7;
+}
+
+.footer-brand h4 {
+    color: #ffffff;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.footer-text {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.social-links a:hover {
+    background: #6c5ce7;
+    transform: translateY(-3px);
+    color: #ffffff;
+}
+
+/* Headings */
+.footer h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #6c5ce7;
+}
+
+/* Contact Info */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+}
+
+.footer-contact i {
+    color: #6c5ce7;
+    width: 20px;
+    text-align: center;
+}
+
+/* Newsletter Form */
+.newsletter-form .input-group {
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.newsletter-form .form-control {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+}
+
+.newsletter-form .form-control::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.newsletter-form .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    color: #ffffff;
+}
+
+.newsletter-form .btn {
+    padding: 10px 18px;
+    background: #6c5ce7;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    color: #ffffff;
+    transition: background 0.3s ease;
+}
+
+.newsletter-form .btn:hover {
+    background: #5a4bd1;
+}
+
+/* Divider */
+.footer-divider {
+    border-color: rgba(255,255,255,0.1);
+    margin: 25px 0 15px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .footer {
+        padding: 35px 0 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 0 15px;
+    }
+    
+    .footer-brand {
+        justify-content: center;
+    }
+    
+    .footer-text {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .footer h5 {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+    
+    .footer-links {
+        text-align: center;
+    }
+    
+    .footer-contact li {
+        justify-content: center;
+    }
+    
+    .newsletter-form {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 25px 0 12px;
+    }
+    
+    .footer-brand h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-text {
+        font-size: 0.8rem;
+    }
+    
+    .footer h5 {
+        font-size: 0.9rem;
+    }
+    
+    .footer-links a,
+    .footer-contact li {
+        font-size: 0.8rem;
+    }
+    
+    .social-links a {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .newsletter-form .form-control {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .newsletter-form .btn {
+        padding: 8px 14px;
+    }
+    
+    .footer-bottom {
+        font-size: 0.75rem;
+    }
+}

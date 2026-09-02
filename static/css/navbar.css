@@ -1,0 +1,199 @@
+/* ========================================
+   NAVBAR - THODA BADA
+======================================== */
+.navbar {
+    padding: 10px 0 !important;
+    transition: all 0.3s ease;
+    background: #ffffff !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    min-height: 62px !important;
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 999 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.15rem !important;
+    color: #2d3436;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand span {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.15rem;
+}
+
+.navbar-brand i {
+    font-size: 1.4rem !important;
+    color: #6c5ce7;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 0.9rem !important;
+    color: #2d3436;
+    padding: 6px 12px !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 50%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #6c5ce7;
+}
+
+.nav-cta {
+    padding: 6px 18px !important;
+    border-radius: 50px !important;
+    margin-left: 10px;
+    font-size: 0.85rem !important;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #ffffff !important;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.nav-cta::after {
+    display: none !important;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
+    color: #ffffff !important;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: transparent;
+    border: 2px solid #6c5ce7;
+    border-radius: 50%;
+    width: 34px !important;
+    height: 34px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #6c5ce7;
+    margin-left: 10px;
+    font-size: 14px !important;
+}
+
+.theme-toggle:hover {
+    background: #6c5ce7;
+    color: #ffffff;
+}
+
+/* Toggler Button */
+.navbar-toggler {
+    padding: 4px 8px !important;
+    font-size: 0.9rem !important;
+}
+
+.navbar-toggler-icon {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* ========================================
+   DARK MODE
+======================================== */
+[data-theme="dark"] .navbar {
+    background: #1a1a2e !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.3) !important;
+}
+
+[data-theme="dark"] .navbar-brand {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .navbar-brand i {
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link:hover,
+[data-theme="dark"] .navbar-nav .nav-link.active {
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .nav-cta {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    color: #1a1a2e !important;
+}
+
+[data-theme="dark"] .nav-cta:hover {
+    color: #1a1a2e !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+    border-color: #a29bfe;
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background: #a29bfe;
+    color: #1a1a2e;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 991px) {
+    .navbar-nav {
+        padding: 12px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 8px 0 !important;
+        font-size: 0.95rem !important;
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+    
+    .nav-cta {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .theme-toggle {
+        margin: 10px auto;
+    }
+}
