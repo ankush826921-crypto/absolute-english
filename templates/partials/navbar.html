@@ -1,0 +1,62 @@
+{% load static %}
+<!-- Navbar - FIXED HATAYA, Normal Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" style="padding: 6px 0; min-height: 55px; position: relative; top: 0; width: 100%; z-index: 999;">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}" style="font-weight: 700; font-size: 1.1rem;">
+            <i class="fas fa-language" style="font-size: 1.3rem;"></i>
+            <span style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Absolute English</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="padding: 3px 6px;">
+            <span class="navbar-toggler-icon" style="width: 20px; height: 20px;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="font-size: 0.85rem; padding: 4px 10px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'languages' %}" style="font-size: 0.85rem; padding: 4px 10px;">Languages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'courses' %}" style="font-size: 0.85rem; padding: 4px 10px;">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="font-size: 0.85rem; padding: 4px 10px;">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'trainers' %}" style="font-size: 0.85rem; padding: 4px 10px;">Trainers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gallery' %}" style="font-size: 0.85rem; padding: 4px 10px;">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="font-size: 0.85rem; padding: 4px 10px;">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary btn-sm nav-cta" href="{% url 'enroll' %}" style="padding: 4px 14px; font-size: 0.8rem; border-radius: 50px;">
+                        <i class="fas fa-user-plus"></i> Enroll</a>
+                </li>
+                <!-- Dark Mode Toggle Button -->
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="
+                        background: transparent;
+                        border: 2px solid #6c5ce7;
+                        border-radius: 50%;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        color: #6c5ce7;
+                        margin-left: 8px;
+                        font-size: 12px;
+                    ">
+                        <i class="fas fa-moon" id="themeIcon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

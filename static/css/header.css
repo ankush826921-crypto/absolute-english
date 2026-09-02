@@ -1,0 +1,111 @@
+/* ===== PAGE HEADER - CHOTA (NAVBAR SIZE JITNA) ===== */
+
+.page-header {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    padding: 12px 0 10px;  /* ← BAHUT CHOTA - Navbar ke size jitna */
+    position: relative;
+    overflow: hidden;
+    min-height: 55px;  /* ← Navbar ke size jitna */
+    display: flex;
+    align-items: center;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -5%;
+    width: 120px;
+    height: 120px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+}
+
+.page-title {
+    color: white;
+    font-size: 1.3rem;  /* ← CHOTA */
+    font-weight: 700;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.breadcrumb-item {
+    font-size: 0.8rem;
+}
+
+.breadcrumb-item a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.breadcrumb-item a:hover {
+    color: white;
+}
+
+.breadcrumb-item.active {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 10px 0 8px;
+        min-height: 48px;
+    }
+    
+    .page-title {
+        font-size: 1.1rem;
+    }
+    
+    .breadcrumb-item,
+    .breadcrumb-item a,
+    .breadcrumb-item.active {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        padding: 8px 0 6px;
+        min-height: 42px;
+    }
+    
+    .page-title {
+        font-size: 0.95rem;
+    }
+    
+    .breadcrumb-item,
+    .breadcrumb-item a,
+    .breadcrumb-item.active {
+        font-size: 0.6rem;
+    }
+}

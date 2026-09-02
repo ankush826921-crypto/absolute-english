@@ -1,29 +1,1003 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Absolute English - Learn Languages Online{% endblock %}
 
-    <title>{% block title %}Absolute English{% endblock %}</title>
+{% block extra_css %}
+<style>
+    /* ========================================
+       LANGUAGE SCROLL - HORIZONTAL
+    ======================================== */
+    .languages-scroll-wrapper {
+        position: relative;
+        padding: 0 50px;
+    }
+    
+    .languages-scroll-container {
+        display: flex;
+        gap: 25px;
+        overflow-x: auto;
+        padding: 20px 10px;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .languages-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .language-scroll-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        background: var(--bg-white, #ffffff);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color, #e9ecef);
+    }
+    
+    .language-scroll-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+        border-color: var(--primary-color, #6c5ce7);
+    }
+    
+    .language-scroll-card .language-icon {
+        margin-bottom: 1.5rem;
+    }
+    
+    .language-scroll-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark, #2d3436);
+    }
+    
+    .language-scroll-card p {
+        color: var(--text-light, #636e72);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    
+    /* ===== SCROLL BUTTONS ===== */
+    .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color, #6c5ce7);
+        background: var(--bg-white, #ffffff);
+        color: var(--primary-color, #6c5ce7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        font-size: 18px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+    
+    .scroll-btn:hover {
+        background: var(--primary-color, #6c5ce7);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .scroll-btn-left {
+        left: 0;
+    }
+    
+    .scroll-btn-right {
+        right: 0;
+    }
+    
+    .scroll-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    
+    .scroll-btn:disabled:hover {
+        transform: translateY(-50%) scale(1);
+        background: var(--bg-white, #ffffff);
+        color: var(--primary-color, #6c5ce7);
+    }
+    
+/* ===== HERO SECTION - SMALL (Jaisa Second Image) ===== */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 40vh;
+    max-height: 50vh;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+}
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-</head>
+/* Slideshow - Sirf Upar Ki Strip */
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
 
-<body>
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
 
-    {% include "partials/navbar.html" %}
+.hero-slide.active {
+    opacity: 1;
+    animation: zoomIn 8s ease-in-out infinite;
+}
 
-    {% block content %}
-    {% endblock %}
+@keyframes zoomIn {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-    {% include "partials/footer.html" %}
+/* Overlay - Light Gradient */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.5) 0%, 
+        rgba(0, 0, 0, 0.2) 50%, 
+        rgba(108, 92, 231, 0.15) 100%
+    );
+    z-index: 1;
+}
 
-    <script src="{% static 'js/navbar.js' %}"></script>
-    <script src="{% static 'js/home.js' %}"></script>
+/* ===== HERO CONTENT - SMALL ===== */
+.hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 1rem 0;
+}
 
-</body>
-</html>
+.hero-section .hero-title {
+    color: #ffffff;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+}
+
+.hero-section .hero-title .highlight {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+.hero-section .hero-subtitle {
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Buttons - Small */
+.hero-section .btn-primary {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border: none;
+    padding: 10px 28px;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
+}
+
+.hero-section .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+}
+
+.hero-section .btn-outline-primary {
+    border-color: rgba(255,255,255,0.8);
+    color: #ffffff;
+    padding: 10px 28px;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.hero-section .btn-outline-primary:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.hero-buttons .btn {
+    margin-right: 12px;
+    margin-bottom: 8px;
+}
+
+/* Indicators - Small */
+.hero-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.hero-dot.active {
+    background: #6c5ce7;
+    border-color: #ffffff;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .hero-section .hero-title {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 35vh;
+        max-height: 45vh;
+    }
+    
+    .hero-section .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-section .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons .btn {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+        margin-right: 8px;
+    }
+    
+    .hero-indicators {
+        bottom: 10px;
+        gap: 8px;
+    }
+    
+    .hero-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: 30vh;
+        max-height: 40vh;
+        text-align: center;
+    }
+    
+    .hero-section .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section .hero-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-buttons .btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        width: 100%;
+        display: block;
+    }
+    
+    .hero-buttons .btn:last-child {
+        margin-right: 0;
+    }
+    
+    .hero-indicators {
+        bottom: 8px;
+        gap: 6px;
+    }
+    
+    .hero-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION - 5 BACKGROUND IMAGES ===== -->
+<section class="hero-section" id="heroSection">
+    <!-- Background Images Container - 5 Images -->
+    <div class="hero-slideshow" id="heroSlideshow">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?w=1920&q=80');"></div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="row align-items-center" style="min-height: 35vh; padding: 2rem 0;">
+            <div class="col-lg-8 hero-content">
+                <h1 class="hero-title">
+                    Learn a New Language<br>
+                    <span class="highlight">Open New Opportunities</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Spanish, French, German and more. Expert trainers, flexible batches and certified courses for all levels.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'courses' %}" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap"></i> Explore Courses
+                    </a>
+                    <a href="{% url 'book_demo' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-play-circle"></i> Book a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide Indicators - 5 Dots -->
+    <div class="hero-indicators" id="heroIndicators">
+        <span class="hero-dot active" data-index="0"></span>
+        <span class="hero-dot" data-index="1"></span>
+        <span class="hero-dot" data-index="2"></span>
+        <span class="hero-dot" data-index="3"></span>
+        <span class="hero-dot" data-index="4"></span>
+    </div>
+</section>
+<!-- ===== LANGUAGES SECTION - HORIZONTAL SCROLL WITH REAL FLAGS ===== -->
+<section class="languages-section py-5" id="languages">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Languages We Teach</h2>
+            <p class="text-muted">Choose from our wide range of language courses</p>
+        </div>
+        
+        <div class="languages-scroll-wrapper">
+            <!-- Left Scroll Button -->
+            <button class="scroll-btn scroll-btn-left" id="homeScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Scrollable Container -->
+            <div class="languages-scroll-container" id="homeScrollContainer">
+                
+                <!-- English (UK) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>English</h3>
+                    <p>Learn English and open doors to global opportunities.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Spanish (Spain) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Spanish</h3>
+                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- French (France) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>French</h3>
+                    <p>Learn French and open doors to the world of art and culture.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- German (Germany) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>German</h3>
+                    <p>Learn German and build your future in Europe's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Italian (Italy) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Italian</h3>
+                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Japanese (Japan) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Japanese</h3>
+                    <p>Learn Japanese and explore the rich culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Mandarin (China) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Mandarin</h3>
+                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Arabic (Saudi Arabia) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Arabic</h3>
+                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Russian (Russia) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Russian</h3>
+                    <p>Learn Russian and explore the vast culture and literature.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Portuguese (Portugal) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Portuguese</h3>
+                    <p>Learn Portuguese and explore Brazil and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Korean (South Korea) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-kr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Korean</h3>
+                    <p>Learn Korean and explore K-culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Dutch (Netherlands) -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-nl fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Dutch</h3>
+                    <p>Learn Dutch and explore the Netherlands and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+            </div>
+            
+            <!-- Right Scroll Button -->
+            <button class="scroll-btn scroll-btn-right" id="homeScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+<!-- Courses Section -->
+<section class="courses-section py-5 bg-light" id="courses">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Our Courses</h2>
+            <p class="text-muted">Comprehensive language courses for every level</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="course-card">
+                    <div class="course-level">A1</div>
+                    <h4>Beginner</h4>
+                    <p>Start your language journey with basics and fundamentals.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="course-card">
+                    <div class="course-level">A2</div>
+                    <h4>Elementary</h4>
+                    <p>Build strong basics step by step with confidence.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="course-card">
+                    <div class="course-level">B1</div>
+                    <h4>Intermediate</h4>
+                    <p>Improve fluency and communication in everyday situations.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="course-card">
+                    <div class="course-level">B2</div>
+                    <h4>Upper Intermediate</h4>
+                    <p>Advance your skills with confidence in complex topics.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card featured">
+                    <div class="course-level">C1</div>
+                    <h4>Advanced</h4>
+                    <p>Master the language like a pro with native-level proficiency.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 60 hours</span>
+                        <span><i class="fas fa-users"></i> 10 seats</span>
+                    </div>
+                    <div class="featured-badge">Most Popular</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-section py-5" id="about">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Why Choose Us?</h2>
+            <p class="text-muted">What makes us the best choice for learning languages</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    </div>
+                    <h4>Expert Trainers</h4>
+                    <p>Learn from certified and experienced trainers with years of teaching.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate fa-3x"></i>
+                    </div>
+                    <h4>Certified Courses</h4>
+                    <p>Internationally recognized certifications for your career growth.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock fa-3x"></i>
+                    </div>
+                    <h4>Flexible Batches</h4>
+                    <p>Weekend & weekday batches available to suit your schedule.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas fa-3x"></i>
+                    </div>
+                    <h4>Global Exposure</h4>
+                    <p>Language learning for study, travel and career opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section py-5 bg-light" id="gallery">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>What Our Students Say</h2>
+            <p class="text-muted">Real stories from our successful students</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="testimonial-card text-center">
+                    <div class="testimonial-avatar">
+                        <img src="https://via.placeholder.com/80x80/6c5ce7/ffffff?text=AS" alt="Student" class="rounded-circle" width="80">
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>
+                        "Great learning experience! The trainers are very supportive and the environment is amazing. I went from zero to fluent in just 6 months!"
+                    </blockquote>
+                    <h5>Ananya S.</h5>
+                    <p class="text-muted">Spanish Student</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5">
+    <div class="container text-center">
+        <h2>Start Learning Today!</h2>
+        <p class="lead">Join thousands of students and achieve your language goals.</p>
+        <div class="cta-buttons">
+            <a href="{% url 'enroll' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-user-plus"></i> Enroll Now
+            </a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extra_js %}
+<script>
+    // ===== GLOBAL VARIABLES =====
+    let scrollSpeed = 1.5; // Default scroll speed multiplier
+    
+    // ===== HOME PAGE AUTO-SCROLL FUNCTIONALITY =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('homeScrollContainer');
+        const scrollLeftBtn = document.getElementById('homeScrollLeft');
+        const scrollRightBtn = document.getElementById('homeScrollRight');
+        
+        if (container && scrollLeftBtn && scrollRightBtn) {
+            const scrollAmount = 320;
+            let autoScrollInterval;
+            let isHovered = false;
+            let wheelTimeout;
+            let isScrolling = false;
+            
+            // ===== SPEED CONTROL SLIDER =====
+            const speedSlider = document.getElementById('scrollSpeedSlider');
+            const speedDisplay = document.getElementById('speedValue');
+            
+            if (speedSlider && speedDisplay) {
+                speedSlider.value = scrollSpeed;
+                speedDisplay.textContent = scrollSpeed.toFixed(1) + 'x';
+                
+                speedSlider.addEventListener('input', function() {
+                    scrollSpeed = parseFloat(this.value);
+                    speedDisplay.textContent = scrollSpeed.toFixed(1) + 'x';
+                });
+            }
+            
+            // ===== SCROLL FUNCTIONS =====
+            function scrollLeft() {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+            
+            function scrollRight() {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // ===== AUTO SCROLL FUNCTION =====
+            function autoScroll() {
+                if (!isHovered && container) {
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+                    const currentScroll = container.scrollLeft;
+                    
+                    if (currentScroll >= maxScroll - 5) {
+                        container.scrollTo({
+                            left: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        container.scrollBy({
+                            left: 1 * scrollSpeed,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+            
+            // ===== AUTO SCROLL START =====
+            function startAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                }
+                autoScrollInterval = setInterval(autoScroll, 30);
+            }
+            
+            // ===== AUTO SCROLL STOP =====
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
+            }
+            
+            // ===== HOVER - STOP AUTO SCROLL =====
+            container.addEventListener('mouseenter', function() {
+                isHovered = true;
+                stopAutoScroll();
+            });
+            
+            container.addEventListener('mouseleave', function() {
+                isHovered = false;
+                startAutoScroll();
+            });
+            
+            // ===== TOUCH - STOP AUTO SCROLL =====
+            container.addEventListener('touchstart', function() {
+                isHovered = true;
+                stopAutoScroll();
+            });
+            
+            container.addEventListener('touchend', function() {
+                setTimeout(function() {
+                    isHovered = false;
+                    startAutoScroll();
+                }, 3000);
+            });
+            
+            // ===== BUTTONS - STOP AUTO SCROLL =====
+            scrollLeftBtn.addEventListener('click', function() {
+                scrollLeft();
+                stopAutoScroll();
+                setTimeout(startAutoScroll, 3000);
+            });
+            
+            scrollRightBtn.addEventListener('click', function() {
+                scrollRight();
+                stopAutoScroll();
+                setTimeout(startAutoScroll, 3000);
+            });
+            
+            // ===== MOUSE WHEEL - HORIZONTAL SCROLL (FIXED) =====
+            container.addEventListener('wheel', function(e) {
+                // Sirf container ke andar wheel scroll handle karein
+                // Page scroll ko block na karein
+                e.stopPropagation();
+                
+                stopAutoScroll();
+                
+                if (!isScrolling) {
+                    isScrolling = true;
+                    // deltaY positive = neeche (right), negative = upar (left)
+                    const scrollAmount = e.deltaY > 0 ? 200 : -200;
+                    
+                    container.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                    
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = setTimeout(() => {
+                        isScrolling = false;
+                        startAutoScroll();
+                    }, 2000);
+                }
+            }, { passive: true });  // ← passive: true - page scroll block nahi karega
+            
+            // ===== UPDATE BUTTON STATES =====
+            function updateButtons() {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                
+                scrollLeftBtn.disabled = scrollLeft <= 10;
+                scrollRightBtn.disabled = scrollLeft >= maxScroll - 10;
+            }
+            
+            container.addEventListener('scroll', updateButtons);
+            window.addEventListener('resize', updateButtons);
+            setTimeout(updateButtons, 100);
+            
+            // ===== KEYBOARD ARROW KEYS =====
+            document.addEventListener('keydown', function(e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.key === 'ArrowLeft') {
+                    scrollLeft();
+                    stopAutoScroll();
+                    setTimeout(startAutoScroll, 3000);
+                } else if (e.key === 'ArrowRight') {
+                    scrollRight();
+                    stopAutoScroll();
+                    setTimeout(startAutoScroll, 3000);
+                }
+            });
+            
+            // ===== TOUCH SWIPE =====
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            container.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            container.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        scrollRight();
+                    } else {
+                        scrollLeft();
+                    }
+                    stopAutoScroll();
+                    setTimeout(startAutoScroll, 3000);
+                }
+            }, { passive: true });
+            
+            // ===== WINDOW RESIZE =====
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    stopAutoScroll();
+                    startAutoScroll();
+                }, 500);
+            });
+            
+            // ===== START AUTO SCROLL =====
+            startAutoScroll();
+        }
+    });
+    // ===== HERO SECTION - AUTO-SCROLLING BACKGROUND =====
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let currentSlide = 0;
+    let slideInterval;
+    const slideDelay = 5000; // 5 seconds per slide
+    
+    // ===== SHOW SLIDE FUNCTION =====
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+    
+    // ===== NEXT SLIDE =====
+    function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }
+    
+    // ===== START AUTOPLAY =====
+    function startAutoplay() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        slideInterval = setInterval(nextSlide, slideDelay);
+    }
+    
+    // ===== STOP AUTOPLAY =====
+    function stopAutoplay() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
+    }
+    
+    // ===== DOT CLICK - NAVIGATE =====
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            stopAutoplay();
+            showSlide(index);
+            startAutoplay();
+        });
+    });
+    
+    // ===== HOVER - PAUSE SLIDESHOW =====
+    const heroSection = document.getElementById('heroSection');
+    
+    heroSection.addEventListener('mouseenter', function() {
+        stopAutoplay();
+    });
+    
+    heroSection.addEventListener('mouseleave', function() {
+        startAutoplay();
+    });
+    
+    // ===== TOUCH - PAUSE SLIDESHOW (Mobile) =====
+    heroSection.addEventListener('touchstart', function() {
+        stopAutoplay();
+    });
+    
+    heroSection.addEventListener('touchend', function() {
+        setTimeout(startAutoplay, 3000);
+    });
+    
+    // ===== KEYBOARD NAVIGATION =====
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            stopAutoplay();
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+            startAutoplay();
+        } else if (e.key === 'ArrowRight') {
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+        }
+    });
+    
+    // ===== START SLIDESHOW =====
+    showSlide(0);
+    startAutoplay();
+});
+</script>
+{% endblock %}

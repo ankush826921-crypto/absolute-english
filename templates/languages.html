@@ -1,0 +1,412 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Languages - Absolute English{% endblock %}
+{% block page_title %}Languages We Teach{% endblock %}
+{% block breadcrumb_current %}Languages{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ===== Horizontal Scroll Styles ===== */
+    .languages-scroll-wrapper {
+        position: relative;
+        padding: 0 50px;
+    }
+    
+    .languages-scroll-container {
+        display: flex;
+        gap: 25px;
+        overflow-x: auto;
+        padding: 20px 10px;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .languages-scroll-container::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    .language-scroll-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        background: var(--bg-white, #ffffff);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color, #e9ecef);
+        cursor: pointer;
+    }
+    
+    .language-scroll-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+        border-color: var(--primary-color, #6c5ce7);
+    }
+    
+    .language-scroll-card .language-icon {
+        margin-bottom: 1.5rem;
+    }
+    
+    .language-scroll-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark, #2d3436);
+    }
+    
+    .language-scroll-card p {
+        color: var(--text-light, #636e72);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    
+    /* ===== Scroll Buttons ===== */
+    .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color, #6c5ce7);
+        background: var(--bg-white, #ffffff);
+        color: var(--primary-color, #6c5ce7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+        font-size: 18px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+    
+    .scroll-btn:hover {
+        background: var(--primary-color, #6c5ce7);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .scroll-btn-left {
+        left: 0;
+    }
+    
+    .scroll-btn-right {
+        right: 0;
+    }
+    
+    /* ===== Dark Mode Support ===== */
+    [data-theme="dark"] .language-scroll-card {
+        background: #1e1e3a;
+        border-color: #2d2d4a;
+    }
+    
+    [data-theme="dark"] .language-scroll-card h3 {
+        color: #e8e8e8;
+    }
+    
+    [data-theme="dark"] .language-scroll-card p {
+        color: #b0b0b0;
+    }
+    
+    [data-theme="dark"] .scroll-btn {
+        background: #1a1a2e;
+        border-color: #a29bfe;
+        color: #a29bfe;
+    }
+    
+    [data-theme="dark"] .scroll-btn:hover {
+        background: #a29bfe;
+        color: #1a1a2e;
+    }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+        .languages-scroll-wrapper {
+            padding: 0 40px;
+        }
+        
+        .language-scroll-card {
+            flex: 0 0 230px;
+            min-width: 230px;
+            padding: 1.5rem;
+        }
+        
+        .scroll-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .languages-scroll-wrapper {
+            padding: 0 30px;
+        }
+        
+        .language-scroll-card {
+            flex: 0 0 200px;
+            min-width: 200px;
+            padding: 1.2rem;
+        }
+        
+        .language-scroll-card h3 {
+            font-size: 1.1rem;
+        }
+        
+        .language-scroll-card p {
+            font-size: 0.8rem;
+        }
+        
+        .scroll-btn {
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Languages We Teach</h2>
+            <p class="text-muted">Choose from our wide range of language courses</p>
+        </div>
+        
+        <!-- ===== HORIZONTAL SCROLL WRAPPER ===== -->
+        <div class="languages-scroll-wrapper">
+            <!-- Left Scroll Button -->
+            <button class="scroll-btn scroll-btn-left" id="scrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Scrollable Container -->
+            <div class="languages-scroll-container" id="scrollContainer">
+                
+                <!-- English -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                       <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>English</h3>
+                    <p>Learn English and open doors to global opportunities.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Spanish -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                         <span class="fi fi-es fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Spanish</h3>
+                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- French -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>French</h3>
+                    <p>Learn French and open doors to the world of art and culture.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- German -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                         <span class="fi fi-de fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>German</h3>
+                    <p>Learn German and build your future in Europe's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Italian -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Italian</h3>
+                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Japanese -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Japanese</h3>
+                    <p>Learn Japanese and explore the rich culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Mandarin -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Mandarin</h3>
+                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Arabic -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Arabic</h3>
+                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Russian -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Russian</h3>
+                    <p>Learn Russian and explore the vast culture and literature.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+                <!-- Portuguese -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Portuguese</h3>
+                    <p>Learn Portuguese and explore Brazil and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+                
+            </div>
+            
+            <!-- Right Scroll Button -->
+            <button class="scroll-btn scroll-btn-right" id="scrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // ===== HORIZONTAL SCROLL FUNCTIONALITY =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('scrollContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+        
+        if (container && scrollLeftBtn && scrollRightBtn) {
+            // Scroll Left
+            scrollLeftBtn.addEventListener('click', function() {
+                container.scrollBy({
+                    left: -320,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Scroll Right
+            scrollRightBtn.addEventListener('click', function() {
+                container.scrollBy({
+                    left: 320,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Keyboard Arrow Keys Support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    container.scrollBy({
+                        left: -320,
+                        behavior: 'smooth'
+                    });
+                } else if (e.key === 'ArrowRight') {
+                    container.scrollBy({
+                        left: 320,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Mouse Wheel Horizontal Scroll
+            let isScrolling = false;
+            container.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                if (!isScrolling) {
+                    isScrolling = true;
+                    container.scrollBy({
+                        left: e.deltaY > 0 ? 100 : -100,
+                        behavior: 'smooth'
+                    });
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 100);
+                }
+            }, { passive: false });
+            
+            // Touch Swipe Support for Mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            container.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            container.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        container.scrollBy({
+                            left: 320,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        container.scrollBy({
+                            left: -320,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }, { passive: true });
+            
+            // Hide/Show Scroll Buttons based on scroll position
+            function updateButtons() {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                
+                if (scrollLeft <= 10) {
+                    scrollLeftBtn.style.opacity = '0.4';
+                    scrollLeftBtn.style.cursor = 'not-allowed';
+                } else {
+                    scrollLeftBtn.style.opacity = '1';
+                    scrollLeftBtn.style.cursor = 'pointer';
+                }
+                
+                if (scrollLeft >= maxScroll - 10) {
+                    scrollRightBtn.style.opacity = '0.4';
+                    scrollRightBtn.style.cursor = 'not-allowed';
+                } else {
+                    scrollRightBtn.style.opacity = '1';
+                    scrollRightBtn.style.cursor = 'pointer';
+                }
+            }
+            
+            container.addEventListener('scroll', updateButtons);
+            window.addEventListener('resize', updateButtons);
+            setTimeout(updateButtons, 100);
+        }
+    });
+</script>
+{% endblock %}
