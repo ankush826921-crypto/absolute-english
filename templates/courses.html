@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block title %}Courses - Absolute English{% endblock %}
-{% block page_title %}Our Courses{% endblock %}
-{% block breadcrumb_current %}Courses{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/courses.css' %}">
+{% endblock %}
 
 {% block content %}
 <section class="py-5">
@@ -12,7 +14,9 @@
             <h2>Our Courses</h2>
             <p class="text-muted">Comprehensive language courses for every level</p>
         </div>
+
         <div class="row g-4">
+            <!-- A1 Beginner -->
             <div class="col-lg-4 col-md-6">
                 <div class="course-card">
                     <div class="course-level">A1</div>
@@ -23,9 +27,11 @@
                         <span><i class="fas fa-users"></i> 15 seats</span>
                         <span><i class="fas fa-tag"></i> $299</span>
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm mt-3">Enroll Now</a>
+                    <a href="#" class="btn-enroll">Enroll Now</a>
                 </div>
             </div>
+
+            <!-- A2 Elementary -->
             <div class="col-lg-4 col-md-6">
                 <div class="course-card">
                     <div class="course-level">A2</div>
@@ -36,9 +42,11 @@
                         <span><i class="fas fa-users"></i> 15 seats</span>
                         <span><i class="fas fa-tag"></i> $349</span>
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm mt-3">Enroll Now</a>
+                    <a href="#" class="btn-enroll">Enroll Now</a>
                 </div>
             </div>
+
+            <!-- B1 Intermediate -->
             <div class="col-lg-4 col-md-6">
                 <div class="course-card">
                     <div class="course-level">B1</div>
@@ -49,9 +57,11 @@
                         <span><i class="fas fa-users"></i> 12 seats</span>
                         <span><i class="fas fa-tag"></i> $399</span>
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm mt-3">Enroll Now</a>
+                    <a href="#" class="btn-enroll">Enroll Now</a>
                 </div>
             </div>
+
+            <!-- B2 Upper Intermediate -->
             <div class="col-lg-4 col-md-6">
                 <div class="course-card">
                     <div class="course-level">B2</div>
@@ -62,11 +72,14 @@
                         <span><i class="fas fa-users"></i> 12 seats</span>
                         <span><i class="fas fa-tag"></i> $449</span>
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm mt-3">Enroll Now</a>
+                    <a href="#" class="btn-enroll">Enroll Now</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 offset-lg-2">
+
+            <!-- C1 Advanced (Most Popular) -->
+            <div class="col-lg-4 col-md-6">
                 <div class="course-card featured">
+                    <div class="featured-badge">⭐ Most Popular</div>
                     <div class="course-level">C1</div>
                     <h4>Advanced</h4>
                     <p>Master the language like a pro with native-level proficiency. Fluent communication in professional settings.</p>
@@ -75,8 +88,7 @@
                         <span><i class="fas fa-users"></i> 10 seats</span>
                         <span><i class="fas fa-tag"></i> $549</span>
                     </div>
-                    <a href="#" class="btn btn-light btn-sm mt-3">Enroll Now</a>
-                    <div class="featured-badge">Most Popular</div>
+                    <a href="#" class="btn-enroll">Enroll Now</a>
                 </div>
             </div>
         </div>
