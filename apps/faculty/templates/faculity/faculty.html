@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Faculty | Absolute English{% endblock %}
+
+{% block content %}
+
+<section class="faculty-page" id="faculty-page">
+
+    <section class="faculty-hero">
+        <div class="faculty-shell faculty-hero__content">
+            <p class="faculty-eyebrow">Absolute English Faculty</p>
+
+            <h1>Meet Our Expert Faculty</h1>
+
+            <p>
+                Learn from experienced language instructors who make every
+                lesson practical, engaging and personalized.
+            </p>
+
+            <a href="#faculty-directory"
+               class="faculty-button faculty-button--primary">
+                Explore Faculty ↓
+            </a>
+        </div>
+    </section>
+
+    <section class="faculty-stats">
+        <div class="faculty-shell faculty-stats__grid">
+
+            <article class="faculty-stat">
+                <strong data-count="25" data-suffix="+">0</strong>
+                <span>Expert Instructors</span>
+            </article>
+
+            <article class="faculty-stat">
+                <strong data-count="10" data-suffix="+">0</strong>
+                <span>Languages</span>
+            </article>
+
+            <article class="faculty-stat">
+                <strong data-count="8" data-suffix="+">0</strong>
+                <span>Years Average Experience</span>
+            </article>
+
+            <article class="faculty-stat">
+                <strong data-count="95" data-suffix="%">0</strong>
+                <span>Student Satisfaction</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="faculty-directory faculty-section"
+             id="faculty-directory">
+
+        <div class="faculty-shell">
+
+            <div class="faculty-section__heading">
+
+                <p class="faculty-eyebrow">
+                    Find your mentor
+                </p>
+
+                <h2>
+                    Teachers who meet you where you are
+                </h2>
+
+                <p>
+                    Choose a specialist for your goals, schedule and
+                    learning style.
+                </p>
+
+            </div>
+
+            <form class="faculty-filter" id="faculty-filters">
+
+                <label>
+                    <span>Search</span>
+                    <input
+                        id="faculty-search"
+                        type="search"
+                        placeholder="Search by name"
+                    >
+                </label>
+
+                <label>
+                    <span>Language</span>
+                    <select id="faculty-language">
+                        <option value="">All languages</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>Specialization</span>
+                    <select id="faculty-specialization">
+                        <option value="">All specializations</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>Experience</span>
+                    <select id="faculty-experience">
+                        <option value="">Any experience</option>
+                        <option value="0-3">0–3 years</option>
+                        <option value="4-7">4–7 years</option>
+                        <option value="8+">8+ years</option>
+                    </select>
+                </label>
+
+                <button
+                    type="button"
+                    id="faculty-reset"
+                    class="faculty-button faculty-button--quiet">
+                    Reset
+                </button>
+
+            </form>
+
+            <p id="faculty-result-count"
+               class="faculty-result-count"></p>
+
+            <div
+                id="faculty-loading"
+                class="faculty-state faculty-state--loading">
+                Loading faculty...
+            </div>
+
+            <div
+                id="faculty-grid"
+                class="faculty-grid">
+            </div>
+
+            <div
+                id="faculty-empty"
+                class="faculty-state faculty-state--empty"
+                hidden>
+
+                <h3>No faculty found</h3>
+
+                <p>
+                    Try clearing a filter or searching for another instructor.
+                </p>
+
+                <button
+                    type="button"
+                    class="faculty-button faculty-button--primary"
+                    data-reset-faculty>
+                    Reset filters
+                </button>
+
+            </div>
+
+            <div
+                id="faculty-error"
+                class="faculty-state faculty-state--error"
+                hidden>
+
+                <h3>Unable to load faculty</h3>
+
+                <p>
+                    Please check your connection and try again.
+                </p>
+
+                <button
+                    type="button"
+                    class="faculty-button faculty-button--primary"
+                    data-retry-faculty>
+                    Try again
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Faculty Courses | Absolute English
+{% endblock title %}
+
+
+{% block content %}
+
+<main class="faculty-page faculty-courses-page"><div class="faculty-shell"><a class="faculty-back-link" id="courses-back" href="{% url 'faculty' %}">← Back to faculty</a><header class="faculty-section__heading faculty-courses-heading"><p class="faculty-eyebrow">Learning paths</p><h1 id="courses-title">Courses taught</h1><p id="courses-subtitle">Explore courses from one of our expert instructors.</p></header>
+
+    <div class="faculty-state faculty-state--loading" id="courses-loading" role="status"><span class="faculty-spinner"></span> Loading courses…</div>
+    
+    <div class="faculty-course-grid" id="course-grid"></div><div class="faculty-state faculty-state--empty" id="courses-empty" hidden><h2>No courses available</h2><p>This instructor has no courses listed yet. You can still book a trial class.</p><a class="faculty-button faculty-button--primary" id="empty-trial" href="trial-class.html">Book a trial class</a></div><div class="faculty-state faculty-state--error" id="courses-error" hidden><h2>Unable to load courses</h2><p>Please return to the faculty directory and select an instructor.</p><a class="faculty-button faculty-button--primary" href="faculty.html">Browse faculty</a></div></div></main>
+
+
+
+
+
+{% endblock content %}
+    
+    
