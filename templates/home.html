@@ -3,739 +3,63 @@
 
 {% block title %}Absolute English - Learn Languages Online{% endblock %}
 
-{% block extra_css %}
-<style>
-    /* ========================================
-       HERO SECTION
-    ======================================== */
-    .hero-section {
-        position: relative;
-        overflow: hidden;
-        min-height: 40vh;
-        max-height: 50vh;
-        display: flex;
-        align-items: center;
-        background: #1a1a2e;
-    }
-
-    .hero-slideshow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-    }
-
-    .hero-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity 1.5s ease-in-out;
-    }
-
-    .hero-slide.active {
-        opacity: 1;
-        animation: zoomIn 8s ease-in-out infinite;
-    }
-
-    @keyframes zoomIn {
-        0%   { transform: scale(1); }
-        50%  { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, 
-            rgba(0, 0, 0, 0.6) 0%, 
-            rgba(0, 0, 0, 0.3) 50%, 
-            rgba(108, 92, 231, 0.2) 100%
-        );
-        z-index: 1;
-    }
-
-    .hero-section .hero-content {
-        position: relative;
-        z-index: 2;
-        padding: 1rem 0;
-    }
-
-    .hero-section .hero-title {
-        color: #ffffff;
-        text-shadow: 0 2px 15px rgba(0,0,0,0.3);
-        font-size: 2.8rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 0.8rem;
-    }
-
-    .hero-section .hero-title .highlight {
-        background: linear-gradient(135deg, #a29bfe, #6c5ce7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: none;
-    }
-
-    .hero-section .hero-subtitle {
-        color: rgba(255,255,255,0.9);
-        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        font-size: 1rem;
-        margin-bottom: 1.2rem;
-        line-height: 1.6;
-    }
-
-    .hero-section .btn-primary {
-        background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-        border: none;
-        padding: 10px 28px;
-        font-size: 0.95rem;
-        border-radius: 50px;
-        box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
-        color: #fff;
-    }
-
-    .hero-section .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
-    }
-
-    .hero-section .btn-outline-primary {
-        border-color: rgba(255,255,255,0.8);
-        color: #ffffff;
-        padding: 10px 28px;
-        font-size: 0.95rem;
-        border-radius: 50px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-    }
-
-    .hero-section .btn-outline-primary:hover {
-        background: rgba(255,255,255,0.2);
-        border-color: #ffffff;
-        color: #ffffff;
-    }
-
-    .hero-buttons .btn {
-        margin-right: 12px;
-        margin-bottom: 8px;
-    }
-
-    .hero-indicators {
-        position: absolute;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .hero-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.4);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-
-    .hero-dot.active {
-        background: #6c5ce7;
-        border-color: #ffffff;
-        transform: scale(1.2);
-        box-shadow: 0 0 15px rgba(108, 92, 231, 0.5);
-    }
-
-    /* ========================================
-       SECTION HEADER
-    ======================================== */
-    .section-header {
-        margin-bottom: 3rem;
-    }
-
-    .section-header h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #2d3436;
-        position: relative;
-        display: inline-block;
-    }
-
-    .section-header h2::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-        border-radius: 2px;
-    }
-
-    .section-header .text-muted {
-        color: #636e72;
-    }
-
-    /* ========================================
-       LANGUAGES SCROLL
-    ======================================== */
-    .languages-scroll-wrapper {
-        position: relative;
-        padding: 0 50px;
-    }
-    
-    .languages-scroll-container {
-        display: flex;
-        gap: 25px;
-        overflow-x: auto;
-        padding: 20px 10px;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .languages-scroll-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .language-scroll-card {
-        flex: 0 0 280px;
-        min-width: 280px;
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        border: 1px solid #e9ecef;
-    }
-    
-    .language-scroll-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
-        border-color: #6c5ce7;
-    }
-    
-    .language-scroll-card .language-icon {
-        margin-bottom: 1.5rem;
-    }
-    
-    .language-scroll-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-        color: #2d3436;
-    }
-    
-    .language-scroll-card p {
-        color: #636e72;
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-
-    /* ========================================
-       COURSES SCROLL
-    ======================================== */
-    .courses-scroll-wrapper {
-        position: relative;
-        padding: 0 50px;
-    }
-    
-    .courses-scroll-container {
-        display: flex;
-        gap: 25px;
-        overflow-x: auto;
-        padding: 20px 10px;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .courses-scroll-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .course-scroll-card {
-        flex: 0 0 280px;
-        min-width: 280px;
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        border: 1px solid #e9ecef;
-        position: relative;
-    }
-    
-    .course-scroll-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
-        border-color: #6c5ce7;
-    }
-    
-    .course-scroll-card.featured {
-        background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-        color: white;
-        border: none;
-    }
-    
-    .course-scroll-card.featured h4,
-    .course-scroll-card.featured p {
-        color: white;
-    }
-    
-    .course-scroll-card .course-level {
-        display: inline-block;
-        padding: 5px 20px;
-        background: #f8f9fa;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: #6c5ce7;
-        margin-bottom: 1rem;
-    }
-    
-    .course-scroll-card.featured .course-level {
-        background: rgba(255,255,255,0.2);
-        color: white;
-    }
-    
-    .course-scroll-card h4 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-        color: #2d3436;
-    }
-    
-    .course-scroll-card p {
-        color: #636e72;
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-    
-    .course-scroll-card.featured p {
-        color: rgba(255,255,255,0.9);
-    }
-    
-    .course-scroll-card .course-meta {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-top: 1rem;
-    }
-    
-    .course-scroll-card .course-meta span {
-        font-size: 0.9rem;
-        color: #636e72;
-    }
-    
-    .course-scroll-card .course-meta span i {
-        margin-right: 5px;
-    }
-    
-    .course-scroll-card.featured .course-meta span {
-        color: rgba(255,255,255,0.8);
-    }
-    
-    .course-scroll-card .featured-badge {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: #ff6b6b;
-        color: white;
-        padding: 5px 15px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-
-    /* ========================================
-       TESTIMONIALS SCROLL (Manual Scroll - No Auto)
-    ======================================== */
-    .testimonials-scroll-wrapper {
-        position: relative;
-        padding: 0 50px;
-    }
-    
-    .testimonials-scroll-container {
-        display: flex;
-        gap: 25px;
-        overflow-x: auto;
-        padding: 20px 10px;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .testimonials-scroll-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .testimonial-scroll-card {
-        flex: 0 0 320px;
-        min-width: 320px;
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        border: 1px solid #e9ecef;
-    }
-    
-    .testimonial-scroll-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
-        border-color: #6c5ce7;
-    }
-    
-    .testimonial-scroll-card .testimonial-avatar {
-        margin-bottom: 1rem;
-    }
-    
-    .testimonial-scroll-card .testimonial-avatar img {
-        border: 4px solid #6c5ce7;
-        padding: 2px;
-    }
-    
-    .testimonial-scroll-card .testimonial-rating {
-        color: #f1c40f;
-        margin-bottom: 1rem;
-    }
-    
-    .testimonial-scroll-card blockquote {
-        font-size: 0.95rem;
-        color: #2d3436;
-        font-style: italic;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-        min-height: 80px;
-    }
-    
-    .testimonial-scroll-card h5 {
-        font-size: 1.1rem;
-        margin-bottom: 0;
-        color: #2d3436;
-    }
-    
-    .testimonial-scroll-card .text-muted {
-        font-size: 0.85rem;
-        color: #636e72;
-    }
-
-    /* ========================================
-       SCROLL BUTTONS
-    ======================================== */
-    .scroll-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: 2px solid #6c5ce7;
-        background: #ffffff;
-        color: #6c5ce7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 10;
-        font-size: 18px;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    }
-    
-    .scroll-btn:hover {
-        background: #6c5ce7;
-        color: white;
-        transform: translateY(-50%) scale(1.1);
-    }
-    
-    .scroll-btn-left {
-        left: 0;
-    }
-    
-    .scroll-btn-right {
-        right: 0;
-    }
-    
-    .scroll-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-    
-    .scroll-btn:disabled:hover {
-        transform: translateY(-50%) scale(1);
-        background: #ffffff;
-        color: #6c5ce7;
-    }
-
-    /* ========================================
-       FEATURE CARDS
-    ======================================== */
-    .feature-card {
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        height: 100%;
-        border: 1px solid #e9ecef;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        border-color: #6c5ce7;
-    }
-
-    .feature-icon {
-        color: #6c5ce7;
-        margin-bottom: 1.5rem;
-    }
-
-    .feature-card h4 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        color: #2d3436;
-    }
-
-    .feature-card p {
-        color: #636e72;
-        font-size: 0.95rem;
-    }
-
-    /* ========================================
-       CTA SECTION
-    ======================================== */
-    .cta-section {
-        background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-        color: white;
-        padding: 50px 0 45px;
-    }
-
-    .cta-section h2 {
-        color: white;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta-section .lead {
-        color: rgba(255,255,255,0.9);
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-    }
-
-    .cta-buttons .btn {
-        margin: 0 10px;
-        padding: 15px 35px;
-    }
-
-    .cta-buttons .btn-light {
-        background: white;
-        color: #6c5ce7;
-        border: none;
-    }
-
-    .cta-buttons .btn-light:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .cta-buttons .btn-outline-light {
-        border-color: white;
-        color: white;
-    }
-
-    .cta-buttons .btn-outline-light:hover {
-        background: white;
-        color: #6c5ce7;
-    }
-
-    /* ========================================
-       DARK MODE
-    ======================================== */
-    [data-theme="dark"] .language-scroll-card,
-    [data-theme="dark"] .course-scroll-card,
-    [data-theme="dark"] .testimonial-scroll-card,
-    [data-theme="dark"] .feature-card {
-        background: #1e1e3a;
-        border-color: #2d2d4a;
-    }
-
-    [data-theme="dark"] .language-scroll-card h3,
-    [data-theme="dark"] .course-scroll-card h4,
-    [data-theme="dark"] .testimonial-scroll-card blockquote,
-    [data-theme="dark"] .testimonial-scroll-card h5,
-    [data-theme="dark"] .feature-card h4,
-    [data-theme="dark"] .section-header h2 {
-        color: #e8e8e8;
-    }
-
-    [data-theme="dark"] .language-scroll-card p,
-    [data-theme="dark"] .course-scroll-card p,
-    [data-theme="dark"] .feature-card p {
-        color: #b0b0b0;
-    }
-
-    [data-theme="dark"] .course-scroll-card .course-meta span {
-        color: #b0b0b0;
-    }
-
-    [data-theme="dark"] .course-scroll-card.featured {
-        background: linear-gradient(135deg, #2d1b69, #4a2b8a);
-    }
-
-    [data-theme="dark"] .scroll-btn {
-        background: #1a1a2e;
-        border-color: #a29bfe;
-        color: #a29bfe;
-    }
-
-    [data-theme="dark"] .scroll-btn:hover {
-        background: #a29bfe;
-        color: #1a1a2e;
-    }
-
-    [data-theme="dark"] .scroll-btn:disabled {
-        background: #1a1a2e;
-        color: #444;
-        border-color: #444;
-    }
-
-    [data-theme="dark"] .section-header .text-muted {
-        color: #b0b0b0;
-    }
-
-    [data-theme="dark"] .bg-light {
-        background-color: #16213e !important;
-    }
-
-    /* ========================================
-       RESPONSIVE
-    ======================================== */
-    @media (max-width: 768px) {
-        .languages-scroll-wrapper,
-        .courses-scroll-wrapper,
-        .testimonials-scroll-wrapper {
-            padding: 0 40px;
-        }
-        
-        .language-scroll-card,
-        .course-scroll-card {
-            flex: 0 0 230px;
-            min-width: 230px;
-        }
-        
-        .testimonial-scroll-card {
-            flex: 0 0 280px;
-            min-width: 280px;
-        }
-        
-        .scroll-btn {
-            width: 35px;
-            height: 35px;
-            font-size: 14px;
-        }
-        
-        .hero-section .hero-title {
-            font-size: 2rem;
-        }
-        
-        .hero-section {
-            min-height: 35vh;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .languages-scroll-wrapper,
-        .courses-scroll-wrapper,
-        .testimonials-scroll-wrapper {
-            padding: 0 30px;
-        }
-        
-        .language-scroll-card,
-        .course-scroll-card {
-            flex: 0 0 200px;
-            min-width: 200px;
-        }
-        
-        .testimonial-scroll-card {
-            flex: 0 0 260px;
-            min-width: 260px;
-        }
-        
-        .scroll-btn {
-            width: 30px;
-            height: 30px;
-            font-size: 12px;
-        }
-        
-        .hero-section .hero-title {
-            font-size: 1.6rem;
-        }
-        
-        .hero-section {
-            min-height: 30vh;
-        }
-        
-        .hero-buttons .btn {
-            width: 100%;
-            display: block;
-            margin-right: 0;
-        }
-        
-        .cta-section h2 {
-            font-size: 1.8rem;
-        }
-        
-        .cta-buttons .btn {
-            width: 100%;
-            margin: 5px 0;
-        }
-    }
-</style>
-{% endblock %}
-
 {% block content %}
+
 <!-- ===== HERO SECTION ===== -->
 <section class="hero-section" id="heroSection">
     <div class="hero-slideshow" id="heroSlideshow">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?w=1920&q=80');"></div>
+
+        <div class="hero-slide active"
+             style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&q=80');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&q=80');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80');">
+        </div>
+
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?w=1920&q=80');">
+        </div>
+
     </div>
+
     <div class="hero-overlay"></div>
+
     <div class="container" style="position: relative; z-index: 2;">
         <div class="row align-items-center" style="min-height: 30vh; padding: 2rem 0;">
             <div class="col-lg-8 hero-content">
-                <h1 class="hero-title">Learn a New Language<br><span class="highlight">Open New Opportunities</span></h1>
-                <p class="hero-subtitle">Spanish, French, German and more. Expert trainers, flexible batches and certified courses for all levels.</p>
+
+                <h1 class="hero-title">
+                    Learn a New Language<br>
+                    <span class="highlight">Open New Opportunities</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Spanish, French, German and more. Expert trainers, flexible batches and certified courses for all levels.
+                </p>
+
                 <div class="hero-buttons">
-                    <a href="{% url 'courses' %}" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> Explore Courses</a>
-                    <a href="{% url 'book_demo' %}" class="btn btn-outline-primary"><i class="fas fa-play-circle"></i> Book a Demo</a>
+                    <a href="{% url 'courses' %}" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap"></i> Explore Courses
+                    </a>
+
+                    <a href="{% url 'book_demo' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-play-circle"></i> Book a Demo
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>
+
     <div class="hero-indicators" id="heroIndicators">
         <span class="hero-dot active" data-index="0"></span>
         <span class="hero-dot" data-index="1"></span>
@@ -745,30 +69,138 @@
     </div>
 </section>
 
+
 <!-- ===== LANGUAGES SECTION ===== -->
 <section class="languages-section py-5" id="languages">
     <div class="container">
+
         <div class="section-header text-center">
             <h2>Languages We Teach</h2>
             <p class="text-muted">Choose from our wide range of language courses</p>
         </div>
+
         <div class="languages-scroll-wrapper">
-            <button class="scroll-btn scroll-btn-left" id="homeScrollLeft"><i class="fas fa-chevron-left"></i></button>
+
+            <button class="scroll-btn scroll-btn-left" id="homeScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
             <div class="languages-scroll-container" id="homeScrollContainer">
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-gb fis" style="font-size: 3rem;"></span></div><h3>English</h3><p>Learn English and open doors to global opportunities.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-es fis" style="font-size: 3rem;"></span></div><h3>Spanish</h3><p>Learn Spanish and explore new cultures across 20+ countries.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-fr fis" style="font-size: 3rem;"></span></div><h3>French</h3><p>Learn French and open doors to the world of art and culture.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-de fis" style="font-size: 3rem;"></span></div><h3>German</h3><p>Learn German and build your future in Europe's largest economy.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-it fis" style="font-size: 3rem;"></span></div><h3>Italian</h3><p>Learn Italian and experience the beauty of art, music, and food.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-jp fis" style="font-size: 3rem;"></span></div><h3>Japanese</h3><p>Learn Japanese and explore the rich culture and technology.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-cn fis" style="font-size: 3rem;"></span></div><h3>Mandarin</h3><p>Learn Mandarin and open doors to the world's largest economy.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-sa fis" style="font-size: 3rem;"></span></div><h3>Arabic</h3><p>Learn Arabic and explore the rich culture of the Middle East.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-ru fis" style="font-size: 3rem;"></span></div><h3>Russian</h3><p>Learn Russian and explore the vast culture and literature.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-pt fis" style="font-size: 3rem;"></span></div><h3>Portuguese</h3><p>Learn Portuguese and explore Brazil and beyond.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-kr fis" style="font-size: 3rem;"></span></div><h3>Korean</h3><p>Learn Korean and explore K-culture and technology.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
-                <div class="language-scroll-card"><div class="language-icon"><span class="fi fi-nl fis" style="font-size: 3rem;"></span></div><h3>Dutch</h3><p>Learn Dutch and explore the Netherlands and beyond.</p><a href="#" class="btn btn-outline-primary btn-sm">Learn More</a></div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>English</h3>
+                    <p>Learn English and open doors to global opportunities.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Spanish</h3>
+                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>French</h3>
+                    <p>Learn French and open doors to the world of art and culture.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>German</h3>
+                    <p>Learn German and build your future in Europe's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Italian</h3>
+                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Japanese</h3>
+                    <p>Learn Japanese and explore the rich culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Mandarin</h3>
+                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Arabic</h3>
+                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Russian</h3>
+                    <p>Learn Russian and explore the vast culture and literature.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Portuguese</h3>
+                    <p>Learn Portuguese and explore Brazil and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-kr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Korean</h3>
+                    <p>Learn Korean and explore K-culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-nl fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Dutch</h3>
+                    <p>Learn Dutch and explore the Netherlands and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
             </div>
-            <button class="scroll-btn scroll-btn-right" id="homeScrollRight"><i class="fas fa-chevron-right"></i></button>
+
+            <button class="scroll-btn scroll-btn-right" id="homeScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
     </div>
 </section>
@@ -776,463 +208,340 @@
 <!-- ===== COURSES SECTION ===== -->
 <section class="courses-section py-5 bg-light" id="courses">
     <div class="container">
+
         <div class="section-header text-center">
             <h2>Our Courses</h2>
             <p class="text-muted">Comprehensive language courses for every level</p>
         </div>
+
         <div class="courses-scroll-wrapper">
-            <button class="scroll-btn scroll-btn-left" id="coursesScrollLeft"><i class="fas fa-chevron-left"></i></button>
+
+            <button class="scroll-btn scroll-btn-left" id="coursesScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
             <div class="courses-scroll-container" id="coursesScrollContainer">
-                <div class="course-scroll-card"><div class="course-level">A1</div><h4>Beginner</h4><p>Start your language journey with basics and fundamentals.</p><div class="course-meta"><span><i class="far fa-clock"></i> 40 hours</span><span><i class="fas fa-users"></i> 15 seats</span></div></div>
-                <div class="course-scroll-card"><div class="course-level">A2</div><h4>Elementary</h4><p>Build strong basics step by step with confidence.</p><div class="course-meta"><span><i class="far fa-clock"></i> 40 hours</span><span><i class="fas fa-users"></i> 15 seats</span></div></div>
-                <div class="course-scroll-card"><div class="course-level">B1</div><h4>Intermediate</h4><p>Improve fluency and communication in everyday situations.</p><div class="course-meta"><span><i class="far fa-clock"></i> 50 hours</span><span><i class="fas fa-users"></i> 12 seats</span></div></div>
-                <div class="course-scroll-card"><div class="course-level">B2</div><h4>Upper Intermediate</h4><p>Advance your skills with confidence in complex topics.</p><div class="course-meta"><span><i class="far fa-clock"></i> 50 hours</span><span><i class="fas fa-users"></i> 12 seats</span></div></div>
-                <div class="course-scroll-card featured"><div class="course-level">C1</div><h4>Advanced</h4><p>Master the language like a pro with native-level proficiency.</p><div class="course-meta"><span><i class="far fa-clock"></i> 60 hours</span><span><i class="fas fa-users"></i> 10 seats</span></div><div class="featured-badge">Most Popular</div></div>
+
+                <!-- ===== CARD 1: A1 BEGINNER ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">A1</span>
+                    <h4>Beginner</h4>
+                    <p>Start your language journey with basics and fundamentals. Learn greetings, introductions, and basic vocabulary.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                        <span><i class="fas fa-tag"></i> $299</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 2: A2 ELEMENTARY ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">A2</span>
+                    <h4>Elementary</h4>
+                    <p>Build strong basics step by step with confidence. Learn simple conversations and everyday expressions.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                        <span><i class="fas fa-tag"></i> $349</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 3: B1 INTERMEDIATE ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">B1</span>
+                    <h4>Intermediate</h4>
+                    <p>Improve fluency and communication in everyday situations. Handle conversations and express opinions.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                        <span><i class="fas fa-tag"></i> $399</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 4: B2 UPPER INTERMEDIATE ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">B2</span>
+                    <h4>Upper Intermediate</h4>
+                    <p>Advance your skills with confidence in complex topics. Discuss abstract topics and current events.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                        <span><i class="fas fa-tag"></i> $449</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 5: C1 ADVANCED (MOST POPULAR) ===== -->
+                <div class="course-scroll-card featured">
+                    <span class="featured-badge">⭐ Most Popular</span>
+                    <span class="course-level">C1</span>
+                    <h4>Advanced</h4>
+                    <p>Master the language like a pro with native-level proficiency. Fluent communication in professional settings.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 60 hours</span>
+                        <span><i class="fas fa-users"></i> 10 seats</span>
+                        <span><i class="fas fa-tag"></i> $549</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
             </div>
-            <button class="scroll-btn scroll-btn-right" id="coursesScrollRight"><i class="fas fa-chevron-right"></i></button>
+
+            <button class="scroll-btn scroll-btn-right" id="coursesScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
     </div>
 </section>
 
-<!-- ===== TESTIMONIALS SECTION (Manual Scroll - No Auto) ===== -->
+<!-- ===== TESTIMONIALS SECTION ===== -->
 <section class="testimonials-section py-5" id="gallery">
     <div class="container">
+
         <div class="section-header text-center">
             <h2>What Our Students Say</h2>
             <p class="text-muted">Real stories from our successful students</p>
         </div>
+
         <div class="testimonials-scroll-wrapper">
-            <button class="scroll-btn scroll-btn-left" id="testimonialsScrollLeft"><i class="fas fa-chevron-left"></i></button>
+
+            <button class="scroll-btn scroll-btn-left" id="testimonialsScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
             <div class="testimonials-scroll-container" id="testimonialsScrollContainer">
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=Ananya+S&background=6c5ce7&color=fff&size=80" alt="Ananya S." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"Great learning experience! The trainers are very supportive and the environment is amazing. I went from zero to fluent in just 6 months!"</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Ananya+S&background=6c5ce7&color=fff&size=80"
+                             alt="Ananya S." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Great learning experience! The trainers are very supportive and the environment is amazing. I went from zero to fluent in just 6 months!"
+                    </blockquote>
+
                     <h5>Ananya S.</h5>
                     <p class="text-muted">Spanish Student</p>
                 </div>
+
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=Rahul+K&background=00b894&color=fff&size=80" alt="Rahul K." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"Absolute English helped me achieve my dream of studying abroad. The trainers are world-class and the teaching methodology is excellent!"</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Rahul+K&background=00b894&color=fff&size=80"
+                             alt="Rahul K." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Absolute English helped me achieve my dream of studying abroad. The trainers are world-class and the teaching methodology is excellent!"
+                    </blockquote>
+
                     <h5>Rahul K.</h5>
                     <p class="text-muted">IELTS Student</p>
                 </div>
+
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=Priya+M&background=e17055&color=fff&size=80" alt="Priya M." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"I was struggling with my English communication skills. The flexible batch timings and expert guidance helped me gain confidence and speak fluently."</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Priya+M&background=e17055&color=fff&size=80"
+                             alt="Priya M." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "I was struggling with my English communication skills. The flexible batch timings and expert guidance helped me gain confidence and speak fluently."
+                    </blockquote>
+
                     <h5>Priya M.</h5>
                     <p class="text-muted">Professional English Student</p>
                 </div>
+
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=John+D&background=0984e3&color=fff&size=80" alt="John D." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"The best decision I made was joining Absolute English. My speaking skills have improved dramatically and I feel confident in interviews now."</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+D&background=0984e3&color=fff&size=80"
+                             alt="John D." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "The best decision I made was joining Absolute English. My speaking skills have improved dramatically and I feel confident in interviews now."
+                    </blockquote>
+
                     <h5>John D.</h5>
                     <p class="text-muted">Business English Student</p>
                 </div>
+
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=Sarah+W&background=fdcb6e&color=fff&size=80" alt="Sarah W." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"The trainers are incredibly knowledgeable and patient. I love the interactive sessions and the friendly learning environment."</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+W&background=fdcb6e&color=fff&size=80"
+                             alt="Sarah W." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "The trainers are incredibly knowledgeable and patient. I love the interactive sessions and the friendly learning environment."
+                    </blockquote>
+
                     <h5>Sarah W.</h5>
                     <p class="text-muted">French Student</p>
                 </div>
+
+
                 <div class="testimonial-scroll-card">
-                    <div class="testimonial-avatar"><img src="https://ui-avatars.com/api/?name=Michael+R&background=e84393&color=fff&size=80" alt="Michael R." class="rounded-circle" width="80"></div>
-                    <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote>"Thanks to Absolute English, I cleared my German language exam with flying colors. The structured curriculum and practice sessions are top-notch."</blockquote>
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Michael+R&background=e84393&color=fff&size=80"
+                             alt="Michael R." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Thanks to Absolute English, I cleared my German language exam with flying colors. The structured curriculum and practice sessions are top-notch."
+                    </blockquote>
+
                     <h5>Michael R.</h5>
                     <p class="text-muted">German Student</p>
                 </div>
+
             </div>
-            <button class="scroll-btn scroll-btn-right" id="testimonialsScrollRight"><i class="fas fa-chevron-right"></i></button>
+
+            <button class="scroll-btn scroll-btn-right" id="testimonialsScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
     </div>
 </section>
+
 
 <!-- ===== WHY CHOOSE US ===== -->
 <section class="why-choose-section py-5 bg-light" id="about">
     <div class="container">
+
         <div class="section-header text-center">
             <h2>Why Choose Us?</h2>
             <p class="text-muted">What makes us the best choice for learning languages</p>
         </div>
+
         <div class="row g-4">
+
             <div class="col-md-3">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chalkboard-teacher fa-3x"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    </div>
                     <h4>Expert Trainers</h4>
                     <p>Learn from certified and experienced trainers with years of teaching.</p>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-certificate fa-3x"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate fa-3x"></i>
+                    </div>
                     <h4>Certified Courses</h4>
                     <p>Internationally recognized certifications for your career growth.</p>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-clock fa-3x"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-clock fa-3x"></i>
+                    </div>
                     <h4>Flexible Batches</h4>
-                    <p>Weekend & weekday batches available to suit your schedule.</p>
+                    <p>Weekend &amp; weekday batches available to suit your schedule.</p>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-globe-americas fa-3x"></i></div>
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas fa-3x"></i>
+                    </div>
                     <h4>Global Exposure</h4>
                     <p>Language learning for study, travel and career opportunities.</p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- ===== CTA SECTION ===== -->
 <section class="cta-section py-5">
     <div class="container text-center">
+
         <h2>Start Learning Today!</h2>
-        <p class="lead">Join thousands of students and achieve your language goals.</p>
+
+        <p class="lead">
+            Join thousands of students and achieve your language goals.
+        </p>
+
         <div class="cta-buttons">
-            <a href="{% url 'enroll' %}" class="btn btn-light btn-lg"><i class="fas fa-user-plus"></i> Enroll Now</a>
-            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg"><i class="fas fa-envelope"></i> Contact Us</a>
+
+            <a href="{% url 'enroll' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-user-plus"></i> Enroll Now
+            </a>
+
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+
         </div>
     </div>
 </section>
+
 {% endblock %}
-{% block extra_js %}
-<script>
-// ========================================
-// LANGUAGES - TRUE INFINITE LOOP (Auto-Scroll) + Buttons
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('homeScrollContainer');
-    const leftBtn = document.getElementById('homeScrollLeft');
-    const rightBtn = document.getElementById('homeScrollRight');
-    
-    if (!container) return;
-    
-    // Clone cards for infinite loop
-    const cards = container.children;
-    const totalCards = cards.length;
-    
-    for (let i = 0; i < totalCards; i++) {
-        const clone = cards[i].cloneNode(true);
-        container.appendChild(clone);
-    }
-    
-    let scrollInterval;
-    let isHovered = false;
-    let speed = 1.5;
-    let isTransitioning = false;
-    
-    function autoScroll() {
-        if (!isHovered && container && !isTransitioning) {
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            const currentScroll = container.scrollLeft;
-            
-            if (currentScroll >= maxScroll / 2) {
-                isTransitioning = true;
-                container.scrollTo({ left: 0, behavior: 'instant' });
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 50);
-            } else {
-                container.scrollBy({ left: 1 * speed, behavior: 'smooth' });
-            }
-        }
-    }
-    
-    function startScroll() {
-        if (scrollInterval) clearInterval(scrollInterval);
-        scrollInterval = setInterval(autoScroll, 25);
-    }
-    
-    function stopScroll() {
-        if (scrollInterval) {
-            clearInterval(scrollInterval);
-            scrollInterval = null;
-        }
-    }
-    
-    // Mouse Events
-    container.addEventListener('mouseenter', function() {
-        isHovered = true;
-        stopScroll();
-    });
-    
-    container.addEventListener('mouseleave', function() {
-        isHovered = false;
-        startScroll();
-    });
-    
-    // Touch Events
-    container.addEventListener('touchstart', function() {
-        isHovered = true;
-        stopScroll();
-    });
-    
-    container.addEventListener('touchend', function() {
-        setTimeout(function() {
-            isHovered = false;
-            startScroll();
-        }, 3000);
-    });
-    
-    // ===== SCROLL BUTTONS - VISIBLE =====
-    if (leftBtn) {
-        leftBtn.addEventListener('click', function() {
-            container.scrollBy({ left: -320, behavior: 'smooth' });
-            stopScroll();
-            setTimeout(startScroll, 3000);
-        });
-    }
-    
-    if (rightBtn) {
-        rightBtn.addEventListener('click', function() {
-            container.scrollBy({ left: 320, behavior: 'smooth' });
-            stopScroll();
-            setTimeout(startScroll, 3000);
-        });
-    }
-    
-    // Update button states
-    function updateButtons() {
-        if (!leftBtn || !rightBtn) return;
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        
-        leftBtn.disabled = scrollLeft <= 10;
-        rightBtn.disabled = scrollLeft >= maxScroll - 10;
-    }
-    
-    container.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-    setTimeout(updateButtons, 100);
-    
-    startScroll();
-});
 
-// ========================================
-// COURSES - TRUE INFINITE LOOP (Auto-Scroll) + Buttons
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('coursesScrollContainer');
-    const leftBtn = document.getElementById('coursesScrollLeft');
-    const rightBtn = document.getElementById('coursesScrollRight');
-    
-    if (!container) return;
-    
-    const cards = container.children;
-    const totalCards = cards.length;
-    
-    for (let i = 0; i < totalCards; i++) {
-        const clone = cards[i].cloneNode(true);
-        container.appendChild(clone);
-    }
-    
-    let scrollInterval;
-    let isHovered = false;
-    let speed = 1.5;
-    let isTransitioning = false;
-    
-    function autoScroll() {
-        if (!isHovered && container && !isTransitioning) {
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            const currentScroll = container.scrollLeft;
-            
-            if (currentScroll >= maxScroll / 2) {
-                isTransitioning = true;
-                container.scrollTo({ left: 0, behavior: 'instant' });
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 50);
-            } else {
-                container.scrollBy({ left: 1 * speed, behavior: 'smooth' });
-            }
-        }
-    }
-    
-    function startScroll() {
-        if (scrollInterval) clearInterval(scrollInterval);
-        scrollInterval = setInterval(autoScroll, 25);
-    }
-    
-    function stopScroll() {
-        if (scrollInterval) {
-            clearInterval(scrollInterval);
-            scrollInterval = null;
-        }
-    }
-    
-    container.addEventListener('mouseenter', function() {
-        isHovered = true;
-        stopScroll();
-    });
-    
-    container.addEventListener('mouseleave', function() {
-        isHovered = false;
-        startScroll();
-    });
-    
-    container.addEventListener('touchstart', function() {
-        isHovered = true;
-        stopScroll();
-    });
-    
-    container.addEventListener('touchend', function() {
-        setTimeout(function() {
-            isHovered = false;
-            startScroll();
-        }, 3000);
-    });
-    
-    // ===== SCROLL BUTTONS - VISIBLE =====
-    if (leftBtn) {
-        leftBtn.addEventListener('click', function() {
-            container.scrollBy({ left: -320, behavior: 'smooth' });
-            stopScroll();
-            setTimeout(startScroll, 3000);
-        });
-    }
-    
-    if (rightBtn) {
-        rightBtn.addEventListener('click', function() {
-            container.scrollBy({ left: 320, behavior: 'smooth' });
-            stopScroll();
-            setTimeout(startScroll, 3000);
-        });
-    }
-    
-    // Update button states
-    function updateButtons() {
-        if (!leftBtn || !rightBtn) return;
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        
-        leftBtn.disabled = scrollLeft <= 10;
-        rightBtn.disabled = scrollLeft >= maxScroll - 10;
-    }
-    
-    container.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-    setTimeout(updateButtons, 100);
-    
-    startScroll();
-});
-
-// ========================================
-// TESTIMONIALS - MANUAL SCROLL (No Auto)
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('testimonialsScrollContainer');
-    const leftBtn = document.getElementById('testimonialsScrollLeft');
-    const rightBtn = document.getElementById('testimonialsScrollRight');
-    
-    if (!container || !leftBtn || !rightBtn) return;
-    
-    leftBtn.addEventListener('click', function() {
-        container.scrollBy({ left: -320, behavior: 'smooth' });
-    });
-    
-    rightBtn.addEventListener('click', function() {
-        container.scrollBy({ left: 320, behavior: 'smooth' });
-    });
-    
-    function updateButtons() {
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        
-        leftBtn.disabled = scrollLeft <= 10;
-        rightBtn.disabled = scrollLeft >= maxScroll - 10;
-    }
-    
-    container.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-    setTimeout(updateButtons, 100);
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-        if (e.key === 'ArrowLeft') {
-            container.scrollBy({ left: -320, behavior: 'smooth' });
-        } else if (e.key === 'ArrowRight') {
-            container.scrollBy({ left: 320, behavior: 'smooth' });
-        }
-    });
-});
-
-// ========================================
-// HERO SECTION - BACKGROUND SLIDESHOW
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dot');
-    let currentSlide = 0;
-    let slideInterval;
-    const slideDelay = 5000;
-    
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentSlide = index;
-    }
-    
-    function nextSlide() {
-        const next = (currentSlide + 1) % slides.length;
-        showSlide(next);
-    }
-    
-    function startAutoplay() {
-        if (slideInterval) clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, slideDelay);
-    }
-    
-    function stopAutoplay() {
-        if (slideInterval) {
-            clearInterval(slideInterval);
-            slideInterval = null;
-        }
-    }
-    
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            stopAutoplay();
-            showSlide(index);
-            startAutoplay();
-        });
-    });
-    
-    const heroSection = document.getElementById('heroSection');
-    if (heroSection) {
-        heroSection.addEventListener('mouseenter', stopAutoplay);
-        heroSection.addEventListener('mouseleave', startAutoplay);
-        heroSection.addEventListener('touchstart', stopAutoplay);
-        heroSection.addEventListener('touchend', function() {
-            setTimeout(startAutoplay, 3000);
-        });
-    }
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft') {
-            stopAutoplay();
-            const prev = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(prev);
-            startAutoplay();
-        } else if (e.key === 'ArrowRight') {
-            stopAutoplay();
-            nextSlide();
-            startAutoplay();
-        }
-    });
-    
-    showSlide(0);
-    startAutoplay();
-});
-</script>
-{% endblock %}
