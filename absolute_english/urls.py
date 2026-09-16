@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import  path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
@@ -19,6 +19,7 @@ urlpatterns = [
     path("gallery/", include("apps.gallery.urls")),
     path("enquiries/", include("apps.enquiries.urls")),
     path("chatbot/", include("apps.chatbot.urls")),
+    path("programs/", include("apps.programs.urls")),
 ]
 
 if settings.DEBUG:

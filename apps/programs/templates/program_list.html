@@ -1,0 +1,925 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Programs | Absolute English</title>
+
+    <link rel="stylesheet" href="{% static 'css/programs.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="program-hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <span class="hero-badge">
+                    Learn. Practice. Communicate.
+                </span>
+
+                <h1>
+                    Professional English Programs
+                </h1>
+
+                <p>
+                    Build confidence, improve fluency and develop
+                    effective English communication skills for
+                    professional and everyday situations.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#programs" class="btn btn-primary">
+                        Explore Programs
+                    </a>
+
+                    <a href="#enquiry" class="btn btn-secondary">
+                        Enquire Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AVAILABLE PROGRAMS ================= -->
+
+    <section class="available-programs" id="programs">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Our Programs
+                </span>
+
+                <h2>
+                    Available Courses
+                </h2>
+
+                <p>
+                    Choose a program that matches your learning goals
+                    and current English level.
+                </p>
+
+            </div>
+
+
+            <!-- COURSE FILTER -->
+
+            <div class="course-filter">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all">
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="beginner">
+                    Beginner
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="intermediate">
+                    Intermediate
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="advanced">
+                    Advanced
+                </button>
+
+            </div>
+
+
+            <!-- COURSE CARDS -->
+
+            <div class="course-grid">
+
+
+                <!-- ================= COURSE 1 ================= -->
+
+                <article
+                    class="course-card"
+                    data-level="beginner">
+
+                    <div class="course-card-content">
+
+                        <span class="course-level">
+                            Beginner
+                        </span>
+
+                        <h3>
+                            English Communication Program
+                        </h3>
+
+                        <p class="course-description">
+                            Build confidence, improve fluency and
+                            communicate effectively in professional
+                            and everyday situations.
+                        </p>
+
+
+                        <!-- COURSE INFO -->
+
+                        <div class="course-info">
+
+                            <div class="info-item">
+                                <span class="info-icon">◷</span>
+                                <span>12 Weeks</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-icon">●</span>
+                                <span>Beginner</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- HIGHLIGHTS -->
+
+                        <div class="course-highlights">
+
+                            <span>
+                                Live Classes
+                            </span>
+
+                            <span>
+                                Speaking Practice
+                            </span>
+
+                            <span>
+                                Vocabulary
+                            </span>
+
+                            <span>
+                                Weekly Assessments
+                            </span>
+
+                        </div>
+
+
+                        <!-- LEARNING OUTCOMES -->
+
+                        <div class="course-outcomes">
+
+                            <h4>
+                                You will learn
+                            </h4>
+
+                            <ul>
+
+                                <li>
+                                    Confident conversation
+                                </li>
+
+                                <li>
+                                    Better pronunciation
+                                </li>
+
+                                <li>
+                                    Grammar fundamentals
+                                </li>
+
+                                <li>
+                                    Professional communication
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="course-actions">
+
+                            <a
+                                href="{% url 'program_detail' %}"
+                                class="btn btn-view">
+                                View Details
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-enquire enquire-btn">
+                                Enquire Now
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================= COURSE 2 ================= -->
+
+                <article
+                    class="course-card"
+                    data-level="intermediate">
+
+                    <div class="course-card-content">
+
+                        <span class="course-level">
+                            Intermediate
+                        </span>
+
+                        <h3>
+                            Fluency Development Program
+                        </h3>
+
+                        <p class="course-description">
+                            Improve your fluency, vocabulary and
+                            communication skills through practical
+                            English activities.
+                        </p>
+
+
+                        <!-- COURSE INFO -->
+
+                        <div class="course-info">
+
+                            <div class="info-item">
+                                <span class="info-icon">◷</span>
+                                <span>12 Weeks</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-icon">●</span>
+                                <span>Intermediate</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- HIGHLIGHTS -->
+
+                        <div class="course-highlights">
+
+                            <span>
+                                Fluency Practice
+                            </span>
+
+                            <span>
+                                Vocabulary
+                            </span>
+
+                            <span>
+                                Group Discussions
+                            </span>
+
+                            <span>
+                                Assessments
+                            </span>
+
+                        </div>
+
+
+                        <!-- LEARNING OUTCOMES -->
+
+                        <div class="course-outcomes">
+
+                            <h4>
+                                You will learn
+                            </h4>
+
+                            <ul>
+
+                                <li>
+                                    Natural conversation
+                                </li>
+
+                                <li>
+                                    Improved fluency
+                                </li>
+
+                                <li>
+                                    Advanced vocabulary
+                                </li>
+
+                                <li>
+                                    Better communication
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="course-actions">
+
+                            <a
+                                href="{% url 'program_detail' %}"
+                                class="btn btn-view">
+                                View Details
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-enquire enquire-btn">
+                                Enquire Now
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================= COURSE 3 ================= -->
+
+                <article
+                    class="course-card"
+                    data-level="advanced">
+
+                    <div class="course-card-content">
+
+                        <span class="course-level">
+                            Advanced
+                        </span>
+
+                        <h3>
+                            Professional English Program
+                        </h3>
+
+                        <p class="course-description">
+                            Master professional communication and
+                            develop the confidence required for
+                            workplace situations.
+                        </p>
+
+
+                        <!-- COURSE INFO -->
+
+                        <div class="course-info">
+
+                            <div class="info-item">
+                                <span class="info-icon">◷</span>
+                                <span>12 Weeks</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-icon">●</span>
+                                <span>Advanced</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- HIGHLIGHTS -->
+
+                        <div class="course-highlights">
+
+                            <span>
+                                Business English
+                            </span>
+
+                            <span>
+                                Presentations
+                            </span>
+
+                            <span>
+                                Interview Skills
+                            </span>
+
+                            <span>
+                                Professional Writing
+                            </span>
+
+                        </div>
+
+
+                        <!-- LEARNING OUTCOMES -->
+
+                        <div class="course-outcomes">
+
+                            <h4>
+                                You will learn
+                            </h4>
+
+                            <ul>
+
+                                <li>
+                                    Workplace communication
+                                </li>
+
+                                <li>
+                                    Presentation skills
+                                </li>
+
+                                <li>
+                                    Interview communication
+                                </li>
+
+                                <li>
+                                    Professional writing
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="course-actions">
+
+                            <a
+                                href="{% url 'program_detail' %}"
+                                class="btn btn-view">
+                                View Details
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn btn-enquire enquire-btn">
+                                Enquire Now
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COURSE LEVEL ================= -->
+
+    <section class="course-level-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Choose Your Level
+                </span>
+
+                <h2>
+                    Course Duration & Level
+                </h2>
+
+            </div>
+
+
+            <div class="level-grid">
+
+                <div class="level-card">
+
+                    <h3>
+                        Beginner
+                    </h3>
+
+                    <p>
+                        Perfect for learners who are starting
+                        their English communication journey.
+                    </p>
+
+                    <strong>
+                        12 Weeks
+                    </strong>
+
+                </div>
+
+
+                <div class="level-card">
+
+                    <h3>
+                        Intermediate
+                    </h3>
+
+                    <p>
+                        Improve fluency, vocabulary and
+                        communication confidence.
+                    </p>
+
+                    <strong>
+                        12 Weeks
+                    </strong>
+
+                </div>
+
+
+                <div class="level-card">
+
+                    <h3>
+                        Advanced
+                    </h3>
+
+                    <p>
+                        Develop professional communication
+                        and workplace English skills.
+                    </p>
+
+                    <strong>
+                        12 Weeks
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COURSE HIGHLIGHTS ================= -->
+
+    <section class="highlights-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Learning Experience
+                </span>
+
+                <h2>
+                    Course Highlights
+                </h2>
+
+            </div>
+
+
+            <div class="highlights-grid">
+
+                <div class="highlight-card">
+
+                    <h3>
+                        Live Classes
+                    </h3>
+
+                    <p>
+                        Learn through interactive live sessions
+                        with instructors.
+                    </p>
+
+                </div>
+
+
+                <div class="highlight-card">
+
+                    <h3>
+                        Practice Sessions
+                    </h3>
+
+                    <p>
+                        Practice English through conversations
+                        and activities.
+                    </p>
+
+                </div>
+
+
+                <div class="highlight-card">
+
+                    <h3>
+                        Assignments
+                    </h3>
+
+                    <p>
+                        Reinforce your learning with practical
+                        assignments.
+                    </p>
+
+                </div>
+
+
+                <div class="highlight-card">
+
+                    <h3>
+                        Assessments
+                    </h3>
+
+                    <p>
+                        Track your improvement through regular
+                        assessments.
+                    </p>
+
+                </div>
+
+
+                <div class="highlight-card">
+
+                    <h3>
+                        Certificate
+                    </h3>
+
+                    <p>
+                        Receive a certificate after successful
+                        completion of the program.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEARNING OUTCOMES ================= -->
+
+    <section class="learning-outcomes-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Your Growth
+                </span>
+
+                <h2>
+                    Learning Outcomes
+                </h2>
+
+            </div>
+
+
+            <div class="outcomes-grid">
+
+                <div class="outcome-card">
+                    <h3>Speaking</h3>
+                    <p>
+                        Speak English confidently in everyday
+                        conversations.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <h3>Listening</h3>
+                    <p>
+                        Improve your ability to understand
+                        spoken English.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <h3>Reading</h3>
+                    <p>
+                        Improve reading comprehension and
+                        vocabulary.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <h3>Writing</h3>
+                    <p>
+                        Write clear and effective English.
+                    </p>
+                </div>
+
+                <div class="outcome-card">
+                    <h3>Confidence</h3>
+                    <p>
+                        Develop confidence while communicating
+                        in English.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Why Choose Us
+                </span>
+
+                <h2>
+                    Program Features
+                </h2>
+
+            </div>
+
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <h3>
+                        Expert Instructors
+                    </h3>
+
+                    <p>
+                        Learn from experienced English
+                        communication instructors.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        Flexible Learning
+                    </h3>
+
+                    <p>
+                        Choose learning options that fit
+                        your schedule.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        Progress Tracking
+                    </h3>
+
+                    <p>
+                        Monitor your learning progress and
+                        improvement.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        Interactive Learning
+                    </h3>
+
+                    <p>
+                        Learn through practical activities,
+                        discussions and exercises.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BATCH INFORMATION ================= -->
+
+    <section class="batch-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    Join Our Classes
+                </span>
+
+                <h2>
+                    Batch Information
+                </h2>
+
+            </div>
+
+
+            <div class="batch-grid">
+
+                <div class="batch-card">
+
+                    <strong>
+                        Start Date
+                    </strong>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="batch-card">
+
+                    <strong>
+                        Class Timing
+                    </strong>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="batch-card">
+
+                    <strong>
+                        Mode
+                    </strong>
+
+                    <span>
+                        Online / Offline
+                    </span>
+
+                </div>
+
+
+                <div class="batch-card">
+
+                    <strong>
+                        Seats Available
+                    </strong>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FINAL CTA ================= -->
+
+    <section class="final-cta" id="enquiry">
+
+        <div class="container">
+
+            <h2>
+                Start Your Learning Journey
+            </h2>
+
+            <p>
+                Take the next step towards confident and
+                effective English communication.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-light enquire-btn">
+                Enquire Now
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FLOATING ENQUIRE ================= -->
+
+    <button
+        type="button"
+        class="floating-enquire enquire-btn">
+
+        Enquire Now
+
+    </button>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="{% static 'js/programs.js' %}"></script>
+
+</body>
+
+</html>
