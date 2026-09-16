@@ -1,0 +1,3373 @@
+/* =========================================================
+   ABSOLUTE ENGLISH - PROGRAMS PAGE
+   THEME: PURPLE + LAVENDER + WHITE
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 92%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #6d28d9;
+    color: #ffffff;
+
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.22);
+}
+
+.btn-primary:hover {
+    background: #5b21b6;
+    transform: translateY(-3px);
+
+    box-shadow: 0 14px 28px rgba(109, 40, 217, 0.30);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #6d28d9;
+
+    border-color: #8b5cf6;
+}
+
+.btn-secondary:hover {
+    background: #f5f3ff;
+    transform: translateY(-3px);
+}
+
+.btn-view {
+    background: #f5f3ff;
+    color: #6d28d9;
+
+    border-color: #ddd6fe;
+}
+
+.btn-view:hover {
+    background: #ede9fe;
+    border-color: #8b5cf6;
+
+    transform: translateY(-3px);
+}
+
+.btn-enquire {
+    background: #6d28d9;
+    color: #ffffff;
+
+    border-color: #6d28d9;
+}
+
+.btn-enquire:hover {
+    background: #5b21b6;
+    border-color: #5b21b6;
+
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    background: #ffffff;
+    color: #6d28d9;
+}
+
+.btn-light:hover {
+    background: #f5f3ff;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.program-hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 95px 0 105px;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(167, 139, 250, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(196, 181, 253, 0.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f5f3ff 50%,
+            #ede9fe 100%
+        );
+}
+
+.program-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    border-radius: 50%;
+
+    background: rgba(139, 92, 246, 0.10);
+
+    top: -140px;
+    right: -100px;
+}
+
+.program-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, 0.08);
+
+    bottom: -110px;
+    left: -90px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 17px;
+
+    margin-bottom: 20px;
+
+    border-radius: 50px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+.hero-content h1 {
+    font-size: clamp(38px, 6vw, 64px);
+
+    line-height: 1.1;
+
+    color: #24113f;
+
+    margin-bottom: 20px;
+
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    max-width: 720px;
+
+    margin: 0 auto 32px;
+
+    color: #64748b;
+
+    font-size: 17px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   COMMON SECTION HEADING
+========================================================= */
+
+.section-heading {
+    max-width: 760px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+.section-heading span {
+    display: inline-block;
+
+    padding: 6px 13px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    border: 1px solid #ddd6fe;
+}
+
+.section-heading h2 {
+    position: relative;
+
+    display: inline-block;
+
+    font-size: clamp(30px, 4vw, 44px);
+
+    line-height: 1.2;
+
+    color: #24113f;
+
+    margin-bottom: 13px;
+}
+
+.section-heading h2::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 4px;
+
+    margin: 13px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+
+.section-heading p {
+    color: #64748b;
+
+    font-size: 16px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   AVAILABLE PROGRAMS
+========================================================= */
+
+.available-programs {
+    padding: 95px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #faf9ff 100%
+        );
+}
+
+/* =========================================================
+   AVAILABLE PROGRAMS - PROFESSIONAL COMPACT
+========================================================= */
+
+.available-programs {
+    padding: 75px 0;
+    background: #ffffff;
+}
+
+/* Section heading */
+.available-programs .section-heading {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.available-programs .section-heading span {
+    margin-bottom: 10px;
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+.available-programs .section-heading h2 {
+    margin-bottom: 8px;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+.available-programs .section-heading p {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   COURSE FILTER
+========================================================= */
+
+.available-programs .course-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.available-programs .filter-btn {
+    padding: 8px 17px;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+.available-programs .course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+.available-programs .course-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    min-height: 390px;
+
+    background: #ffffff !important;
+
+    border: 1px solid #e7defc !important;
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 25px rgba(91, 33, 182, 0.08) !important;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Purple top line */
+.available-programs .course-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #8b5cf6,
+        #a78bfa
+    );
+}
+
+
+/* Hover */
+.available-programs .course-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #a78bfa !important;
+
+    box-shadow:
+        0 16px 35px rgba(91, 33, 182, 0.14) !important;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.available-programs .course-card-content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    padding: 25px 23px 22px;
+}
+
+
+/* =========================================================
+   LEVEL
+========================================================= */
+
+.available-programs .course-level {
+    width: fit-content;
+
+    padding: 5px 11px;
+
+    margin-bottom: 12px;
+
+    border-radius: 50px;
+
+    background: #f1ebff !important;
+    color: #6d28d9 !important;
+
+    border: 1px solid #e2d7ff;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   COURSE TITLE
+========================================================= */
+
+.available-programs .course-card h3 {
+    min-height: 58px;
+
+    margin-bottom: 8px;
+
+    color: #24113f !important;
+
+    font-size: 21px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.available-programs .course-description {
+    min-height: 44px;
+
+    margin-bottom: 15px;
+
+    color: #64748b !important;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   COURSE INFO
+========================================================= */
+
+.available-programs .course-info {
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+.available-programs .info-item {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    padding: 9px 11px;
+
+    gap: 8px;
+
+    border-radius: 9px;
+
+    background: #faf9ff !important;
+
+    border: 1px solid #eee9fb;
+
+    color: #475569 !important;
+
+    font-size: 12px;
+}
+
+.available-programs .info-icon {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HIGHLIGHTS
+========================================================= */
+
+.available-programs .course-highlights {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+}
+
+.available-programs .course-highlights span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #f3efff;
+
+    border: 1px solid #e5dcff;
+
+    color: #6d28d9;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD BUTTON
+========================================================= */
+
+.available-programs .course-actions {
+    display: flex;
+
+    margin-top: auto;
+}
+
+.available-programs .course-actions .btn {
+    width: 100%;
+
+    padding: 10px 14px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.available-programs .btn-view {
+    background: #f5f3ff !important;
+    color: #6d28d9 !important;
+
+    border: 1px solid #ddd6fe !important;
+}
+
+.available-programs .btn-view:hover {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+
+    border-color: #6d28d9 !important;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.course-filter {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 42px;
+
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+
+    border: 1px solid #ddd6fe;
+
+    border-radius: 50px;
+
+    background: #ffffff;
+
+    color: #6d28d9;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #f5f3ff;
+
+    border-color: #8b5cf6;
+
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    border-color: #6d28d9;
+
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.22);
+}
+
+
+/* =========================================================
+   COURSE GRID
+========================================================= */
+
+.course-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   COURSE CARD
+========================================================= */
+
+.course-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e9e3ff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 28px rgba(76, 29, 149, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.course-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #5b21b6,
+        #7c3aed,
+        #a78bfa
+    );
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 20px 45px rgba(76, 29, 149, 0.15);
+}
+
+.course-card-content {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    padding: 30px 26px;
+}
+
+.course-level {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 6px 13px;
+
+    margin-bottom: 16px;
+
+    border-radius: 50px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.course-card h3 {
+    font-size: 24px;
+
+    line-height: 1.25;
+
+    color: #24113f;
+
+    margin-bottom: 12px;
+}
+
+.course-description {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   COURSE INFO
+========================================================= */
+
+.course-info {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px;
+
+    border-radius: 11px;
+
+    background: #faf9ff;
+
+    border: 1px solid #eeeaff;
+
+    color: #475569;
+
+    font-size: 13px;
+}
+
+.info-icon {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   COURSE HIGHLIGHTS
+========================================================= */
+
+.course-highlights {
+    margin-bottom: 22px;
+}
+
+.course-highlights h4,
+.course-outcomes h4 {
+    color: #24113f;
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+}
+
+.course-highlights ul {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    list-style: none;
+}
+
+.course-highlights li {
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    background: #f5f3ff;
+
+    color: #6d28d9;
+
+    border: 1px solid #e9e3ff;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   COURSE OUTCOMES
+========================================================= */
+
+.course-outcomes {
+    margin-bottom: 25px;
+}
+
+.course-outcomes ul {
+    padding-left: 18px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.course-outcomes li {
+    margin-bottom: 6px;
+}
+
+.course-outcomes li::marker {
+    color: #7c3aed;
+}
+
+
+/* =========================================================
+   COURSE ACTIONS
+========================================================= */
+
+.course-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: auto;
+}
+
+.course-actions .btn {
+    flex: 1;
+
+    padding: 11px 14px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   COURSE LEVEL SECTION
+========================================================= */
+
+.course-level-section {
+    padding: 95px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f5ff 0%,
+            #ede9fe 100%
+        );
+}
+
+.level-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+.level-card {
+    position: relative;
+
+    padding: 34px 25px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e4dcff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(76, 29, 149, 0.08);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.level-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+
+.level-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 18px 40px rgba(76, 29, 149, 0.14);
+}
+
+.level-card .level-icon {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    font-size: 27px;
+
+    border: 1px solid #ddd6fe;
+}
+
+.level-card h3 {
+    color: #24113f;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.level-card p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   COURSE HIGHLIGHTS SECTION
+========================================================= */
+
+.highlights-section {
+    padding: 95px 0;
+
+    background: #ffffff;
+}
+
+.highlights-section .section-heading {
+    margin-bottom: 50px;
+}
+
+.highlights-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.highlight-card {
+    position: relative;
+
+    min-height: 205px;
+
+    padding: 30px 18px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5defd;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 24px rgba(76, 29, 149, 0.06);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.highlight-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+
+.highlight-card:hover {
+    transform: translateY(-8px);
+
+    background: #faf9ff;
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 18px 35px rgba(76, 29, 149, 0.12);
+}
+
+.highlight-card .highlight-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 23px;
+
+    transition: all 0.3s ease;
+}
+
+.highlight-card:hover .highlight-icon {
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    transform: scale(1.05);
+}
+
+.highlight-card h3 {
+    color: #24113f;
+
+    font-size: 16px;
+
+    margin-bottom: 8px;
+}
+
+.highlight-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LEARNING OUTCOMES SECTION
+========================================================= */
+
+.learning-outcomes-section {
+    padding: 95px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f5ff 0%,
+            #ede9fe 100%
+        );
+}
+
+.learning-outcomes-section .section-heading {
+    margin-bottom: 50px;
+}
+
+.outcomes-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.outcome-card {
+    position: relative;
+
+    min-height: 205px;
+
+    padding: 30px 18px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5defd;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(76, 29, 149, 0.07);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.outcome-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #a78bfa
+    );
+}
+
+.outcome-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 18px 38px rgba(76, 29, 149, 0.13);
+}
+
+.outcome-card .outcome-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 22px;
+
+    transition: all 0.3s ease;
+}
+
+.outcome-card:hover .outcome-icon {
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    transform: scale(1.05);
+}
+
+.outcome-card h3 {
+    color: #24113f;
+
+    font-size: 16px;
+
+    margin-bottom: 8px;
+}
+
+.outcome-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROGRAM FEATURES SECTION
+========================================================= */
+
+.features-section {
+    padding: 95px 0;
+
+    background: #ffffff;
+}
+
+.features-section .section-heading {
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 30px 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5defd;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 25px rgba(76, 29, 149, 0.06);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+
+    background: #faf9ff;
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 18px 38px rgba(76, 29, 149, 0.12);
+}
+
+.feature-card .feature-icon {
+    width: 60px;
+    height: 60px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 23px;
+
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+.feature-card h3 {
+    color: #24113f;
+
+    font-size: 18px;
+
+    margin-bottom: 9px;
+}
+
+.feature-card p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   BATCH INFORMATION SECTION
+========================================================= */
+
+.batch-section {
+    padding: 95px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f5ff 0%,
+            #ede9fe 100%
+        );
+}
+
+.batch-section .section-heading {
+    margin-bottom: 50px;
+}
+
+.batch-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.batch-card {
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5defd;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(76, 29, 149, 0.07);
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.batch-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+
+.batch-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #c4b5fd;
+
+    box-shadow:
+        0 18px 38px rgba(76, 29, 149, 0.13);
+}
+
+.batch-card .batch-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #ede9fe;
+
+    color: #6d28d9;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 22px;
+
+    transition: all 0.3s ease;
+}
+
+.batch-card:hover .batch-icon {
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    transform: scale(1.05);
+}
+
+.batch-card strong {
+    display: block;
+
+    color: #24113f;
+
+    font-size: 15px;
+
+    margin-bottom: 6px;
+}
+
+.batch-card span {
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 90px 20px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(167, 139, 250, 0.30),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 50%,
+            rgba(196, 181, 253, 0.22),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #4c1d95,
+            #6d28d9,
+            #7c3aed
+        );
+}
+
+.final-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    top: -160px;
+    right: -90px;
+}
+
+.final-cta::after {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    bottom: -130px;
+    left: -80px;
+}
+
+.final-cta .container {
+    position: relative;
+
+    z-index: 2;
+}
+
+.final-cta h2 {
+    position: relative;
+
+    z-index: 2;
+
+    color: #ffffff;
+
+    font-size: clamp(30px, 4vw, 46px);
+
+    margin-bottom: 13px;
+}
+
+.final-cta p {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin: 0 auto 27px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 16px;
+}
+
+.final-cta .btn {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   FLOATING ENQUIRE BUTTON
+========================================================= */
+
+.floating-enquire {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 999;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 23px;
+
+    border-radius: 50px;
+
+    background: #6d28d9;
+
+    color: #ffffff;
+
+    border: 2px solid rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 12px 30px rgba(76, 29, 149, 0.30);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.floating-enquire:hover {
+    background: #5b21b6;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 17px 38px rgba(76, 29, 149, 0.40);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .highlights-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .outcomes-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .batch-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .program-hero {
+        padding: 70px 0 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .available-programs,
+    .course-level-section,
+    .highlights-section,
+    .learning-outcomes-section,
+    .features-section,
+    .batch-section {
+        padding: 70px 0;
+    }
+
+    .course-grid,
+    .level-grid,
+    .highlights-grid,
+    .outcomes-grid,
+    .features-grid,
+    .batch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-info {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .course-actions {
+        flex-direction: column;
+    }
+
+    .course-actions .btn {
+        width: 100%;
+    }
+
+    .floating-enquire {
+        right: 15px;
+        bottom: 15px;
+
+        padding: 12px 18px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .course-card-content {
+        padding: 25px 20px;
+    }
+
+    .course-card h3 {
+        font-size: 21px;
+    }
+
+    .filter-btn {
+        padding: 9px 15px;
+
+        font-size: 13px;
+    }
+
+    .highlight-card,
+    .outcome-card,
+    .feature-card,
+    .batch-card {
+        min-height: auto;
+    }
+}
+/* =========================================================
+   DARK CONTENT CARD THEME
+   Purple + Dark Purple + White
+========================================================= */
+
+/* Course Highlights */
+.highlights-section {
+    background: #160b2b;
+}
+
+.highlight-card {
+    background: #24113f;
+    border: 1px solid #6d28d9;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.highlight-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+    transform: translateY(-7px);
+}
+
+.highlight-card .highlight-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.highlight-card h3 {
+    color: #ffffff;
+}
+
+.highlight-card p {
+    color: #d8d0e8;
+}
+
+
+/* =========================================================
+   LEARNING OUTCOMES
+========================================================= */
+
+.learning-outcomes-section {
+    background: #1d1035;
+}
+
+.outcome-card {
+    background: #24113f;
+    border: 1px solid #6d28d9;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.outcome-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+    transform: translateY(-7px);
+}
+
+.outcome-card .outcome-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.outcome-card h3 {
+    color: #ffffff;
+}
+
+.outcome-card p {
+    color: #d8d0e8;
+}
+
+
+/* =========================================================
+   PROGRAM FEATURES
+========================================================= */
+
+.features-section {
+    background: #160b2b;
+}
+
+.feature-card {
+    background: #24113f;
+    border: 1px solid #6d28d9;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.feature-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+    transform: translateY(-7px);
+}
+
+.feature-card .feature-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.feature-card h3 {
+    color: #ffffff;
+}
+
+.feature-card p {
+    color: #d8d0e8;
+}
+
+
+/* =========================================================
+   BATCH INFORMATION
+========================================================= */
+
+.batch-section {
+    background: #1d1035;
+}
+
+.batch-card {
+    background: #24113f;
+    border: 1px solid #6d28d9;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.batch-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+    transform: translateY(-7px);
+}
+
+.batch-card .batch-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.batch-card strong {
+    color: #ffffff;
+}
+
+.batch-card span {
+    color: #d8d0e8;
+}
+
+
+/* =========================================================
+   COURSE LEVEL CARDS
+========================================================= */
+
+.course-level-section {
+    background: #160b2b;
+}
+
+.level-card {
+    background: #24113f;
+    border: 1px solid #6d28d9;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.level-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+}
+
+.level-card .level-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.level-card h3 {
+    color: #ffffff;
+}
+
+.level-card p {
+    color: #d8d0e8;
+}
+
+
+/* =========================================================
+   COURSE CARDS
+========================================================= */
+
+.available-programs {
+    background: #ffffff;
+}
+
+.course-card {
+    background: #24113f;
+    border-color: #6d28d9;
+    box-shadow: 0 12px 35px rgba(76, 29, 149, 0.20);
+}
+
+.course-card:hover {
+    background: #301650;
+    border-color: #a78bfa;
+}
+
+.course-card h3 {
+    color: #ffffff;
+}
+
+.course-description {
+    color: #d8d0e8;
+}
+
+.course-level {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.info-item {
+    background: #301650;
+    color: #ddd6fe;
+}
+
+.info-icon {
+    background: #6d28d9;
+    color: #ffffff;
+}
+
+.course-highlights h4,
+.course-outcomes h4 {
+    color: #ffffff;
+}
+
+.course-highlights li {
+    background: #3b1d63;
+    color: #ddd6fe;
+}
+
+.course-outcomes ul {
+    color: #d8d0e8;
+}
+
+.course-outcomes li::marker {
+    color: #a78bfa;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS ON DARK SECTIONS
+========================================================= */
+
+.highlights-section .section-heading h2,
+.learning-outcomes-section .section-heading h2,
+.features-section .section-heading h2,
+.batch-section .section-heading h2,
+.course-level-section .section-heading h2 {
+    color: #ffffff;
+}
+
+.highlights-section .section-heading span,
+.learning-outcomes-section .section-heading span,
+.features-section .section-heading span,
+.batch-section .section-heading span,
+.course-level-section .section-heading span {
+    color: #a78bfa;
+}
+
+.highlights-section .section-heading p,
+.learning-outcomes-section .section-heading p,
+.features-section .section-heading p,
+.batch-section .section-heading p,
+.course-level-section .section-heading p {
+    color: #cfc5df;
+}
+/* =========================================================
+   FORCE DARK PURPLE SECTIONS
+========================================================= */
+
+/* PROGRAM FEATURES */
+.features-section {
+    background: #160b2b !important;
+}
+
+.features-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.features-section .section-heading span {
+    color: #a78bfa !important;
+}
+
+.features-section .section-heading p {
+    color: #ddd6fe !important;
+}
+
+.features-section .feature-card {
+    background: #24113f !important;
+    border: 1px solid #6d28d9 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.30) !important;
+}
+
+.features-section .feature-card:hover {
+    background: #301650 !important;
+    border-color: #a78bfa !important;
+}
+
+.features-section .feature-card h3 {
+    color: #ffffff !important;
+}
+
+.features-section .feature-card p {
+    color: #d8d0e8 !important;
+}
+
+.features-section .feature-card .feature-icon {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+}
+
+
+/* COURSE HIGHLIGHTS */
+.highlights-section {
+    background: #160b2b !important;
+}
+
+.highlights-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.highlights-section .section-heading span {
+    color: #a78bfa !important;
+}
+
+.highlights-section .highlight-card {
+    background: #24113f !important;
+    border-color: #6d28d9 !important;
+}
+
+.highlights-section .highlight-card h3 {
+    color: #ffffff !important;
+}
+
+.highlights-section .highlight-card p {
+    color: #d8d0e8 !important;
+}
+
+
+/* LEARNING OUTCOMES */
+.learning-outcomes-section {
+    background: #1d1035 !important;
+}
+
+.learning-outcomes-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.learning-outcomes-section .outcome-card {
+    background: #24113f !important;
+    border-color: #6d28d9 !important;
+}
+
+.learning-outcomes-section .outcome-card h3 {
+    color: #ffffff !important;
+}
+
+.learning-outcomes-section .outcome-card p {
+    color: #d8d0e8 !important;
+}
+
+
+/* BATCH INFORMATION */
+.batch-section {
+    background: #1d1035 !important;
+}
+
+.batch-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.batch-section .batch-card {
+    background: #24113f !important;
+    border-color: #6d28d9 !important;
+}
+
+.batch-section .batch-card strong {
+    color: #ffffff !important;
+}
+
+.batch-section .batch-card span {
+    color: #d8d0e8 !important;
+}
+
+
+/* COURSE LEVEL */
+.course-level-section {
+    background: #160b2b !important;
+}
+
+.course-level-section .section-heading h2 {
+    color: #ffffff !important;
+}
+
+.course-level-section .level-card {
+    background: #24113f !important;
+    border-color: #6d28d9 !important;
+}
+
+.course-level-section .level-card h3 {
+    color: #ffffff !important;
+}
+
+.course-level-section .level-card p {
+    color: #d8d0e8 !important;
+}
+/* =========================================================
+   FINAL PROFESSIONAL LIGHT THEME
+   Absolute English - Programs Page
+========================================================= */
+
+/* =========================
+   ALL MAIN SECTIONS
+========================= */
+
+.available-programs,
+.course-level-section,
+.highlights-section,
+.learning-outcomes-section,
+.features-section,
+.batch-section {
+    background: #ffffff !important;
+    color: #172033;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading span {
+    display: inline-block;
+    color: #7c3aed !important;
+    background: #f3eefe;
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    color: #24113f !important;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   COURSE CARDS
+========================================================= */
+
+.course-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 30px rgba(91, 33, 182, 0.08) !important;
+}
+
+.course-card:hover {
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    box-shadow: 0 18px 40px rgba(91, 33, 182, 0.14) !important;
+}
+
+.course-card h3 {
+    color: #24113f !important;
+}
+
+.course-description {
+    color: #64748b !important;
+}
+
+.course-level {
+    background: #f1ebff !important;
+    color: #6d28d9 !important;
+}
+
+
+/* =========================================================
+   COURSE INFO
+========================================================= */
+
+.info-item {
+    background: #f8f6ff !important;
+    color: #475569 !important;
+    border: 1px solid #eee9fb;
+}
+
+.info-icon {
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+}
+
+
+/* =========================================================
+   COURSE HIGHLIGHTS
+========================================================= */
+
+.course-highlights h4,
+.course-outcomes h4 {
+    color: #24113f !important;
+}
+
+.course-highlights li {
+    background: #f3efff !important;
+    color: #6d28d9 !important;
+    border: 1px solid #e5dcff;
+}
+
+.course-outcomes ul {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   COURSE LEVEL
+========================================================= */
+
+.course-level-section {
+    background: #faf9ff !important;
+}
+
+.level-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    box-shadow: 0 8px 28px rgba(91, 33, 182, 0.07) !important;
+}
+
+.level-card:hover {
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    box-shadow: 0 16px 35px rgba(91, 33, 182, 0.12) !important;
+}
+
+.level-card .level-icon {
+    background: #f0eaff !important;
+    color: #6d28d9 !important;
+}
+
+.level-card h3 {
+    color: #24113f !important;
+}
+
+.level-card p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   COURSE HIGHLIGHTS SECTION
+========================================================= */
+
+.highlights-section {
+    background: #ffffff !important;
+}
+
+.highlight-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    border-radius: 18px !important;
+    box-shadow: 0 7px 25px rgba(91, 33, 182, 0.06) !important;
+}
+
+.highlight-card:hover {
+    background: #faf8ff !important;
+    border-color: #a78bfa !important;
+    transform: translateY(-7px);
+    box-shadow: 0 15px 32px rgba(91, 33, 182, 0.12) !important;
+}
+
+.highlight-card .highlight-icon {
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+}
+
+.highlight-card h3 {
+    color: #24113f !important;
+}
+
+.highlight-card p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   LEARNING OUTCOMES
+========================================================= */
+
+.learning-outcomes-section {
+    background: #faf9ff !important;
+    color: #172033 !important;
+}
+
+.learning-outcomes-section .section-heading span {
+    background: #eee7ff !important;
+    color: #7c3aed !important;
+}
+
+.learning-outcomes-section .section-heading h2 {
+    color: #24113f !important;
+}
+
+.outcomes-grid {
+    gap: 22px;
+}
+
+.outcome-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 28px rgba(91, 33, 182, 0.07) !important;
+}
+
+.outcome-card:hover {
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    transform: translateY(-7px);
+    box-shadow: 0 16px 35px rgba(91, 33, 182, 0.13) !important;
+}
+
+.outcome-card .outcome-icon {
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+}
+
+.outcome-card h3 {
+    color: #24113f !important;
+}
+
+.outcome-card p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   PROGRAM FEATURES
+========================================================= */
+
+.features-section {
+    background: #ffffff !important;
+}
+
+.feature-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 28px rgba(91, 33, 182, 0.07) !important;
+}
+
+.feature-card:hover {
+    background: #faf8ff !important;
+    border-color: #a78bfa !important;
+    transform: translateY(-7px);
+    box-shadow: 0 16px 35px rgba(91, 33, 182, 0.12) !important;
+}
+
+.feature-card .feature-icon {
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+}
+
+.feature-card h3 {
+    color: #24113f !important;
+}
+
+.feature-card p {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   BATCH INFORMATION
+========================================================= */
+
+.batch-section {
+    background: #faf9ff !important;
+}
+
+.batch-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    border: 1px solid #e7defc !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 28px rgba(91, 33, 182, 0.07) !important;
+}
+
+.batch-card:hover {
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    transform: translateY(-6px);
+    box-shadow: 0 15px 32px rgba(91, 33, 182, 0.12) !important;
+}
+
+.batch-card .batch-icon {
+    background: #eee7ff !important;
+    color: #6d28d9 !important;
+}
+
+.batch-card strong {
+    color: #24113f !important;
+}
+
+.batch-card span {
+    color: #64748b !important;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+    background: linear-gradient(
+        135deg,
+        #5b21b6,
+        #7c3aed,
+        #8b5cf6
+    ) !important;
+}
+
+.final-cta h2 {
+    color: #ffffff !important;
+}
+
+.final-cta p {
+    color: rgba(255,255,255,0.90) !important;
+}
+
+
+/* =========================================================
+   FILTER BUTTONS
+========================================================= */
+
+.filter-btn {
+    background: #ffffff !important;
+    color: #6d28d9 !important;
+    border: 1px solid #ddd6fe !important;
+}
+
+.filter-btn:hover {
+    background: #f5f3ff !important;
+    border-color: #8b5cf6 !important;
+}
+
+.filter-btn.active {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+    border-color: #6d28d9 !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-view {
+    background: #f5f3ff !important;
+    color: #6d28d9 !important;
+    border-color: #ddd6fe !important;
+}
+
+.btn-view:hover {
+    background: #ede9fe !important;
+    color: #5b21b6 !important;
+}
+
+.btn-enquire {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+    border-color: #6d28d9 !important;
+}
+
+.btn-enquire:hover {
+    background: #5b21b6 !important;
+}
+
+
+/* =========================================================
+   FLOATING BUTTON
+========================================================= */
+
+.floating-enquire {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 12px 30px rgba(91, 33, 182, 0.28) !important;
+}
+
+.floating-enquire:hover {
+    background: #5b21b6 !important;
+}
+
+
+/* =========================================================
+   EXTRA PROFESSIONAL TOUCH
+========================================================= */
+
+.highlights-section,
+.learning-outcomes-section,
+.features-section,
+.batch-section,
+.course-level-section {
+    position: relative;
+}
+
+.highlights-section .container,
+.learning-outcomes-section .container,
+.features-section .container,
+.batch-section .container,
+.course-level-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Purple small line below section heading */
+
+.section-heading h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin: 16px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    );
+}
+/* =========================================================
+   FIX - ALL SECTION HEADINGS VISIBILITY
+========================================================= */
+
+/* Program Features */
+.features-section .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Course Highlights */
+.highlights-section .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Learning Outcomes */
+.learning-outcomes-section .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Course Levels */
+.course-level-section .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Available Programs */
+.available-programs .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Batch Information */
+.batch-section .section-heading h2 {
+    color: #24113f !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+
+/* =========================================================
+   SECTION LABELS
+========================================================= */
+
+.features-section .section-heading span,
+.highlights-section .section-heading span,
+.learning-outcomes-section .section-heading span,
+.course-level-section .section-heading span,
+.available-programs .section-heading span,
+.batch-section .section-heading span {
+    color: #7c3aed !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* =========================================================
+   SECTION DESCRIPTION
+========================================================= */
+
+.features-section .section-heading p,
+.highlights-section .section-heading p,
+.learning-outcomes-section .section-heading p,
+.course-level-section .section-heading p,
+.available-programs .section-heading p,
+.batch-section .section-heading p {
+    color: #64748b !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* =========================================================
+   HEADING UNDERLINE
+========================================================= */
+
+.section-heading h2::after {
+    background: linear-gradient(
+        90deg,
+        #6d28d9,
+        #a78bfa
+    ) !important;
+}
+
+
+/* =========================================================
+   DARK MODE - PROGRAMS PAGE
+   ========================================================= */
+
+html[data-theme="dark"] body {
+    background: #100a1f !important;
+    color: #f5f3ff !important;
+}
+
+/* MAIN SECTIONS */
+html[data-theme="dark"] .available-programs,
+html[data-theme="dark"] .course-level-section,
+html[data-theme="dark"] .highlights-section,
+html[data-theme="dark"] .learning-outcomes-section,
+html[data-theme="dark"] .features-section,
+html[data-theme="dark"] .batch-section {
+    background: #100a1f !important;
+    color: #f5f3ff !important;
+}
+
+/* HERO */
+html[data-theme="dark"] .program-hero {
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(139, 92, 246, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(139, 92, 246, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #100a1f 0%,
+            #170d2b 50%,
+            #241343 100%
+        ) !important;
+}
+
+html[data-theme="dark"] .program-hero h1 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .program-hero p {
+    color: #c4b5fd !important;
+}
+
+/* SECTION HEADINGS */
+html[data-theme="dark"] .section-heading h2 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .section-heading p {
+    color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .section-heading span {
+    background: #241343 !important;
+    color: #a78bfa !important;
+}
+
+/* FILTER BUTTONS */
+html[data-theme="dark"] .filter-btn {
+    background: #241343 !important;
+    color: #c4b5fd !important;
+    border-color: #4c2d73 !important;
+}
+
+html[data-theme="dark"] .filter-btn:hover {
+    background: #301650 !important;
+    border-color: #8b5cf6 !important;
+}
+
+html[data-theme="dark"] .filter-btn.active {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+    border-color: #6d28d9 !important;
+}
+
+/* COURSE CARDS */
+html[data-theme="dark"] .course-card {
+    background: #241343 !important;
+    color: #ffffff !important;
+    border-color: #4c2d73 !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.30) !important;
+}
+
+html[data-theme="dark"] .course-card:hover {
+    background: #2b174a !important;
+    border-color: #8b5cf6 !important;
+}
+
+html[data-theme="dark"] .course-card h3 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .course-description {
+    color: #c4b5fd !important;
+}
+
+/* LEVEL BADGE */
+html[data-theme="dark"] .course-level {
+    background: #35205a !important;
+    color: #c4b5fd !important;
+    border-color: #5b3b82 !important;
+}
+
+/* COURSE INFO */
+html[data-theme="dark"] .info-item {
+    background: #1b1034 !important;
+    color: #c4b5fd !important;
+    border-color: #3d285c !important;
+}
+
+html[data-theme="dark"] .info-icon {
+    background: #35205a !important;
+    color: #a78bfa !important;
+}
+
+/* HIGHLIGHTS */
+html[data-theme="dark"] .course-highlights h4,
+html[data-theme="dark"] .course-outcomes h4 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .course-highlights li {
+    background: #35205a !important;
+    color: #c4b5fd !important;
+    border-color: #5b3b82 !important;
+}
+
+html[data-theme="dark"] .course-outcomes ul {
+    color: #c4b5fd !important;
+}
+
+/* VIEW DETAILS BUTTON */
+html[data-theme="dark"] .btn-view {
+    background: #35205a !important;
+    color: #d8b4fe !important;
+    border-color: #6d28d9 !important;
+}
+
+html[data-theme="dark"] .btn-view:hover {
+    background: #4c2675 !important;
+}
+
+/* ENQUIRE BUTTON */
+html[data-theme="dark"] .btn-enquire {
+    background: #6d28d9 !important;
+    color: #ffffff !important;
+}
+
+/* LEVEL CARDS */
+html[data-theme="dark"] .level-card {
+    background: #241343 !important;
+    color: #ffffff !important;
+    border-color: #4c2d73 !important;
+}
+
+html[data-theme="dark"] .level-card h3 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .level-card p {
+    color: #c4b5fd !important;
+}
+
+/* FEATURE CARDS */
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .highlight-card,
+html[data-theme="dark"] .outcome-card,
+html[data-theme="dark"] .batch-card {
+    background: #241343 !important;
+    border-color: #4c2d73 !important;
+}
+
+html[data-theme="dark"] .feature-card h3,
+html[data-theme="dark"] .highlight-card h3,
+html[data-theme="dark"] .outcome-card h3,
+html[data-theme="dark"] .batch-card strong {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .feature-card p,
+html[data-theme="dark"] .highlight-card p,
+html[data-theme="dark"] .outcome-card p,
+html[data-theme="dark"] .batch-card span {
+    color: #c4b5fd !important;
+}
+
+
+
+/* =========================================================
+   AVAILABLE PROGRAMS - RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .available-programs .course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .available-programs {
+        padding: 60px 0;
+    }
+
+    .available-programs .course-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .available-programs .course-card {
+        min-height: auto;
+    }
+
+    .available-programs .course-card h3 {
+        min-height: auto;
+    }
+
+    .available-programs .course-description {
+        min-height: auto;
+    }
+
+    .available-programs .course-filter {
+        margin-bottom: 25px;
+    }
+
+}
+/* =========================================================
+   REDUCE SPACE BETWEEN SECTIONS
+========================================================= */
+
+.available-programs,
+.course-level-section,
+.highlights-section,
+.learning-outcomes-section,
+.features-section,
+.batch-section {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+}
+
+/* Section heading ka extra gap kam */
+.available-programs .section-heading,
+.course-level-section .section-heading,
+.highlights-section .section-heading,
+.learning-outcomes-section .section-heading,
+.features-section .section-heading,
+.batch-section .section-heading {
+    margin-bottom: 25px !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .available-programs,
+    .course-level-section,
+    .highlights-section,
+    .learning-outcomes-section,
+    .features-section,
+    .batch-section {
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
+}
+
+/* =========================================================
+   FINAL FIX - LOWER PROGRAM SECTIONS
+   Clean + Visible + Professional
+========================================================= */
+
+
+/* =========================
+   COURSE LEVEL
+========================= */
+
+.course-level-section {
+    padding: 50px 0 !important;
+    background: #faf8ff !important;
+}
+
+.course-level-section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+.course-level-section .level-grid {
+    gap: 20px !important;
+}
+
+.course-level-section .level-card {
+    padding: 25px 22px !important;
+    min-height: 170px !important;
+
+    background: #ffffff !important;
+    border: 1px solid #ddd6fe !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 8px 24px rgba(91, 33, 182, 0.08) !important;
+}
+
+.course-level-section .level-card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa !important;
+    box-shadow: 0 14px 30px rgba(91, 33, 182, 0.13) !important;
+}
+
+.course-level-section .level-card h3 {
+    color: #24113f !important;
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+}
+
+.course-level-section .level-card p {
+    color: #64748b !important;
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+}
+
+.course-level-section .level-card strong {
+    color: #6d28d9 !important;
+    font-size: 13px !important;
+}
+
+
+/* =========================
+   COURSE HIGHLIGHTS
+========================= */
+
+.highlights-section {
+    padding: 50px 0 !important;
+    background: #ffffff !important;
+}
+
+.highlights-section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+.highlights-section .highlights-grid {
+    gap: 16px !important;
+}
+
+.highlights-section .highlight-card {
+    min-height: 165px !important;
+    padding: 25px 18px !important;
+
+    background: #faf9ff !important;
+    border: 1px solid #e2d9fa !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 7px 22px rgba(91, 33, 182, 0.07) !important;
+}
+
+.highlights-section .highlight-card:hover {
+    transform: translateY(-5px);
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    box-shadow: 0 14px 30px rgba(91, 33, 182, 0.12) !important;
+}
+
+.highlights-section .highlight-card h3 {
+    color: #24113f !important;
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+.highlights-section .highlight-card p {
+    color: #64748b !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+
+/* =========================
+   LEARNING OUTCOMES
+========================= */
+
+.learning-outcomes-section {
+    padding: 50px 0 !important;
+    background: #faf8ff !important;
+}
+
+.learning-outcomes-section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+.learning-outcomes-section .outcomes-grid {
+    gap: 16px !important;
+}
+
+.learning-outcomes-section .outcome-card {
+    min-height: 165px !important;
+    padding: 25px 18px !important;
+
+    background: #ffffff !important;
+    border: 1px solid #e2d9fa !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 7px 22px rgba(91, 33, 182, 0.07) !important;
+}
+
+.learning-outcomes-section .outcome-card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa !important;
+    box-shadow: 0 14px 30px rgba(91, 33, 182, 0.12) !important;
+}
+
+.learning-outcomes-section .outcome-card h3 {
+    color: #24113f !important;
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+.learning-outcomes-section .outcome-card p {
+    color: #64748b !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+
+/* =========================
+   PROGRAM FEATURES
+========================= */
+
+.features-section {
+    padding: 50px 0 !important;
+    background: #ffffff !important;
+}
+
+.features-section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+.features-section .features-grid {
+    gap: 18px !important;
+}
+
+.features-section .feature-card {
+    min-height: 175px !important;
+    padding: 25px 20px !important;
+
+    background: #faf9ff !important;
+    border: 1px solid #e2d9fa !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 7px 22px rgba(91, 33, 182, 0.07) !important;
+}
+
+.features-section .feature-card:hover {
+    transform: translateY(-5px);
+    background: #ffffff !important;
+    border-color: #a78bfa !important;
+    box-shadow: 0 14px 30px rgba(91, 33, 182, 0.12) !important;
+}
+
+.features-section .feature-card h3 {
+    color: #24113f !important;
+    font-size: 17px !important;
+    margin-bottom: 8px !important;
+}
+
+.features-section .feature-card p {
+    color: #64748b !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+
+/* =========================
+   BATCH INFORMATION
+========================= */
+
+.batch-section {
+    padding: 50px 0 !important;
+    background: #faf8ff !important;
+}
+
+.batch-section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+.batch-section .batch-grid {
+    gap: 16px !important;
+}
+
+.batch-section .batch-card {
+    min-height: 135px !important;
+    padding: 24px 18px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff !important;
+    border: 1px solid #e2d9fa !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 7px 22px rgba(91, 33, 182, 0.07) !important;
+}
+
+.batch-section .batch-card:hover {
+    transform: translateY(-5px);
+    border-color: #a78bfa !important;
+    box-shadow: 0 14px 30px rgba(91, 33, 182, 0.12) !important;
+}
+
+.batch-section .batch-card strong {
+    color: #24113f !important;
+    font-size: 15px !important;
+    margin-bottom: 5px !important;
+}
+
+.batch-section .batch-card span {
+    color: #6d28d9 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .course-level-section,
+    .highlights-section,
+    .learning-outcomes-section,
+    .features-section,
+    .batch-section {
+        padding: 38px 0 !important;
+    }
+
+    .course-level-section .level-card,
+    .highlights-section .highlight-card,
+    .learning-outcomes-section .outcome-card,
+    .features-section .feature-card {
+        min-height: auto !important;
+    }
+
+    .batch-section .batch-card {
+        min-height: 120px !important;
+    }
+
+}
