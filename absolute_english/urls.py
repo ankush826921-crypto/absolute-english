@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from apps import views
@@ -15,6 +15,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
+    path('accounts/', include('apps.accounts.urls', namespace='accounts')),
 ]
 
 if settings.DEBUG:

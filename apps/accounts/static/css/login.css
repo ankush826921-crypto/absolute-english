@@ -1,0 +1,170 @@
+/* =========================================
+   ABSOLUTE ENGLISH
+   LOGIN PAGE
+   Light + Dark Theme Compatible
+========================================= */
+
+
+/* ========================================
+   LOGIN CARD
+======================================== */
+
+.login-card {
+    max-width: 520px;
+}
+
+.login-card .auth-form {
+    gap: 18px;
+}
+
+
+/* ========================================
+   REMEMBER ME + FORGOT PASSWORD
+======================================== */
+
+.login-options {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 2px;
+}
+
+.login-options .form-check {
+    margin: 0;
+
+    padding-left: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.login-options .form-check-label {
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.login-options .form-check-input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    accent-color: var(--primary-color);
+}
+
+.login-options .forgot-link {
+    color: var(--primary-color);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.login-options .forgot-link:hover {
+    color: var(--primary-dark);
+
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   LOGIN BUTTON
+======================================== */
+
+.login-card .auth-submit {
+    width: 100%;
+}
+
+
+/* ========================================
+   REGISTER LINK
+======================================== */
+
+.login-register {
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: var(--text-light);
+
+    font-size: 0.95rem;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.login-register a {
+    color: var(--primary-color);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.login-register a:hover {
+    color: var(--primary-dark);
+
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   DARK THEME
+======================================== */
+
+[data-theme="dark"] .login-options .form-check-label,
+[data-theme="dark"] .login-register {
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .login-options .forgot-link,
+[data-theme="dark"] .login-register a {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .login-options .forgot-link:hover,
+[data-theme="dark"] .login-register a:hover {
+    color: #c4c0ff;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 576px) {
+
+    .login-options {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .login-card {
+        width: 100%;
+    }
+}
