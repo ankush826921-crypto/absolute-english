@@ -1,4 +1,8 @@
 from django.urls import path
+
+urlpatterns = [
+]
+
 from apps.faculty import views
 # from apps.views import FacultyView
 from django.contrib.auth import views as auth_views
@@ -17,3 +21,4 @@ urlpatterns = [
 
 
     ]
+
