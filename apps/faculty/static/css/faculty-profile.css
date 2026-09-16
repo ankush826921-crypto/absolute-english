@@ -1,0 +1,2 @@
+/* Profile-specific extension. Shared styles live in faculty.css. */
+.faculty-profile-page .faculty-profile-panel--bio { grid-row:span 2; }

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Languages - Absolute English{% endblock %}
+{% block page_title %}Languages We Teach{% endblock %}
+{% block breadcrumb_current %}Languages{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/languages.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Languages We Teach</h2>
+            <p class="text-muted">Choose from our wide range of language courses</p>
+        </div>
+
+        <!-- ===== HORIZONTAL SCROLL WRAPPER ===== -->
+        <div class="languages-scroll-wrapper">
+            <!-- Left Scroll Button -->
+            <button class="scroll-btn scroll-btn-left" id="scrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <!-- Scrollable Container -->
+            <div class="languages-scroll-container" id="scrollContainer">
+
+                <!-- English -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>English</h3>
+                    <p>Learn English and open doors to global opportunities.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Spanish -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Spanish</h3>
+                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- French -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>French</h3>
+                    <p>Learn French and open doors to the world of art and culture.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- German -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>German</h3>
+                    <p>Learn German and build your future in Europe's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Italian -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Italian</h3>
+                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Japanese -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Japanese</h3>
+                    <p>Learn Japanese and explore the rich culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Mandarin -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Mandarin</h3>
+                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Arabic -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Arabic</h3>
+                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Russian -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Russian</h3>
+                    <p>Learn Russian and explore the vast culture and literature.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- Portuguese -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Portuguese</h3>
+                    <p>Learn Portuguese and explore Brazil and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+            </div>
+
+            <!-- Right Scroll Button -->
+            <button class="scroll-btn scroll-btn-right" id="scrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/languages.js' %}"></script>
+{% endblock %}

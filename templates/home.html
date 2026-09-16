@@ -1,29 +1,547 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Absolute English - Learn Languages Online{% endblock %}
 
-    <title>{% block title %}Absolute English{% endblock %}</title>
+{% block content %}
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-</head>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section" id="heroSection">
+    <div class="hero-slideshow" id="heroSlideshow">
 
-<body>
+        <div class="hero-slide active"
+             style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&q=80');">
+        </div>
 
-    {% include "partials/navbar.html" %}
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&q=80');">
+        </div>
 
-    {% block content %}
-    {% endblock %}
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80');">
+        </div>
 
-    {% include "partials/footer.html" %}
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80');">
+        </div>
 
-    <script src="{% static 'js/navbar.js' %}"></script>
-    <script src="{% static 'js/home.js' %}"></script>
+        <div class="hero-slide"
+             style="background-image: url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?w=1920&q=80');">
+        </div>
 
-</body>
-</html>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="row align-items-center" style="min-height: 30vh; padding: 2rem 0;">
+            <div class="col-lg-8 hero-content">
+
+                <h1 class="hero-title">
+                    Learn a New Language<br>
+                    <span class="highlight">Open New Opportunities</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Spanish, French, German and more. Expert trainers, flexible batches and certified courses for all levels.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="{% url 'courses' %}" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap"></i> Explore Courses
+                    </a>
+
+                    <a href="{% url 'book_demo' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-play-circle"></i> Book a Demo
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-indicators" id="heroIndicators">
+        <span class="hero-dot active" data-index="0"></span>
+        <span class="hero-dot" data-index="1"></span>
+        <span class="hero-dot" data-index="2"></span>
+        <span class="hero-dot" data-index="3"></span>
+        <span class="hero-dot" data-index="4"></span>
+    </div>
+</section>
+
+
+<!-- ===== LANGUAGES SECTION ===== -->
+<section class="languages-section py-5" id="languages">
+    <div class="container">
+
+        <div class="section-header text-center">
+            <h2>Languages We Teach</h2>
+            <p class="text-muted">Choose from our wide range of language courses</p>
+        </div>
+
+        <div class="languages-scroll-wrapper">
+
+            <button class="scroll-btn scroll-btn-left" id="homeScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="languages-scroll-container" id="homeScrollContainer">
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>English</h3>
+                    <p>Learn English and open doors to global opportunities.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Spanish</h3>
+                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>French</h3>
+                    <p>Learn French and open doors to the world of art and culture.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>German</h3>
+                    <p>Learn German and build your future in Europe's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Italian</h3>
+                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Japanese</h3>
+                    <p>Learn Japanese and explore the rich culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Mandarin</h3>
+                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Arabic</h3>
+                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Russian</h3>
+                    <p>Learn Russian and explore the vast culture and literature.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Portuguese</h3>
+                    <p>Learn Portuguese and explore Brazil and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-kr fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Korean</h3>
+                    <p>Learn Korean and explore K-culture and technology.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-nl fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>Dutch</h3>
+                    <p>Learn Dutch and explore the Netherlands and beyond.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+            </div>
+
+            <button class="scroll-btn scroll-btn-right" id="homeScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== COURSES SECTION ===== -->
+<section class="courses-section py-5 bg-light" id="courses">
+    <div class="container">
+
+        <div class="section-header text-center">
+            <h2>Our Courses</h2>
+            <p class="text-muted">Comprehensive language courses for every level</p>
+        </div>
+
+        <div class="courses-scroll-wrapper">
+
+            <button class="scroll-btn scroll-btn-left" id="coursesScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="courses-scroll-container" id="coursesScrollContainer">
+
+                <!-- ===== CARD 1: A1 BEGINNER ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">A1</span>
+                    <h4>Beginner</h4>
+                    <p>Start your language journey with basics and fundamentals. Learn greetings, introductions, and basic vocabulary.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                        <span><i class="fas fa-tag"></i> $299</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 2: A2 ELEMENTARY ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">A2</span>
+                    <h4>Elementary</h4>
+                    <p>Build strong basics step by step with confidence. Learn simple conversations and everyday expressions.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 40 hours</span>
+                        <span><i class="fas fa-users"></i> 15 seats</span>
+                        <span><i class="fas fa-tag"></i> $349</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 3: B1 INTERMEDIATE ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">B1</span>
+                    <h4>Intermediate</h4>
+                    <p>Improve fluency and communication in everyday situations. Handle conversations and express opinions.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                        <span><i class="fas fa-tag"></i> $399</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 4: B2 UPPER INTERMEDIATE ===== -->
+                <div class="course-scroll-card">
+                    <span class="course-level">B2</span>
+                    <h4>Upper Intermediate</h4>
+                    <p>Advance your skills with confidence in complex topics. Discuss abstract topics and current events.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 50 hours</span>
+                        <span><i class="fas fa-users"></i> 12 seats</span>
+                        <span><i class="fas fa-tag"></i> $449</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+                <!-- ===== CARD 5: C1 ADVANCED (MOST POPULAR) ===== -->
+                <div class="course-scroll-card featured">
+                    <span class="featured-badge">⭐ Most Popular</span>
+                    <span class="course-level">C1</span>
+                    <h4>Advanced</h4>
+                    <p>Master the language like a pro with native-level proficiency. Fluent communication in professional settings.</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> 60 hours</span>
+                        <span><i class="fas fa-users"></i> 10 seats</span>
+                        <span><i class="fas fa-tag"></i> $549</span>
+                    </div>
+                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                </div>
+
+            </div>
+
+            <button class="scroll-btn scroll-btn-right" id="coursesScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS SECTION ===== -->
+<section class="testimonials-section py-5" id="gallery">
+    <div class="container">
+
+        <div class="section-header text-center">
+            <h2>What Our Students Say</h2>
+            <p class="text-muted">Real stories from our successful students</p>
+        </div>
+
+        <div class="testimonials-scroll-wrapper">
+
+            <button class="scroll-btn scroll-btn-left" id="testimonialsScrollLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="testimonials-scroll-container" id="testimonialsScrollContainer">
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Ananya+S&background=6c5ce7&color=fff&size=80"
+                             alt="Ananya S." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Great learning experience! The trainers are very supportive and the environment is amazing. I went from zero to fluent in just 6 months!"
+                    </blockquote>
+
+                    <h5>Ananya S.</h5>
+                    <p class="text-muted">Spanish Student</p>
+                </div>
+
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Rahul+K&background=00b894&color=fff&size=80"
+                             alt="Rahul K." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Absolute English helped me achieve my dream of studying abroad. The trainers are world-class and the teaching methodology is excellent!"
+                    </blockquote>
+
+                    <h5>Rahul K.</h5>
+                    <p class="text-muted">IELTS Student</p>
+                </div>
+
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Priya+M&background=e17055&color=fff&size=80"
+                             alt="Priya M." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "I was struggling with my English communication skills. The flexible batch timings and expert guidance helped me gain confidence and speak fluently."
+                    </blockquote>
+
+                    <h5>Priya M.</h5>
+                    <p class="text-muted">Professional English Student</p>
+                </div>
+
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+D&background=0984e3&color=fff&size=80"
+                             alt="John D." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "The best decision I made was joining Absolute English. My speaking skills have improved dramatically and I feel confident in interviews now."
+                    </blockquote>
+
+                    <h5>John D.</h5>
+                    <p class="text-muted">Business English Student</p>
+                </div>
+
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+W&background=fdcb6e&color=fff&size=80"
+                             alt="Sarah W." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "The trainers are incredibly knowledgeable and patient. I love the interactive sessions and the friendly learning environment."
+                    </blockquote>
+
+                    <h5>Sarah W.</h5>
+                    <p class="text-muted">French Student</p>
+                </div>
+
+
+                <div class="testimonial-scroll-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Michael+R&background=e84393&color=fff&size=80"
+                             alt="Michael R." class="rounded-circle" width="80">
+                    </div>
+
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <blockquote>
+                        "Thanks to Absolute English, I cleared my German language exam with flying colors. The structured curriculum and practice sessions are top-notch."
+                    </blockquote>
+
+                    <h5>Michael R.</h5>
+                    <p class="text-muted">German Student</p>
+                </div>
+
+            </div>
+
+            <button class="scroll-btn scroll-btn-right" id="testimonialsScrollRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why-choose-section py-5 bg-light" id="about">
+    <div class="container">
+
+        <div class="section-header text-center">
+            <h2>Why Choose Us?</h2>
+            <p class="text-muted">What makes us the best choice for learning languages</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    </div>
+                    <h4>Expert Trainers</h4>
+                    <p>Learn from certified and experienced trainers with years of teaching.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate fa-3x"></i>
+                    </div>
+                    <h4>Certified Courses</h4>
+                    <p>Internationally recognized certifications for your career growth.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock fa-3x"></i>
+                    </div>
+                    <h4>Flexible Batches</h4>
+                    <p>Weekend &amp; weekday batches available to suit your schedule.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas fa-3x"></i>
+                    </div>
+                    <h4>Global Exposure</h4>
+                    <p>Language learning for study, travel and career opportunities.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section py-5">
+    <div class="container text-center">
+
+        <h2>Start Learning Today!</h2>
+
+        <p class="lead">
+            Join thousands of students and achieve your language goals.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="{% url 'enroll' %}" class="btn btn-light btn-lg">
+                <i class="fas fa-user-plus"></i> Enroll Now
+            </a>
+
+            <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

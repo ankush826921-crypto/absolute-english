@@ -966,9 +966,961 @@ body {
         padding: 70px 18px;
     }
 }
-'''
+
 path = "/mnt/data/program-detail-final.css"
 with open(path, "w", encoding="utf-8") as f:
     f.write(css)
 print(f"Created: {path}")
 print(f"CSS lines: {len(css.splitlines())}")
+
+
+
+/* =========================================================
+   DARK MODE - WEBSITE THEME
+   ========================================================= */
+
+html[data-theme="dark"] body {
+    background: #100a1f;
+    color: #f5f3ff;
+}
+
+html[data-theme="dark"] .section {
+    background: #100a1f;
+    border-bottom-color: #2d2045;
+}
+
+html[data-theme="dark"] .section:nth-of-type(even) {
+    background: #170d2b;
+}
+
+html[data-theme="dark"] .section-heading h2 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .section-heading p {
+    color: #c4b5fd !important;
+}
+
+/* HERO */
+html[data-theme="dark"] .course-hero {
+    background:
+        radial-gradient(
+            circle at 88% 18%,
+            rgba(139, 92, 246, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #100a1f 0%,
+            #170d2b 55%,
+            #241343 100%
+        );
+    border-bottom-color: #2d2045;
+}
+
+html[data-theme="dark"] .course-hero h1 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .course-hero p {
+    color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .course-badge {
+    background: #241343;
+    border-color: #4c2d73;
+    color: #c4b5fd !important;
+}
+
+/* META */
+html[data-theme="dark"] .course-meta > div,
+html[data-theme="dark"] .meta-item {
+    background: #241343;
+    border-color: #4c2d73;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .meta-item strong,
+html[data-theme="dark"] .course-meta > div strong {
+    color: #ffffff !important;
+}
+
+/* HERO CARDS */
+html[data-theme="dark"] .hero-card,
+html[data-theme="dark"] .hero-small-card {
+    background: #241343;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .hero-card h3 {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .hero-card p {
+    color: #c4b5fd;
+}
+
+/* LEARNING + FEATURES + CURRICULUM */
+html[data-theme="dark"] .learning-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .curriculum-item,
+html[data-theme="dark"] .batch-info > div,
+html[data-theme="dark"] .outcome-item {
+    background: linear-gradient(
+        145deg,
+        #241343,
+        #170d2e
+    );
+    border-color: #4c2d73;
+}
+
+html[data-theme="dark"] .learning-card h3,
+html[data-theme="dark"] .feature-card h3,
+html[data-theme="dark"] .curriculum-item h3 {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .learning-card p,
+html[data-theme="dark"] .feature-card p,
+html[data-theme="dark"] .curriculum-item p {
+    color: #c4b5fd !important;
+}
+
+/* OUTCOMES */
+html[data-theme="dark"] .outcome-item {
+    color: #ddd6fe !important;
+}
+
+/* BATCH */
+html[data-theme="dark"] .batch-info strong {
+    color: #c4b5fd !important;
+}
+
+html[data-theme="dark"] .batch-info span {
+    color: #ffffff !important;
+}
+
+
+
+/* =========================================================
+   FINAL HERO + NAVBAR RESPONSIVE FIX
+   Absolute English Program Detail
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL FIX
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR LAYER FIX
+   Navbar should stay above hero
+========================================================= */
+
+nav,
+.navbar,
+header {
+    position: relative;
+    z-index: 10000;
+}
+
+
+/* =========================================================
+   HERO DESKTOP
+========================================================= */
+
+.course-hero {
+    position: relative;
+    z-index: 1;
+
+    /*
+       Navbar ke neeche hero start hoga.
+       Agar navbar fixed hai to ye space zaroori hai.
+    */
+    margin-top: 20px;
+
+    min-height: 560px;
+
+    padding: 80px 0 90px;
+
+    overflow: hidden;
+}
+
+
+/* Hero content */
+
+.course-hero .hero-container {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: min(1120px, 92%);
+    max-width: 1120px;
+
+    margin: 0 auto;
+
+    gap: 55px;
+}
+
+
+/* Left side */
+
+.course-hero .hero-content {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 650px;
+}
+
+
+/* Heading */
+
+.course-hero h1 {
+    max-width: 650px;
+
+    margin: 0;
+
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.08;
+
+    overflow-wrap: break-word;
+}
+
+
+/* Description */
+
+.course-hero .hero-content > p {
+    max-width: 600px;
+
+    margin: 22px 0 30px;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* Meta boxes */
+
+.course-hero .course-meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+}
+
+.course-hero .meta-item {
+    min-width: 145px;
+    max-width: 220px;
+}
+
+
+/* =========================================================
+   HERO VISUAL DESKTOP
+========================================================= */
+
+.course-hero .hero-visual {
+    position: relative;
+
+    flex: 0 0 390px;
+
+    width: 390px;
+    height: 390px;
+
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .course-hero {
+        padding: 70px 0 80px;
+    }
+
+    .course-hero .hero-container {
+        gap: 35px;
+    }
+
+    .course-hero .hero-content {
+        max-width: 560px;
+    }
+
+    .course-hero h1 {
+        font-size: clamp(40px, 5vw, 54px);
+    }
+
+    .course-hero .hero-visual {
+        flex: 0 0 330px;
+
+        width: 330px;
+        height: 330px;
+    }
+
+    .course-hero .hero-circle {
+        width: 280px;
+        height: 280px;
+
+        top: 25px;
+        left: 25px;
+    }
+
+    .course-hero .hero-card {
+        width: 215px;
+
+        top: 55px;
+        right: 0;
+
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .course-hero {
+
+        padding: 65px 0 75px;
+
+        text-align: center;
+    }
+
+    .course-hero .hero-container {
+        width: min(92%, 700px);
+
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 45px;
+    }
+
+    .course-hero .hero-content {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .course-hero h1 {
+        max-width: 700px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: clamp(38px, 7vw, 52px);
+    }
+
+    .course-hero h1::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .course-hero .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 620px;
+    }
+
+    .course-hero .course-meta {
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .course-hero .meta-item {
+        min-width: 145px;
+    }
+
+    .course-hero .hero-visual {
+        width: 320px;
+        height: 320px;
+
+        flex: 0 0 320px;
+    }
+
+    .course-hero .hero-circle {
+        width: 270px;
+        height: 270px;
+
+        top: 25px;
+        left: 25px;
+    }
+
+    .course-hero .hero-card {
+        width: 210px;
+
+        top: 50px;
+        right: 0;
+    }
+
+    .course-hero .hero-small-card {
+        left: 0;
+        bottom: 30px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .course-hero {
+
+        padding: 55px 0 65px;
+
+        min-height: auto;
+    }
+
+    .course-hero .hero-container {
+        width: 92%;
+
+        gap: 40px;
+    }
+
+    .course-badge {
+        max-width: 100%;
+
+        padding: 8px 14px;
+
+        font-size: 12px;
+    }
+
+    .course-hero h1 {
+        font-size: 36px;
+        line-height: 1.12;
+
+        letter-spacing: -0.8px;
+    }
+
+    .course-hero .hero-content > p {
+        font-size: 15px;
+        line-height: 1.65;
+
+        margin-top: 18px;
+        margin-bottom: 25px;
+    }
+
+    .course-hero .course-meta {
+        width: 100%;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+    .course-hero .meta-item {
+        width: 100%;
+        max-width: none;
+
+        min-width: 0;
+
+        padding: 13px 15px;
+    }
+
+    .course-hero .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+
+    /* Hero visual */
+
+    .course-hero .hero-visual {
+        width: 285px;
+        height: 285px;
+
+        flex: 0 0 285px;
+    }
+
+    .course-hero .hero-circle {
+        width: 235px;
+        height: 235px;
+
+        top: 25px;
+        left: 25px;
+    }
+
+    .course-hero .hero-card {
+        width: 180px;
+
+        top: 42px;
+        right: 0;
+
+        padding: 20px 14px;
+
+        border-radius: 20px;
+    }
+
+    .course-hero .hero-icon {
+        width: 52px;
+        height: 52px;
+
+        margin-bottom: 12px;
+
+        font-size: 23px;
+    }
+
+    .course-hero .hero-card h3 {
+        font-size: 20px;
+    }
+
+    .course-hero .hero-card p {
+        font-size: 12px;
+    }
+
+    .course-hero .hero-small-card {
+        left: 0;
+        bottom: 22px;
+
+        padding: 10px 12px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .course-hero {
+
+        padding: 45px 0 55px;
+    }
+
+    .course-hero h1 {
+        font-size: 30px;
+    }
+
+    .course-hero .hero-content > p {
+        font-size: 14px;
+    }
+
+    .course-hero .hero-visual {
+        width: 260px;
+        height: 260px;
+
+        flex-basis: 260px;
+    }
+
+    .course-hero .hero-circle {
+        width: 215px;
+        height: 215px;
+
+        top: 22px;
+        left: 22px;
+    }
+
+    .course-hero .hero-card {
+        width: 165px;
+
+        top: 38px;
+    }
+
+    .course-hero .hero-small-card {
+        bottom: 18px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE SCROLL POSITION
+========================================================= */
+
+.course-hero {
+    scroll-margin-top: 80px;
+}
+
+
+/* =========================================================
+   FINAL HERO RESPONSIVE FIX
+========================================================= */
+
+/* DESKTOP */
+
+.course-hero {
+    margin-top: 0 !important;
+    padding: 60px 0 70px !important;
+    min-height: auto !important;
+}
+
+.course-hero .hero-container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+.course-hero .hero-content {
+    flex: 1;
+    min-width: 0;
+    max-width: 620px;
+}
+
+.course-hero h1 {
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.1;
+}
+
+.course-hero .hero-content > p {
+    max-width: 600px;
+}
+
+.course-hero .course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.course-hero .meta-item {
+    min-width: 140px;
+}
+
+.course-hero .hero-visual {
+    flex: 0 0 350px;
+    width: 350px;
+    height: 350px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .course-hero {
+        padding: 55px 0 60px !important;
+    }
+
+    .course-hero .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .course-hero .hero-content {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .course-hero h1 {
+        font-size: clamp(36px, 7vw, 50px);
+    }
+
+    .course-hero h1::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .course-hero .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .course-hero .course-meta {
+        justify-content: center;
+    }
+
+    .course-hero .hero-visual {
+        flex: 0 0 320px;
+        width: 320px;
+        height: 320px;
+    }
+
+    .course-hero .hero-circle {
+        width: 270px;
+        height: 270px;
+
+        top: 25px;
+        left: 25px;
+    }
+
+    .course-hero .hero-card {
+        width: 205px;
+
+        top: 50px;
+        right: 0;
+
+        padding: 24px 18px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .course-hero {
+        padding: 45px 0 50px !important;
+    }
+
+    .course-hero .hero-container {
+        width: 92%;
+        gap: 30px;
+    }
+
+    .course-badge {
+        font-size: 12px;
+        padding: 8px 13px;
+    }
+
+    .course-hero h1 {
+        font-size: 34px;
+        line-height: 1.12;
+        letter-spacing: -0.5px;
+    }
+
+    .course-hero .hero-content > p {
+        font-size: 15px;
+        line-height: 1.6;
+
+        margin-top: 18px;
+        margin-bottom: 22px;
+    }
+
+    /* META BOXES */
+
+    .course-hero .course-meta {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 9px;
+    }
+
+    .course-hero .meta-item {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+
+        padding: 12px 14px;
+    }
+
+    /* BUTTON */
+
+    .course-hero .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+
+    /* HERO VISUAL */
+
+    .course-hero .hero-visual {
+        width: 280px;
+        height: 280px;
+
+        flex: 0 0 280px;
+    }
+
+    .course-hero .hero-circle {
+        width: 230px;
+        height: 230px;
+
+        top: 25px;
+        left: 25px;
+    }
+
+    .course-hero .hero-card {
+        width: 175px;
+
+        top: 40px;
+        right: 0;
+
+        padding: 18px 13px;
+
+        border-radius: 18px;
+    }
+
+    .course-hero .hero-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .course-hero .hero-card h3 {
+        font-size: 20px;
+    }
+
+    .course-hero .hero-card p {
+        font-size: 12px;
+    }
+
+    .course-hero .hero-small-card {
+        left: 0;
+        bottom: 18px;
+
+        padding: 9px 11px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .course-hero {
+        padding: 38px 0 45px !important;
+    }
+
+    .course-hero h1 {
+        font-size: 30px;
+    }
+
+    .course-hero .hero-content > p {
+        font-size: 14px;
+    }
+
+    .course-hero .hero-visual {
+        width: 250px;
+        height: 250px;
+
+        flex-basis: 250px;
+    }
+
+    .course-hero .hero-circle {
+        width: 205px;
+        height: 205px;
+
+        top: 22px;
+        left: 22px;
+    }
+
+    .course-hero .hero-card {
+        width: 158px;
+        top: 36px;
+    }
+
+    .course-hero .hero-small-card {
+        bottom: 15px;
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   FINAL SECTION SPACING FIX
+   Reduce excessive space between sections
+========================================================= */
+
+/* Desktop */
+
+.program-detail-page .section {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+}
+
+
+/* Agar body par page class nahi hai,
+   to direct section selector use hoga */
+
+body .section {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+}
+
+
+/* Section heading ka extra gap bhi kam */
+
+.section .section-heading {
+    margin-bottom: 28px !important;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-content {
+    margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   LEARNING / FEATURES / CURRICULUM
+========================================================= */
+
+.learning-grid,
+.features-grid,
+.curriculum,
+.outcomes-list,
+.batch-info {
+    margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body .section {
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
+
+    .section .section-heading {
+        margin-bottom: 22px !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    body .section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .section .section-heading {
+        margin-bottom: 20px !important;
+    }
+
+}
