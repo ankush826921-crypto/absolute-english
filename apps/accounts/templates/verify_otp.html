@@ -1,0 +1,134 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Verify your OTP">
+  <title>Verify OTP | Absolute English</title>
+
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+  <link rel="stylesheet" href="{% static 'css/forgot-password.css' %}">
+</head>
+
+<body>
+  <main class="auth-shell">
+
+    <aside class="auth-aside">
+      <div class="auth-top-bar">
+        <a class="brand" href="{% url 'home' %}">
+          <span class="brand-mark" aria-hidden="true">←</span>
+          <span>Back To Home</span>
+        </a>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle Dark Mode"
+          title="Toggle dark/light theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+
+      <div class="aside-copy">
+        <p class="aside-kicker">Verify your account</p>
+        <h1>One quick check.</h1>
+        <p>
+          Enter the verification code sent to your email
+          to continue resetting your password.
+        </p>
+      </div>
+
+      <p class="aside-note">
+        OTP verification · Absolute English
+      </p>
+    </aside>
+
+    <section class="auth-main" aria-labelledby="otp-title">
+      <div class="auth-card">
+
+        <header class="auth-card-header">
+          <h2 id="otp-title">Verify OTP.</h2>
+          <p>
+            Enter the six-digit verification code.
+          </p>
+        </header>
+
+        <div
+          id="otpAlert"
+          class="form-alert"
+          role="status"
+          aria-live="polite">
+        </div>
+
+        <form
+          id="otpForm"
+          class="auth-form"
+          novalidate>
+
+          <div class="field">
+            <label for="otpCode">Verification code</label>
+
+            <input
+              id="otpCode"
+              name="otp"
+              class="otp-input"
+              type="text"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="6"
+              placeholder="Enter 6-digit OTP">
+
+            <p class="field-message"></p>
+          </div>
+
+          <button
+            class="primary-btn"
+            type="submit">
+            Verify OTP
+          </button>
+
+        </form>
+
+        <p class="auth-footer">
+          Didn't receive the code?
+
+          <button
+            id="resendOtp"
+            class="text-link button-link"
+            type="button">
+            Resend OTP
+          </button>
+        </p>
+
+        <p class="auth-footer">
+          <a
+            class="text-link"
+            href="{% url 'accounts:forgot_password' %}">
+            Change email
+          </a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{% static 'js/auth.js' %}"></script>
+  <script src="{% static 'js/forgot-password.js' %}"></script>
+</body>
+</html>
