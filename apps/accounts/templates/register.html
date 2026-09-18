@@ -1,0 +1,533 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta
+        name="description"
+        content="Create your Absolute English account"
+    >
+
+    <title>Create account | Absolute English</title>
+
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem("theme") === "dark") {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                }
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/auth.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/register.css' %}"
+    >
+</head>
+
+<body>
+
+<main class="auth-shell">
+
+    <!-- =========================================
+         LEFT SIDE
+         ========================================= -->
+
+    <aside class="auth-aside">
+
+        <div class="auth-top-bar">
+            <a
+                class="brand"
+                href="{% url 'home' %}"
+            >
+                <span
+                    class="brand-mark"
+                    aria-hidden="true"
+                >
+                    ←
+                </span>
+
+                <span>
+                    Back To Home
+                </span>
+            </a>
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Toggle Dark Mode"
+                title="Toggle dark/light theme"
+            >
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
+
+        <div class="aside-copy">
+
+            <p class="aside-kicker">
+                Start with a clean slate
+            </p>
+
+            <h1>
+                Make progress measurable.
+            </h1>
+
+            <p>
+                Create your account and keep your learning history
+                in one place.
+            </p>
+
+        </div>
+
+        <p class="aside-note">
+            Simple setup · Absolute English
+        </p>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN REGISTRATION AREA
+         ========================================= -->
+
+    <section
+        class="auth-main"
+        aria-labelledby="register-title"
+    >
+
+        <div class="auth-card register-card">
+
+            <!-- =========================================
+                 HEADER
+                 ========================================= -->
+
+            <header class="auth-card-header">
+
+                <h2 id="register-title">
+                    Create your account.
+                </h2>
+
+                <p>
+                    It only takes a minute to get started.
+                </p>
+
+            </header>
+
+
+            <!-- =========================================
+                 REGISTRATION ALERT
+                 ========================================= -->
+
+            <div
+                id="registerAlert"
+                class="form-alert"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- =========================================
+                 REGISTRATION FORM
+                 ========================================= -->
+
+            <form
+                id="registerForm"
+                class="auth-form"
+                novalidate
+            >
+
+                <!-- =====================================
+                     FULL NAME
+                     ===================================== -->
+
+                <div class="field">
+
+                    <label for="fullName">
+                        Full name
+                    </label>
+
+                    <input
+                        id="fullName"
+                        name="full_name"
+                        type="text"
+                        autocomplete="name"
+                        placeholder="Your full name"
+                    >
+
+                    <p class="field-message"></p>
+
+                </div>
+
+
+                <!-- =====================================
+                     EMAIL
+                     ===================================== -->
+
+                <div class="field">
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="registerEmail"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                    >
+
+                    <p class="field-message"></p>
+
+                </div>
+
+
+                <!-- =====================================
+                     PHONE NUMBER
+                     ===================================== -->
+
+                <div class="field">
+
+                    <label for="phone">
+                        Phone number
+                    </label>
+
+                    <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        placeholder="+91 98765 43210"
+                    >
+
+                    <p class="field-message"></p>
+
+                </div>
+
+
+                <!-- =========================================
+                     PHONE OTP VERIFICATION
+
+                     OTP appears automatically after a
+                     valid phone number is entered.
+                     ========================================= -->
+
+                <div
+                    id="registrationOtpSection"
+                    class="registration-otp-section"
+                    hidden
+                >
+
+                    <div class="otp-card">
+
+                        <!-- OTP HEADER -->
+
+                        <header class="auth-card-header">
+
+                            <h2 id="registration-otp-title">
+                                Verify your phone.
+                            </h2>
+
+                            <p>
+                                Enter the 6-digit OTP sent to
+                                your phone number.
+                            </p>
+
+                        </header>
+
+
+                        <!-- OTP ALERT -->
+
+                        <div
+                            id="registrationOtpAlert"
+                            class="form-alert"
+                            role="alert"
+                            aria-live="polite"
+                        ></div>
+
+
+                        <!-- OTP FIELD -->
+
+                        <div class="field">
+
+                            <label for="registrationOtp">
+                                Verification code
+                            </label>
+
+                            <input
+                                id="registrationOtp"
+                                name="registration_otp"
+                                class="otp-input"
+                                type="text"
+                                inputmode="numeric"
+                                autocomplete="one-time-code"
+                                maxlength="6"
+                                placeholder="Enter 6-digit OTP"
+                                aria-describedby="otpHelp"
+                            >
+
+                            <p
+                                id="otpHelp"
+                                class="field-message"
+                            >
+                                Enter the 6-digit code sent to
+                                your phone.
+                            </p>
+
+                        </div>
+
+
+                        <!-- VERIFY BUTTON -->
+
+                        <button
+                            id="verifyRegistrationOtp"
+                            class="primary-btn"
+                            type="button"
+                        >
+                            Verify phone
+                        </button>
+
+
+                        <!-- RESEND OTP -->
+
+                        <div class="otp-resend">
+
+                            <p>
+                                Didn't receive the code?
+                            </p>
+
+                            <button
+                                id="resendRegistrationOtp"
+                                class="text-link otp-resend-btn"
+                                type="button"
+                            >
+                                Resend OTP
+                            </button>
+
+                            <p
+                                id="resendMessage"
+                                class="field-message"
+                                aria-live="polite"
+                            ></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     PASSWORD
+
+                     Locked until phone OTP is verified.
+                     ===================================== -->
+
+                <div
+                    id="passwordField"
+                    class="field"
+                    hidden
+                >
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrap has-toggle">
+
+                        <input
+                            id="registerPassword"
+                            name="password"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="Create a password"
+                            disabled
+                        >
+
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            data-password-toggle="registerPassword"
+                            aria-controls="registerPassword"
+                            aria-label="Show password"
+                            title="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <p class="field-message"></p>
+
+                </div>
+
+
+                <!-- =====================================
+                     PASSWORD STRENGTH
+
+                     Locked until phone OTP is verified.
+                     ===================================== -->
+
+                <div
+                    id="passwordMeter"
+                    class="password-meter"
+                    aria-live="polite"
+                    hidden
+                >
+
+                    <div class="meter-track">
+
+                        <div
+                            id="passwordMeterFill"
+                            class="meter-fill"
+                        ></div>
+
+                    </div>
+
+                    <p
+                        id="passwordMeterLabel"
+                        class="meter-label"
+                    >
+                        Use at least 8 characters.
+                    </p>
+
+                </div>
+
+
+                <!-- =====================================
+                     CONFIRM PASSWORD
+
+                     Locked until phone OTP is verified.
+                     ===================================== -->
+
+                <div
+                    id="confirmPasswordField"
+                    class="field"
+                    hidden
+                >
+
+                    <label for="confirmPassword">
+                        Confirm password
+                    </label>
+
+                    <div class="input-wrap has-toggle">
+
+                        <input
+                            id="confirmPassword"
+                            name="confirm_password"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="Repeat your password"
+                            disabled
+                        >
+
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            data-password-toggle="confirmPassword"
+                            aria-controls="confirmPassword"
+                            aria-label="Show password"
+                            title="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <p class="field-message"></p>
+
+                </div>
+
+
+                <!-- =====================================
+                     TERMS & CONDITIONS
+
+                     Locked until phone OTP is verified.
+                     ===================================== -->
+
+                <label
+                    id="termsField"
+                    class="checkbox-line"
+                    hidden
+                >
+
+                    <input
+                        id="terms"
+                        name="terms"
+                        type="checkbox"
+                        disabled
+                    >
+
+                    <span>
+                        I agree to the terms and conditions.
+                    </span>
+
+                </label>
+
+
+                <!-- =====================================
+                     CREATE ACCOUNT
+
+                     Locked until phone OTP is verified.
+                     ===================================== -->
+
+                <button
+                    id="registerSubmit"
+                    class="primary-btn"
+                    type="submit"
+                    hidden
+                    disabled
+                >
+                    Create account
+                </button>
+
+            </form>
+
+
+            <!-- =========================================
+                 LOGIN LINK
+                 ========================================= -->
+
+            <p class="auth-footer">
+
+                Already have an account?
+
+                <a
+                    class="text-link"
+                    href="{% url 'accounts:login' %}"
+                >
+                    Sign in
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/register.js' %}"></script>
+
+</body>
+</html>

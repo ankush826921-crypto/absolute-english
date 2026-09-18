@@ -20,6 +20,10 @@ urlpatterns = [
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
 
+    # American / British English
+    path('american/', views.american, name='american'),
+    path('british/', views.british, name='british'),
+
     # Apps
     path('accounts/', include('apps.accounts.urls')),
     path('programs/', include('apps.programs.urls')),

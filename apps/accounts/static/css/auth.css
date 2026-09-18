@@ -1,0 +1,951 @@
+/* ========================================
+   ABSOLUTE ENGLISH - ACCOUNT AUTH
+   Shared authentication styles
+   Light + Dark Theme Compatible
+======================================== */
+
+
+/* ========================================
+   GLOBAL RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+
+/* ========================================
+   LIGHT THEME VARIABLES
+======================================== */
+
+:root {
+    --primary-color: #6c5ce7;
+    --primary-dark: #5a4bd1;
+    --primary-light: #a29bfe;
+
+    --secondary-color: #00b894;
+    --secondary-dark: #00a381;
+
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-dark: #2d3436;
+
+    --gradient-start: #6c5ce7;
+    --gradient-end: #a29bfe;
+
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --text-white: #ffffff;
+
+    --border-color: #e9ecef;
+
+    --input-bg: #ffffff;
+    --card-bg: #ffffff;
+    --main-bg: #f8f9fa;
+
+    --placeholder-color: #636e72;
+
+    --shadow-color: rgba(0, 0, 0, 0.10);
+    --shadow-hover: rgba(108, 92, 231, 0.30);
+
+    --danger-color: #d63031;
+    --danger-bg: rgba(214, 48, 49, 0.08);
+    --danger-border: rgba(214, 48, 49, 0.20);
+
+    --success-bg: rgba(0, 184, 148, 0.08);
+    --success-border: rgba(0, 184, 148, 0.20);
+
+    --focus-ring: rgba(108, 92, 231, 0.12);
+    --transition-speed: 0.3s;
+}
+
+
+/* ========================================
+   DARK THEME VARIABLES
+======================================== */
+
+[data-theme="dark"] {
+    --bg-white: #1a1a2e;
+    --bg-light: #101426;
+    --bg-dark: #0b0d18;
+
+    --gradient-start: #5b4bd8;
+    --gradient-end: #8178ee;
+
+    --text-dark: #f1f1f5;
+    --text-light: #b7b8c7;
+    --text-white: #ffffff;
+
+    --border-color: #30304b;
+
+    --input-bg: #17172b;
+    --card-bg: #1d1d38;
+    --main-bg: #101426;
+
+    --placeholder-color: #85869a;
+
+    --shadow-color: rgba(0, 0, 0, 0.38);
+    --shadow-hover: rgba(162, 155, 254, 0.22);
+
+    --danger-color: #ff7675;
+    --danger-bg: rgba(255, 118, 117, 0.10);
+    --danger-border: rgba(255, 118, 117, 0.25);
+
+    --success-bg: rgba(0, 184, 148, 0.10);
+    --success-border: rgba(0, 184, 148, 0.25);
+
+    --focus-ring: rgba(162, 155, 254, 0.15);
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+
+    background: var(--main-bg);
+    color: var(--text-dark);
+
+    overflow-x: hidden;
+
+    transition:
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+
+/* ========================================
+   AUTH SHELL
+======================================== */
+
+.auth-shell {
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 42%)
+        1fr;
+
+    background: var(--main-bg);
+}
+
+
+/* ========================================
+   LEFT PANEL
+======================================== */
+
+.auth-aside {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+
+    padding: 48px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gradient-start) 0%,
+            var(--gradient-end) 100%
+        );
+
+    color: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* Decorative circles */
+
+.auth-aside::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    right: -140px;
+    top: 15%;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    pointer-events: none;
+}
+
+.auth-aside::after {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    left: -120px;
+    bottom: 10%;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   AUTH TOP BAR & THEME TOGGLE
+======================================== */
+
+.auth-top-bar {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.auth-aside .theme-toggle {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    transition: all var(--transition-speed) ease;
+}
+
+.auth-aside .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.32);
+    border-color: #ffffff;
+    transform: scale(1.08);
+}
+
+[data-theme="dark"] .auth-aside .theme-toggle {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffd166;
+}
+
+[data-theme="dark"] .auth-aside .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.28);
+    border-color: #ffffff;
+    color: #ffeaa7;
+}
+
+
+/* ========================================
+   BRAND
+======================================== */
+
+.brand {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: fit-content;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    transition:
+        opacity var(--transition-speed) ease;
+}
+
+.brand:hover {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: var(--primary-color);
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ========================================
+   ASIDE CONTENT
+======================================== */
+
+.aside-copy {
+    position: relative;
+    z-index: 2;
+
+    max-width: 480px;
+}
+
+.aside-kicker {
+    margin-bottom: 14px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.aside-copy h1 {
+    margin-bottom: 18px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.2rem, 4vw, 4rem);
+
+    line-height: 1.08;
+
+    font-weight: 800;
+}
+
+.aside-copy p {
+    max-width: 440px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+}
+
+.aside-note {
+    position: relative;
+    z-index: 2;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.85rem;
+}
+
+
+/* ========================================
+   MAIN AREA
+======================================== */
+
+.auth-main {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 48px 32px;
+
+    background: var(--main-bg);
+
+    transition:
+        background-color var(--transition-speed) ease;
+}
+
+
+/* ========================================
+   AUTH CARD
+======================================== */
+
+.auth-card {
+    width: min(100%, 520px);
+
+    padding: 42px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 35px var(--shadow-color);
+
+    transition:
+        background-color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease;
+}
+
+.auth-card:hover {
+    box-shadow:
+        0 18px 45px var(--shadow-color);
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.auth-card-header {
+    margin-bottom: 30px;
+}
+
+.auth-card-header h2 {
+    margin-bottom: 8px;
+
+    color: var(--text-dark);
+
+    font-size: 2rem;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+.auth-card-header p {
+    color: var(--text-light);
+
+    font-size: 0.95rem;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.field label {
+    color: var(--text-dark);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 12px 16px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--text-dark);
+
+    font: inherit;
+
+    transition:
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease,
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+.field textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--placeholder-color);
+
+    opacity: 0.75;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+    border-color: var(--primary-light);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 0 0 3px var(--focus-ring);
+}
+
+
+/* ========================================
+   INPUT WRAPPER
+======================================== */
+
+.input-wrap {
+    position: relative;
+}
+
+.input-wrap input {
+    padding-right: 78px;
+}
+
+
+/* ========================================
+   PASSWORD TOGGLE
+======================================== */
+
+.password-toggle {
+    position: absolute;
+
+    top: 50%;
+    right: 10px;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary-color);
+
+    font: inherit;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.password-toggle:hover {
+    color: var(--primary-dark);
+}
+
+[data-theme="dark"] .password-toggle {
+    color: var(--primary-light);
+}
+
+
+/* ========================================
+   FORM OPTIONS
+======================================== */
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    font-size: 0.85rem;
+}
+
+.form-options label,
+.checkbox-line {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--text-light);
+
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--primary-color);
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   LINKS
+======================================== */
+
+.text-link {
+    color: var(--primary-color);
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.text-link:hover {
+    color: var(--primary-dark);
+
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .text-link {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .text-link:hover {
+    color: #c4c0ff;
+}
+
+.button-link {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    font: inherit;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   PRIMARY BUTTON
+======================================== */
+
+.primary-btn {
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 50px;
+
+    padding: 12px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gradient-start),
+            var(--gradient-end)
+        );
+
+    color: #ffffff;
+
+    font: inherit;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease,
+        opacity var(--transition-speed) ease;
+}
+
+.primary-btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 20px var(--shadow-hover);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn:focus-visible {
+    outline: 3px solid var(--focus-ring);
+
+    outline-offset: 3px;
+}
+
+.primary-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.auth-footer {
+    margin-top: 24px;
+
+    color: var(--text-light);
+
+    text-align: center;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   FORM ALERTS
+======================================== */
+
+.form-alert {
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.5;
+}
+
+.form-alert:not(:empty) {
+    display: block;
+}
+
+.form-alert.error {
+    background: var(--danger-bg);
+
+    border: 1px solid var(--danger-border);
+
+    color: var(--danger-color);
+}
+
+.form-alert.success {
+    background: var(--success-bg);
+
+    border: 1px solid var(--success-border);
+
+    color: var(--secondary-color);
+}
+
+
+/* ========================================
+   FIELD VALIDATION
+======================================== */
+
+.field-message {
+    min-height: 18px;
+
+    color: var(--danger-color);
+
+    font-size: 0.78rem;
+}
+
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea {
+    border-color: var(--danger-color);
+}
+
+.field.invalid input:focus,
+.field.invalid select:focus,
+.field.invalid textarea:focus {
+    box-shadow:
+        0 0 0 3px var(--danger-bg);
+}
+
+.field.valid input,
+.field.valid select,
+.field.valid textarea {
+    border-color: var(--secondary-color);
+}
+
+
+/* ========================================
+   AUTOFILL - LIGHT + DARK
+======================================== */
+
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-dark);
+
+    -webkit-box-shadow:
+        0 0 0 1000px var(--input-bg) inset;
+
+    box-shadow:
+        0 0 0 1000px var(--input-bg) inset;
+
+    transition:
+        background-color 5000s ease-in-out 0s;
+}
+
+
+/* ========================================
+   SELECTION
+======================================== */
+
+::selection {
+    background: var(--primary-color);
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .auth-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-aside {
+        min-height: 330px;
+
+        padding: 32px;
+    }
+
+    .aside-copy h1 {
+        font-size: 2.5rem;
+    }
+
+    .auth-main {
+        padding: 40px 24px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .auth-aside {
+        min-height: 280px;
+
+        padding: 24px;
+    }
+
+    .aside-copy h1 {
+        font-size: 2rem;
+    }
+
+    .aside-copy p {
+        font-size: 0.9rem;
+    }
+
+    .auth-main {
+        padding: 24px 16px;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+
+        border-radius: 16px;
+    }
+
+    .auth-card-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-options {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+    }
+}

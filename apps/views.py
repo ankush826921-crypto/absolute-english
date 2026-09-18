@@ -26,3 +26,10 @@ def book_demo(request):
 
 def enroll(request):
     return render(request, 'enroll.html')
+
+def american(request):
+    return render (request,'american.html')
+
+def british(request):
+    return render(request,'british.html')
+

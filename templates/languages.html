@@ -1,143 +1,431 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Languages - Absolute English{% endblock %}
-{% block page_title %}Languages We Teach{% endblock %}
-{% block breadcrumb_current %}Languages{% endblock %}
+
+{% block page_title %}
+Languages We Teach
+{% endblock %}
+
+{% block breadcrumb_current %}
+Languages
+{% endblock %}
+
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/languages.css' %}">
 {% endblock %}
 
+
 {% block content %}
-<section class="py-5">
-    <div class="container">
-        <div class="section-header text-center">
-            <h2>Languages We Teach</h2>
-            <p class="text-muted">Choose from our wide range of language courses</p>
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="language-hero">
+
+    <div class="hero-content">
+
+        <span class="hero-label">
+            LEARN • SPEAK • CONNECT
+        </span>
+
+        <h1>
+            Master English.
+            <span>Speak With Confidence.</span>
+        </h1>
+
+        <p>
+            Build strong English communication skills with courses
+            designed around real conversations, pronunciation,
+            vocabulary and everyday communication.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#languages" class="primary-btn">
+                Explore Languages
+                <i class="fas fa-arrow-down"></i>
+            </a>
+
+            <a href="#why-us" class="secondary-btn">
+                Why Learn With Us?
+            </a>
+
         </div>
 
-        <!-- ===== HORIZONTAL SCROLL WRAPPER ===== -->
-        <div class="languages-scroll-wrapper">
-            <!-- Left Scroll Button -->
-            <button class="scroll-btn scroll-btn-left" id="scrollLeft">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+    </div>
 
-            <!-- Scrollable Container -->
-            <div class="languages-scroll-container" id="scrollContainer">
+</section>
 
-                <!-- English -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>English</h3>
-                    <p>Learn English and open doors to global opportunities.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+
+
+<!-- =====================================================
+     LANGUAGES SECTION
+===================================================== -->
+
+<section class="languages-section" id="languages">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-label">
+                OUR COURSES
+            </span>
+
+            <h2>
+                Languages We Teach
+            </h2>
+
+            <p>
+                Choose the English variant that fits your
+                communication, education and professional goals.
+            </p>
+
+        </div>
+
+
+        <div class="language-grid">
+
+
+            <!-- ==========================================
+                 AMERICAN ENGLISH
+            =========================================== -->
+
+            <div class="language-card">
+
+                <div class="country-logo">
+                    US
                 </div>
 
-                <!-- Spanish -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Spanish</h3>
-                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                <span class="language-type">
+                    UNITED STATES
+                </span>
+
+                <h3>
+                    American English
+                </h3>
+
+                <p>
+                    Learn the English commonly used across the
+                    United States with practical vocabulary,
+                    pronunciation and everyday expressions.
+                </p>
+
+
+                <div class="language-tags">
+
+                    <span>Speaking</span>
+                    <span>Vocabulary</span>
+                    <span>Pronunciation</span>
+
                 </div>
 
-                <!-- French -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>French</h3>
-                    <p>Learn French and open doors to the world of art and culture.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+
+                <a href="{% url 'american' %}" class="learn-btn">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 BRITISH ENGLISH
+            =========================================== -->
+
+            <div class="language-card">
+
+                <div class="country-logo">
+                UK
                 </div>
 
-                <!-- German -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>German</h3>
-                    <p>Learn German and build your future in Europe's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                <span class="language-type">
+                    UNITED KINGDOM
+                </span>
+
+                <h3>
+                    British English
+                </h3>
+
+                <p>
+                    Develop your British English with clear
+                    pronunciation, grammar, vocabulary and
+                    expressions used in the United Kingdom.
+                </p>
+
+
+                <div class="language-tags">
+
+                    <span>Speaking</span>
+                    <span>Grammar</span>
+                    <span>Vocabulary</span>
+
                 </div>
 
-                <!-- Italian -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Italian</h3>
-                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+
+                <a href="{% url 'british' %}" class="learn-btn">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY LEARN WITH US
+===================================================== -->
+
+<section class="why-section" id="why-us">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-label">
+                WHY ABSOLUTE ENGLISH
+            </span>
+
+            <h2>
+                Learn English For Real Life
+            </h2>
+
+            <p>
+                Go beyond textbooks and develop English skills
+                that you can use confidently in everyday situations.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <!-- Feature 1 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
                 </div>
 
-                <!-- Japanese -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Japanese</h3>
-                    <p>Learn Japanese and explore the rich culture and technology.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                <h3>
+                    Real Conversations
+                </h3>
+
+                <p>
+                    Practice natural conversations and learn how
+                    English is actually used in daily life.
+                </p>
+
+            </div>
+
+
+
+            <!-- Feature 2 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fas fa-volume-high"></i>
                 </div>
 
-                <!-- Mandarin -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Mandarin</h3>
-                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                <h3>
+                    Better Pronunciation
+                </h3>
+
+                <p>
+                    Improve your pronunciation, clarity and speaking
+                    confidence through focused practice.
+                </p>
+
+            </div>
+
+
+
+            <!-- Feature 3 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
                 </div>
 
-                <!-- Arabic -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Arabic</h3>
-                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                <h3>
+                    Practical Vocabulary
+                </h3>
+
+                <p>
+                    Build useful vocabulary for conversations,
+                    education, travel and professional situations.
+                </p>
+
+            </div>
+
+
+
+            <!-- Feature 4 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
                 </div>
 
-                <!-- Russian -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Russian</h3>
-                    <p>Learn Russian and explore the vast culture and literature.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
+                <h3>
+                    Confidence Building
+                </h3>
 
-                <!-- Portuguese -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
+                <p>
+                    Develop the confidence to express your thoughts
+                    clearly and communicate without hesitation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHAT YOU WILL LEARN
+===================================================== -->
+
+<section class="learning-section">
+
+    <div class="container">
+
+        <div class="learning-wrapper">
+
+
+            <div class="learning-content">
+
+                <span class="section-label">
+                    YOUR LEARNING JOURNEY
+                </span>
+
+                <h2>
+                    More Than Just Grammar
+                </h2>
+
+                <p>
+                    Our language programs focus on the skills you
+                    actually need to communicate effectively.
+                </p>
+
+                <div class="learning-list">
+
+                    <div class="learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Everyday English Communication</span>
                     </div>
-                    <h3>Portuguese</h3>
-                    <p>Learn Portuguese and explore Brazil and beyond.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+
+                    <div class="learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Speaking & Conversation Practice</span>
+                    </div>
+
+                    <div class="learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Grammar & Sentence Structure</span>
+                    </div>
+
+                    <div class="learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Vocabulary & Expressions</span>
+                    </div>
+
+                    <div class="learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Pronunciation & Fluency</span>
+                    </div>
+
                 </div>
 
             </div>
 
-            <!-- Right Scroll Button -->
-            <button class="scroll-btn scroll-btn-right" id="scrollRight">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+
+            <div class="learning-box">
+
+                <div class="learning-box-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+
+                <h3>
+                    Find Your English
+                </h3>
+
+                <p>
+                    Choose your preferred English variant and
+                    start building skills that last.
+                </p>
+
+                <a href="#languages" class="primary-btn">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
         </div>
+
     </div>
+
 </section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="cta-content">
+
+        <span class="section-label">
+            START YOUR JOURNEY
+        </span>
+
+        <h2>
+            Ready to Improve Your English?
+        </h2>
+
+        <p>
+            Choose your language course and take the next
+            step toward confident communication.
+        </p>
+
+        <a href="#languages" class="primary-btn">
+            Explore Courses
+            <i class="fas fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
 {% endblock %}
+
+
 
 {% block extra_js %}
 <script src="{% static 'js/languages.js' %}"></script>
 {% endblock %}
+

@@ -1,0 +1,1393 @@
+/* =========================================================
+   ABSOLUTE ENGLISH
+   BRITISH ENGLISH PAGE
+   UNIQUE PREFIX: be-
+   COMPACT SPACING + LARGER FONTS
+   Theme: Black / White / Blue
+========================================================= */
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.be-container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.be-primary-btn,
+.be-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 11px 19px;
+
+    border-radius: 7px;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+.be-primary-btn {
+    background: #1677ff;
+    border: 1px solid #1677ff;
+    color: #ffffff;
+}
+
+.be-primary-btn:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #050505;
+    transform: translateY(-3px);
+}
+
+.be-outline-btn {
+    background: transparent;
+    border: 1px solid #363636;
+    color: #ffffff;
+}
+
+.be-outline-btn:hover {
+    border-color: #1677ff;
+    color: #1677ff;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.be-hero {
+    padding: 48px 18px;
+
+    background:
+        radial-gradient(
+            circle at 18% 30%,
+            rgba(22, 119, 255, 0.14),
+            transparent 38%
+        ),
+        #050505;
+
+    border-bottom: 1px solid #202020;
+}
+
+.be-hero-inner {
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1.25fr 0.75fr;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+.be-hero-copy {
+    max-width: 720px;
+}
+
+.be-eyebrow,
+.be-section-tag {
+    display: inline-block;
+
+    color: #1677ff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.be-hero-copy h1 {
+    margin: 7px 0 12px;
+
+    color: #ffffff;
+
+    font-size: clamp(44px, 6vw, 68px);
+
+    line-height: 1.05;
+
+    font-weight: 850;
+}
+
+.be-hero-copy h1 span {
+    display: block;
+    color: #1677ff;
+}
+
+.be-hero-copy > p {
+    max-width: 650px;
+
+    margin: 0 0 18px;
+
+    color: #a0a0a0;
+
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.be-hero-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   HERO SIDE CARD
+========================================================= */
+
+.be-hero-side {
+    display: flex;
+    justify-content: center;
+}
+
+.be-flag-card {
+    width: 100%;
+    max-width: 320px;
+
+    padding: 25px 22px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #0b0b0b
+        );
+
+    border: 1px solid #292929;
+    border-radius: 17px;
+
+    transition: 0.35s ease;
+}
+
+.be-flag-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #1677ff;
+
+    box-shadow:
+        0 18px 40px rgba(22, 119, 255, 0.11);
+}
+
+.be-flag {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 11px;
+
+    background: #181818;
+
+    border: 1px solid #303030;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+}
+
+.be-flag-card > span {
+    color: #1677ff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.be-flag-card h3 {
+    margin: 6px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 27px;
+}
+
+.be-flag-card p {
+    margin: 0;
+
+    color: #8e8e8e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.be-intro {
+    padding: 48px 0;
+
+    background: #0b0b0b;
+}
+
+.be-intro-layout {
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+
+/* VISUAL */
+
+.be-intro-visual {
+    display: flex;
+
+    justify-content: center;
+}
+
+.be-visual-card {
+    width: 100%;
+    max-width: 370px;
+
+    padding: 25px 23px;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(22, 119, 255, 0.15),
+            transparent 42%
+        ),
+        #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 17px;
+}
+
+.be-visual-small {
+    color: #1677ff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.be-big-letter {
+    margin: 12px 0 2px;
+
+    color: #ffffff;
+
+    font-size: 70px;
+
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+.be-visual-card h3 {
+    margin: 8px 0 7px;
+
+    color: #ffffff;
+
+    font-size: 29px;
+}
+
+.be-visual-card p {
+    margin: 0;
+
+    color: #8e8e8e;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* INTRO CONTENT */
+
+.be-intro-content h2 {
+    margin: 6px 0 10px;
+
+    color: #ffffff;
+
+    font-size: 42px;
+
+    line-height: 1.1;
+}
+
+.be-intro-content > p {
+    max-width: 650px;
+
+    margin: 0 0 11px;
+
+    color: #999999;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+.be-mini-points {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top: 15px;
+}
+
+.be-mini-points div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #cfcfcf;
+
+    font-size: 14px;
+}
+
+.be-mini-points i {
+    color: #1677ff;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LEARNING
+========================================================= */
+
+.be-learning {
+    padding: 50px 0;
+
+    background: #050505;
+
+    border-top: 1px solid #202020;
+
+    border-bottom: 1px solid #202020;
+}
+
+.be-heading {
+    max-width: 700px;
+
+    margin: 0 auto 25px;
+
+    text-align: center;
+}
+
+.be-heading h2 {
+    margin: 6px 0 9px;
+
+    color: #ffffff;
+
+    font-size: 42px;
+
+    line-height: 1.1;
+}
+
+.be-heading p {
+    margin: 0;
+
+    color: #929292;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+.be-learning-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.be-learning-card {
+    padding: 19px 18px;
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    border-radius: 12px;
+
+    transition: 0.35s ease;
+}
+
+.be-learning-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #1677ff;
+
+    box-shadow:
+        0 14px 30px rgba(22, 119, 255, 0.08);
+}
+
+.be-card-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.be-card-number {
+    color: #4d4d4d;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+.be-learning-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(22, 119, 255, 0.10);
+
+    border: 1px solid rgba(22, 119, 255, 0.35);
+
+    border-radius: 9px;
+
+    color: #1677ff;
+
+    font-size: 17px;
+}
+
+.be-learning-card h3 {
+    margin: 0 0 6px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+}
+
+.be-learning-card p {
+    margin: 0 0 10px;
+
+    color: #8f8f8f;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.be-card-label {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    background: #181818;
+
+    border: 1px solid #303030;
+
+    border-radius: 20px;
+
+    color: #1677ff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DIFFERENCES
+========================================================= */
+
+.be-differences {
+    padding: 52px 0;
+
+    background: #0b0b0b;
+}
+
+.be-heading-left {
+    text-align: left;
+
+    margin-left: 0;
+}
+
+.be-difference-layout {
+    display: grid;
+
+    grid-template-columns: 1.05fr 0.95fr;
+
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+.be-difference-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.be-difference-item {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 32px 1fr 18px;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 14px;
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.be-difference-item:hover,
+.be-difference-active {
+    border-color: #1677ff;
+
+    transform: translateX(4px);
+}
+
+.be-difference-item > span {
+    color: #1677ff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+.be-difference-item strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    margin-bottom: 2px;
+}
+
+.be-difference-item small {
+    color: #777777;
+
+    font-size: 11px;
+}
+
+.be-difference-item > i {
+    color: #555555;
+
+    font-size: 10px;
+}
+
+.be-difference-active > i {
+    color: #1677ff;
+}
+
+
+/* DISPLAY */
+
+.be-difference-display {
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(22, 119, 255, 0.16),
+            transparent 45%
+        ),
+        #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 15px;
+}
+
+.be-display-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    background: #1677ff;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 21px;
+}
+
+.be-difference-display > span {
+    color: #1677ff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.be-difference-display h3 {
+    margin: 8px 0;
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+.be-difference-display p {
+    max-width: 430px;
+
+    margin: 0;
+
+    color: #909090;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+.be-display-line {
+    width: 50px;
+
+    height: 2px;
+
+    margin: 14px 0 8px;
+
+    background: #1677ff;
+}
+
+.be-difference-display small {
+    color: #656565;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   REAL WORLD
+========================================================= */
+
+.be-real-world {
+    padding: 50px 0;
+
+    background: #050505;
+
+    border-top: 1px solid #202020;
+}
+
+.be-world-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 11px;
+}
+
+.be-world-card {
+    padding: 19px 17px;
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    border-radius: 12px;
+
+    transition: 0.35s ease;
+}
+
+.be-world-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #1677ff;
+}
+
+.be-world-large {
+    grid-row: span 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.be-world-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 11px;
+
+    background: rgba(22, 119, 255, 0.10);
+
+    border: 1px solid rgba(22, 119, 255, 0.35);
+
+    border-radius: 9px;
+
+    color: #1677ff;
+
+    font-size: 17px;
+}
+
+.be-world-card span {
+    color: #1677ff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.be-world-card h3 {
+    margin: 6px 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+}
+
+.be-world-card p {
+    margin: 0;
+
+    color: #858585;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.be-journey {
+    padding: 52px 0;
+
+    background: #0b0b0b;
+}
+
+.be-journey-layout {
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 30px;
+
+    align-items: center;
+}
+
+.be-journey-card {
+    padding: 25px;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 15px;
+}
+
+.be-journey-card h2 {
+    margin: 6px 0 9px;
+
+    color: #ffffff;
+
+    font-size: 40px;
+
+    line-height: 1.1;
+}
+
+.be-journey-card > p {
+    margin: 0 0 19px;
+
+    color: #929292;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+.be-progress-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.be-progress-item > div:first-child {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 4px;
+
+    color: #cfcfcf;
+
+    font-size: 13px;
+}
+
+.be-progress-item strong {
+    color: #1677ff;
+}
+
+.be-progress-track {
+    height: 5px;
+
+    overflow: hidden;
+
+    background: #1c1c1c;
+
+    border-radius: 20px;
+}
+
+.be-progress-track span {
+    display: block;
+
+    height: 100%;
+
+    background: #1677ff;
+
+    border-radius: inherit;
+
+    animation: beProgress 1.4s ease;
+}
+
+@keyframes beProgress {
+
+    from {
+        width: 0;
+    }
+
+}
+
+
+/* JOURNEY SIDE */
+
+.be-journey-side {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.be-step {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px;
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    border-radius: 11px;
+
+    transition: 0.3s ease;
+}
+
+.be-step:hover {
+    border-color: #1677ff;
+
+    transform: translateX(4px);
+}
+
+.be-step > span {
+    color: #1677ff;
+
+    font-size: 21px;
+
+    font-weight: 900;
+}
+
+.be-step h3 {
+    margin: 0 0 3px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+.be-step p {
+    margin: 0;
+
+    color: #858585;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.be-cta {
+    padding: 52px 18px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(22, 119, 255, 0.15),
+            transparent 48%
+        ),
+        #090909;
+
+    border-top: 1px solid #202020;
+}
+
+.be-cta-content {
+    max-width: 680px;
+
+    margin: 0 auto;
+}
+
+.be-cta-content h2 {
+    margin: 6px 0 9px;
+
+    color: #ffffff;
+
+    font-size: 44px;
+
+    line-height: 1.1;
+}
+
+.be-cta-content p {
+    margin: 0 auto 18px;
+
+    color: #919191;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   WHITE MODE
+========================================================= */
+
+body.white-mode .be-hero {
+    background: #ffffff;
+    border-color: #e5e5e5;
+}
+
+body.white-mode .be-hero-copy h1 {
+    color: #111111;
+}
+
+body.white-mode .be-hero-copy > p {
+    color: #666666;
+}
+
+body.white-mode .be-outline-btn {
+    color: #111111;
+    border-color: #d5d5d5;
+}
+
+body.white-mode .be-flag-card,
+body.white-mode .be-visual-card {
+    background: #ffffff;
+    border-color: #dddddd;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+body.white-mode .be-flag {
+    background: #f5f5f5;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-flag-card h3,
+body.white-mode .be-visual-card h3 {
+    color: #111111;
+}
+
+body.white-mode .be-flag-card p,
+body.white-mode .be-visual-card p {
+    color: #666666;
+}
+
+body.white-mode .be-big-letter {
+    color: #111111;
+}
+
+
+/* INTRO */
+
+body.white-mode .be-intro {
+    background: #ffffff;
+}
+
+body.white-mode .be-intro-content h2 {
+    color: #111111;
+}
+
+body.white-mode .be-intro-content > p {
+    color: #666666;
+}
+
+body.white-mode .be-mini-points div {
+    color: #333333;
+}
+
+
+/* LEARNING */
+
+body.white-mode .be-learning {
+    background: #f7f7f7;
+    border-color: #e5e5e5;
+}
+
+body.white-mode .be-heading h2 {
+    color: #111111;
+}
+
+body.white-mode .be-heading p {
+    color: #666666;
+}
+
+body.white-mode .be-learning-card {
+    background: #ffffff;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-learning-card h3 {
+    color: #111111;
+}
+
+body.white-mode .be-learning-card p {
+    color: #666666;
+}
+
+body.white-mode .be-card-label {
+    background: #f5f5f5;
+    border-color: #dddddd;
+}
+
+
+/* DIFFERENCES */
+
+body.white-mode .be-differences {
+    background: #ffffff;
+}
+
+body.white-mode .be-difference-item {
+    background: #ffffff;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-difference-item strong {
+    color: #111111;
+}
+
+body.white-mode .be-difference-display {
+    background: #f8f8f8;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-difference-display h3 {
+    color: #111111;
+}
+
+body.white-mode .be-difference-display p {
+    color: #666666;
+}
+
+
+/* REAL WORLD */
+
+body.white-mode .be-real-world {
+    background: #f7f7f7;
+    border-color: #e5e5e5;
+}
+
+body.white-mode .be-world-card {
+    background: #ffffff;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-world-card h3 {
+    color: #111111;
+}
+
+body.white-mode .be-world-card p {
+    color: #666666;
+}
+
+
+/* JOURNEY */
+
+body.white-mode .be-journey {
+    background: #ffffff;
+}
+
+body.white-mode .be-journey-card,
+body.white-mode .be-step {
+    background: #ffffff;
+    border-color: #dddddd;
+}
+
+body.white-mode .be-journey-card h2,
+body.white-mode .be-step h3 {
+    color: #111111;
+}
+
+body.white-mode .be-journey-card > p,
+body.white-mode .be-step p {
+    color: #666666;
+}
+
+body.white-mode .be-progress-item > div:first-child {
+    color: #333333;
+}
+
+body.white-mode .be-progress-track {
+    background: #e5e5e5;
+}
+
+
+/* CTA */
+
+body.white-mode .be-cta {
+    background: #f7f7f7;
+    border-color: #e5e5e5;
+}
+
+body.white-mode .be-cta-content h2 {
+    color: #111111;
+}
+
+body.white-mode .be-cta-content p {
+    color: #666666;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .be-hero-inner,
+    .be-intro-layout,
+    .be-difference-layout,
+    .be-journey-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .be-hero-copy {
+        max-width: 760px;
+    }
+
+    .be-hero-side {
+        justify-content: flex-start;
+    }
+
+    .be-flag-card {
+        max-width: 390px;
+    }
+
+    .be-intro-visual {
+        order: 2;
+    }
+
+    .be-intro-content {
+        order: 1;
+    }
+
+    .be-learning-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .be-world-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .be-world-large {
+        grid-row: auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .be-container {
+        padding: 0 14px;
+    }
+
+    .be-hero {
+        padding: 42px 14px;
+    }
+
+    .be-hero-copy h1 {
+        font-size: 39px;
+    }
+
+    .be-hero-copy > p {
+        font-size: 14px;
+    }
+
+    .be-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .be-hero-actions .be-primary-btn,
+    .be-hero-actions .be-outline-btn {
+        width: 100%;
+    }
+
+    .be-intro,
+    .be-learning,
+    .be-differences,
+    .be-real-world,
+    .be-journey {
+        padding: 42px 0;
+    }
+
+    .be-intro-content h2,
+    .be-heading h2 {
+        font-size: 32px;
+    }
+
+    .be-learning-grid,
+    .be-world-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .be-heading-left {
+        text-align: center;
+    }
+
+    .be-difference-item:hover,
+    .be-difference-active {
+        transform: none;
+    }
+
+    .be-difference-display {
+        min-height: 260px;
+    }
+
+    .be-journey-card {
+        padding: 21px 17px;
+    }
+
+    .be-journey-card h2 {
+        font-size: 32px;
+    }
+
+    .be-cta {
+        padding: 42px 14px;
+    }
+
+    .be-cta-content h2 {
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .be-hero-copy h1 {
+        font-size: 35px;
+    }
+
+    .be-big-letter {
+        font-size: 58px;
+    }
+
+    .be-learning-card,
+    .be-world-card {
+        padding: 17px 14px;
+    }
+}

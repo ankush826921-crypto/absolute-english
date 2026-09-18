@@ -1,0 +1,349 @@
+/* ========================================
+   ABSOLUTE ENGLISH
+   REGISTER PAGE
+   Light + Dark Theme Compatible
+======================================== */
+
+
+/* ========================================
+   REGISTER CARD
+======================================== */
+
+.register-card {
+    max-width: 620px;
+}
+
+
+/* ========================================
+   FORM ROW
+======================================== */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+
+/* ========================================
+   PASSWORD METER
+======================================== */
+
+.password-meter {
+    margin-top: -8px;
+}
+
+.meter-track {
+    width: 100%;
+
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 50px;
+
+    background: var(--border-color);
+
+    transition:
+        background-color var(--transition-speed) ease;
+}
+
+.meter-fill {
+    width: 0;
+
+    height: 100%;
+
+    border-radius: 50px;
+
+    background: var(--meter-color, var(--primary-color));
+
+    transition:
+        width var(--transition-speed) ease,
+        background-color var(--transition-speed) ease;
+}
+
+.meter-label {
+    margin-top: 7px;
+
+    color: var(--text-light);
+
+    font-size: 0.78rem;
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+
+/* ========================================
+   TERMS
+======================================== */
+
+.checkbox-line {
+    margin-top: -2px;
+
+    font-size: 0.84rem;
+
+    line-height: 1.5;
+}
+
+.checkbox-line input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.checkbox-line a {
+    color: var(--primary-color);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.checkbox-line a:hover {
+    color: var(--primary-dark);
+
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   REGISTRATION OTP SECTION
+======================================== */
+
+.registration-otp-section {
+    width: 100%;
+
+    margin: 4px 0 8px;
+}
+
+.registration-otp-section[hidden] {
+    display: none !important;
+}
+
+
+/* ========================================
+   OTP CARD
+======================================== */
+
+.otp-card {
+    width: 100%;
+
+    padding: 28px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 20px;
+
+    background: var(--card-bg);
+
+    box-shadow:
+        0 8px 25px var(--shadow-color);
+
+    animation:
+        otpSlideDown 0.3s ease;
+
+    transition:
+        background-color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease,
+        box-shadow var(--transition-speed) ease;
+}
+
+.otp-card .auth-card-header {
+    margin-bottom: 20px;
+}
+
+.otp-card .auth-card-header h2 {
+    font-size: 1.35rem;
+}
+
+.otp-card .auth-card-header p {
+    margin-bottom: 0;
+
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   OTP INPUT
+======================================== */
+
+.otp-input {
+    width: 100%;
+
+    min-height: 50px;
+
+    text-align: center;
+
+    letter-spacing: 0.35rem;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    background: var(--input-bg);
+
+    color: var(--text-dark);
+}
+
+.otp-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+
+/* ========================================
+   OTP BUTTON
+======================================== */
+
+.otp-card .primary-btn {
+    width: 100%;
+}
+
+
+/* ========================================
+   RESEND OTP
+======================================== */
+
+.otp-resend {
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+}
+
+.otp-resend p {
+    margin-bottom: 7px;
+}
+
+.otp-resend-btn {
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    font-weight: 700;
+
+    color: var(--primary-color);
+
+    transition:
+        color var(--transition-speed) ease;
+}
+
+.otp-resend-btn:hover {
+    color: var(--primary-dark);
+
+    text-decoration: underline;
+}
+
+.otp-resend-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   OTP ANIMATION
+======================================== */
+
+@keyframes otpSlideDown {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ========================================
+   DARK THEME
+======================================== */
+
+[data-theme="dark"] .otp-card {
+    background: var(--card-bg);
+
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .otp-input {
+    background: var(--input-bg);
+
+    color: var(--text-dark);
+
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .otp-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+[data-theme="dark"] .otp-resend-btn {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .otp-resend-btn:hover {
+    color: #c4c0ff;
+}
+
+[data-theme="dark"] .checkbox-line a {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .checkbox-line a:hover {
+    color: #c4c0ff;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 650px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .otp-card {
+        padding: 22px 18px;
+    }
+
+    .otp-input {
+        letter-spacing: 0.25rem;
+
+        font-size: 1.1rem;
+    }
+
+    .register-card {
+        width: 100%;
+    }
+}
