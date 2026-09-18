@@ -1,0 +1,2322 @@
+/* =========================================================
+   ABSOLUTE ENGLISH - GALLERY
+   CLEAN COMPLETE CSS
+   Blue + Cyan Professional Theme
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GALLERY PAGE
+   ========================================================= */
+
+.gallery-page {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eef7ff 0%,
+            #f7fbff 42%,
+            #ffffff 100%
+        );
+}
+
+
+/* =========================================================
+   HERO BACKGROUND
+   ========================================================= */
+
+.gallery-page::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1150px;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(238, 247, 255, 0.18),
+            rgba(247, 251, 255, 0.35),
+            rgba(255, 255, 255, 0.78)
+        ),
+        url("/static/images/gallery/bluethemebg.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   SOFT OVERLAY
+   ========================================================= */
+
+.gallery-page::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.08) 45%,
+            rgba(255, 255, 255, 0.70) 100%
+        );
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   HERO / HEADER
+   ========================================================= */
+
+.gallery-header {
+    position: relative;
+
+    padding:
+        45px
+        25px
+        35px;
+
+    text-align: center;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.gallery-label-wrapper {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 28px;
+}
+
+
+.gallery-label-dot {
+    width: 13px;
+    height: 13px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #12b8d4;
+
+    box-shadow:
+        0 0 0 7px rgba(18, 184, 212, 0.12);
+}
+
+
+.gallery-label {
+    margin: 0;
+
+    color: #2563eb;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    letter-spacing: 6px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+   ========================================================= */
+
+.gallery-header h1 {
+    margin: 0 auto;
+
+    max-width: 1050px;
+
+    color: #0f172a;
+
+    font-size: clamp(58px, 7vw, 96px);
+
+    font-weight: 800;
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+}
+
+
+.gallery-header h1 span {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #2563eb;
+
+    font-size: clamp(58px, 7vw, 92px);
+
+    font-weight: 800;
+
+    font-style: italic;
+
+    line-height: 1.02;
+
+    letter-spacing: -4px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.gallery-subtitle {
+    max-width: 900px;
+
+    margin:
+        35px
+        auto
+        0;
+
+    color: #40516b;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   DECORATIVE LINE
+   ========================================================= */
+
+.gallery-header-line {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 32px;
+}
+
+
+.gallery-header-line span {
+    display: block;
+
+    width: 28px;
+    height: 4px;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+}
+
+
+.gallery-header-line span:nth-child(2) {
+    width: 65px;
+
+    background: #11b8d2;
+}
+
+
+.gallery-header-line span:nth-child(3) {
+    width: 28px;
+
+    background: #2563eb;
+}
+
+
+/* =========================================================
+   FILTER SECTION
+   ========================================================= */
+
+.gallery-filter-section {
+    position: relative;
+
+    width: 100%;
+
+    margin:
+        0
+        auto
+        50px;
+
+    padding:
+        10px
+        30px;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    z-index: 3;
+}
+
+
+.gallery-filter-section::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.05)
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   FILTER HEADING
+   ========================================================= */
+
+.gallery-filter-heading {
+    display: none;
+}
+
+
+/* =========================================================
+   FILTER BUTTONS
+   ========================================================= */
+
+.gallery-filters {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    z-index: 2;
+}
+
+
+.gallery-filter {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 54px;
+
+    padding:
+        0
+        26px;
+
+    border: 1px solid rgba(203, 213, 225, 0.85);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.gallery-filter:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    color: #2563eb;
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 12px 28px rgba(37, 99, 235, 0.15);
+}
+
+
+.gallery-filter.active {
+    background: #2563eb;
+
+    color: #ffffff;
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 10px 24px rgba(37, 99, 235, 0.30);
+}
+
+
+.gallery-filter.active:hover {
+    background: #1d4ed8;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   GALLERY GRID
+   ========================================================= */
+
+.gallery-grid {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        40px
+        25px
+        70px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.82),
+            #ffffff
+        );
+
+    border-radius:
+        34px
+        34px
+        0
+        0;
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   GALLERY CARD
+   ========================================================= */
+
+.gallery-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 28px rgba(15, 23, 42, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 18px 40px rgba(37, 99, 235, 0.16);
+}
+
+
+/* =========================================================
+   HIDDEN CARD
+   ========================================================= */
+
+.gallery-card.gallery-hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+   ========================================================= */
+
+.gallery-image-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    height: 240px;
+
+    overflow: hidden;
+
+    background: #e2e8f0;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.gallery-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    background: #f1f5f9;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.gallery-card:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.gallery-image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        rgba(15, 23, 42, 0.20);
+
+    transition:
+        opacity 0.3s ease;
+
+    z-index: 2;
+}
+
+
+.gallery-card:hover .gallery-image-overlay {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   VIEW IMAGE BUTTON
+   ========================================================= */
+
+.gallery-view-icon {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #2563eb;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20);
+
+    transform: scale(0.8);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+
+    z-index: 4;
+}
+
+
+.gallery-card:hover .gallery-view-icon {
+    transform: scale(1);
+}
+
+
+.gallery-view-icon:hover {
+    background: #2563eb;
+
+    color: #ffffff;
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   FEATURED BADGE
+   ========================================================= */
+
+.gallery-featured {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding:
+        0
+        16px;
+
+    border-radius: 24px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.30);
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.gallery-card-content {
+    padding: 20px;
+}
+
+
+.gallery-category {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 28px;
+
+    padding:
+        0
+        11px;
+
+    border-radius: 20px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+.gallery-card-content h2 {
+    margin:
+        12px
+        0
+        9px;
+
+    color: #0f172a;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+
+.gallery-card-content p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+   ========================================================= */
+
+.gallery-card-footer {
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+   ========================================================= */
+
+.gallery-explore-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #2563eb;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+
+.gallery-explore-text {
+    transition:
+        color 0.25s ease;
+}
+
+
+.gallery-arrow {
+    position: static !important;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+
+    margin: 0;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.gallery-explore-button:hover .gallery-arrow {
+    background: #2563eb;
+
+    color: #ffffff;
+
+    transform: translateX(4px);
+}
+
+
+.gallery-explore-button:hover .gallery-explore-text {
+    color: #1d4ed8;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.gallery-empty {
+    grid-column: 1 / -1;
+
+    padding:
+        80px
+        30px;
+
+    text-align: center;
+}
+
+
+.gallery-empty-icon {
+    width: 70px;
+    height: 70px;
+
+    margin:
+        0
+        auto
+        20px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+}
+
+
+.gallery-empty h2 {
+    margin:
+        0
+        0
+        10px;
+
+    color: #0f172a;
+
+    font-size: 28px;
+}
+
+
+.gallery-empty p {
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    color: #64748b;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FULL SCREEN LIGHTBOX
+   ========================================================= */
+
+.gallery-lightbox {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 20px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background:
+        rgba(2, 6, 23, 0.97) !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    overflow: hidden !important;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease !important;
+
+    z-index: 2147483647 !important;
+}
+
+
+.gallery-lightbox.active {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* =========================================================
+   LIGHTBOX CONTENT
+   IMPORTANT:
+   overflow MUST be visible so navigation buttons
+   cannot be clipped on mobile.
+   ========================================================= */
+
+.gallery-lightbox-content {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: 1400px !important;
+    max-height: 100vh !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    z-index: 2147483647 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   LIGHTBOX IMAGE
+   ========================================================= */
+
+.gallery-lightbox-content img {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    max-width: 88vw !important;
+    max-height: 78vh !important;
+
+    object-fit: contain !important;
+
+    margin: 0 auto !important;
+
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.60) !important;
+
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   LIGHTBOX CLOSE BUTTON
+   ========================================================= */
+
+.gallery-lightbox-close {
+    position: fixed !important;
+
+    top: 25px !important;
+    right: 30px !important;
+
+    width: 48px !important;
+    height: 48px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.45) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(0, 0, 0, 0.35) !important;
+
+    color: #ffffff !important;
+
+    font-size: 28px !important;
+
+    font-weight: 400 !important;
+
+    line-height: 1 !important;
+
+    cursor: pointer !important;
+
+    pointer-events: auto !important;
+
+    z-index: 2147483647 !important;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+
+.gallery-lightbox-close:hover {
+    background:
+        rgba(255, 255, 255, 0.25) !important;
+
+    transform:
+        rotate(90deg) !important;
+}
+
+
+/* =========================================================
+   PREVIOUS BUTTON
+   ========================================================= */
+
+.gallery-lightbox-prev {
+    position: fixed !important;
+
+    top: 50% !important;
+    left: 28px !important;
+
+    width: 52px !important;
+    height: 52px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(0, 0, 0, 0.30) !important;
+
+    color: #ffffff !important;
+
+    font-size: 32px !important;
+
+    line-height: 1 !important;
+
+    cursor: pointer !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateY(-50%) !important;
+
+    z-index: 2147483647 !important;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+
+.gallery-lightbox-prev:hover {
+    background: #2563eb !important;
+
+    transform:
+        translateY(-50%)
+        scale(1.08) !important;
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+   ========================================================= */
+
+.gallery-lightbox-next {
+    position: fixed !important;
+
+    top: 50% !important;
+    right: 28px !important;
+
+    width: 52px !important;
+    height: 52px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(0, 0, 0, 0.30) !important;
+
+    color: #ffffff !important;
+
+    font-size: 32px !important;
+
+    line-height: 1 !important;
+
+    cursor: pointer !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateY(-50%) !important;
+
+    z-index: 2147483647 !important;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+
+.gallery-lightbox-next:hover {
+    background: #2563eb !important;
+
+    transform:
+        translateY(-50%)
+        scale(1.08) !important;
+}
+
+
+/* =========================================================
+   LIGHTBOX CAPTION
+   ========================================================= */
+
+.gallery-lightbox-caption {
+    width: 100% !important;
+
+    margin-top: 15px !important;
+
+    text-align: center !important;
+
+    color: #ffffff !important;
+
+    z-index: 2147483647 !important;
+
+    pointer-events: none !important;
+}
+
+
+.gallery-lightbox-caption span {
+    display: inline-block !important;
+
+    margin-bottom: 6px !important;
+
+    color: #93c5fd !important;
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+
+    text-transform: uppercase !important;
+
+    letter-spacing: 1px !important;
+}
+
+
+.gallery-lightbox-caption h3 {
+    margin: 0 !important;
+
+    color: #ffffff !important;
+
+    font-size: 24px !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   RECOMMENDED IMAGES MODAL
+   ========================================================= */
+
+.gallery-recommended-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+}
+
+
+.gallery-recommended-modal.active {
+    display: flex;
+}
+
+
+.gallery-recommended-box {
+    width: min(1100px, 100%);
+
+    max-height: 90vh;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.30);
+}
+
+
+.gallery-recommended-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        20px
+        25px;
+
+    border-bottom:
+        1px solid #dddddd;
+}
+
+
+.gallery-recommended-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+}
+
+
+.gallery-recommended-header p {
+    margin:
+        5px
+        0
+        0;
+
+    color: #777777;
+
+    font-size: 14px;
+}
+
+
+.gallery-recommended-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+
+.gallery-recommended-close {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+.gallery-recommended-close:hover {
+    background: #dddddd;
+}
+
+
+.gallery-recommended-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    padding: 25px;
+
+    max-height:
+        calc(90vh - 110px);
+
+    overflow-y: auto;
+}
+
+
+.gallery-recommended-item {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.gallery-recommended-item:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.gallery-recommended-item img {
+    display: block;
+
+    width: 100%;
+
+    height: 200px;
+
+    object-fit: cover;
+}
+
+
+.gallery-recommended-item-title {
+    padding:
+        12px
+        15px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.gallery-recommended-item-category {
+    padding:
+        0
+        15px
+        12px;
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+.gallery-recommended-empty {
+    grid-column: 1 / -1;
+
+    padding:
+        50px
+        20px;
+
+    text-align: center;
+
+    color: #777777;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   LIGHTBOX - PREVENT PAGE SCROLL
+   ========================================================= */
+
+body:has(.gallery-lightbox.active) {
+    overflow: hidden !important;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.dark-mode .gallery-page,
+body.dark .gallery-page,
+html.dark-mode .gallery-page,
+html.dark .gallery-page,
+body[data-theme="dark"] .gallery-page,
+html[data-theme="dark"] .gallery-page {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0718 0%,
+            #120b24 45%,
+            #0f0a1c 100%
+        ) !important;
+}
+
+
+body.dark-mode .gallery-page::before,
+body.dark .gallery-page::before,
+html.dark-mode .gallery-page::before,
+html.dark .gallery-page::before,
+body[data-theme="dark"] .gallery-page::before,
+html[data-theme="dark"] .gallery-page::before {
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(8, 5, 20, 0.65),
+            rgba(12, 7, 25, 0.78),
+            rgba(10, 6, 20, 0.95)
+        ),
+        url("/static/images/gallery/bluethemebg.png") !important;
+}
+
+
+body.dark-mode .gallery-header h1,
+body.dark .gallery-header h1,
+html.dark-mode .gallery-header h1,
+html.dark .gallery-header h1,
+body[data-theme="dark"] .gallery-header h1,
+html[data-theme="dark"] .gallery-header h1 {
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-header h1 span,
+body.dark .gallery-header h1 span,
+html.dark-mode .gallery-header h1 span,
+html.dark .gallery-header h1 span,
+body[data-theme="dark"] .gallery-header h1 span,
+html[data-theme="dark"] .gallery-header h1 span {
+    color: #8b7cff !important;
+}
+
+
+body.dark-mode .gallery-label,
+body.dark .gallery-label,
+html.dark-mode .gallery-label,
+html.dark .gallery-label,
+body[data-theme="dark"] .gallery-label,
+html[data-theme="dark"] .gallery-label {
+    color: #8b7cff !important;
+}
+
+
+body.dark-mode .gallery-subtitle,
+body.dark .gallery-subtitle,
+html.dark-mode .gallery-subtitle,
+html.dark .gallery-subtitle,
+body[data-theme="dark"] .gallery-subtitle,
+html[data-theme="dark"] .gallery-subtitle {
+    color: #c4bdd8 !important;
+}
+
+
+body.dark-mode .gallery-filter,
+body.dark .gallery-filter,
+html.dark-mode .gallery-filter,
+html.dark .gallery-filter,
+body[data-theme="dark"] .gallery-filter,
+html[data-theme="dark"] .gallery-filter {
+    background:
+        rgba(35, 25, 55, 0.95) !important;
+
+    color: #ddd6fe !important;
+
+    border-color: #4c3b70 !important;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.35) !important;
+}
+
+
+body.dark-mode .gallery-filter:hover,
+body.dark .gallery-filter:hover,
+html.dark-mode .gallery-filter:hover,
+html.dark .gallery-filter:hover,
+body[data-theme="dark"] .gallery-filter:hover,
+html[data-theme="dark"] .gallery-filter:hover {
+    background: #30204d !important;
+
+    color: #a78bfa !important;
+
+    border-color: #7c5ac7 !important;
+}
+
+
+body.dark-mode .gallery-filter.active,
+body.dark .gallery-filter.active,
+html.dark-mode .gallery-filter.active,
+html.dark .gallery-filter.active,
+body[data-theme="dark"] .gallery-filter.active,
+html[data-theme="dark"] .gallery-filter.active {
+    background: #6d28d9 !important;
+
+    color: #ffffff !important;
+
+    border-color: #7c3aed !important;
+}
+
+
+body.dark-mode .gallery-grid,
+body.dark .gallery-grid,
+html.dark-mode .gallery-grid,
+html.dark .gallery-grid,
+body[data-theme="dark"] .gallery-grid,
+html[data-theme="dark"] .gallery-grid {
+    background:
+        linear-gradient(
+            180deg,
+            #100a1c 0%,
+            #0d0817 100%
+        ) !important;
+}
+
+
+body.dark-mode .gallery-card,
+body.dark .gallery-card,
+html.dark-mode .gallery-card,
+html.dark .gallery-card,
+body[data-theme="dark"] .gallery-card,
+html[data-theme="dark"] .gallery-card {
+    background: #181126 !important;
+
+    border-color: #302044 !important;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.40) !important;
+}
+
+
+body.dark-mode .gallery-card:hover,
+body.dark .gallery-card:hover,
+html.dark-mode .gallery-card:hover,
+html.dark .gallery-card:hover,
+body[data-theme="dark"] .gallery-card:hover,
+html[data-theme="dark"] .gallery-card:hover {
+    border-color: #6848a8 !important;
+
+    box-shadow:
+        0 18px 40px rgba(91, 58, 150, 0.30) !important;
+}
+
+
+body.dark-mode .gallery-image-wrapper,
+body.dark .gallery-image-wrapper,
+html.dark-mode .gallery-image-wrapper,
+html.dark .gallery-image-wrapper,
+body[data-theme="dark"] .gallery-image-wrapper,
+html[data-theme="dark"] .gallery-image-wrapper {
+    background: #211735 !important;
+}
+
+
+body.dark-mode .gallery-category,
+body.dark .gallery-category,
+html.dark-mode .gallery-category,
+html.dark .gallery-category,
+body[data-theme="dark"] .gallery-category,
+html[data-theme="dark"] .gallery-category {
+    background: #261946 !important;
+
+    color: #a78bfa !important;
+}
+
+
+body.dark-mode .gallery-card-content h2,
+body.dark .gallery-card-content h2,
+html.dark-mode .gallery-card-content h2,
+html.dark .gallery-card-content h2,
+body[data-theme="dark"] .gallery-card-content h2,
+html[data-theme="dark"] .gallery-card-content h2 {
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-card-content p,
+body.dark .gallery-card-content p,
+html.dark-mode .gallery-card-content p,
+html.dark .gallery-card-content p,
+body[data-theme="dark"] .gallery-card-content p,
+html[data-theme="dark"] .gallery-card-content p {
+    color: #b9afca !important;
+}
+
+
+body.dark-mode .gallery-card-footer,
+body.dark .gallery-card-footer,
+html.dark-mode .gallery-card-footer,
+html.dark .gallery-card-footer,
+body[data-theme="dark"] .gallery-card-footer,
+html[data-theme="dark"] .gallery-card-footer {
+    border-top-color: #332447 !important;
+}
+
+
+body.dark-mode .gallery-explore-button,
+body.dark .gallery-explore-button,
+html.dark-mode .gallery-explore-button,
+html.dark .gallery-explore-button,
+body[data-theme="dark"] .gallery-explore-button,
+html[data-theme="dark"] .gallery-explore-button {
+    color: #a78bfa !important;
+}
+
+
+body.dark-mode .gallery-arrow,
+body.dark .gallery-arrow,
+html.dark-mode .gallery-arrow,
+html.dark .gallery-arrow,
+body[data-theme="dark"] .gallery-arrow,
+html[data-theme="dark"] .gallery-arrow {
+    background: #291b46 !important;
+
+    color: #a78bfa !important;
+}
+
+
+body.dark-mode .gallery-explore-button:hover .gallery-arrow,
+body.dark .gallery-explore-button:hover .gallery-arrow,
+html.dark-mode .gallery-explore-button:hover .gallery-arrow,
+html.dark .gallery-explore-button:hover .gallery-arrow,
+body[data-theme="dark"] .gallery-explore-button:hover .gallery-arrow,
+html[data-theme="dark"] .gallery-explore-button:hover .gallery-arrow {
+    background: #7c3aed !important;
+
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-featured,
+body.dark .gallery-featured,
+html.dark-mode .gallery-featured,
+html.dark .gallery-featured,
+body[data-theme="dark"] .gallery-featured,
+html[data-theme="dark"] .gallery-featured {
+    background: #6d28d9 !important;
+}
+
+
+body.dark-mode .gallery-view-icon,
+body.dark .gallery-view-icon,
+html.dark-mode .gallery-view-icon,
+html.dark .gallery-view-icon,
+body[data-theme="dark"] .gallery-view-icon,
+html[data-theme="dark"] .gallery-view-icon {
+    background: #ffffff !important;
+
+    color: #6d28d9 !important;
+}
+
+
+body.dark-mode .gallery-empty h2,
+body.dark .gallery-empty h2,
+html.dark-mode .gallery-empty h2,
+html.dark .gallery-empty h2,
+body[data-theme="dark"] .gallery-empty h2,
+html[data-theme="dark"] .gallery-empty h2 {
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-empty p,
+body.dark .gallery-empty p,
+html.dark-mode .gallery-empty p,
+html.dark .gallery-empty p,
+body[data-theme="dark"] .gallery-empty p,
+html[data-theme="dark"] .gallery-empty p {
+    color: #b9afca !important;
+}
+
+
+body.dark-mode .gallery-recommended-box,
+body.dark .gallery-recommended-box,
+html.dark-mode .gallery-recommended-box,
+html.dark .gallery-recommended-box,
+body[data-theme="dark"] .gallery-recommended-box,
+html[data-theme="dark"] .gallery-recommended-box {
+    background: #181126 !important;
+
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-recommended-header,
+body.dark .gallery-recommended-header,
+html.dark-mode .gallery-recommended-header,
+html.dark .gallery-recommended-header,
+body[data-theme="dark"] .gallery-recommended-header,
+html[data-theme="dark"] .gallery-recommended-header {
+    border-bottom-color: #332447 !important;
+}
+
+
+body.dark-mode .gallery-recommended-header h2,
+body.dark .gallery-recommended-header h2,
+html.dark-mode .gallery-recommended-header h2,
+html.dark .gallery-recommended-header h2,
+body[data-theme="dark"] .gallery-recommended-header h2,
+html[data-theme="dark"] .gallery-recommended-header h2 {
+    color: #ffffff !important;
+}
+
+
+body.dark-mode .gallery-recommended-header p,
+body.dark .gallery-recommended-header p,
+html.dark-mode .gallery-recommended-header p,
+html.dark .gallery-recommended-header p,
+body[data-theme="dark"] .gallery-recommended-header p,
+html[data-theme="dark"] .gallery-recommended-header p {
+    color: #aaa0bd !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .gallery-header {
+        padding-top: 100px;
+    }
+
+    .gallery-header h1 {
+        font-size: 70px;
+    }
+
+    .gallery-header h1 span {
+        font-size: 68px;
+    }
+
+    .gallery-subtitle {
+        font-size: 18px;
+    }
+
+    .gallery-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .gallery-filter {
+        padding-left: 21px;
+        padding-right: 21px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .gallery-page::before {
+        height: 700px;
+
+        background-position:
+            center top;
+
+        background-size:
+            auto 700px;
+    }
+
+
+    .gallery-page::after {
+        height: 700px;
+    }
+
+
+    .gallery-header {
+        padding:
+            45px
+            18px
+            25px;
+    }
+
+
+    .gallery-label-wrapper {
+        margin-bottom: 22px;
+    }
+
+
+    .gallery-label {
+        font-size: 12px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .gallery-label-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+
+    .gallery-header h1 {
+        font-size: 48px;
+
+        line-height: 1.02;
+
+        letter-spacing: -2px;
+    }
+
+
+    .gallery-header h1 span {
+        margin-top: 6px;
+
+        font-size: 45px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .gallery-subtitle {
+        margin-top: 25px;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    .gallery-header-line {
+        margin-top: 25px;
+    }
+
+
+    /* =====================================================
+       MOBILE FILTERS
+       ===================================================== */
+
+    .gallery-filter-section {
+        width: 92%;
+
+        margin:
+            0
+            auto
+            35px;
+
+        padding: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+    }
+
+
+    .gallery-filter-section::before {
+        display: none;
+    }
+
+
+    .gallery-filters {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding: 0 !important;
+
+        background: transparent !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+    }
+
+
+    .gallery-filter {
+        min-height: 46px;
+
+        padding:
+            0
+            16px;
+
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       MOBILE GRID
+       ===================================================== */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        padding:
+            35px
+            18px
+            60px;
+
+        border-radius:
+            24px
+            24px
+            0
+            0;
+    }
+
+
+    .gallery-image-wrapper {
+        height: 250px;
+    }
+
+
+    .gallery-card-content {
+        padding: 20px;
+    }
+
+
+    .gallery-card-content h2 {
+        font-size: 21px;
+    }
+
+
+    /* =====================================================
+       MOBILE LIGHTBOX
+       ===================================================== */
+
+    .gallery-lightbox {
+        position: fixed !important;
+
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+
+        width: 100vw !important;
+        height: 100vh !important;
+
+        padding: 10px !important;
+
+        overflow: hidden !important;
+
+        z-index: 2147483647 !important;
+    }
+
+
+    /*
+       IMPORTANT:
+       Do NOT clip the lightbox content.
+       This allows the previous/next buttons
+       to remain visible above the image.
+    */
+
+    .gallery-lightbox-content {
+        position: relative !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+
+        overflow: visible !important;
+
+        z-index: 2147483647 !important;
+    }
+
+
+    /*
+       Smaller mobile image.
+       This creates enough space for the
+       left and right navigation buttons.
+    */
+
+    .gallery-lightbox-content img {
+        max-width: 84vw !important;
+
+        max-height: 76vh !important;
+
+        border-radius: 8px !important;
+    }
+
+
+    /* =====================================================
+       MOBILE CLOSE BUTTON
+       ===================================================== */
+
+    .gallery-lightbox-close {
+        position: fixed !important;
+
+        top: 12px !important;
+        right: 12px !important;
+
+        width: 44px !important;
+        height: 44px !important;
+
+        font-size: 27px !important;
+
+        z-index: 2147483647 !important;
+
+        pointer-events: auto !important;
+    }
+
+
+    /* =====================================================
+       MOBILE PREVIOUS BUTTON
+       ===================================================== */
+
+    .gallery-lightbox-prev {
+        position: fixed !important;
+
+        top: 50% !important;
+        left: 10px !important;
+
+        width: 44px !important;
+        height: 44px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border:
+            1px solid rgba(255, 255, 255, 0.45) !important;
+
+        border-radius: 50% !important;
+
+        background:
+            rgba(0, 0, 0, 0.55) !important;
+
+        color: #ffffff !important;
+
+        font-size: 30px !important;
+
+        line-height: 1 !important;
+
+        cursor: pointer !important;
+
+        pointer-events: auto !important;
+
+        transform:
+            translateY(-50%) !important;
+
+        z-index: 2147483647 !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+
+    .gallery-lightbox-prev:hover {
+        background: #2563eb !important;
+
+        transform:
+            translateY(-50%)
+            scale(1.05) !important;
+    }
+
+
+    /* =====================================================
+       MOBILE NEXT BUTTON
+       ===================================================== */
+
+    .gallery-lightbox-next {
+        position: fixed !important;
+
+        top: 50% !important;
+        right: 10px !important;
+
+        width: 44px !important;
+        height: 44px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        border:
+            1px solid rgba(255, 255, 255, 0.45) !important;
+
+        border-radius: 50% !important;
+
+        background:
+            rgba(0, 0, 0, 0.55) !important;
+
+        color: #ffffff !important;
+
+        font-size: 30px !important;
+
+        line-height: 1 !important;
+
+        cursor: pointer !important;
+
+        pointer-events: auto !important;
+
+        transform:
+            translateY(-50%) !important;
+
+        z-index: 2147483647 !important;
+
+        visibility: visible !important;
+
+        opacity: 1 !important;
+    }
+
+
+    .gallery-lightbox-next:hover {
+        background: #2563eb !important;
+
+        transform:
+            translateY(-50%)
+            scale(1.05) !important;
+    }
+
+
+    /* =====================================================
+       MOBILE CAPTION
+       ===================================================== */
+
+    .gallery-lightbox-caption {
+        position: relative !important;
+
+        width: 90% !important;
+
+        margin-top: 12px !important;
+
+        z-index: 2147483647 !important;
+    }
+
+
+    .gallery-lightbox-caption h3 {
+        font-size: 18px !important;
+    }
+
+
+    .gallery-lightbox-caption span {
+        font-size: 11px !important;
+    }
+
+
+    /* =====================================================
+       MOBILE RECOMMENDED
+       ===================================================== */
+
+    .gallery-recommended-modal {
+        padding: 15px;
+    }
+
+
+    .gallery-recommended-grid {
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+
+    .gallery-recommended-header {
+        padding: 18px;
+    }
+
+
+    .gallery-recommended-header h2 {
+        font-size: 20px;
+    }
+
+
+    .gallery-recommended-item img {
+        height: 180px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .gallery-header {
+        padding-top: 40px;
+    }
+
+
+    .gallery-header h1 {
+        font-size: 40px;
+    }
+
+
+    .gallery-header h1 span {
+        font-size: 37px;
+    }
+
+
+    .gallery-subtitle {
+        font-size: 14px;
+    }
+
+
+    .gallery-filter {
+        min-height: 42px;
+
+        padding:
+            0
+            14px;
+
+        font-size: 12px;
+    }
+
+
+    .gallery-image-wrapper {
+        height: 220px;
+    }
+
+
+    /* EXTRA SMALL SCREEN LIGHTBOX FIX */
+
+    .gallery-lightbox-content img {
+        max-width: 80vw !important;
+
+        max-height: 72vh !important;
+    }
+
+
+    .gallery-lightbox-prev {
+        left: 6px !important;
+
+        width: 40px !important;
+        height: 40px !important;
+
+        font-size: 27px !important;
+    }
+
+
+    .gallery-lightbox-next {
+        right: 6px !important;
+
+        width: 40px !important;
+        height: 40px !important;
+
+        font-size: 27px !important;
+    }
+
+
+    .gallery-lightbox-close {
+        top: 10px !important;
+        right: 10px !important;
+
+        width: 40px !important;
+        height: 40px !important;
+
+        font-size: 24px !important;
+    }
+}
