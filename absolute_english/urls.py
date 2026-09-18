@@ -15,7 +15,7 @@ urlpatterns = [
     path('courses/', views.courses, name='courses'),
     path('about/', views.about, name='about'),
     path('trainers/', views.trainers, name='trainers'),
-    path('gallery/', views.gallery, name='gallery'),
+    path('gallery/', include('apps.gallery.urls')),
     path('contact/', views.contact, name='contact'),
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
