@@ -17,7 +17,7 @@ urlpatterns = [
     path('trainers/', views.trainers, name='trainers'),
     path('gallery/', views.gallery, name='gallery'),
     path('contact/', views.contact, name='contact'),
-    path('book-demo/', views.book_demo, name='book-demo'),
+    path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
 
     # American / British English
