@@ -17,8 +17,12 @@ urlpatterns = [
     path('trainers/', views.trainers, name='trainers'),
     path('gallery/', views.gallery, name='gallery'),
     path('contact/', views.contact, name='contact'),
-    path('book-demo/', views.book_demo, name='book_demo'),
+    path('book-demo/', views.book_demo, name='book-demo'),
     path('enroll/', views.enroll, name='enroll'),
+
+    # American / British English
+    path('american/', views.american, name='american'),
+    path('british/', views.british, name='british'),
 
     # Apps
     path('accounts/', include('apps.accounts.urls')),
