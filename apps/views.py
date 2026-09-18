@@ -7,7 +7,7 @@ def languages(request):
     return render(request, 'languages.html')
 
 def courses(request):
-    return render(request, 'courses.html')
+    return render(request, 'program_list.html')
 
 def about(request):
     return render(request, 'about.html')
