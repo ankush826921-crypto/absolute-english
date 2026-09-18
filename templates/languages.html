@@ -1,20 +1,16 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Languages - Absolute English{% endblock %}
+{% block title %}
+    Languages - Absolute English
+{% endblock %}
 
 {% block page_title %}
-Languages We Teach
+    Languages We Teach
 {% endblock %}
 
 {% block breadcrumb_current %}
-Languages
-{% endblock %}
-
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/languages.css' %}">
+    Languages
 {% endblock %}
 
 
@@ -24,11 +20,10 @@ Languages
      HERO SECTION
 ===================================================== -->
 
-<section class="language-hero">
+<section class="aex-language-hero">
+    <div class="aex-hero-content">
 
-    <div class="hero-content">
-
-        <span class="hero-label">
+        <span class="aex-hero-label">
             LEARN • SPEAK • CONNECT
         </span>
 
@@ -43,389 +38,222 @@ Languages
             vocabulary and everyday communication.
         </p>
 
-        <div class="hero-actions">
-
-            <a href="#languages" class="primary-btn">
+        <div class="aex-hero-actions">
+            <a href="#languages" class="aex-primary-btn">
                 Explore Languages
                 <i class="fas fa-arrow-down"></i>
             </a>
-
-            <a href="#why-us" class="secondary-btn">
+            <a href="#why-us" class="aex-secondary-btn">
                 Why Learn With Us?
             </a>
-
         </div>
 
     </div>
-
 </section>
-
 
 
 <!-- =====================================================
      LANGUAGES SECTION
 ===================================================== -->
 
-<section class="languages-section" id="languages">
+<section class="aex-languages-section" id="languages">
+    <div class="aex-container">
 
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-label">
-                OUR COURSES
-            </span>
-
-            <h2>
-                Languages We Teach
-            </h2>
-
+        <div class="aex-section-header">
+            <span class="aex-section-label">OUR COURSES</span>
+            <h2>Languages We Teach</h2>
             <p>
                 Choose the English variant that fits your
                 communication, education and professional goals.
             </p>
-
         </div>
 
+        <div class="aex-language-grid">
 
-        <div class="language-grid">
-
-
-            <!-- ==========================================
-                 AMERICAN ENGLISH
-            =========================================== -->
-
-            <div class="language-card">
-
-                <div class="country-logo">
-                    US
-                </div>
-
-                <span class="language-type">
-                    UNITED STATES
-                </span>
-
-                <h3>
-                    American English
-                </h3>
-
+            <!-- American English -->
+            <div class="aex-language-card">
+                <div class="aex-country-logo">US</div>
+                <span class="aex-language-type">UNITED STATES</span>
+                <h3>American English</h3>
                 <p>
                     Learn the English commonly used across the
                     United States with practical vocabulary,
                     pronunciation and everyday expressions.
                 </p>
-
-
-                <div class="language-tags">
-
+                <div class="aex-language-tags">
                     <span>Speaking</span>
                     <span>Vocabulary</span>
                     <span>Pronunciation</span>
-
                 </div>
-
-
-                <a href="{% url 'american' %}" class="learn-btn">
+                <a href="{% url 'american' %}" class="aex-learn-btn">
                     Learn More
                     <i class="fas fa-arrow-right"></i>
                 </a>
-
             </div>
 
-
-
-            <!-- ==========================================
-                 BRITISH ENGLISH
-            =========================================== -->
-
-            <div class="language-card">
-
-                <div class="country-logo">
-                UK
-                </div>
-
-                <span class="language-type">
-                    UNITED KINGDOM
-                </span>
-
-                <h3>
-                    British English
-                </h3>
-
+            <!-- British English -->
+            <div class="aex-language-card">
+                <div class="aex-country-logo">UK</div>
+                <span class="aex-language-type">UNITED KINGDOM</span>
+                <h3>British English</h3>
                 <p>
                     Develop your British English with clear
                     pronunciation, grammar, vocabulary and
                     expressions used in the United Kingdom.
                 </p>
-
-
-                <div class="language-tags">
-
+                <div class="aex-language-tags">
                     <span>Speaking</span>
                     <span>Grammar</span>
                     <span>Vocabulary</span>
-
                 </div>
-
-
-                <a href="{% url 'british' %}" class="learn-btn">
+                <a href="{% url 'british' %}" class="aex-learn-btn">
                     Learn More
                     <i class="fas fa-arrow-right"></i>
                 </a>
-
             </div>
 
         </div>
-
     </div>
-
 </section>
-
 
 
 <!-- =====================================================
      WHY LEARN WITH US
 ===================================================== -->
 
-<section class="why-section" id="why-us">
+<section class="aex-why-section" id="why-us">
+    <div class="aex-container">
 
-    <div class="container">
-
-        <div class="section-header">
-
-            <span class="section-label">
-                WHY ABSOLUTE ENGLISH
-            </span>
-
-            <h2>
-                Learn English For Real Life
-            </h2>
-
+        <div class="aex-section-header">
+            <span class="aex-section-label">WHY ABSOLUTE ENGLISH</span>
+            <h2>Learn English For Real Life</h2>
             <p>
                 Go beyond textbooks and develop English skills
                 that you can use confidently in everyday situations.
             </p>
-
         </div>
 
+        <div class="aex-features-grid">
 
-        <div class="features-grid">
-
-
-            <!-- Feature 1 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-
-                <h3>
-                    Real Conversations
-                </h3>
-
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-comments"></i></div>
+                <h3>Real Conversations</h3>
                 <p>
                     Practice natural conversations and learn how
                     English is actually used in daily life.
                 </p>
-
             </div>
 
-
-
-            <!-- Feature 2 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <i class="fas fa-volume-high"></i>
-                </div>
-
-                <h3>
-                    Better Pronunciation
-                </h3>
-
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-volume-high"></i></div>
+                <h3>Better Pronunciation</h3>
                 <p>
                     Improve your pronunciation, clarity and speaking
                     confidence through focused practice.
                 </p>
-
             </div>
 
-
-
-            <!-- Feature 3 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <i class="fas fa-book-open"></i>
-                </div>
-
-                <h3>
-                    Practical Vocabulary
-                </h3>
-
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-book-open"></i></div>
+                <h3>Practical Vocabulary</h3>
                 <p>
                     Build useful vocabulary for conversations,
                     education, travel and professional situations.
                 </p>
-
             </div>
 
-
-
-            <!-- Feature 4 -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-
-                <h3>
-                    Confidence Building
-                </h3>
-
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-user-check"></i></div>
+                <h3>Confidence Building</h3>
                 <p>
                     Develop the confidence to express your thoughts
                     clearly and communicate without hesitation.
                 </p>
-
             </div>
 
         </div>
-
     </div>
-
 </section>
-
 
 
 <!-- =====================================================
      WHAT YOU WILL LEARN
 ===================================================== -->
 
-<section class="learning-section">
+<section class="aex-learning-section">
+    <div class="aex-container">
 
-    <div class="container">
+        <div class="aex-learning-wrapper">
 
-        <div class="learning-wrapper">
-
-
-            <div class="learning-content">
-
-                <span class="section-label">
-                    YOUR LEARNING JOURNEY
-                </span>
-
-                <h2>
-                    More Than Just Grammar
-                </h2>
-
+            <div class="aex-learning-content">
+                <span class="aex-section-label">YOUR LEARNING JOURNEY</span>
+                <h2>More Than Just Grammar</h2>
                 <p>
                     Our language programs focus on the skills you
                     actually need to communicate effectively.
                 </p>
 
-                <div class="learning-list">
-
-                    <div class="learning-item">
+                <div class="aex-learning-list">
+                    <div class="aex-learning-item">
                         <i class="fas fa-check"></i>
                         <span>Everyday English Communication</span>
                     </div>
-
-                    <div class="learning-item">
+                    <div class="aex-learning-item">
                         <i class="fas fa-check"></i>
                         <span>Speaking & Conversation Practice</span>
                     </div>
-
-                    <div class="learning-item">
+                    <div class="aex-learning-item">
                         <i class="fas fa-check"></i>
                         <span>Grammar & Sentence Structure</span>
                     </div>
-
-                    <div class="learning-item">
+                    <div class="aex-learning-item">
                         <i class="fas fa-check"></i>
                         <span>Vocabulary & Expressions</span>
                     </div>
-
-                    <div class="learning-item">
+                    <div class="aex-learning-item">
                         <i class="fas fa-check"></i>
                         <span>Pronunciation & Fluency</span>
                     </div>
-
                 </div>
-
             </div>
 
-
-            <div class="learning-box">
-
-                <div class="learning-box-icon">
+            <div class="aex-learning-box">
+                <div class="aex-learning-box-icon">
                     <i class="fas fa-language"></i>
                 </div>
-
-                <h3>
-                    Find Your English
-                </h3>
-
+                <h3>Find Your English</h3>
                 <p>
                     Choose your preferred English variant and
                     start building skills that last.
                 </p>
-
-                <a href="#languages" class="primary-btn">
+                <a href="#languages" class="aex-primary-btn">
                     Get Started
                     <i class="fas fa-arrow-right"></i>
                 </a>
-
             </div>
 
-
         </div>
-
     </div>
-
 </section>
-
 
 
 <!-- =====================================================
      FINAL CTA
 ===================================================== -->
 
-<section class="cta-section">
-
-    <div class="cta-content">
-
-        <span class="section-label">
-            START YOUR JOURNEY
-        </span>
-
-        <h2>
-            Ready to Improve Your English?
-        </h2>
-
+<section class="aex-cta-section">
+    <div class="aex-cta-content">
+        <span class="aex-section-label">START YOUR JOURNEY</span>
+        <h2>Ready to Improve Your English?</h2>
         <p>
             Choose your language course and take the next
             step toward confident communication.
         </p>
-
-        <a href="#languages" class="primary-btn">
+        <a href="#languages" class="aex-primary-btn">
             Explore Courses
             <i class="fas fa-arrow-right"></i>
         </a>
-
     </div>
-
 </section>
 
 {% endblock %}
-
-
-
-{% block extra_js %}
-<script src="{% static 'js/languages.js' %}"></script>
-{% endblock %}
-
