@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Book a Trial Class | Absolute English
+{% endblock title %}
+
+{% block content %}
+
+<div class="faculty-page faculty-trial-page">
+
+    <section class="faculty-shell">
+
+        <!-- Back to Faculty -->
+        <a
+            href="{% url 'faculty' %}"
+            class="faculty-back-link"
+        >
+            ← Back to Faculty
+        </a>
+
+        <div class="faculty-trial-layout">
+
+            <!-- Left: Introduction -->
+            <div class="faculty-trial-intro">
+
+                <p class="faculty-eyebrow">
+                    Start speaking with confidence
+                </p>
+
+                <h1>
+                    Book your trial class
+                </h1>
+
+                <p>
+                    Meet your instructor, discuss your goals,
+                    and receive a personalized learning recommendation.
+                </p>
+
+                <!-- Selected Teacher -->
+                <div
+                    class="faculty-trial-teacher"
+                    id="trial-teacher"
+                    hidden
+                >
+                </div>
+
+            </div>
+
+
+            <!-- Right: Trial Form -->
+            <div class="faculty-form-panel">
+
+                <!-- Loading -->
+                <div
+                    class="faculty-state faculty-state--loading"
+                    id="trial-loading"
+                    role="status"
+                >
+                    <span class="faculty-spinner"></span>
+                    Preparing your form…
+                </div>
+
+
+                <!-- Form -->
+                <form
+                    id="trial-form"
+                    novalidate
+                    hidden
+                >
+
+                    <!-- Form Status -->
+                    <div
+                        class="faculty-form__notice"
+                        id="form-status"
+                        role="status"
+                        hidden
+                    >
+                    </div>
+
+
+                    <div class="faculty-form__grid">
+
+                        <!-- Student Name -->
+                        <label>
+                            Student name
+
+                            <input
+                                name="student_name"
+                                required
+                                autocomplete="name"
+                            >
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Email -->
+                        <label>
+                            Email
+
+                            <input
+                                name="email"
+                                type="email"
+                                required
+                                autocomplete="email"
+                            >
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Phone -->
+                        <label>
+                            Phone
+
+                            <input
+                                name="phone"
+                                type="tel"
+                                required
+                                autocomplete="tel"
+                            >
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Language -->
+                        <label>
+                            Selected language
+
+                            <select
+                                name="language"
+                                id="trial-language"
+                                required
+                            >
+                            </select>
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Instructor -->
+                        <label>
+                            Instructor
+
+                            <select
+                                name="teacher"
+                                id="trial-teacher-select"
+                                required
+                            >
+                            </select>
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Course -->
+                        <label>
+                            Course
+
+                            <select
+                                name="course"
+                                id="trial-course"
+                                required
+                            >
+                                <option value="">
+                                    Select a course
+                                </option>
+                            </select>
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Preferred Date -->
+                        <label>
+                            Preferred date
+
+                            <input
+                                name="preferred_date"
+                                type="date"
+                                required
+                            >
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+
+                        <!-- Preferred Time -->
+                        <label>
+                            Preferred time
+
+                            <select
+                                name="preferred_time"
+                                required
+                            >
+                                <option value="">
+                                    Select a time
+                                </option>
+
+                                <option>09:00 AM</option>
+                                <option>11:00 AM</option>
+                                <option>03:00 PM</option>
+                                <option>05:00 PM</option>
+                                <option>07:00 PM</option>
+                            </select>
+
+                            <span class="faculty-field-error"></span>
+                        </label>
+
+                    </div>
+
+
+                    <!-- Message -->
+                    <label>
+                        Message
+
+                        <textarea
+                            name="message"
+                            rows="4"
+                            placeholder="Tell us what you'd like to achieve (optional)"
+                        ></textarea>
+                    </label>
+
+
+                    <!-- Submit -->
+                    <button
+                        class="faculty-button faculty-button--primary faculty-form__submit"
+                        type="submit"
+                    >
+                        <span>Book my trial class</span>
+                    </button>
+
+                </form>
+
+
+                <!-- Error State -->
+                <div
+                    class="faculty-state faculty-state--error"
+                    id="trial-error"
+                    hidden
+                >
+                    <h2>
+                        We couldn’t prepare the form
+                    </h2>
+
+                    <p>
+                        Please return to the faculty page and try again.
+                    </p>
+
+                    <a
+                        class="faculty-button faculty-button--primary"
+                        href="{% url 'faculty' %}"
+                    >
+                        Browse Faculty
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+
+{% endblock content %}
