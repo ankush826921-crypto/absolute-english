@@ -1,248 +1,1272 @@
-/* ========================================
-   LANGUAGES PAGE - COMPLETE CSS
-   ======================================== */
 
-/* ===== HORIZONTAL SCROLL WRAPPER ===== */
-.languages-scroll-wrapper {
+/* =========================================================
+   ABSOLUTE ENGLISH
+   LANGUAGES PAGE
+   Theme: Black / White / Blue
+========================================================= */
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.languages-section,
+.why-section,
+.learning-section,
+.language-hero,
+.cta-section {
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+
+}
+
+
+.container {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.language-hero {
+
     position: relative;
-    padding: 0 50px;
-}
 
-/* ===== SCROLL CONTAINER ===== */
-.languages-scroll-container {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    padding: 20px 10px;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    cursor: grab;
-}
+    padding: 75px 20px 80px;
 
-.languages-scroll-container:active {
-    cursor: grabbing;
-}
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(22, 119, 255, 0.12),
+            transparent 35%
+        ),
+        #050505;
 
-.languages-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-/* ===== LANGUAGE CARD ===== */
-.language-scroll-card {
-    flex: 0 0 280px;
-    min-width: 280px;
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 20px;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e9ecef;
+
+    border-bottom: 1px solid #202020;
+
 }
 
-.language-scroll-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
-    border-color: #6c5ce7;
+
+.hero-content {
+
+    max-width: 780px;
+
+    margin: 0 auto;
+
 }
 
-.language-scroll-card .language-icon {
-    margin-bottom: 1.5rem;
+
+.hero-label {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 7px 15px;
+
+    border: 1px solid #1677ff;
+
+    border-radius: 30px;
+
+    color: #1677ff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
 }
 
-.language-scroll-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: #2d3436;
+
+.hero-content h1 {
+
+    margin: 0 auto 18px;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 6vw, 64px);
+
+    font-weight: 850;
+
+    line-height: 1.08;
+
 }
 
-.language-scroll-card p {
-    color: #636e72;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+
+.hero-content h1 span {
+
+    display: block;
+
+    color: #1677ff;
+
 }
 
-/* ===== SCROLL BUTTONS ===== */
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid #6c5ce7;
+
+.hero-content p {
+
+    max-width: 650px;
+
+    margin: 0 auto 28px;
+
+    color: #a5a5a5;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+
+.primary-btn,
+.secondary-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+
+}
+
+
+.primary-btn {
+
+    background: #1677ff;
+
+    border: 1px solid #1677ff;
+
+    color: #ffffff;
+
+}
+
+
+.primary-btn:hover {
+
     background: #ffffff;
-    color: #6c5ce7;
+
+    border-color: #ffffff;
+
+    color: #050505;
+
+    transform: translateY(-2px);
+
+}
+
+
+.secondary-btn {
+
+    background: transparent;
+
+    border: 1px solid #3a3a3a;
+
+    color: #ffffff;
+
+}
+
+
+.secondary-btn:hover {
+
+    border-color: #1677ff;
+
+    color: #1677ff;
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+
+    max-width: 700px;
+
+    margin: 0 auto 38px;
+
+    text-align: center;
+
+}
+
+
+.section-label {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #1677ff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+}
+
+
+.section-header h2 {
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+}
+
+
+.section-header p {
+
+    margin: 0 auto;
+
+    max-width: 620px;
+
+    color: #999999;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   LANGUAGES
+========================================================= */
+
+.languages-section {
+
+    padding: 70px 0;
+
+    background: #050505;
+
+}
+
+
+/* Two compact cards */
+
+.language-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(250px, 310px));
+
+    justify-content: center;
+
+    gap: 120px;
+
+}
+
+
+/* =========================================================
+   LANGUAGE CARD
+========================================================= */
+
+.language-card {
+
+    position: relative;
+
+    padding: 28px 22px;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+.language-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 3px;
+
+    background: #1677ff;
+
+    transform: scaleX(0);
+
+    transition: transform 0.35s ease;
+
+}
+
+
+.language-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #1677ff;
+
+    box-shadow:
+        0 18px 40px rgba(22, 119, 255, 0.12);
+
+}
+
+
+.language-card:hover::before {
+
+    transform: scaleX(1);
+
+}
+
+
+/* =========================================================
+   FLAG
+========================================================= */
+
+.country-logo {
+    width: 68px;
+    height: 68px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    font-size: 18px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-}
-
-.scroll-btn:hover {
-    background: #6c5ce7;
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.scroll-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-.scroll-btn:disabled:hover {
-    transform: translateY(-50%) scale(1);
-    background: #ffffff;
-    color: #6c5ce7;
-}
-
-.scroll-btn-left {
-    left: 0;
-}
-
-.scroll-btn-right {
-    right: 0;
-}
-
-/* ===== SECTION HEADER ===== */
-.section-header {
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
+    margin: 0 auto 14px;
+    background: #181818;
+    border: 1px solid #303030;
+    border-radius: 50%;
+    color: #1677ff;
+    font-size: 22px;
     font-weight: 800;
-    color: #2d3436;
-    position: relative;
-    display: inline-block;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
 }
 
-.section-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-    border-radius: 2px;
+
+.language-card:hover .country-logo {
+
+    transform: scale(1.08);
+
+    border-color: #1677ff;
+
 }
 
-.section-header .text-muted {
-    color: #636e72;
-    font-size: 1.1rem;
+
+/* =========================================================
+   LANGUAGE TEXT
+========================================================= */
+
+.language-type {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1677ff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
 }
 
-/* ========================================
-   DARK MODE SUPPORT
-   ======================================== */
 
-[data-theme="dark"] .language-scroll-card {
-    background: #1e1e3a;
-    border-color: #2d2d4a;
+.language-card h3 {
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 750;
+
 }
 
-[data-theme="dark"] .language-scroll-card h3 {
-    color: #e8e8e8;
+
+.language-card p {
+
+    max-width: 270px;
+
+    margin: 0 auto 17px;
+
+    color: #999999;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
 }
 
-[data-theme="dark"] .language-scroll-card p {
-    color: #b0b0b0;
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.language-tags {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+
 }
 
-[data-theme="dark"] .scroll-btn {
-    background: #1a1a2e;
-    border-color: #a29bfe;
-    color: #a29bfe;
+
+.language-tags span {
+
+    padding: 5px 9px;
+
+    background: #181818;
+
+    border: 1px solid #303030;
+
+    border-radius: 20px;
+
+    color: #c5c5c5;
+
+    font-size: 9px;
+
 }
 
-[data-theme="dark"] .scroll-btn:hover {
-    background: #a29bfe;
-    color: #1a1a2e;
+
+/* =========================================================
+   LEARN MORE
+========================================================= */
+
+.learn-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 9px 17px;
+
+    background: #1677ff;
+
+    border: 1px solid #1677ff;
+
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+
 }
 
-[data-theme="dark"] .section-header h2 {
-    color: #e8e8e8;
+
+.learn-btn:hover {
+
+    background: #ffffff;
+
+    color: #050505;
+
 }
 
-[data-theme="dark"] .section-header .text-muted {
-    color: #b0b0b0;
+
+.learn-btn i {
+
+    transition: transform 0.3s ease;
+
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
 
-@media (max-width: 992px) {
-    .language-scroll-card {
-        flex: 0 0 250px;
-        min-width: 250px;
+.learn-btn:hover i {
+
+    transform: translateX(4px);
+
+}
+
+
+/* =========================================================
+   WHY SECTION
+========================================================= */
+
+.why-section {
+
+    padding: 70px 0;
+
+    background: #0b0b0b;
+
+    border-top: 1px solid #1d1d1d;
+
+    border-bottom: 1px solid #1d1d1d;
+
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.feature-card {
+
+    padding: 24px 18px;
+
+    background: #111111;
+
+    border: 1px solid #282828;
+
+    border-radius: 13px;
+
+    transition: 0.3s ease;
+
+}
+
+
+.feature-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #1677ff;
+
+}
+
+
+.feature-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    background: rgba(22, 119, 255, 0.10);
+
+    border: 1px solid rgba(22, 119, 255, 0.35);
+
+    border-radius: 9px;
+
+    color: #1677ff;
+
+    font-size: 16px;
+
+}
+
+
+.feature-card h3 {
+
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+}
+
+
+.feature-card p {
+
+    margin: 0;
+
+    color: #888888;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   LEARNING SECTION
+========================================================= */
+
+.learning-section {
+
+    padding: 75px 0;
+
+    background: #050505;
+
+}
+
+
+.learning-wrapper {
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 0.8fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+}
+
+
+.learning-content h2 {
+
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+}
+
+
+.learning-content > p {
+
+    max-width: 560px;
+
+    margin: 0 0 25px;
+
+    color: #999999;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   LEARNING LIST
+========================================================= */
+
+.learning-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.learning-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    color: #d0d0d0;
+
+    font-size: 13px;
+
+}
+
+
+.learning-item i {
+
+    width: 22px;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #1677ff;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   LEARNING BOX
+========================================================= */
+
+.learning-box {
+
+    padding: 35px 28px;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+}
+
+
+.learning-box-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 17px;
+
+    background: #1677ff;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 23px;
+
+}
+
+
+.learning-box h3 {
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+}
+
+
+.learning-box p {
+
+    margin: 0 auto 20px;
+
+    color: #999999;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+
+    padding: 75px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(22, 119, 255, 0.13),
+            transparent 45%
+        ),
+        #0a0a0a;
+
+    border-top: 1px solid #202020;
+
+    text-align: center;
+
+}
+
+
+.cta-content {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+}
+
+
+.cta-content h2 {
+
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+}
+
+
+.cta-content p {
+
+    margin: 0 auto 22px;
+
+    color: #999999;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   WHITE MODE
+========================================================= */
+
+body.white-mode .language-hero {
+
+    background: #ffffff;
+
+    border-color: #e5e5e5;
+
+}
+
+
+body.white-mode .hero-content h1 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .hero-content p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .secondary-btn {
+
+    color: #111111;
+
+    border-color: #d5d5d5;
+
+}
+
+
+body.white-mode .languages-section {
+
+    background: #ffffff;
+
+}
+
+
+body.white-mode .section-header h2 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .section-header p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .language-card {
+
+    background: #ffffff;
+
+    border-color: #dddddd;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+
+}
+
+
+body.white-mode .country-logo {
+
+    background: #f5f5f5;
+
+    border-color: #dddddd;
+
+}
+
+
+body.white-mode .language-card h3 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .language-card p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .language-tags span {
+
+    background: #f5f5f5;
+
+    border-color: #dddddd;
+
+    color: #444444;
+
+}
+
+
+body.white-mode .why-section {
+
+    background: #f7f7f7;
+
+    border-color: #e5e5e5;
+
+}
+
+
+body.white-mode .feature-card {
+
+    background: #ffffff;
+
+    border-color: #dddddd;
+
+}
+
+
+body.white-mode .feature-card h3 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .feature-card p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .learning-section {
+
+    background: #ffffff;
+
+}
+
+
+body.white-mode .learning-content h2 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .learning-content > p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .learning-item {
+
+    color: #333333;
+
+}
+
+
+body.white-mode .learning-box {
+
+    background: #ffffff;
+
+    border-color: #dddddd;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+
+}
+
+
+body.white-mode .learning-box h3 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .learning-box p {
+
+    color: #666666;
+
+}
+
+
+body.white-mode .cta-section {
+
+    background: #f7f7f7;
+
+    border-color: #e5e5e5;
+
+}
+
+
+body.white-mode .cta-content h2 {
+
+    color: #111111;
+
+}
+
+
+body.white-mode .cta-content p {
+
+    color: #666666;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
     }
+
+
+    .learning-wrapper {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .learning-box {
+
+        max-width: 450px;
+
+        margin: 0 auto;
+
+        width: 100%;
+
+    }
+
 }
 
-@media (max-width: 768px) {
-    .languages-scroll-wrapper {
-        padding: 0 40px;
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding: 0 15px;
+
     }
 
-    .language-scroll-card {
-        flex: 0 0 230px;
-        min-width: 230px;
-        padding: 1.5rem;
+
+    .language-hero {
+
+        padding: 55px 15px 60px;
+
     }
 
-    .language-scroll-card h3 {
-        font-size: 1.1rem;
+
+    .hero-content h1 {
+
+        font-size: 36px;
+
     }
 
-    .language-scroll-card p {
-        font-size: 0.85rem;
+
+    .hero-content p {
+
+        font-size: 13px;
+
     }
 
-    .scroll-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
+
+    .hero-actions {
+
+        flex-direction: column;
+
     }
+
+
+    .primary-btn,
+    .secondary-btn {
+
+        width: 100%;
+
+        max-width: 260px;
+
+    }
+
+
+    .languages-section,
+    .why-section,
+    .learning-section {
+
+        padding: 55px 0;
+
+    }
+
 
     .section-header h2 {
-        font-size: 2rem;
+
+        font-size: 28px;
+
     }
+
+
+    /* Cards one below another */
+
+    .language-grid {
+
+        grid-template-columns: 1fr;
+
+        max-width: 320px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .learning-content h2 {
+
+        font-size: 28px;
+
+    }
+
+
+    .cta-section {
+
+        padding: 60px 15px;
+
+    }
+
+
+    .cta-content h2 {
+
+        font-size: 28px;
+
+    }
+
 }
 
-@media (max-width: 576px) {
-    .languages-scroll-wrapper {
-        padding: 0 30px;
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-content h1 {
+
+        font-size: 32px;
+
     }
 
-    .language-scroll-card {
-        flex: 0 0 200px;
-        min-width: 200px;
-        padding: 1.2rem;
+
+    .language-card {
+
+        padding: 24px 18px;
+
     }
 
-    .language-scroll-card h3 {
-        font-size: 1rem;
-    }
-
-    .language-scroll-card p {
-        font-size: 0.8rem;
-    }
-
-    .scroll-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
-    }
-
-    .section-header h2 {
-        font-size: 1.6rem;
-    }
 }
