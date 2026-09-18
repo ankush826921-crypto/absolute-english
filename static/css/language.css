@@ -1,1272 +1,902 @@
+/* =========================================================
+   ABSOLUTE ENGLISH — LANGUAGES PAGE
+   UNIQUE PREFIX: aex-
+   Dark (Black + Blue) ↔ Light (White + Blue Headings)
+   Footer excluded
+   ========================================================= */
+
 
 /* =========================================================
-   ABSOLUTE ENGLISH
-   LANGUAGES PAGE
-   Theme: Black / White / Blue
-========================================================= */
+   1. THEME VARIABLES — unique prefix aex-
+   ========================================================= */
 
+:root {
+    --aex-bg-main:        #050505;
+    --aex-bg-soft:        #0b0b0b;
+    --aex-bg-card:        #101010;
+    --aex-bg-elevated:    #181818;
 
-/* =========================================================
-   COMMON
-========================================================= */
+    --aex-text-main:      #ffffff;
+    --aex-text-body:      #a5a5a5;
+    --aex-text-muted:     #999999;
+    --aex-text-soft:      #c5c5c5;
 
-.languages-section,
-.why-section,
-.learning-section,
-.language-hero,
-.cta-section {
+    --aex-border-main:    #292929;
+    --aex-border-soft:    #303030;
+    --aex-border-section: #1d1d1d;
 
-    transition:
-        background 0.4s ease,
-        color 0.4s ease;
+    --aex-accent:         #1677ff;
+    --aex-accent-hover:   #ffffff;
+    --aex-accent-text:    #ffffff;
 
+    --aex-shadow-card:    0 18px 40px rgba(22, 119, 255, 0.12);
+    --aex-shadow-btn:     0 4px 15px rgba(22, 119, 255, 0.3);
+
+    --aex-ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+    --aex-ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.white-mode {
+    --aex-bg-main:        #ffffff;
+    --aex-bg-soft:        #f7f7f7;
+    --aex-bg-card:        #ffffff;
+    --aex-bg-elevated:    #f5f5f5;
+
+    --aex-text-main:      #1677ff;
+    --aex-text-body:      #555555;
+    --aex-text-muted:     #666666;
+    --aex-text-soft:      #333333;
+
+    --aex-border-main:    #dddddd;
+    --aex-border-soft:    #e5e5e5;
+    --aex-border-section: #e5e5e5;
+
+    --aex-accent:         #1677ff;
+    --aex-accent-hover:   #111111;
+    --aex-accent-text:    #ffffff;
+
+    --aex-shadow-card:    0 18px 40px rgba(0, 0, 0, 0.08);
+    --aex-shadow-btn:     0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 
-.container {
+/* =========================================================
+   2. GLOBAL RESET + SMOOTH SCROLL
+   ========================================================= */
 
+* { box-sizing: border-box; }
+
+html {
+    background: var(--aex-bg-main);
+    scroll-behavior: smooth;
+    transition: background 0.5s var(--aex-ease-smooth);
+}
+
+body {
+    margin: 0;
+    background: var(--aex-bg-main);
+    color: var(--aex-text-body);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.5s var(--aex-ease-smooth),
+                color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-container {
     width: 100%;
-
     max-width: 1100px;
-
     margin: 0 auto;
-
     padding: 0 20px;
-
 }
 
 
 /* =========================================================
-   HERO
-========================================================= */
-
-.language-hero {
-
-    position: relative;
-
-    padding: 75px 20px 80px;
-
-    background:
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(22, 119, 255, 0.12),
-            transparent 35%
-        ),
-        #050505;
-
-    text-align: center;
-
-    border-bottom: 1px solid #202020;
-
-}
-
-
-.hero-content {
-
-    max-width: 780px;
-
-    margin: 0 auto;
-
-}
-
-
-.hero-label {
-
-    display: inline-block;
-
-    margin-bottom: 18px;
-
-    padding: 7px 15px;
-
-    border: 1px solid #1677ff;
-
-    border-radius: 30px;
-
-    color: #1677ff;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-}
-
-
-.hero-content h1 {
-
-    margin: 0 auto 18px;
-
-    color: #ffffff;
-
-    font-size: clamp(38px, 6vw, 64px);
-
-    font-weight: 850;
-
-    line-height: 1.08;
-
-}
-
-
-.hero-content h1 span {
-
-    display: block;
-
-    color: #1677ff;
-
-}
-
-
-.hero-content p {
-
-    max-width: 650px;
-
-    margin: 0 auto 28px;
-
-    color: #a5a5a5;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.hero-actions {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-}
-
-
-.primary-btn,
-.secondary-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 9px;
-
-    padding: 11px 18px;
-
-    border-radius: 7px;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    transition: 0.3s ease;
-
-}
-
-
-.primary-btn {
-
-    background: #1677ff;
-
-    border: 1px solid #1677ff;
-
-    color: #ffffff;
-
-}
-
-
-.primary-btn:hover {
-
-    background: #ffffff;
-
-    border-color: #ffffff;
-
-    color: #050505;
-
-    transform: translateY(-2px);
-
-}
-
-
-.secondary-btn {
-
-    background: transparent;
-
-    border: 1px solid #3a3a3a;
-
-    color: #ffffff;
-
-}
-
-
-.secondary-btn:hover {
-
-    border-color: #1677ff;
-
-    color: #1677ff;
-
-}
-
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-header {
-
-    max-width: 700px;
-
-    margin: 0 auto 38px;
-
-    text-align: center;
-
-}
-
-
-.section-label {
-
-    display: inline-block;
-
-    margin-bottom: 10px;
-
-    color: #1677ff;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 1.8px;
-
-}
-
-
-.section-header h2 {
-
-    margin: 0 0 10px;
-
-    color: #ffffff;
-
-    font-size: 34px;
-
-    font-weight: 800;
-
-}
-
-
-.section-header p {
-
-    margin: 0 auto;
-
-    max-width: 620px;
-
-    color: #999999;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-   LANGUAGES
-========================================================= */
-
-.languages-section {
-
-    padding: 70px 0;
-
-    background: #050505;
-
-}
-
-
-/* Two compact cards */
-
-.language-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(250px, 310px));
-
-    justify-content: center;
-
-    gap: 120px;
-
-}
-
-
-/* =========================================================
-   LANGUAGE CARD
-========================================================= */
-
-.language-card {
-
-    position: relative;
-
-    padding: 28px 22px;
-
-    background: #101010;
-
-    border: 1px solid #292929;
-
-    border-radius: 16px;
-
-    text-align: center;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-
-}
-
-
-.language-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 3px;
-
-    background: #1677ff;
-
-    transform: scaleX(0);
-
-    transition: transform 0.35s ease;
-
-}
-
-
-.language-card:hover {
-
-    transform: translateY(-7px);
-
-    border-color: #1677ff;
-
-    box-shadow:
-        0 18px 40px rgba(22, 119, 255, 0.12);
-
-}
-
-
-.language-card:hover::before {
-
-    transform: scaleX(1);
-
-}
-
-
-/* =========================================================
-   FLAG
-========================================================= */
-
-.country-logo {
-    width: 68px;
-    height: 68px;
+   3. THEME TOGGLE BUTTON — Premium
+   ========================================================= */
+
+#aexModeToggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 54px;
+    height: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 14px;
-    background: #181818;
-    border: 1px solid #303030;
+    border: 2px solid var(--aex-accent);
     border-radius: 50%;
+    background: var(--aex-bg-card);
+    color: var(--aex-accent);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+    transition: background 0.3s var(--aex-ease-smooth),
+                color 0.3s var(--aex-ease-smooth),
+                border-color 0.3s var(--aex-ease-smooth),
+                transform 0.4s var(--aex-ease-bounce),
+                box-shadow 0.4s var(--aex-ease-smooth);
+}
+
+#aexModeToggle:hover {
+    background: var(--aex-accent);
+    color: var(--aex-bg-main);
+    transform: scale(1.12) rotate(20deg);
+    box-shadow: 0 10px 40px var(--aex-shadow-btn);
+}
+
+#aexModeToggle:active {
+    transform: scale(0.94) rotate(20deg);
+}
+
+#aexModeToggle i {
+    transition: transform 0.5s var(--aex-ease-bounce);
+}
+
+#aexModeToggle:hover i {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   4. HERO SECTION
+   ========================================================= */
+
+.aex-language-hero {
+    position: relative;
+    padding: 90px 20px 95px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(22, 119, 255, 0.14), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(22, 119, 255, 0.06), transparent 40%),
+        var(--aex-bg-main);
+    text-align: center;
+    border-bottom: 1px solid var(--aex-border-section);
+    overflow: hidden;
+    transition: background 0.5s var(--aex-ease-smooth),
+                border-color 0.5s var(--aex-ease-smooth);
+}
+
+body.white-mode .aex-language-hero {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(22, 119, 255, 0.06), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(22, 119, 255, 0.03), transparent 40%),
+        var(--aex-bg-main);
+}
+
+.aex-hero-content {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    animation: aexHeroFadeIn 0.9s var(--aex-ease-smooth);
+}
+
+@keyframes aexHeroFadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.aex-hero-label {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 8px 18px;
+    border: 1px solid var(--aex-accent);
+    border-radius: 40px;
+    color: var(--aex-accent);
+    background: transparent;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    transition: all 0.4s var(--aex-ease-smooth);
+    cursor: default;
+}
+
+.aex-hero-label:hover {
+    background: var(--aex-accent);
+    color: var(--aex-accent-text);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--aex-shadow-btn);
+}
+
+.aex-hero-content h1 {
+    margin: 0 auto 22px;
+    color: var(--aex-text-main);
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 850;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-hero-content h1 span {
+    display: block;
+    color: var(--aex-accent);
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-hero-content p {
+    max-width: 650px;
+    margin: 0 auto 34px;
+    color: var(--aex-text-body);
+    font-size: 15px;
+    line-height: 1.85;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   5. BUTTONS
+   ========================================================= */
+
+.aex-hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.aex-primary-btn,
+.aex-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 24px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition: all 0.35s var(--aex-ease-smooth);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.aex-primary-btn {
+    background: var(--aex-accent);
+    border: 1px solid var(--aex-accent);
+    color: var(--aex-accent-text);
+}
+
+.aex-primary-btn:hover {
+    background: var(--aex-accent-hover);
+    border-color: var(--aex-accent-hover);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--aex-shadow-btn);
+}
+
+.aex-secondary-btn {
+    background: transparent;
+    border: 1px solid var(--aex-border-soft);
+    color: var(--aex-text-body);
+}
+
+.aex-secondary-btn:hover {
+    border-color: var(--aex-accent);
+    color: var(--aex-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(22, 119, 255, 0.15);
+}
+
+body.white-mode .aex-secondary-btn {
+    border-color: #1677ff;
     color: #1677ff;
+}
+
+body.white-mode .aex-secondary-btn:hover {
+    background: #1677ff;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   6. SECTION HEADER
+   ========================================================= */
+
+.aex-section-header {
+    max-width: 700px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.aex-section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--aex-accent);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-section-header h2 {
+    margin: 0 0 12px;
+    color: var(--aex-text-main);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-section-header p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--aex-text-muted);
+    font-size: 14px;
+    line-height: 1.75;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   7. LANGUAGES SECTION
+   ========================================================= */
+
+.aex-languages-section {
+    padding: 85px 0;
+    background: var(--aex-bg-main);
+    transition: background 0.5s var(--aex-ease-smooth);
+}
+
+.aex-language-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 320px));
+    justify-content: center;
+    gap: 40px;
+}
+
+
+/* =========================================================
+   8. LANGUAGE CARD
+   ========================================================= */
+
+.aex-language-card {
+    position: relative;
+    padding: 32px 26px;
+    background: var(--aex-bg-card);
+    border: 1px solid var(--aex-border-main);
+    border-radius: 20px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.4s var(--aex-ease-smooth),
+                border-color 0.4s var(--aex-ease-smooth),
+                box-shadow 0.4s var(--aex-ease-smooth),
+                background 0.5s var(--aex-ease-smooth);
+    cursor: pointer;
+}
+
+.aex-language-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--aex-accent), rgba(22, 119, 255, 0.3));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--aex-ease-smooth);
+}
+
+.aex-language-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--aex-accent);
+    box-shadow: 0 20px 50px var(--aex-shadow-card);
+}
+
+.aex-language-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   9. COUNTRY LOGO
+   ========================================================= */
+
+.aex-country-logo {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    background: var(--aex-bg-elevated);
+    border: 2px solid var(--aex-border-soft);
+    border-radius: 50%;
+    color: var(--aex-accent);
     font-size: 22px;
     font-weight: 800;
     letter-spacing: 1px;
-    transition: 0.3s ease;
+    transition: all 0.4s var(--aex-ease-bounce);
 }
 
-
-.language-card:hover .country-logo {
-
-    transform: scale(1.08);
-
-    border-color: #1677ff;
-
+.aex-language-card:hover .aex-country-logo {
+    transform: scale(1.15) rotate(5deg);
+    border-color: var(--aex-accent);
+    background: var(--aex-accent);
+    color: var(--aex-accent-text);
+    box-shadow: 0 8px 25px var(--aex-shadow-btn);
 }
 
 
 /* =========================================================
-   LANGUAGE TEXT
-========================================================= */
+   10. LANGUAGE TEXT
+   ========================================================= */
 
-.language-type {
-
+.aex-language-type {
     display: block;
-
-    margin-bottom: 5px;
-
-    color: #1677ff;
-
-    font-size: 9px;
-
+    margin-bottom: 8px;
+    color: var(--aex-accent);
+    font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.5px;
-
+    letter-spacing: 1.8px;
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-
-.language-card h3 {
-
-    margin: 0 0 10px;
-
-    color: #ffffff;
-
-    font-size: 22px;
-
-    font-weight: 750;
-
-}
-
-
-.language-card p {
-
-    max-width: 270px;
-
-    margin: 0 auto 17px;
-
-    color: #999999;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-   TAGS
-========================================================= */
-
-.language-tags {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-
-    margin-bottom: 18px;
-
-}
-
-
-.language-tags span {
-
-    padding: 5px 9px;
-
-    background: #181818;
-
-    border: 1px solid #303030;
-
-    border-radius: 20px;
-
-    color: #c5c5c5;
-
-    font-size: 9px;
-
-}
-
-
-/* =========================================================
-   LEARN MORE
-========================================================= */
-
-.learn-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    padding: 9px 17px;
-
-    background: #1677ff;
-
-    border: 1px solid #1677ff;
-
-    border-radius: 7px;
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition: 0.3s ease;
-
-}
-
-
-.learn-btn:hover {
-
-    background: #ffffff;
-
-    color: #050505;
-
-}
-
-
-.learn-btn i {
-
-    transition: transform 0.3s ease;
-
-}
-
-
-.learn-btn:hover i {
-
-    transform: translateX(4px);
-
-}
-
-
-/* =========================================================
-   WHY SECTION
-========================================================= */
-
-.why-section {
-
-    padding: 70px 0;
-
-    background: #0b0b0b;
-
-    border-top: 1px solid #1d1d1d;
-
-    border-bottom: 1px solid #1d1d1d;
-
-}
-
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.features-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-
-}
-
-
-.feature-card {
-
-    padding: 24px 18px;
-
-    background: #111111;
-
-    border: 1px solid #282828;
-
-    border-radius: 13px;
-
-    transition: 0.3s ease;
-
-}
-
-
-.feature-card:hover {
-
-    transform: translateY(-5px);
-
-    border-color: #1677ff;
-
-}
-
-
-.feature-icon {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 15px;
-
-    background: rgba(22, 119, 255, 0.10);
-
-    border: 1px solid rgba(22, 119, 255, 0.35);
-
-    border-radius: 9px;
-
-    color: #1677ff;
-
-    font-size: 16px;
-
-}
-
-
-.feature-card h3 {
-
-    margin: 0 0 8px;
-
-    color: #ffffff;
-
-    font-size: 16px;
-
-}
-
-
-.feature-card p {
-
-    margin: 0;
-
-    color: #888888;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-   LEARNING SECTION
-========================================================= */
-
-.learning-section {
-
-    padding: 75px 0;
-
-    background: #050505;
-
-}
-
-
-.learning-wrapper {
-
-    display: grid;
-
-    grid-template-columns:
-        1.4fr 0.8fr;
-
-    align-items: center;
-
-    gap: 60px;
-
-}
-
-
-.learning-content h2 {
-
+.aex-language-card h3 {
     margin: 0 0 12px;
-
-    color: #ffffff;
-
-    font-size: 34px;
-
-}
-
-
-.learning-content > p {
-
-    max-width: 560px;
-
-    margin: 0 0 25px;
-
-    color: #999999;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-   LEARNING LIST
-========================================================= */
-
-.learning-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-
-}
-
-
-.learning-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    color: #d0d0d0;
-
-    font-size: 13px;
-
-}
-
-
-.learning-item i {
-
-    width: 22px;
-
-    height: 22px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #1677ff;
-
-    border-radius: 50%;
-
-    color: #ffffff;
-
-    font-size: 9px;
-
-}
-
-
-/* =========================================================
-   LEARNING BOX
-========================================================= */
-
-.learning-box {
-
-    padding: 35px 28px;
-
-    background: #101010;
-
-    border: 1px solid #292929;
-
-    border-radius: 16px;
-
-    text-align: center;
-
-}
-
-
-.learning-box-icon {
-
-    width: 58px;
-
-    height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin: 0 auto 17px;
-
-    background: #1677ff;
-
-    border-radius: 50%;
-
-    color: #ffffff;
-
+    color: var(--aex-text-main);
     font-size: 23px;
-
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-
-.learning-box h3 {
-
-    margin: 0 0 10px;
-
-    color: #ffffff;
-
-    font-size: 22px;
-
-}
-
-
-.learning-box p {
-
+.aex-language-card p {
+    max-width: 280px;
     margin: 0 auto 20px;
+    color: var(--aex-text-muted);
+    font-size: 13px;
+    line-height: 1.75;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
 
-    color: #999999;
 
+/* =========================================================
+   11. TAGS
+   ========================================================= */
+
+.aex-language-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.aex-language-tags span {
+    padding: 6px 12px;
+    background: var(--aex-bg-elevated);
+    border: 1px solid var(--aex-border-soft);
+    border-radius: 20px;
+    color: var(--aex-text-soft);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s var(--aex-ease-smooth);
+    cursor: default;
+}
+
+.aex-language-tags span:hover {
+    background: var(--aex-accent);
+    border-color: var(--aex-accent);
+    color: var(--aex-accent-text);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   12. LEARN BUTTON
+   ========================================================= */
+
+.aex-learn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: var(--aex-accent);
+    border: 1px solid var(--aex-accent);
+    border-radius: 9px;
+    color: var(--aex-accent-text);
+    text-decoration: none;
     font-size: 12px;
-
-    line-height: 1.7;
-
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: all 0.35s var(--aex-ease-smooth);
+    cursor: pointer;
 }
 
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta-section {
-
-    padding: 75px 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(22, 119, 255, 0.13),
-            transparent 45%
-        ),
-        #0a0a0a;
-
-    border-top: 1px solid #202020;
-
-    text-align: center;
-
-}
-
-
-.cta-content {
-
-    max-width: 650px;
-
-    margin: 0 auto;
-
-}
-
-
-.cta-content h2 {
-
-    margin: 0 0 12px;
-
+.aex-learn-btn:hover {
+    background: var(--aex-accent-hover);
+    border-color: var(--aex-accent-hover);
     color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px var(--aex-shadow-btn);
+}
 
-    font-size: 34px;
+.aex-learn-btn i {
+    transition: transform 0.35s var(--aex-ease-smooth);
+}
 
+.aex-learn-btn:hover i {
+    transform: translateX(6px);
 }
 
 
-.cta-content p {
+/* =========================================================
+   13. WHY SECTION
+   ========================================================= */
 
-    margin: 0 auto 22px;
+.aex-why-section {
+    padding: 85px 0;
+    background: var(--aex-bg-soft);
+    border-top: 1px solid var(--aex-border-section);
+    border-bottom: 1px solid var(--aex-border-section);
+    transition: background 0.5s var(--aex-ease-smooth),
+                border-color 0.5s var(--aex-ease-smooth);
+}
 
-    color: #999999;
 
+/* =========================================================
+   14. FEATURES
+   ========================================================= */
+
+.aex-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.aex-feature-card {
+    padding: 28px 22px;
+    background: var(--aex-bg-card);
+    border: 1px solid var(--aex-border-main);
+    border-radius: 16px;
+    transition: all 0.4s var(--aex-ease-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.aex-feature-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--aex-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--aex-ease-smooth);
+}
+
+.aex-feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--aex-accent);
+    box-shadow: 0 18px 40px var(--aex-shadow-card);
+}
+
+.aex-feature-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.aex-feature-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    background: rgba(22, 119, 255, 0.10);
+    border: 1px solid rgba(22, 119, 255, 0.35);
+    border-radius: 12px;
+    color: var(--aex-accent);
+    font-size: 18px;
+    transition: all 0.4s var(--aex-ease-bounce);
+}
+
+body.white-mode .aex-feature-icon {
+    background: rgba(22, 119, 255, 0.08);
+    border-color: rgba(22, 119, 255, 0.25);
+}
+
+.aex-feature-card:hover .aex-feature-icon {
+    transform: scale(1.12) rotate(-5deg);
+    background: var(--aex-accent);
+    color: var(--aex-accent-text);
+    border-color: var(--aex-accent);
+    box-shadow: 0 6px 18px var(--aex-shadow-btn);
+}
+
+.aex-feature-card h3 {
+    margin: 0 0 10px;
+    color: var(--aex-text-main);
+    font-size: 17px;
+    font-weight: 700;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-feature-card p {
+    margin: 0;
+    color: var(--aex-text-muted);
+    font-size: 12px;
+    line-height: 1.75;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   15. LEARNING SECTION
+   ========================================================= */
+
+.aex-learning-section {
+    padding: 90px 0;
+    background: var(--aex-bg-main);
+    transition: background 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-wrapper {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.aex-learning-content h2 {
+    margin: 0 0 14px;
+    color: var(--aex-text-main);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-content > p {
+    max-width: 560px;
+    margin: 0 0 28px;
+    color: var(--aex-text-muted);
     font-size: 14px;
+    line-height: 1.75;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
 
-    line-height: 1.7;
+.aex-learning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
+.aex-learning-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--aex-text-soft);
+    font-size: 14px;
+    transition: all 0.3s var(--aex-ease-smooth);
+    cursor: default;
+}
+
+.aex-learning-item:hover {
+    color: var(--aex-text-body);
+    transform: translateX(5px);
+}
+
+.aex-learning-item i {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--aex-accent);
+    border-radius: 50%;
+    color: var(--aex-accent-text);
+    font-size: 10px;
+    transition: all 0.35s var(--aex-ease-bounce);
+}
+
+.aex-learning-item:hover i {
+    transform: scale(1.15) rotate(360deg);
 }
 
 
 /* =========================================================
-   WHITE MODE
-========================================================= */
+   16. LEARNING BOX
+   ========================================================= */
 
-body.white-mode .language-hero {
-
-    background: #ffffff;
-
-    border-color: #e5e5e5;
-
+.aex-learning-box {
+    padding: 40px 32px;
+    background: var(--aex-bg-card);
+    border: 1px solid var(--aex-border-main);
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s var(--aex-ease-smooth);
+    position: relative;
+    overflow: hidden;
 }
 
-
-body.white-mode .hero-content h1 {
-
-    color: #111111;
-
+.aex-learning-box:hover {
+    border-color: var(--aex-accent);
+    box-shadow: 0 22px 50px var(--aex-shadow-card);
+    transform: translateY(-4px);
 }
 
-
-body.white-mode .hero-content p {
-
-    color: #666666;
-
+.aex-learning-box-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    background: var(--aex-accent);
+    border-radius: 50%;
+    color: var(--aex-accent-text);
+    font-size: 26px;
+    transition: all 0.5s var(--aex-ease-bounce);
+    position: relative;
+    z-index: 1;
 }
 
-
-body.white-mode .secondary-btn {
-
-    color: #111111;
-
-    border-color: #d5d5d5;
-
+.aex-learning-box:hover .aex-learning-box-icon {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 10px 30px var(--aex-shadow-btn);
 }
 
-
-body.white-mode .languages-section {
-
-    background: #ffffff;
-
+.aex-learning-box h3 {
+    margin: 0 0 12px;
+    color: var(--aex-text-main);
+    font-size: 23px;
+    font-weight: 750;
+    position: relative;
+    z-index: 1;
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-
-body.white-mode .section-header h2 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .section-header p {
-
-    color: #666666;
-
-}
-
-
-body.white-mode .language-card {
-
-    background: #ffffff;
-
-    border-color: #dddddd;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.05);
-
-}
-
-
-body.white-mode .country-logo {
-
-    background: #f5f5f5;
-
-    border-color: #dddddd;
-
-}
-
-
-body.white-mode .language-card h3 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .language-card p {
-
-    color: #666666;
-
-}
-
-
-body.white-mode .language-tags span {
-
-    background: #f5f5f5;
-
-    border-color: #dddddd;
-
-    color: #444444;
-
-}
-
-
-body.white-mode .why-section {
-
-    background: #f7f7f7;
-
-    border-color: #e5e5e5;
-
-}
-
-
-body.white-mode .feature-card {
-
-    background: #ffffff;
-
-    border-color: #dddddd;
-
-}
-
-
-body.white-mode .feature-card h3 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .feature-card p {
-
-    color: #666666;
-
-}
-
-
-body.white-mode .learning-section {
-
-    background: #ffffff;
-
-}
-
-
-body.white-mode .learning-content h2 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .learning-content > p {
-
-    color: #666666;
-
-}
-
-
-body.white-mode .learning-item {
-
-    color: #333333;
-
-}
-
-
-body.white-mode .learning-box {
-
-    background: #ffffff;
-
-    border-color: #dddddd;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.06);
-
-}
-
-
-body.white-mode .learning-box h3 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .learning-box p {
-
-    color: #666666;
-
-}
-
-
-body.white-mode .cta-section {
-
-    background: #f7f7f7;
-
-    border-color: #e5e5e5;
-
-}
-
-
-body.white-mode .cta-content h2 {
-
-    color: #111111;
-
-}
-
-
-body.white-mode .cta-content p {
-
-    color: #666666;
-
+.aex-learning-box p {
+    margin: 0 auto 24px;
+    color: var(--aex-text-muted);
+    font-size: 13px;
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
 
 /* =========================================================
-   TABLET
-========================================================= */
+   17. CTA SECTION
+   ========================================================= */
+
+.aex-cta-section {
+    padding: 85px 20px;
+    background:
+        radial-gradient(circle at center, rgba(22, 119, 255, 0.14), transparent 50%),
+        var(--aex-bg-soft);
+    border-top: 1px solid var(--aex-border-section);
+    text-align: center;
+    transition: background 0.5s var(--aex-ease-smooth),
+                border-color 0.5s var(--aex-ease-smooth);
+}
+
+body.white-mode .aex-cta-section {
+    background:
+        radial-gradient(circle at center, rgba(22, 119, 255, 0.06), transparent 50%),
+        var(--aex-bg-soft);
+}
+
+.aex-cta-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.aex-cta-content h2 {
+    margin: 0 0 14px;
+    color: var(--aex-text-main);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-cta-content p {
+    margin: 0 auto 26px;
+    color: var(--aex-text-muted);
+    font-size: 14px;
+    line-height: 1.75;
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   18. LIGHT MODE — ALL HEADINGS BLUE
+   ========================================================= */
+
+body.white-mode .aex-language-hero h1,
+body.white-mode .aex-section-header h2,
+body.white-mode .aex-language-card h3,
+body.white-mode .aex-feature-card h3,
+body.white-mode .aex-learning-box h3,
+body.white-mode .aex-learning-content h2,
+body.white-mode .aex-cta-content h2 {
+    color: #1677ff !important;
+}
+
+
+/* =========================================================
+   19. THEME TOGGLE — LIGHT MODE
+   ========================================================= */
+
+body.white-mode #aexModeToggle {
+    background: #ffffff !important;
+    color: #1677ff !important;
+    border-color: #1677ff !important;
+    box-shadow: 0 6px 25px rgba(22, 119, 255, 0.15) !important;
+}
+
+
+/* =========================================================
+   20. RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 900px) {
-
-    .features-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-
-    .learning-wrapper {
-
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-
-    }
-
-
-    .learning-box {
-
-        max-width: 450px;
-
-        margin: 0 auto;
-
-        width: 100%;
-
-    }
-
+    .aex-features-grid { grid-template-columns: repeat(2, 1fr); }
+    .aex-learning-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .aex-learning-box { max-width: 480px; width: 100%; margin: 0 auto; }
+    .aex-language-grid { gap: 30px; }
+    .aex-section-header h2 { font-size: 32px; }
+    .aex-learning-content h2 { font-size: 32px; }
+    .aex-cta-content h2 { font-size: 32px; }
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 600px) {
-
-    .container {
-
-        padding: 0 15px;
-
-    }
-
-
-    .language-hero {
-
-        padding: 55px 15px 60px;
-
-    }
-
-
-    .hero-content h1 {
-
-        font-size: 36px;
-
-    }
-
-
-    .hero-content p {
-
-        font-size: 13px;
-
-    }
-
-
-    .hero-actions {
-
-        flex-direction: column;
-
-    }
-
-
-    .primary-btn,
-    .secondary-btn {
-
-        width: 100%;
-
-        max-width: 260px;
-
-    }
-
-
-    .languages-section,
-    .why-section,
-    .learning-section {
-
-        padding: 55px 0;
-
-    }
-
-
-    .section-header h2 {
-
-        font-size: 28px;
-
-    }
-
-
-    /* Cards one below another */
-
-    .language-grid {
-
+    .aex-container { padding: 0 18px; }
+    .aex-language-hero { padding: 60px 18px 65px; }
+    .aex-hero-content h1 { font-size: 38px; }
+    .aex-hero-content p { font-size: 14px; }
+    .aex-hero-actions { flex-direction: column; }
+    .aex-primary-btn, .aex-secondary-btn { width: 100%; max-width: 280px; }
+    .aex-languages-section, .aex-why-section, .aex-learning-section { padding: 60px 0; }
+    .aex-section-header h2 { font-size: 28px; }
+    .aex-language-grid {
         grid-template-columns: 1fr;
-
-        max-width: 320px;
-
+        max-width: 340px;
         margin: 0 auto;
-
+        gap: 24px;
     }
+    .aex-features-grid { grid-template-columns: 1fr; }
+    .aex-learning-content h2 { font-size: 28px; }
+    .aex-cta-section { padding: 65px 18px; }
+    .aex-cta-content h2 { font-size: 28px; }
 
-
-    .features-grid {
-
-        grid-template-columns: 1fr;
-
+    #aexModeToggle {
+        right: 16px;
+        bottom: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
     }
+}
 
-
-    .learning-content h2 {
-
-        font-size: 28px;
-
-    }
-
-
-    .cta-section {
-
-        padding: 60px 15px;
-
-    }
-
-
-    .cta-content h2 {
-
-        font-size: 28px;
-
-    }
-
+@media (max-width: 380px) {
+    .aex-hero-content h1 { font-size: 32px; }
+    .aex-language-card { padding: 26px 20px; }
+    .aex-learning-box { padding: 32px 22px; }
 }
 
 
 /* =========================================================
-   SMALL MOBILE
-========================================================= */
+   21. ACCESSIBILITY — Reduced Motion
+   ========================================================= */
 
-@media (max-width: 380px) {
-
-    .hero-content h1 {
-
-        font-size: 32px;
-
+@media (prefers-reduced-motion: reduce) {
+    .aex-language-hero *,
+    .aex-feature-card *,
+    #aexModeToggle {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
-
-
-    .language-card {
-
-        padding: 24px 18px;
-
-    }
-
+    html { scroll-behavior: auto !important; }
 }
