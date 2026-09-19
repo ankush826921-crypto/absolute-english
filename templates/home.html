@@ -76,130 +76,38 @@
 
         <div class="section-header text-center">
             <h2>Languages We Teach</h2>
-            <p class="text-muted">Choose from our wide range of language courses</p>
+            <p class="text-muted">Choose the English variant that fits your goals</p>
         </div>
 
         <div class="languages-scroll-wrapper">
 
-            <button class="scroll-btn scroll-btn-left" id="homeScrollLeft">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            
 
             <div class="languages-scroll-container" id="homeScrollContainer">
 
+                <!-- American English -->
+                <div class="language-scroll-card">
+                    <div class="language-icon">
+                        <span class="fi fi-us fis" style="font-size: 3rem;"></span>
+                    </div>
+                    <h3>American English</h3>
+                    <p>Master US accent, vocabulary and communication style for global opportunities.</p>
+                    <a href="{% url 'american' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+
+                <!-- British English -->
                 <div class="language-scroll-card">
                     <div class="language-icon">
                         <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
                     </div>
-                    <h3>English</h3>
-                    <p>Learn English and open doors to global opportunities.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Spanish</h3>
-                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>French</h3>
-                    <p>Learn French and open doors to the world of art and culture.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>German</h3>
-                    <p>Learn German and build your future in Europe's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Italian</h3>
-                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Japanese</h3>
-                    <p>Learn Japanese and explore the rich culture and technology.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Mandarin</h3>
-                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Arabic</h3>
-                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Russian</h3>
-                    <p>Learn Russian and explore the vast culture and literature.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Portuguese</h3>
-                    <p>Learn Portuguese and explore Brazil and beyond.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-kr fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Korean</h3>
-                    <p>Learn Korean and explore K-culture and technology.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-nl fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Dutch</h3>
-                    <p>Learn Dutch and explore the Netherlands and beyond.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    <h3>British English</h3>
+                    <p>Learn authentic British pronunciation, spellings and cultural nuances.</p>
+                    <a href="{% url 'british' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
 
             </div>
 
-            <button class="scroll-btn scroll-btn-right" id="homeScrollRight">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            
 
         </div>
     </div>
@@ -210,89 +118,85 @@
     <div class="container">
 
         <div class="section-header text-center">
-            <h2>Our Courses</h2>
-            <p class="text-muted">Comprehensive language courses for every level</p>
+            <h2>Our Programs</h2>
+            <p class="text-muted">Choose a program according to your English level and learning goals</p>
         </div>
 
-        <div class="courses-scroll-wrapper">
+        <div class="course-grid-home">
 
-            <button class="scroll-btn scroll-btn-left" id="coursesScrollLeft">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <!-- Course 1 -->
+            <article class="home-course-card" data-level="beginner">
+                <span class="home-course-level">Beginner</span>
+                <h4>English Communication Program</h4>
+                <p class="home-course-description">
+                    Improve everyday English communication,
+                    confidence and fluency.
+                </p>
 
-            <div class="courses-scroll-container" id="coursesScrollContainer">
-
-                <!-- ===== CARD 1: A1 BEGINNER ===== -->
-                <div class="course-scroll-card">
-                    <span class="course-level">A1</span>
-                    <h4>Beginner</h4>
-                    <p>Start your language journey with basics and fundamentals. Learn greetings, introductions, and basic vocabulary.</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> 40 hours</span>
-                        <span><i class="fas fa-users"></i> 15 seats</span>
-                        <span><i class="fas fa-tag"></i> $299</span>
-                    </div>
-                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                <div class="home-course-info">
+                    <span><i class="far fa-clock"></i> 12 Weeks</span>
                 </div>
 
-                <!-- ===== CARD 2: A2 ELEMENTARY ===== -->
-                <div class="course-scroll-card">
-                    <span class="course-level">A2</span>
-                    <h4>Elementary</h4>
-                    <p>Build strong basics step by step with confidence. Learn simple conversations and everyday expressions.</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> 40 hours</span>
-                        <span><i class="fas fa-users"></i> 15 seats</span>
-                        <span><i class="fas fa-tag"></i> $349</span>
-                    </div>
-                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                <div class="home-course-highlights">
+                    <span>Speaking Practice</span>
+                    <span>Assessments</span>
                 </div>
 
-                <!-- ===== CARD 3: B1 INTERMEDIATE ===== -->
-                <div class="course-scroll-card">
-                    <span class="course-level">B1</span>
-                    <h4>Intermediate</h4>
-                    <p>Improve fluency and communication in everyday situations. Handle conversations and express opinions.</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> 50 hours</span>
-                        <span><i class="fas fa-users"></i> 12 seats</span>
-                        <span><i class="fas fa-tag"></i> $399</span>
-                    </div>
-                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                <a href="{% url 'program_detail' %}" class="home-course-btn">
+                    View Details
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Course 2 -->
+            <article class="home-course-card" data-level="intermediate">
+                <span class="home-course-level">Intermediate</span>
+                <h4>Fluency Development Program</h4>
+                <p class="home-course-description">
+                    Improve fluency, vocabulary and
+                    natural English communication.
+                </p>
+
+                <div class="home-course-info">
+                    <span><i class="far fa-clock"></i> 12 Weeks</span>
                 </div>
 
-                <!-- ===== CARD 4: B2 UPPER INTERMEDIATE ===== -->
-                <div class="course-scroll-card">
-                    <span class="course-level">B2</span>
-                    <h4>Upper Intermediate</h4>
-                    <p>Advance your skills with confidence in complex topics. Discuss abstract topics and current events.</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> 50 hours</span>
-                        <span><i class="fas fa-users"></i> 12 seats</span>
-                        <span><i class="fas fa-tag"></i> $449</span>
-                    </div>
-                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                <div class="home-course-highlights">
+                    <span>Fluency Practice</span>
+                    <span>Vocabulary</span>
+                    <span>Group Discussion</span>
                 </div>
 
-                <!-- ===== CARD 5: C1 ADVANCED (MOST POPULAR) ===== -->
-                <div class="course-scroll-card featured">
-                    <span class="featured-badge">⭐ Most Popular</span>
-                    <span class="course-level">C1</span>
-                    <h4>Advanced</h4>
-                    <p>Master the language like a pro with native-level proficiency. Fluent communication in professional settings.</p>
-                    <div class="course-meta">
-                        <span><i class="far fa-clock"></i> 60 hours</span>
-                        <span><i class="fas fa-users"></i> 10 seats</span>
-                        <span><i class="fas fa-tag"></i> $549</span>
-                    </div>
-                    <a href="{% url 'enroll' %}" class="btn-enroll">Enroll Now</a>
+                <a href="{% url 'program_detail' %}" class="home-course-btn">
+                    View Details
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Course 3 -->
+            <article class="home-course-card" data-level="advanced">
+                <span class="home-course-level">Advanced</span>
+                <h4>Professional English Program</h4>
+                <p class="home-course-description">
+                    Develop professional English and
+                    workplace communication skills.
+                </p>
+
+                <div class="home-course-info">
+                    <span><i class="far fa-clock"></i> 12 Weeks</span>
                 </div>
 
-            </div>
+                <div class="home-course-highlights">
+                    <span>Business English</span>
+                    <span>Presentations</span>
+                    <span>Interview Skills</span>
+                </div>
 
-            <button class="scroll-btn scroll-btn-right" id="coursesScrollRight">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+                <a href="{% url 'program_detail' %}" class="home-course-btn">
+                    View Details
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
 
         </div>
     </div>

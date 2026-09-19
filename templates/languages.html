@@ -2,52 +2,67 @@
 {% load static %}
 
 {% block title %}
-    Languages - Absolute English
+Languages - Absolute English
 {% endblock %}
 
 {% block page_title %}
-    Languages We Teach
+Languages We Teach
 {% endblock %}
 
 {% block breadcrumb_current %}
-    Languages
+Languages
 {% endblock %}
 
 
 {% block content %}
 
-<!-- =====================================================
-     HERO SECTION
-===================================================== -->
-
+<!-- =========================================
+     HERO SECTION — PREMIUM
+========================================= -->
 <section class="aex-language-hero">
-    <div class="aex-hero-content">
 
-        <span class="aex-hero-label">
-            LEARN • SPEAK • CONNECT
-        </span>
+    <!-- Animated Background -->
+    <div class="aex-hero-bg" aria-hidden="true">
+        <span class="aex-orb aex-orb-1"></span>
+        <span class="aex-orb aex-orb-2"></span>
+        <span class="aex-orb aex-orb-3"></span>
+        <span class="aex-grid-lines"></span>
+    </div>
 
-        <h1>
-            Master English.
-            <span>Speak With Confidence.</span>
-        </h1>
+    <div class="aex-container">
+        <div class="aex-hero-content">
 
-        <p>
-            Build strong English communication skills with courses
-            designed around real conversations, pronunciation,
-            vocabulary and everyday communication.
-        </p>
+            <!-- Pulse Badge -->
+            <div class="aex-hero-label">
+                <span class="aex-pulse-dot"></span>
+                Explore Global Languages
+            </div>
 
-        <div class="aex-hero-actions">
-            <a href="#languages" class="aex-primary-btn">
-                Explore Languages
-                <i class="fas fa-arrow-down"></i>
-            </a>
-            <a href="#why-us" class="aex-secondary-btn">
-                Why Learn With Us?
-            </a>
+            <h1>
+                Learn a new language.
+                <span>Open new doors.</span>
+            </h1>
+
+            <p>
+                From English to Japanese — start your journey with expert
+                instructors and courses designed for real-world fluency.
+            </p>
+
+            <!-- Buttons -->
+            <div class="aex-hero-actions">
+                <a href="#languages" class="aex-primary-btn">
+                    <i class="fas fa-compass"></i>
+                    Explore Languages
+                </a>
+                <a href="{% url 'book_demo' %}" class="aex-secondary-btn">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Free Trial
+                </a>
+            </div>
+
+
+
         </div>
-
     </div>
 </section>
 
@@ -72,7 +87,9 @@
 
             <!-- American English -->
             <div class="aex-language-card">
-                <div class="aex-country-logo">US</div>
+                <div class="aex-country-logo">
+                    <span class="fi fi-us fis"></span>
+                </div>
                 <span class="aex-language-type">UNITED STATES</span>
                 <h3>American English</h3>
                 <p>
@@ -93,7 +110,9 @@
 
             <!-- British English -->
             <div class="aex-language-card">
-                <div class="aex-country-logo">UK</div>
+                <div class="aex-country-logo">
+                    <span class="fi fi-gb fis"></span>
+                </div>
                 <span class="aex-language-type">UNITED KINGDOM</span>
                 <h3>British English</h3>
                 <p>
