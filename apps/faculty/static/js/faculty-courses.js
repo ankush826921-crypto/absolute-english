@@ -221,7 +221,7 @@
 
 
                  <a
-                     href="/trial/class/"
+                     href="/faculty/trial/class/"
                      class="faculty-button faculty-button--primary"
                  >
                      Trial Class
