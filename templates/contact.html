@@ -5,69 +5,431 @@
 {% block page_title %}Contact Us{% endblock %}
 {% block breadcrumb_current %}Contact{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <h3>Get In Touch</h3>
-                <p class="text-muted">Have questions? We'd love to hear from you.</p>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" placeholder="Enter your email">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" placeholder="Enter your phone">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Message</label>
-                        <textarea class="form-control" rows="4" placeholder="Your message..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-            <div class="col-lg-6">
-                <div class="bg-light p-4 rounded">
-                    <h4>Contact Information</h4>
-                    <div class="mt-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-map-marker-alt text-primary fa-2x me-3"></i>
-                            <div>
-                                <h6 class="mb-0">Address</h6>
-                                <p class="text-muted">123 Language Street, City, Country</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-phone text-primary fa-2x me-3"></i>
-                            <div>
-                                <h6 class="mb-0">Phone</h6>
-                                <p class="text-muted">+1 234 567 8900</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-envelope text-primary fa-2x me-3"></i>
-                            <div>
-                                <h6 class="mb-0">Email</h6>
-                                <p class="text-muted">info@absoluteenglish.com</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-clock text-primary fa-2x me-3"></i>
-                            <div>
-                                <h6 class="mb-0">Working Hours</h6>
-                                <p class="text-muted">Mon-Sat: 9:00 AM - 8:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
+
+<div class="contact-page">
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+
+                <div class="contact-hero-copy">
+                    <span class="contact-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        WE ARE HERE FOR YOU
+                    </span>
+
+                    <h1>
+                        Get In
+                        <span>Touch</span>
+                    </h1>
+
+                    <p>
+                        Have a question, suggestion, or simply want to say hello?
+                        We'd love to hear from you. Our team is always here to
+                        help you on your English learning journey.
+                    </p>
                 </div>
+
+                <div class="contact-hero-note">
+                    <span>Let's</span>
+                    Build a Brighter
+                    Future Together
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
+
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTACT SECTION
+    ========================== -->
+    <section class="contact-main py-5">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <!-- CONTACT FORM -->
+                <div class="col-lg-8">
+                    <div class="contact-card form-card">
+
+                        <div class="card-heading">
+                            <div class="heading-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+
+                            <div>
+                                <h2>Send Us a Message</h2>
+                                <p>
+                                    Fill out the form below and we'll get back
+                                    to you as soon as possible.
+                                </p>
+                            </div>
+                        </div>
+
+                        <form id="contactForm" novalidate>
+
+                            <div class="row g-4">
+
+                                <!-- NAME -->
+                                <div class="col-md-6">
+                                    <label for="fullName">
+                                        Full Name <span>*</span>
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="far fa-user"></i>
+                                        <input
+                                            type="text"
+                                            id="fullName"
+                                            name="fullName"
+                                            placeholder="Enter your full name"
+                                            autocomplete="name"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- EMAIL -->
+                                <div class="col-md-6">
+                                    <label for="email">
+                                        Email Address <span>*</span>
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="far fa-envelope"></i>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            placeholder="Enter your email address"
+                                            autocomplete="email"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- PHONE -->
+                                <div class="col-md-6">
+                                    <label for="phone">
+                                        Phone Number
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-phone-alt"></i>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            placeholder="Enter your phone number"
+                                            autocomplete="tel"
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- SUBJECT -->
+                                <div class="col-md-6">
+                                    <label for="subject">
+                                        Subject <span>*</span>
+                                    </label>
+
+                                    <div class="input-wrapper select-wrapper">
+                                        <i class="far fa-comment-dots"></i>
+
+                                        <select id="subject" name="subject" required>
+                                            <option value="">Select a subject</option>
+                                            <option value="course">Course Enquiry</option>
+                                            <option value="admission">Admission</option>
+                                            <option value="demo">Free Demo</option>
+                                            <option value="general">General Query</option>
+                                            <option value="other">Other</option>
+                                        </select>
+
+                                        <i class="fas fa-chevron-down select-arrow"></i>
+                                    </div>
+                                </div>
+
+                                <!-- MESSAGE -->
+                                <div class="col-12">
+                                    <label for="message">
+                                        Message <span>*</span>
+                                    </label>
+
+                                    <div class="input-wrapper textarea-wrapper">
+                                        <i class="fas fa-pen"></i>
+
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            rows="6"
+                                            placeholder="Write your message here..."
+                                            required
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- CONSENT + BUTTON -->
+                            <div class="form-footer">
+
+                                <label class="consent-label">
+                                    <input type="checkbox" id="consent">
+                                    <span class="custom-checkbox"></span>
+                                    <span>
+                                        I agree to be contacted via email or phone.
+                                    </span>
+                                </label>
+
+                                <button
+                                    type="submit"
+                                    class="contact-submit-btn"
+                                >
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+
+                            </div>
+
+                            <!-- FRONTEND SUCCESS MESSAGE -->
+                            <div
+                                class="form-message success-message"
+                                id="successMessage"
+                                role="status"
+                                aria-live="polite"
+                            >
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Message ready!</strong>
+                                    <span>
+                                        This is a frontend demo. Backend
+                                        submission is not connected yet.
+                                    </span>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- CONTACT INFORMATION -->
+                <div class="col-lg-4">
+                    <div class="contact-card info-card">
+
+                        <div class="card-heading">
+                            <div class="heading-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+
+                            <div>
+                                <h2>Contact Information</h2>
+                                <p>
+                                    Reach out to us through any of the following
+                                    channels.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-details">
+
+                            <!-- ADDRESS -->
+                            <div class="contact-detail">
+                                <div class="detail-icon address-icon">
+                                    <i class="fas fa-location-dot"></i>
+                                </div>
+
+                                <div class="detail-content">
+                                    <h3>Our Address</h3>
+                                    <p>
+                                        86, Sector, C Indrapuri, Bhopal, Near Aashirwad Girls Hostel, Indrapuri, 462023, <br>
+                                        Madhya Pradesh, India
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- PHONE -->
+                            <div class="contact-detail">
+                                <div class="detail-icon phone-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+
+                                <div class="detail-content">
+                                    <h3>Call Us</h3>
+                                    <a href="tel:+12345678900">
+                                        +91 74157 38225
+                                    </a>
+                                    <p>Mon - Sat, 9:00 AM - 8:00 PM</p>
+                                </div>
+                            </div>
+
+                            <!-- EMAIL -->
+                            <div class="contact-detail">
+                                <div class="detail-icon email-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+
+                                <div class="detail-content">
+                                    <h3>Email Us</h3>
+                                    <a href="mailto:info@absoluteenglish.com">
+                                        info@absoluteenglish.com
+                                    </a>
+                                    <p>We reply within 24 hours</p>
+                                </div>
+                            </div>
+
+                            <!-- HOURS -->
+                            <div class="contact-detail">
+                                <div class="detail-icon hours-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+
+                                <div class="detail-content">
+                                    <h3>Working Hours</h3>
+                                    <p>
+                                        Monday - Saturday<br>
+                                        9:00 AM - 8:00 PM
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- SOCIAL -->
+                        <div class="social-section">
+
+                            <h3>Follow Us</h3>
+
+                            <div class="contact-socials">
+
+                                <a href="#" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+
+                                <a href="#" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                <a href="#" aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+
+                                <a href="#" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 MAP + FAQ
+            ========================== -->
+            <div class="row g-4 mt-1">
+
+                <!-- MAP -->
+                <div class="col-lg-8">
+                    <div class="contact-card map-card">
+
+                        <div class="map-heading">
+
+                            <div class="heading-icon map-icon">
+                                <i class="fas fa-map"></i>
+                            </div>
+
+                            <div>
+                                <h2>Find Us Here</h2>
+                                <p>
+                                    Visit our office for a coffee and a
+                                    conversation!
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="map-container">
+
+                            <iframe
+                                src="https://www.google.com/maps?q=23.251704208756113,77.46419182416238&output=embed"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Absolute English location map"
+                            ></iframe>
+
+                            <div class="map-overlay">
+                                <div class="map-pin">
+                                    <i class="fas fa-location-dot"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Absolute English</strong>
+                                    <span>86, Sector C, Indrapuri, Bhopal</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- FAQ CTA -->
+                <div class="col-lg-4">
+                    <div class="faq-card">
+
+                        <div class="faq-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+
+                        <span class="faq-label">
+                            NEED QUICK HELP?
+                        </span>
+
+                        <h2>Still Have Questions?</h2>
+
+                        <p>
+                            Check our FAQ section for quick answers to
+                            common questions.
+                        </p>
+
+                        <a href="#" class="faq-btn">
+                            Visit FAQ
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}

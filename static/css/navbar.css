@@ -301,3 +301,53 @@
         margin: 10px auto;
     }
 }
+
+
+/* ========================================
+   NAVBAR TOGGLER - CUSTOM (Both Modes)
+======================================== */
+
+.navbar-toggler {
+    border: 2px solid #6c5ce7 !important;
+    border-radius: 8px !important;
+    padding: 6px 10px !important;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: rgba(108, 92, 231, 0.08);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15) !important;
+    outline: none;
+}
+
+/* Custom 3-line icon via SVG */
+.navbar-toggler-icon {
+    width: 22px !important;
+    height: 22px !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%236c5ce7' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    background-size: 22px !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transition: background-image 0.3s ease;
+}
+
+/* Dark mode */
+[data-theme="dark"] .navbar-toggler {
+    border-color: #a29bfe !important;
+}
+
+[data-theme="dark"] .navbar-toggler:hover {
+    background: rgba(162, 155, 254, 0.12);
+}
+
+[data-theme="dark"] .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(162, 155, 254, 0.25) !important;
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23a29bfe' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}

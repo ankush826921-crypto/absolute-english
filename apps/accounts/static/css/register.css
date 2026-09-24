@@ -1,0 +1,992 @@
+/* ========================================
+   ABSOLUTE ENGLISH — REGISTER PAGE
+   Final · Multi-Step · No-Scroll Layout
+========================================= */
+
+
+/* ========================================
+   SHELL — LOCK HEIGHT ON DESKTOP
+========================================= */
+
+.register-shell {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.register-shell .auth-aside {
+    overflow: hidden;
+}
+
+.register-shell .auth-main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 32px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108, 92, 231, 0.3) transparent;
+}
+
+.register-shell .auth-main::-webkit-scrollbar {
+    width: 5px;
+}
+
+.register-shell .auth-main::-webkit-scrollbar-thumb {
+    background: rgba(108, 92, 231, 0.3);
+    border-radius: 50px;
+}
+
+.register-shell .auth-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+/* ========================================
+   LEFT PANEL — PROFESSIONAL
+========================================= */
+
+.register-aside {
+    padding: 40px 44px;
+    isolation: isolate;
+}
+
+/* ---------- Animated Background ---------- */
+
+.aside-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    will-change: transform;
+}
+
+.blob-1 {
+    width: 360px;
+    height: 360px;
+    top: -110px;
+    right: -90px;
+    background: radial-gradient(circle, #a29bfe, transparent 70%);
+    animation: blobFloat 14s ease-in-out infinite;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -90px;
+    left: -70px;
+    background: radial-gradient(circle, #fd79a8, transparent 70%);
+    animation: blobFloat 18s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+    width: 220px;
+    height: 220px;
+    top: 45%;
+    left: 40%;
+    background: radial-gradient(circle, #74b9ff, transparent 70%);
+    animation: blobFloat 22s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(30px, -30px) scale(1.08); }
+    66%      { transform: translate(-25px, 25px) scale(0.94); }
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 75%);
+}
+
+/* ---------- Top Bar ---------- */
+
+.register-aside .auth-top-bar {
+    position: relative;
+    z-index: 3;
+}
+
+.register-aside .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.register-aside .brand:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.register-aside .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary-color, #6c5ce7);
+    font-size: 0.8rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.register-aside .brand:hover .brand-mark {
+    transform: translateX(-3px);
+}
+
+/* ---------- Copy ---------- */
+
+.register-aside .aside-copy {
+    position: relative;
+    z-index: 3;
+    max-width: 460px;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.register-aside .aside-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.kicker-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00e676;
+    box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.25);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.25); }
+    50%      { box-shadow: 0 0 0 8px rgba(0, 230, 118, 0.08); }
+}
+
+.register-aside .aside-copy h1 {
+    margin-bottom: 14px;
+    color: #fff;
+    font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gradient-text {
+    background: linear-gradient(120deg, #ffeaa7 0%, #fd79a8 50%, #a29bfe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradientText 4s ease infinite;
+}
+
+@keyframes gradientText {
+    0%, 100% { background-position: 0% center; }
+    50%      { background-position: 100% center; }
+}
+
+.register-aside .aside-lead {
+    max-width: 420px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* ---------- Features ---------- */
+
+.aside-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.aside-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.86rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: featureSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.aside-features li:nth-child(1) { animation-delay: 0.15s; }
+.aside-features li:nth-child(2) { animation-delay: 0.25s; }
+.aside-features li:nth-child(3) { animation-delay: 0.35s; }
+
+@keyframes featureSlide {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.aside-features li:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateX(6px);
+}
+
+.feature-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+    color: #fff;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.aside-features li:hover .feature-icon {
+    transform: rotate(-6deg) scale(1.08);
+}
+
+/* ---------- Footer ---------- */
+
+.register-aside .aside-footer {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.trust-pill i {
+    color: #00e676;
+    font-size: 0.72rem;
+}
+
+.register-aside .aside-note {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.75rem;
+}
+
+
+/* ========================================
+   REGISTER CARD
+========================================= */
+
+.register-card {
+    max-width: 560px;
+    width: 100%;
+    padding: 26px 30px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108, 92, 231, 0.25) transparent;
+}
+
+.register-card::-webkit-scrollbar {
+    width: 4px;
+}
+
+.register-card::-webkit-scrollbar-thumb {
+    background: rgba(108, 92, 231, 0.25);
+    border-radius: 50px;
+}
+
+.register-card .auth-card-header {
+    margin-bottom: 18px;
+}
+
+.register-card .auth-card-header h2 {
+    font-size: 1.55rem;
+    margin-bottom: 4px;
+    line-height: 1.15;
+}
+
+.register-card .auth-card-header p {
+    font-size: 0.86rem;
+}
+
+
+/* ========================================
+   STEP SYSTEM (MULTI-STEP FLOW)
+========================================= */
+
+.form-step {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    animation: stepFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.form-step[hidden] {
+    display: none !important;
+}
+
+@keyframes stepFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ========================================
+   FORM GRID (NAME + EMAIL)
+========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+
+/* ========================================
+   REGISTER FORM — COMPACT
+========================================= */
+
+.register-form {
+    gap: 11px;
+}
+
+.register-form .field {
+    gap: 5px;
+}
+
+.register-form .field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.register-form .field input {
+    min-height: 42px;
+    padding: 9px 13px;
+    font-size: 0.9rem;
+    border-radius: 9px;
+}
+
+.register-form .field-message {
+    min-height: 12px;
+    font-size: 0.72rem;
+    color: #d63031;
+}
+
+
+/* ========================================
+   OTP SECTION (STEP 2)
+========================================= */
+
+.registration-otp-section {
+    width: 100%;
+    margin: 2px 0;
+}
+
+.registration-otp-section[hidden] {
+    display: none !important;
+}
+
+.otp-card {
+    padding: 18px 18px 16px;
+    border: 1.5px solid rgba(108, 92, 231, 0.15);
+    border-radius: 14px;
+    background: linear-gradient(180deg, #fafaff 0%, #ffffff 100%);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.08);
+}
+
+/* Horizontal header (icon + text) */
+.otp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+.otp-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+    animation: pulseIcon 2s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.05); }
+}
+
+.otp-header-text h3 {
+    margin: 0 0 2px;
+    color: var(--text-dark, #2d3436);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.otp-header-text p {
+    margin: 0;
+    color: var(--text-light, #636e72);
+    font-size: 0.76rem;
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   6-BOX OTP INPUT
+========================================= */
+
+.otp-inputs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.otp-box {
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 44px;
+    border: 2px solid #e9ecef;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--text-dark, #2d3436);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    transition: all 0.25s ease;
+    caret-color: #6c5ce7;
+}
+
+.otp-box:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+    transform: translateY(-2px);
+}
+
+.otp-box.is-filled {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.04);
+}
+
+.otp-box.is-invalid {
+    border-color: #d63031;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-6px); }
+    75%      { transform: translateX(6px); }
+}
+
+
+/* ========================================
+   OTP ACTIONS (VERIFY + RESEND)
+========================================= */
+
+.otp-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.otp-actions .primary-btn {
+    flex: 1;
+    min-height: 42px;
+    font-size: 0.88rem;
+}
+
+.otp-actions .otp-resend-btn {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    padding: 6px 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6c5ce7;
+    transition: color 0.3s ease;
+}
+
+.otp-actions .otp-resend-btn:hover {
+    color: #5a4bd1;
+    text-decoration: underline;
+}
+
+.otp-actions .otp-resend-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#resendMessage {
+    margin-top: 6px;
+    text-align: center;
+}
+
+
+/* ========================================
+   BACK BUTTON (STEP 2 → STEP 1)
+========================================= */
+
+.step-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 14px auto 0;
+    padding: 7px 16px;
+    border: 1.5px solid rgba(108, 92, 231, 0.2);
+    border-radius: 50px;
+    background: rgba(108, 92, 231, 0.04);
+    color: #6c5ce7;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.step-back-btn:hover {
+    background: rgba(108, 92, 231, 0.12);
+    border-color: rgba(108, 92, 231, 0.4);
+    transform: translateX(-2px);
+}
+
+.step-back-btn i {
+    font-size: 0.7rem;
+}
+
+
+/* ========================================
+   PASSWORD METER
+========================================= */
+
+.password-meter {
+    margin-top: -2px;
+}
+
+.meter-track {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 50px;
+    background: #e9ecef;
+}
+
+.meter-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 50px;
+    background: #6c5ce7;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+.meter-label {
+    margin-top: 5px;
+    color: var(--text-light, #636e72);
+    font-size: 0.72rem;
+}
+
+
+/* ========================================
+   TERMS
+========================================= */
+
+.checkbox-line {
+    margin-top: -2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light, #636e72);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.checkbox-line input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    accent-color: #6c5ce7;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   CARD FOOTER
+========================================= */
+
+.register-card .auth-footer {
+    margin-top: 14px;
+    font-size: 0.84rem;
+}
+
+
+/* ========================================
+   RESPONSIVE — SHORT LAPTOPS
+========================================= */
+
+@media (max-height: 780px) and (min-width: 901px) {
+    .register-card {
+        padding: 22px 26px;
+    }
+
+    .register-card .auth-card-header {
+        margin-bottom: 14px;
+    }
+
+    .register-card .auth-card-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .register-form {
+        gap: 10px;
+    }
+
+    .register-form .field input {
+        min-height: 40px;
+    }
+
+    .otp-box {
+        min-height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+    .register-card {
+        padding: 18px 24px;
+    }
+
+    .register-card .auth-card-header {
+        margin-bottom: 12px;
+    }
+
+    .register-card .auth-card-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .register-card .auth-card-header p {
+        font-size: 0.8rem;
+    }
+
+    .register-form {
+        gap: 8px;
+    }
+
+    .register-form .field input {
+        min-height: 38px;
+        font-size: 0.86rem;
+    }
+
+    .otp-box {
+        min-height: 36px;
+        font-size: 1rem;
+    }
+
+    .otp-card {
+        padding: 14px 16px 12px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+    .register-aside {
+        padding: 34px 36px;
+    }
+
+    .register-aside .aside-copy h1 {
+        font-size: 1.9rem;
+    }
+
+    .blob-1 { width: 280px; height: 280px; }
+    .blob-2 { width: 240px; height: 240px; }
+    .blob-3 { width: 180px; height: 180px; }
+
+    .register-card {
+        padding: 24px 26px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE — TABLET PORTRAIT
+========================================= */
+
+@media (max-width: 900px) {
+    .register-shell {
+        height: auto;
+        overflow: visible;
+    }
+
+    .register-shell .auth-main {
+        overflow: visible;
+        padding: 36px 24px;
+    }
+
+    .register-card {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .register-aside {
+        padding: 28px 24px;
+        min-height: auto;
+    }
+
+    .register-aside .aside-copy {
+        padding: 16px 0;
+    }
+
+    .register-aside .aside-copy h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .register-aside .aside-lead {
+        font-size: 0.86rem;
+        margin-bottom: 16px;
+    }
+
+    .aside-features {
+        gap: 8px;
+    }
+
+    .aside-features li {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .feature-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+    }
+
+    .register-aside .aside-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .blob { opacity: 0.4; }
+}
+
+
+/* ========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+    .register-aside {
+        padding: 22px 18px;
+    }
+
+    .register-aside .brand {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .register-aside .brand-mark {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+    }
+
+    .register-aside .aside-kicker {
+        font-size: 0.62rem;
+        padding: 5px 10px;
+        margin-bottom: 12px;
+    }
+
+    .register-aside .aside-copy h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .register-aside .aside-lead {
+        font-size: 0.82rem;
+        margin-bottom: 14px;
+    }
+
+    .aside-features li:nth-child(3) {
+        display: none;
+    }
+
+    .register-aside .aside-footer {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .trust-pill {
+        font-size: 0.66rem;
+        padding: 5px 10px;
+    }
+
+    .register-aside .aside-note {
+        font-size: 0.66rem;
+    }
+
+    .blob-1 { width: 200px; height: 200px; filter: blur(50px); }
+    .blob-2 { width: 160px; height: 160px; filter: blur(50px); }
+    .blob-3 { display: none; }
+    .grid-overlay { display: none; }
+
+    .register-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .register-card .auth-card-header h2 {
+        font-size: 1.35rem;
+    }
+
+    .register-card .auth-card-header p {
+        font-size: 0.82rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .otp-card {
+        padding: 14px 14px 12px;
+    }
+
+    .otp-inputs {
+        gap: 4px;
+    }
+
+    .otp-box {
+        min-height: 38px;
+        font-size: 1rem;
+        border-radius: 7px;
+    }
+
+    .otp-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .otp-actions .otp-resend-btn {
+        order: 2;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+    .register-aside .aside-copy h1 {
+        font-size: 1.35rem;
+    }
+
+    .aside-features li:nth-child(2) {
+        display: none;
+    }
+
+    .otp-box {
+        min-height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .otp-inputs {
+        gap: 3px;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .blob,
+    .kicker-dot,
+    .gradient-text,
+    .aside-features li,
+    .register-aside .aside-copy,
+    .otp-icon,
+    .form-step {
+        animation: none !important;
+        transition: none !important;
+    }
+}

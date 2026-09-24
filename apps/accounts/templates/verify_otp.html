@@ -1,0 +1,128 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Verify your OTP">
+    <title>Verify OTP | Absolute English</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forgot-password.css' %}">
+</head>
+
+<body>
+
+<main class="auth-shell recovery-shell">
+
+    <aside class="auth-aside recovery-aside">
+
+        <div class="aside-bg" aria-hidden="true">
+            <span class="blob blob-1"></span>
+            <span class="blob blob-2"></span>
+            <span class="blob blob-3"></span>
+            <span class="grid-overlay"></span>
+        </div>
+
+        <div class="auth-top-bar">
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-mark" aria-hidden="true">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>Back To Home</span>
+            </a>
+        </div>
+
+        <div class="aside-copy">
+            <p class="aside-kicker">
+                <span class="kicker-dot"></span>
+                Verify your account
+            </p>
+
+            <h1>
+                One quick <br>
+                <span class="gradient-text">check.</span>
+            </h1>
+
+            <p class="aside-lead">
+                Enter the verification code sent to your email to
+                continue resetting your password.
+            </p>
+
+            <ul class="aside-features">
+                <li>
+                    <span class="feature-icon"><i class="fas fa-clock"></i></span>
+                    <span>Code valid for 10 minutes</span>
+                </li>
+                <li>
+                    <span class="feature-icon"><i class="fas fa-rotate"></i></span>
+                    <span>Resend anytime</span>
+                </li>
+                <li>
+                    <span class="feature-icon"><i class="fas fa-shield-halved"></i></span>
+                    <span>Keep your code private</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="aside-footer">
+            <p class="aside-note">© Absolute English</p>
+        </div>
+
+    </aside>
+
+    <section class="auth-main recovery-main" aria-labelledby="otp-title">
+
+        <div class="auth-card recovery-card">
+
+            <header class="auth-card-header">
+                <h2 id="otp-title">Verify OTP.</h2>
+                <p>Enter the 6-digit code sent to your email.</p>
+            </header>
+
+            <div id="otpAlert" class="form-alert" role="status" aria-live="polite"></div>
+
+            <form id="otpForm" class="auth-form" novalidate>
+
+                <div class="otp-inputs" id="otpInputs">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+                    <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+                </div>
+
+                <input type="hidden" id="otpCode" name="otp">
+
+                <button class="primary-btn" type="submit">
+                    <span>Verify OTP</span>
+                </button>
+
+            </form>
+
+            <p class="auth-footer">
+                Didn't receive the code?
+                <button id="resendOtp" class="text-link button-link" type="button">
+                    Resend OTP
+                </button>
+            </p>
+
+            <p class="auth-footer">
+                <a class="text-link" href="{% url 'accounts:forgot_password' %}">
+                    Change email
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/forgot-password.js' %}"></script>
+
+</body>
+</html>

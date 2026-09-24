@@ -43,7 +43,7 @@
             window.location.search
         );
 
-        const teacherId = params.get("instructor");
+        const teacherId = params.get("instructor") || params.get("teacher");
 
 
         // ==============================
@@ -224,7 +224,7 @@
                      href="/faculty/trial/class/"
                      class="faculty-button faculty-button--primary"
                  >
-                     Trail Class
+                     Trial Class
                  </a>
 
             </article>
