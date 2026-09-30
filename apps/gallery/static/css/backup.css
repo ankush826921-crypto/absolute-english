@@ -448,9 +448,6 @@
 }
 
 
-/* LIGHT MODE CARD HOVER
-   NO GLOW - ONLY SOFT SHADOW */
-
 .gallery-card:hover {
     transform: translateY(-8px);
 
@@ -1393,12 +1390,12 @@ body:has(.gallery-lightbox.active) {
    =========================================================
    DARK MODE
    =========================================================
+   EXACT STYLE LIKE YOUR IMAGE 2
+   =========================================================
    ========================================================= */
 
 
-/* =========================================================
-   DARK MODE MAIN PAGE
-   ========================================================= */
+/* Main gallery background */
 
 html[data-theme="dark"] .gallery-page,
 html.dark .gallery-page,
@@ -1412,9 +1409,7 @@ body.dark-mode .gallery-page {
 }
 
 
-/* =========================================================
-   DARK MODE HERO
-   ========================================================= */
+/* Hero stays pure black */
 
 html[data-theme="dark"] .gallery-header,
 html.dark .gallery-header,
@@ -1467,6 +1462,8 @@ body.dark-mode .gallery-header h1 {
     color: #ffffff !important;
 }
 
+
+/* Learning Journey purple */
 
 html[data-theme="dark"] .gallery-header h1 span,
 html.dark .gallery-header h1 span,
@@ -1559,9 +1556,7 @@ body.dark-mode .gallery-filter {
 }
 
 
-/* =========================================================
-   DARK MODE FILTER HOVER
-   ========================================================= */
+/* Dark mode hover */
 
 html[data-theme="dark"] .gallery-filter:hover,
 html.dark .gallery-filter:hover,
@@ -1653,17 +1648,11 @@ body.dark-mode .gallery-card {
 
     box-shadow:
         0 8px 30px rgba(0, 0, 0, 0.45);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.35s ease;
 }
 
 
 /* =========================================================
    DARK MODE CARD HOVER
-   STRONG PURPLE GLOW
    ========================================================= */
 
 html[data-theme="dark"] .gallery-card:hover,
@@ -1672,15 +1661,13 @@ html.dark-mode .gallery-card:hover,
 body[data-theme="dark"] .gallery-card:hover,
 body.dark .gallery-card:hover,
 body.dark-mode .gallery-card:hover {
-    transform: translateY(-8px) !important;
-
     border-color: #7657ff !important;
 
     box-shadow:
-        0 18px 42px rgba(118, 87, 255, 0.45),
-        0 0 18px rgba(118, 87, 255, 0.55),
-        0 0 40px rgba(118, 87, 255, 0.30),
-        0 0 70px rgba(118, 87, 255, 0.16) !important;
+        0 18px 42px rgba(118, 87, 255, 0.40),
+        0 0 25px rgba(118, 87, 255, 0.15) !important;
+
+    transform: translateY(-7px);
 }
 
 
