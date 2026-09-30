@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from apps import views
@@ -19,6 +20,14 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
+    path(
+        'trial/class/',
+        RedirectView.as_view(
+            url='/faculty/trial/class/',
+            query_string=True,   # ← query params preserve karega (?teacher=1)
+            permanent=False,
+        ),
+    ),
 
     # American / British English
     path('american/', views.american, name='american'),

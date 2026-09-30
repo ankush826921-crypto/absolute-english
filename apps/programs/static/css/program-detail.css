@@ -1,29 +1,9 @@
-css = r'''/* =========================================================
+/* =========================================================
    ABSOLUTE ENGLISH - PROGRAM DETAIL PAGE
    FINAL CLEAN PREMIUM THEME
    Light Lavender + White + Purple
    Works with the current detail.html and enquiry popup
    ========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f5ff;
-    color: #24113f;
-}
-
-.container {
-    width: min(1120px, 92%);
-    margin: 0 auto;
-}
 
 /* =========================================================
    COMMON
@@ -85,7 +65,7 @@ body {
     line-height: 1.8;
 }
 
-.btn {
+/* .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -106,7 +86,7 @@ body {
     background: linear-gradient(135deg, #6d28d9, #8b5cf6) !important;
     color: #ffffff !important;
     box-shadow: 0 10px 25px rgba(109, 40, 217, 0.25);
-}
+} */
 
 .btn-primary:hover {
     transform: translateY(-3px);
@@ -609,7 +589,7 @@ body {
     line-height: 1.7;
 }
 
-.final-cta .btn-light {
+/* .final-cta .btn-light {
     background: #ffffff;
     color: #5b21b6 !important;
     box-shadow: 0 10px 28px rgba(36, 17, 63, 0.18);
@@ -617,7 +597,7 @@ body {
 
 .final-cta .btn-light:hover {
     transform: translateY(-3px);
-}
+} */
 
 /* =========================================================
    ENQUIRY POPUP
@@ -883,9 +863,9 @@ body {
 }
 
 @media (max-width: 500px) {
-    .container {
+    /* .container {
         width: min(92%, 100%);
-    }
+    } */
 
     .course-hero {
         padding: 60px 0 70px;
@@ -979,10 +959,7 @@ print(f"CSS lines: {len(css.splitlines())}")
    DARK MODE - WEBSITE THEME
    ========================================================= */
 
-html[data-theme="dark"] body {
-    background: #100a1f;
-    color: #f5f3ff;
-}
+
 
 html[data-theme="dark"] .section {
     background: #100a1f;
@@ -1107,32 +1084,6 @@ html[data-theme="dark"] .batch-info span {
    Absolute English Program Detail
 ========================================================= */
 
-
-/* =========================================================
-   GLOBAL FIX
-========================================================= */
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
-
-
-/* =========================================================
-   NAVBAR LAYER FIX
-   Navbar should stay above hero
-========================================================= */
-
-nav,
-.navbar,
-header {
-    position: relative;
-    z-index: 10000;
-}
 
 
 /* =========================================================
@@ -1852,10 +1803,7 @@ header {
 }
 
 
-/* Agar body par page class nahi hai,
-   to direct section selector use hoga */
-
-body .section {
+.programs-page .section {
     padding-top: 45px !important;
     padding-bottom: 45px !important;
 }
@@ -1923,4 +1871,86 @@ body .section {
         margin-bottom: 20px !important;
     }
 
+}
+
+
+/* =========================================================
+   DARK MODE - COMPLETE FIX
+   Missing overrides for light elements
+========================================================= */
+
+/* Section heading badge */
+html[data-theme="dark"] .section-heading > span,
+html[data-theme="dark"] .section-heading span {
+    background: #241343 !important;
+    color: #c4b5fd !important;
+    border-color: #4c2d73 !important;
+}
+
+/* Course badge (safety override) */
+html[data-theme="dark"] .course-badge {
+    background: #241343 !important;
+    color: #c4b5fd !important;
+    border-color: #4c2d73 !important;
+}
+
+/* Hero icon circle */
+html[data-theme="dark"] .hero-icon {
+    background: #35205a !important;
+    color: #c4b5fd !important;
+}
+
+/* Hero background circle */
+html[data-theme="dark"] .hero-circle {
+    background: linear-gradient(135deg, #4c2d73, #35205a) !important;
+    opacity: 0.6;
+}
+
+/* Final CTA button (Bootstrap btn-light override) */
+html[data-theme="dark"] .final-cta .btn-light {
+    background: #ffffff !important;
+    color: #5b21b6 !important;
+}
+
+/* Light section (agar main.css me defined hai) */
+html[data-theme="dark"] .light-section {
+    background: #100a1f !important;
+}
+
+/* Select dropdown options (Chrome fix) */
+html[data-theme="dark"] .enquiry-modal select option {
+    background: #100a22 !important;
+    color: #ffffff !important;
+}
+
+/* Body background (safety) */
+html[data-theme="dark"] body {
+    background: #100a1f !important;
+    color: #f5f3ff !important;
+}
+
+/* Meta label (color only) */
+html[data-theme="dark"] .meta-label {
+    color: #a78bfa !important;
+}
+
+/* Section heading h2 (safety) */
+html[data-theme="dark"] .section-heading h2 {
+    color: #ffffff !important;
+}
+
+/* Section heading p (safety) */
+html[data-theme="dark"] .section-heading p {
+    color: #c4b5fd !important;
+}
+
+/* Generic safety: text within sections */
+html[data-theme="dark"] .section p {
+    color: #c4b5fd;
+}
+
+/* Strong tags */
+html[data-theme="dark"] .meta-item strong,
+html[data-theme="dark"] .course-meta > div strong {
+    color: #ffffff !important;
 }

@@ -1,14 +1,34 @@
+/* =========================================
+   ABSOLUTE ENGLISH — REGISTER PAGE
+   Multi-Step Flow + 6-Box OTP
+========================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#registerForm");
+    if (!form) return;
 
-    if (!form) {
-        return;
-    }
+    /* =========================================
+       STEP MANAGER
+       ========================================= */
+    const step1 = form.querySelector(".form-step-1");
+    const step2 = form.querySelector(".form-step-2");
+    const step3 = form.querySelector(".form-step-3");
+
+    const goToStep = (n) => {
+        [step1, step2, step3].forEach((step, i) => {
+            if (step) step.hidden = (i + 1 !== n);
+        });
+
+        // Smooth scroll card to top
+        const card = form.closest(".auth-card");
+        if (card) {
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
 
     /* =========================================
        Registration Fields
        ========================================= */
-
     const fullName = document.querySelector("#fullName");
     const email = document.querySelector("#registerEmail");
     const phone = document.querySelector("#phone");
@@ -17,661 +37,327 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirm = document.querySelector("#confirmPassword");
     const terms = document.querySelector("#terms");
 
-    const alert = document.querySelector("#registerAlert");
-
+    const alertBox = document.querySelector("#registerAlert");
     const fill = document.querySelector("#passwordMeterFill");
     const label = document.querySelector("#passwordMeterLabel");
 
     /* =========================================
        OTP Elements
        ========================================= */
-
-    const otpSection = document.querySelector("#registrationOtpSection");
-    const otpInput = document.querySelector("#registrationOtp");
+    const otpBoxes = document.querySelectorAll(".otp-box");
+    const otpHidden = document.querySelector("#registrationOtp");
     const verifyOtpButton = document.querySelector("#verifyRegistrationOtp");
     const resendOtpButton = document.querySelector("#resendRegistrationOtp");
-
     const otpAlert = document.querySelector("#registrationOtpAlert");
     const resendMessage = document.querySelector("#resendMessage");
+    const backToStep1 = document.querySelector("#backToStep1");
+    const otpPhoneDisplay = document.querySelector("#otpPhoneDisplay");
+
+    const createAccountButton = form.querySelector('button[type="submit"]');
 
     /* =========================================
-       Fields After OTP
+       State
        ========================================= */
-
-    const passwordField = password
-        ? password.closest(".field")
-        : null;
-
-    const passwordMeter = document.querySelector(".password-meter");
-
-    const confirmField = confirm
-        ? confirm.closest(".field")
-        : null;
-
-    const termsField = terms
-        ? terms.closest(".checkbox-line")
-        : null;
-
-    const createAccountButton = form.querySelector(
-        'button[type="submit"]'
-    );
-
-    /* =========================================
-       OTP State
-       ========================================= */
-
     let phoneVerified = false;
     let otpSent = false;
-
-    // Frontend demo OTP only.
-    // Real SMS OTP will be connected during backend integration.
     const DEMO_OTP = "123456";
 
     /* =========================================
-       Initial Registration State
+       6-BOX OTP — Behaviour
        ========================================= */
-
-    const lockRegistrationFields = () => {
-        if (passwordField) {
-            passwordField.hidden = true;
-        }
-
-        if (passwordMeter) {
-            passwordMeter.hidden = true;
-        }
-
-        if (confirmField) {
-            confirmField.hidden = true;
-        }
-
-        if (termsField) {
-            termsField.hidden = true;
-        }
-
-        if (createAccountButton) {
-            createAccountButton.hidden = true;
-        }
-
-        if (password) {
-            password.disabled = true;
-            password.value = "";
-        }
-
-        if (confirm) {
-            confirm.disabled = true;
-            confirm.value = "";
-        }
-
-        if (terms) {
-            terms.disabled = true;
-            terms.checked = false;
-        }
-
-        if (createAccountButton) {
-            createAccountButton.disabled = true;
-        }
-
-        // Reset password meter visuals on lock
-        if (password && fill && label) {
-            AuthUI.updatePasswordMeter(password, fill, label);
+    const syncHiddenOtp = () => {
+        if (otpHidden) {
+            otpHidden.value = [...otpBoxes].map(b => b.value).join("");
         }
     };
 
-    const unlockRegistrationFields = () => {
-        if (passwordField) {
-            passwordField.hidden = false;
-        }
-
-        if (passwordMeter) {
-            passwordMeter.hidden = false;
-        }
-
-        if (confirmField) {
-            confirmField.hidden = false;
-        }
-
-        if (termsField) {
-            termsField.hidden = false;
-        }
-
-        if (createAccountButton) {
-            createAccountButton.hidden = false;
-        }
-
-        if (password) {
-            password.disabled = false;
-        }
-
-        if (confirm) {
-            confirm.disabled = false;
-        }
-
-        if (terms) {
-            terms.disabled = false;
-        }
-
-        if (createAccountButton) {
-            createAccountButton.disabled = false;
-        }
+    const clearOtpBoxes = () => {
+        otpBoxes.forEach(b => {
+            b.value = "";
+            b.classList.remove("is-filled", "is-invalid");
+        });
+        syncHiddenOtp();
     };
 
-    // OTP must be completed before password section becomes available.
-    lockRegistrationFields();
+    otpBoxes.forEach((box, index) => {
+        box.addEventListener("input", (e) => {
+            const val = e.target.value.replace(/\D/g, "");
+            e.target.value = val.slice(0, 1);
 
-    /* =========================================
-       Helper: Show OTP Section
-       ========================================= */
+            if (e.target.value) {
+                e.target.classList.add("is-filled");
+                if (index < otpBoxes.length - 1) otpBoxes[index + 1].focus();
+            } else {
+                e.target.classList.remove("is-filled");
+            }
 
-    const showOtpSection = () => {
-        if (!otpSection) {
-            return;
-        }
+            box.classList.remove("is-invalid");
+            if (otpAlert) AuthUI.clearAlert(otpAlert);
 
-        otpSection.hidden = false;
-
-        otpSection.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
+            syncHiddenOtp();
         });
 
-        if (otpInput) {
-            setTimeout(() => {
-                otpInput.focus();
-            }, 300);
-        }
-    };
-
-    /* =========================================
-       Helper: Hide OTP Section
-       ========================================= */
-
-    const hideOtpSection = () => {
-        if (!otpSection) {
-            return;
-        }
-
-        otpSection.hidden = true;
-    };
-
-    /* =========================================
-       Helper: Send Demo OTP
-       ========================================= */
-
-    const sendOtp = () => {
-        if (!phone) {
-            return;
-        }
-
-        otpSent = true;
-        phoneVerified = false;
-
-        if (otpInput) {
-            otpInput.value = "";
-
-            otpInput.classList.remove(
-                "is-invalid",
-                "is-valid"
-            );
-        }
-
-        if (otpAlert) {
-            AuthUI.clearAlert(otpAlert);
-
-            AuthUI.showAlert(
-                otpAlert,
-                "OTP sent successfully. For this demo, use 123456.",
-                "success"
-            );
-        }
-
-        if (resendMessage) {
-            resendMessage.textContent = "";
-        }
-
-        showOtpSection();
-    };
-
-    /* =========================================
-       Validate Basic Registration Fields
-       ========================================= */
-
-    const validateBasicFields = () => {
-        let valid = true;
-
-        const checks = [
-            [
-                fullName,
-                fullName.value.trim().length >= 2,
-                "Enter your full name.",
-            ],
-
-            [
-                email,
-                AuthUI.validateEmail(email.value),
-                "Enter a valid email address.",
-            ],
-
-            [
-                phone,
-                AuthUI.validatePhone(phone.value),
-                "Enter a valid phone number.",
-            ],
-        ];
-
-        checks.forEach(([input, isValid, message]) => {
-            AuthUI.setFieldState(
-                input.closest(".field"),
-                isValid ? "" : message
-            );
-
-            if (!isValid) {
-                valid = false;
+        box.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !e.target.value && index > 0) {
+                otpBoxes[index - 1].focus();
+                otpBoxes[index - 1].value = "";
+                otpBoxes[index - 1].classList.remove("is-filled");
+                syncHiddenOtp();
+            }
+            if (e.key === "ArrowLeft" && index > 0) otpBoxes[index - 1].focus();
+            if (e.key === "ArrowRight" && index < otpBoxes.length - 1) {
+                otpBoxes[index + 1].focus();
             }
         });
 
-        return valid;
-    };
+        box.addEventListener("paste", (e) => {
+            e.preventDefault();
+            const pasted = (e.clipboardData || window.clipboardData)
+                .getData("text").replace(/\D/g, "").slice(0, 6);
 
-    /* =========================================
-       Validate Password Section
-       ========================================= */
+            [...pasted].forEach((digit, i) => {
+                if (otpBoxes[i]) {
+                    otpBoxes[i].value = digit;
+                    otpBoxes[i].classList.add("is-filled");
+                }
+            });
 
-    const validatePasswordFields = () => {
-        let valid = true;
-
-        const passwordValid =
-            AuthUI.passwordScore(password.value) >= 3;
-
-        AuthUI.setFieldState(
-            password.closest(".field"),
-            passwordValid
-                ? ""
-                : "Use a stronger password (8+ characters recommended)."
-        );
-
-        if (!passwordValid) {
-            valid = false;
-        }
-
-        const confirmValid =
-            Boolean(confirm.value) &&
-            confirm.value === password.value;
-
-        AuthUI.setFieldState(
-            confirm.closest(".field"),
-            confirmValid
-                ? ""
-                : "Passwords do not match."
-        );
-
-        if (!confirmValid) {
-            valid = false;
-        }
-
-        if (!terms.checked) {
-            AuthUI.showAlert(
-                alert,
-                "Please accept the terms and conditions."
-            );
-
-            valid = false;
-        }
-
-        return valid;
-    };
-
-    /* =========================================
-       Password Meter & Confirm Matching
-       ========================================= */
-
-    if (password) {
-        password.addEventListener("input", () => {
-            AuthUI.updatePasswordMeter(
-                password,
-                fill,
-                label
-            );
-
-            if (confirm && confirm.value) {
-                AuthUI.setFieldState(
-                    confirm.closest(".field"),
-                    confirm.value === password.value
-                        ? ""
-                        : "Passwords do not match."
-                );
-            }
-        });
-    }
-
-    /* =========================================
-       Clear Validation While Typing
-       ========================================= */
-
-    [
-        fullName,
-        email,
-        phone,
-        confirm,
-    ].forEach((input) => {
-        if (!input) {
-            return;
-        }
-
-        input.addEventListener("input", () => {
-            AuthUI.setFieldState(
-                input.closest(".field")
-            );
+            syncHiddenOtp();
+            otpBoxes[Math.min(pasted.length, otpBoxes.length - 1)]?.focus();
         });
     });
 
     /* =========================================
-       PHONE NUMBER INPUT
+       Validation
        ========================================= */
+    const validateBasicFields = () => {
+        let valid = true;
+        const checks = [
+            [fullName, fullName.value.trim().length >= 2, "Enter your full name."],
+            [email, AuthUI.validateEmail(email.value), "Enter a valid email address."],
+            [phone, AuthUI.validatePhone(phone.value), "Enter a valid phone number."],
+        ];
 
+        checks.forEach(([input, ok, msg]) => {
+            AuthUI.setFieldState(input.closest(".field"), ok ? "" : msg);
+            if (!ok) valid = false;
+        });
+
+        return valid;
+    };
+
+    const validatePasswordFields = () => {
+        let valid = true;
+
+        const passOk = AuthUI.passwordScore(password.value) >= 3;
+        AuthUI.setFieldState(
+            password.closest(".field"),
+            passOk ? "" : "Use a stronger password (8+ characters recommended)."
+        );
+        if (!passOk) valid = false;
+
+        const confirmOk = Boolean(confirm.value) && confirm.value === password.value;
+        AuthUI.setFieldState(
+            confirm.closest(".field"),
+            confirmOk ? "" : "Passwords do not match."
+        );
+        if (!confirmOk) valid = false;
+
+        if (!terms.checked) {
+            AuthUI.showAlert(alertBox, "Please accept the terms and conditions.");
+            valid = false;
+        }
+
+        return valid;
+    };
+
+    /* =========================================
+       Send OTP → Go to Step 2
+       ========================================= */
+    const sendOtp = () => {
+        otpSent = true;
+        phoneVerified = false;
+        clearOtpBoxes();
+
+        // Show phone number in step 2
+        if (otpPhoneDisplay && phone.value.trim()) {
+            otpPhoneDisplay.textContent = `Enter the 6-digit code sent to ${phone.value.trim()}`;
+        }
+
+        if (otpAlert) {
+            AuthUI.clearAlert(otpAlert);
+            AuthUI.showAlert(
+                otpAlert,
+                "OTP sent. For this demo, use 123456.",
+                "success"
+            );
+        }
+        if (resendMessage) resendMessage.textContent = "";
+
+        // 🎯 GO TO STEP 2
+        goToStep(2);
+
+        setTimeout(() => otpBoxes[0]?.focus(), 350);
+    };
+
+    /* =========================================
+       Phone Blur → Trigger OTP
+       ========================================= */
     if (phone) {
         phone.addEventListener("input", () => {
-            /*
-             * Changing the phone number invalidates
-             * the previous OTP verification.
-             */
-
-            phoneVerified = false;
-            otpSent = false;
-
-            hideOtpSection();
-
-            lockRegistrationFields();
-
-            if (otpInput) {
-                otpInput.value = "";
-
-                otpInput.classList.remove(
-                    "is-invalid",
-                    "is-valid"
-                );
-            }
-
-            if (otpAlert) {
-                AuthUI.clearAlert(otpAlert);
-            }
-
-            if (resendMessage) {
-                resendMessage.textContent = "";
+            // If user edits phone, reset verification
+            if (phoneVerified) {
+                phoneVerified = false;
+                otpSent = false;
+                clearOtpBoxes();
             }
         });
 
-        /* =========================================
-           PHONE NUMBER BLUR
-           ========================================= */
-
         phone.addEventListener("blur", () => {
-            /*
-             * OTP starts immediately after a valid
-             * phone number is entered.
-             */
-
-            if (phoneVerified) {
-                return;
-            }
-
-            if (!phone.value.trim()) {
-                return;
-            }
+            if (phoneVerified) return;
+            if (!phone.value.trim()) return;
 
             if (!AuthUI.validatePhone(phone.value)) {
-                AuthUI.setFieldState(
-                    phone.closest(".field"),
-                    "Enter a valid phone number."
-                );
-
+                AuthUI.setFieldState(phone.closest(".field"), "Enter a valid phone number.");
                 return;
             }
 
-            AuthUI.setFieldState(
-                phone.closest(".field"),
-                ""
-            );
-
+            AuthUI.setFieldState(phone.closest(".field"), "");
             sendOtp();
         });
     }
 
     /* =========================================
-       Registration Submit
+       Back to Step 1
        ========================================= */
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        AuthUI.clearAlert(alert);
-
-        /*
-         * OTP verification is mandatory.
-         */
-
-        if (!phoneVerified) {
-            AuthUI.showAlert(
-                alert,
-                "Please verify your phone number before creating your account."
-            );
-
-            showOtpSection();
-
-            return;
-        }
-
-        /*
-         * Validate password + confirmation + terms.
-         */
-
-        if (!validatePasswordFields()) {
-            if (!alert.classList.contains("is-visible")) {
-                AuthUI.showAlert(
-                    alert,
-                    "Check the highlighted fields and try again."
-                );
-            }
-
-            return;
-        }
-
-        /*
-         * Frontend demo success.
-         * Backend account creation will be connected later.
-         */
-
-        AuthUI.markDemoSuccess(
-            "Account details verified successfully. Backend account creation is not connected yet."
-        );
-    });
+    if (backToStep1) {
+        backToStep1.addEventListener("click", () => {
+            clearOtpBoxes();
+            if (otpAlert) AuthUI.clearAlert(otpAlert);
+            goToStep(1);
+            phone?.focus();
+        });
+    }
 
     /* =========================================
-       VERIFY OTP
+       Verify OTP → Go to Step 3
        ========================================= */
-
     if (verifyOtpButton) {
         verifyOtpButton.addEventListener("click", () => {
-            if (!otpInput) {
+            if (otpAlert) AuthUI.clearAlert(otpAlert);
+
+            const entered = otpHidden ? otpHidden.value.trim() : "";
+
+            if (!entered) {
+                otpBoxes.forEach(b => b.classList.add("is-invalid"));
+                AuthUI.showAlert(otpAlert, "Enter the 6-digit OTP.");
                 return;
             }
 
-            if (otpAlert) {
-                AuthUI.clearAlert(otpAlert);
-            }
-
-            const enteredOtp = otpInput.value.trim();
-
-            /* OTP required */
-
-            if (!enteredOtp) {
-                AuthUI.setFieldState(
-                    otpInput.closest(".field"),
-                    "Enter the 6-digit OTP."
-                );
-
+            if (!/^\d{6}$/.test(entered)) {
+                otpBoxes.forEach(b => b.classList.add("is-invalid"));
+                AuthUI.showAlert(otpAlert, "OTP must be exactly 6 digits.");
                 return;
             }
 
-            /* OTP must be 6 digits */
-
-            if (!/^\d{6}$/.test(enteredOtp)) {
-                AuthUI.setFieldState(
-                    otpInput.closest(".field"),
-                    "OTP must contain exactly 6 digits."
-                );
-
+            if (entered !== DEMO_OTP) {
+                otpBoxes.forEach(b => b.classList.add("is-invalid"));
+                AuthUI.showAlert(otpAlert, "Invalid OTP. Please check and try again.");
                 return;
             }
 
-            /* Check demo OTP */
-
-            if (enteredOtp !== DEMO_OTP) {
-                AuthUI.setFieldState(
-                    otpInput.closest(".field"),
-                    "Invalid OTP. Please try again."
-                );
-
-                if (otpAlert) {
-                    AuthUI.showAlert(
-                        otpAlert,
-                        "The OTP is incorrect. Please check the code and try again."
-                    );
-                }
-
-                return;
-            }
-
-            /* =========================================
-               OTP VERIFIED
-               ========================================= */
-
+            /* SUCCESS */
             phoneVerified = true;
-            otpSent = true;
+            otpBoxes.forEach(b => b.classList.remove("is-invalid"));
 
-            AuthUI.setFieldState(
-                otpInput.closest(".field"),
-                ""
-            );
-
-            otpInput.classList.remove("is-invalid");
-            otpInput.classList.add("is-valid");
-
-            if (otpAlert) {
-                AuthUI.showAlert(
-                    otpAlert,
-                    "Phone number verified successfully.",
-                    "success"
-                );
-            }
-
-            /*
-             * Hide OTP and unlock the rest of
-             * the registration form.
-             */
+            AuthUI.showAlert(otpAlert, "Phone verified ✓", "success");
 
             setTimeout(() => {
-                hideOtpSection();
-
-                unlockRegistrationFields();
-
-                if (password) {
-                    password.focus();
-                }
-
-                AuthUI.showAlert(
-                    alert,
-                    "Phone verified. You can now create your account.",
-                    "success"
-                );
+                // 🎯 GO TO STEP 3
+                goToStep(3);
+                password?.focus();
+                AuthUI.showAlert(alertBox, "Phone verified. Create your account.", "success");
             }, 700);
         });
     }
 
     /* =========================================
-       RESEND OTP
+       Resend OTP
        ========================================= */
-
     if (resendOtpButton) {
         resendOtpButton.addEventListener("click", () => {
-            if (!phone.value.trim()) {
-                if (resendMessage) {
-                    resendMessage.textContent =
-                        "Enter your phone number first.";
-                }
-
-                return;
-            }
-
             if (!AuthUI.validatePhone(phone.value)) {
-                if (resendMessage) {
-                    resendMessage.textContent =
-                        "Enter a valid phone number first.";
-                }
-
+                if (resendMessage) resendMessage.textContent = "Enter a valid phone number first.";
                 return;
             }
 
-            otpSent = true;
             phoneVerified = false;
-
-            lockRegistrationFields();
-
-            if (otpInput) {
-                otpInput.value = "";
-
-                otpInput.classList.remove(
-                    "is-invalid",
-                    "is-valid"
-                );
-            }
+            clearOtpBoxes();
 
             if (otpAlert) {
                 AuthUI.clearAlert(otpAlert);
-
-                AuthUI.showAlert(
-                    otpAlert,
-                    "A new OTP has been sent. For this demo, use 123456.",
-                    "success"
-                );
+                AuthUI.showAlert(otpAlert, "New OTP sent. For demo, use 123456.", "success");
             }
+            if (resendMessage) resendMessage.textContent = "A new OTP has been sent.";
 
-            if (resendMessage) {
-                resendMessage.textContent =
-                    "A new OTP has been sent.";
-            }
-
-            showOtpSection();
+            setTimeout(() => otpBoxes[0]?.focus(), 250);
         });
     }
 
     /* =========================================
-       OTP INPUT
+       Password Meter
        ========================================= */
+    if (password) {
+        password.addEventListener("input", () => {
+            AuthUI.updatePasswordMeter(password, fill, label);
 
-    if (otpInput) {
-        otpInput.addEventListener("input", () => {
-            otpInput.value =
-                otpInput.value.replace(/\D/g, "");
-
-            if (otpInput.value.length > 6) {
-                otpInput.value =
-                    otpInput.value.slice(0, 6);
-            }
-
-            AuthUI.setFieldState(
-                otpInput.closest(".field")
-            );
-        });
-
-        otpInput.addEventListener("keydown", (event) => {
-            if (
-                event.key === "Enter" &&
-                verifyOtpButton
-            ) {
-                event.preventDefault();
-
-                verifyOtpButton.click();
+            if (confirm && confirm.value) {
+                AuthUI.setFieldState(
+                    confirm.closest(".field"),
+                    confirm.value === password.value ? "" : "Passwords do not match."
+                );
             }
         });
     }
+
+    /* =========================================
+       Clear validation while typing
+       ========================================= */
+    [fullName, email, phone, confirm].forEach((input) => {
+        if (!input) return;
+        input.addEventListener("input", () => {
+            AuthUI.setFieldState(input.closest(".field"));
+        });
+    });
+
+    /* =========================================
+       Submit
+       ========================================= */
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        AuthUI.clearAlert(alertBox);
+
+        if (!phoneVerified) {
+            // Should not happen since we control steps, but safety net
+            goToStep(2);
+            return;
+        }
+
+        if (!validateBasicFields()) {
+            goToStep(1);
+            return;
+        }
+
+        if (!validatePasswordFields()) return;
+
+        if (createAccountButton) createAccountButton.classList.add("is-loading");
+
+        setTimeout(() => {
+            if (createAccountButton) createAccountButton.classList.remove("is-loading");
+            AuthUI.markDemoSuccess(
+                "Account verified! Backend connection coming soon."
+            );
+        }, 1000);
+    });
+
 });
