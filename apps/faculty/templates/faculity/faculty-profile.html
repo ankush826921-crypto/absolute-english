@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    Faculty Profile | Absolute English
-{% endblock title %}
-    
+{% block title %}Trainer Profile | Absolute English{% endblock %}
 
 {% block content %}
-    
-
-    
-<main class="faculty-page faculty-profile-page">
-    <div class="faculty-shell">
+<div class="faculty-page faculty-profile-page">
+    <div class="faculty-shell faculty-subpage-shell">
         <a class="faculty-back-link" href="{% url 'faculty' %}">← Back to faculty</a>
-        <div class="faculty-state faculty-state--loading" id="profile-loading" role="status"><span class="faculty-spinner"></span> Loading profile…</div><div id="profile-content"></div><div class="faculty-state faculty-state--error" id="profile-error" hidden><h1>Faculty member not found</h1><p>This profile may have moved, or the link is invalid.</p><a class="faculty-button faculty-button--primary" href="{% url 'faculty' %}">Browse faculty</a></div></div></main>
-
+        <div class="faculty-state faculty-state--loading" id="profile-loading" role="status"><span class="faculty-spinner" aria-hidden="true"></span> Loading profile…</div>
+        <div id="profile-content"></div>
+        <div class="faculty-state faculty-state--error" id="profile-error" role="alert" hidden>
+            <h1>Trainer profile unavailable</h1><p>Please return to the Faculty page and try again.</p>
+            <a class="faculty-button faculty-button--primary" href="{% url 'faculty' %}">Back to faculty</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}
