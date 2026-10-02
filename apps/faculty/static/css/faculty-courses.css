@@ -1,2 +1,3 @@
-/* Courses-specific extension. Shared styles live in faculty.css. */
-.faculty-courses-heading { margin-top:.5rem; }
+/* Course page extension; cards and responsive rules are shared in faculty.css. */
+.faculty-courses-heading { text-align: left; }
+.faculty-courses-heading h1::after { left: 0; }

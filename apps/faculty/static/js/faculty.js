@@ -2,90 +2,169 @@
     "use strict";
 
     const api = window.LinguaFacultyAPI;
+
     if (!api) return;
 
-    document.addEventListener("DOMContentLoaded", async () => {
+    // Escape HTML to prevent unsafe content
+    const escapeHTML = (value) =>
+        String(value ?? "").replace(/[&<>"']/g, (character) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[character]);
 
-        const $ = (s) => document.querySelector(s);
+    // Show placeholder when detail is missing
+    const detail = (value) =>
+        value === null || value === undefined || value === ""
+            ? "Details to be added"
+            : escapeHTML(value);
 
-        const grid = $("#faculty-grid");
-        const loading = $("#faculty-loading");
-        const empty = $("#faculty-empty");
-        const error = $("#faculty-error");
-        const count = $("#faculty-result-count");
-        const form = $("#faculty-filters");
+    // Render list items as tags
+    const list = (items) =>
+        Array.isArray(items) && items.length
+            ? items
+                  .map(
+                      (item) =>
+                          `<span class="faculty-tag">${escapeHTML(item)}</span>`
+                  )
+                  .join("")
+            : '<span class="faculty-detail-placeholder">Details to be added</span>';
 
-        let teachers = [];
+    // Render trainer card
+    function renderTrainer(trainer) {
+        const image = trainer.image
+            ? `
+                <img
+                    src="${escapeHTML(trainer.image)}"
+                    alt="Stock demo portrait for fictional trainer ${escapeHTML(trainer.name)}"
+                    loading="lazy"
+                >
+            `
+            : `
+                <div
+                    class="faculty-photo-placeholder"
+                    aria-label="Trainer photo to be added"
+                >
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    <span>Photo to be added</span>
+                </div>
+            `;
 
-        const imageFallback = (event) => {
-            event.currentTarget.onerror = null;
-            event.currentTarget.src =
-                "https://placehold.co/700x440/e0e7ff/172554?text=Lingua+Academy";
-        };
+        const metric = (value) =>
+            value === null || value === undefined || value === ""
+                ? "To be added"
+                : escapeHTML(value);
 
-        const card = (t) => `
-            <article class="faculty-card" data-faculty-reveal>
+        const demoNotice = trainer.demo
+            ? `
+                
+            `
+            : "";
 
-                <div class="faculty-card__image">
-                    <img
-                        src="${t.image}"
-                        alt="${t.name}, ${t.designation}"
-                        loading="lazy"
-                    >
+        const demoStamp = "";
+
+        const rating = trainer.rating
+            ? `
+                <span
+                    class="faculty-rating-stars"
+                    aria-label="${escapeHTML(trainer.rating)} out of 5"
+                >
+                    ★★★★★
+                </span>
+                ${metric(trainer.rating)}
+            `
+            : metric(trainer.rating);
+
+        return `
+            <article class="faculty-trainer-card">
+
+                <!-- Trainer Photo -->
+                <div class="faculty-trainer-card__photo">
+                    ${image}
+                    ${demoStamp}
                 </div>
 
-                <div class="faculty-card__body">
+                <!-- Trainer Details -->
+                <div class="faculty-trainer-card__body">
 
-                    <h3>${t.name}</h3>
+                    ${demoNotice}
 
-                    <p class="faculty-card__designation">
-                        ${t.designation}
+                    <p class="faculty-eyebrow">
+                        English trainer
                     </p>
 
-                    <p class="faculty-card__meta">
-                        ${t.experience}+ years experience · ${t.language}
+                    <h3>
+                        ${detail(trainer.name)}
+                    </h3>
+
+                    <p class="faculty-trainer-card__designation">
+                        ${detail(trainer.designation)}
                     </p>
 
-                    <div class="faculty-tags">
-                        ${t.specialization
-                            .map(x => `<span class="faculty-tag">${x}</span>`)
-                            .join("")}
+                    
+
+                    <!-- Trainer Metrics -->
+                    <dl class="faculty-trainer-metrics">
+
+                        <div>
+                            <dt>Experience</dt>
+                            <dd>${metric(trainer.experience)}</dd>
+                        </div>
+
+                        <div>
+                            <dt>Rating</dt>
+                            <dd>${rating}</dd>
+                        </div>
+
+                        <div>
+                            <dt>Students</dt>
+                            <dd>${metric(trainer.students)}</dd>
+                        </div>
+
+                    </dl>
+
+                    <!-- Specializations -->
+                    <div class="faculty-trainer-detail">
+                        <h4>Specializations</h4>
+
+                        <div class="faculty-tags">
+                            ${list(trainer.specialization)}
+                        </div>
                     </div>
 
-                    <div class="faculty-card__metrics">
-                        <span class="faculty-rating">
-                            ★★★★★ ${t.rating}
-                        </span>
+                    <!-- English Varieties -->
+                    <div class="faculty-trainer-detail">
+                        <h4>English varieties</h4>
 
-                        <span>
-                            ${t.students.toLocaleString()}+ students
-                        </span>
+                        <div class="faculty-tags">
+                            ${list(trainer.languages)}
+                        </div>
                     </div>
 
+                    <!-- Card Actions -->
                     <div class="faculty-card__actions">
 
-                        <!-- Profile -->
                         <a
                             class="faculty-button faculty-button--outline"
-                            href="/faculty/profile/?id=${t.id}"
+                            href="/faculty/profile/?id=${encodeURIComponent(trainer.id)}"
                         >
                             View Profile
                         </a>
 
-                        <!-- Courses -->
                         <a
                             class="faculty-button faculty-button--outline"
-                            href="/faculty/courses/?instructor=${t.id}"
+                            href="/faculty/courses/?instructor=${encodeURIComponent(trainer.id)}"
                         >
-                            Courses
+                            View Courses
                         </a>
 
-                        <!-- Trial Class -->
                         <a
-                            class="faculty-button faculty-button--orange"
-                            href="/faculty/trial/class/?teacher=${t.id}"
+                            class="faculty-button faculty-button--primary"
+                            href="/faculty/trial/class/?teacher=${encodeURIComponent(trainer.id)}"
                         >
-                            Book Trial
+                            Book Trial Class
                         </a>
 
                     </div>
@@ -93,183 +172,80 @@
                 </div>
             </article>
         `;
+    }
 
-        const opts = (id, values) => {
-            const element = $(id);
+    // Load trainer after page loads
+    document.addEventListener("DOMContentLoaded", async () => {
+        const card = document.querySelector("#faculty-card");
+        const loading = document.querySelector("#faculty-loading");
+        const error = document.querySelector("#faculty-error");
 
-            [...new Set(values)]
-                .sort()
-                .forEach(v => {
-                    element.insertAdjacentHTML(
-                        "beforeend",
-                        `<option value="${v}">${v}</option>`
-                    );
-                });
-        };
+        if (!card || !loading || !error) return;
 
-        function render() {
+        async function loadTrainer() {
+            loading.hidden = false;
+            error.hidden = true;
+            card.replaceChildren();
 
-            const q = $("#faculty-search")
-                .value
-                .trim()
-                .toLowerCase();
+            try {
+                const trainers = await api.getTeachers();
 
-            const lang = $("#faculty-language").value;
-            const spec = $("#faculty-specialization").value;
-            const exp = $("#faculty-experience").value;
-
-            const results = teachers
-                .filter(
-                    t =>
-                        !q ||
-                        t.name.toLowerCase().includes(q)
-                )
-                .filter(
-                    t =>
-                        !lang ||
-                        t.language === lang
-                )
-                .filter(
-                    t =>
-                        !spec ||
-                        t.specialization.includes(spec)
-                )
-                .filter(
-                    t =>
-                        !exp ||
-                        (
-                            exp === "8+"
-                                ? t.experience >= 8
-                                : exp === "4-7"
-                                    ? t.experience >= 4 &&
-                                      t.experience <= 7
-                                    : t.experience <= 3
-                        )
-                );
-
-            grid.innerHTML = results
-                .map(card)
-                .join("");
-
-            grid
-                .querySelectorAll("img")
-                .forEach(img =>
-                    img.addEventListener(
-                        "error",
-                        imageFallback
-                    )
-                );
-
-            count.textContent =
-                `${results.length} instructor${results.length === 1 ? "" : "s"} found`;
-
-            empty.hidden = results.length > 0;
-
-            observeReveals();
-        }
-
-        function reset() {
-            form.reset();
-            render();
-        }
-
-        function observeReveals() {
-            document
-                .querySelectorAll("[data-faculty-reveal]")
-                .forEach(el =>
-                    el.classList.add("is-visible")
-                );
-        }
-
-        try {
-
-            teachers = await api.getTeachers();
-
-            opts(
-                "#faculty-language",
-                teachers.map(t => t.language)
-            );
-
-            opts(
-                "#faculty-specialization",
-                teachers.flatMap(t => t.specialization)
-            );
-
-            render();
-
-            loading.hidden = true;
-
-            form.addEventListener("input", render);
-            form.addEventListener("change", render);
-
-            $("#faculty-reset")
-                .addEventListener("click", reset);
-
-            document
-                .querySelector("[data-reset-faculty]")
-                .addEventListener("click", reset);
-
-        } catch (e) {
-
-            console.error("Faculty API error:", e);
-
-            loading.hidden = true;
-            error.hidden = false;
-
-            document
-                .querySelector("[data-retry-faculty]")
-                .addEventListener(
-                    "click",
-                    () => location.reload()
-                );
-        }
-
-        const stats = document.querySelectorAll("[data-count]");
-
-        const statObserver =
-            new IntersectionObserver(
-                (entries, o) =>
-                    entries.forEach(entry => {
-
-                        if (!entry.isIntersecting) return;
-
-                        const el = entry.target;
-                        const target = Number(el.dataset.count);
-                        const suffix = el.dataset.suffix || "";
-                        const start = performance.now();
-
-                        const tick = (now) => {
-
-                            const p = Math.min(
-                                (now - start) / 900,
-                                1
-                            );
-
-                            el.textContent =
-                                Math.round(
-                                    target *
-                                    (1 - Math.pow(1 - p, 3))
-                                ) + suffix;
-
-                            if (p < 1) {
-                                requestAnimationFrame(tick);
-                            }
-                        };
-
-                        requestAnimationFrame(tick);
-                        o.unobserve(el);
-                    }),
-                {
-                    threshold: 0.5
+                if (!trainers || !trainers.length) {
+                    throw new Error("No trainer record returned");
                 }
-            );
 
-        stats.forEach(s =>
-            statObserver.observe(s)
-        );
+                card.innerHTML = renderTrainer(trainers[0]);
 
-        observeReveals();
+                // Handle image loading error
+                const image = card.querySelector("img");
 
+                if (image) {
+                    image.addEventListener(
+                        "error",
+                        () => {
+                            image.hidden = true;
+
+                            image.parentElement.innerHTML = `
+                                <div
+                                    class="faculty-photo-placeholder"
+                                    aria-label="Trainer photo unavailable"
+                                >
+                                    <i
+                                        class="fa-solid fa-user"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                    <span>
+                                        Demo portrait unavailable
+                                    </span>
+                                </div>
+
+                                <span class="faculty-demo-stamp">
+                                    Demo profile
+                                </span>
+                            `;
+                        },
+                        { once: true }
+                    );
+                }
+            } catch (loadError) {
+                console.error(
+                    "Unable to load the trainer profile:",
+                    loadError
+                );
+
+                error.hidden = false;
+            } finally {
+                loading.hidden = true;
+            }
+        }
+
+        // Retry button
+        document
+            .querySelector("[data-retry-faculty]")
+            ?.addEventListener("click", loadTrainer);
+
+        // Initial load
+        loadTrainer();
     });
-
 })();
