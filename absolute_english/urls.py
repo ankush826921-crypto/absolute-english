@@ -19,7 +19,7 @@ urlpatterns = [
     path('gallery/', include('apps.gallery.urls')),
     path('contact/', views.contact, name='contact'),
     path('book-demo/', views.book_demo, name='book_demo'),
-    path('enroll/', views.enroll, name='enroll'),
+    path('enroll/', include('apps.enroll.urls')),
     path(
         'trial/class/',
         RedirectView.as_view(

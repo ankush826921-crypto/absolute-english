@@ -115,18 +115,15 @@
 
     <div class="gallery-grid">
 
-
-        <!-- =========================
-             DATABASE IMAGES
-        ========================== -->
+        <!-- =========================================
+             DATABASE IMAGES (if any)
+        ========================================== -->
 
         {% for image in images %}
 
         <article
             class="gallery-card"
             data-category="{{ image.category }}">
-
-            <!-- IMAGE -->
 
             <div class="gallery-image-wrapper">
 
@@ -136,8 +133,6 @@
                     class="gallery-image"
                     loading="lazy"
                 >
-
-                <!-- IMAGE OPEN BUTTON -->
 
                 <div class="gallery-image-overlay">
 
@@ -155,9 +150,6 @@
 
                 </div>
 
-
-                <!-- FEATURED -->
-
                 {% if image.is_featured %}
 
                 <span class="gallery-featured">
@@ -167,9 +159,6 @@
                 {% endif %}
 
             </div>
-
-
-            <!-- CARD CONTENT -->
 
             <div class="gallery-card-content">
 
@@ -188,9 +177,6 @@
                 </p>
 
                 {% endif %}
-
-
-                <!-- VIEW MORE -->
 
                 <div class="gallery-card-footer">
 
@@ -218,883 +204,891 @@
         </article>
 
         {% endfor %}
-        <!-- =========================
-     STATIC ACHIEVEMENT IMAGE 1
-========================= -->
 
-<article
-    class="gallery-card"
-    data-category="achievements">
 
-    <div class="gallery-image-wrapper">
+        <!-- =========================================
+             STATIC ACHIEVEMENT IMAGE 1
+        ========================================== -->
 
-        <img
-            src="{% static 'images/gallery/certificate1.png' %}"
-            alt="Achievement"
-            class="gallery-image"
-            loading="lazy"
-        >
+        <article
+            class="gallery-card"
+            data-category="achievements">
 
-        <div class="gallery-image-overlay">
+            <div class="gallery-image-wrapper">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/certificate1.png' %}"
-                data-title="English Learning Achievement"
-                data-category="Achievements">
+                <img
+                    src="{% static 'images/gallery/certificate1.png' %}"
+                    alt="Achievement"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-                ↗
+                <div class="gallery-image-overlay">
 
-            </button>
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/certificate1.png' %}"
+                        data-title="English Learning Achievement"
+                        data-category="Achievements">
 
-        </div>
+                        ↗
 
-        <span class="gallery-featured">
-            Featured
-        </span>
+                    </button>
 
-    </div>
+                </div>
 
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Achievements
-        </span>
-
-        <h2>
-            English Learning Achievement
-        </h2>
-
-        <p>
-            Celebrating the achievements and progress
-            of our English learners.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/certificate1.png' %}"
-                data-title="English Learning Achievement"
-                data-category="Achievements">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Achievements
                 </span>
 
-            </button>
+                <h2>
+                    English Learning Achievement
+                </h2>
 
-        </div>
+                <p>
+                    Celebrating the achievements and progress
+                    of our English learners.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/certificate1.png' %}"
+                        data-title="English Learning Achievement"
+                        data-category="Achievements">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC ACHIEVEMENT IMAGE 2
-========================= -->
+        <!-- =========================================
+             STATIC ACHIEVEMENT IMAGE 2
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="achievements">
+        <article
+            class="gallery-card"
+            data-category="achievements">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/certificate2.png' %}"
-            alt="Student Achievement"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/certificate2.png' %}"
+                    alt="Student Achievement"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/certificate2.png' %}"
-                data-title="Student Achievement"
-                data-category="Achievements">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/certificate2.png' %}"
+                        data-title="Student Achievement"
+                        data-category="Achievements">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-             Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Achievements
-        </span>
-
-        <h2>
-            Student Achievement
-        </h2>
-
-        <p>
-            Celebrating the success and achievements
-            of our English learners.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/certificat2.png' %}"
-                data-title="Student Achievement"
-                data-category="Achievements">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Achievements
                 </span>
 
-            </button>
+                <h2>
+                    Student Achievement
+                </h2>
 
-        </div>
+                <p>
+                    Celebrating the success and achievements
+                    of our English learners.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/certificate2.png' %}"
+                        data-title="Student Achievement"
+                        data-category="Achievements">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC ACHIEVEMENT IMAGE 3
-========================= -->
+        <!-- =========================================
+             STATIC ACHIEVEMENT IMAGE 3
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="achievements">
+        <article
+            class="gallery-card"
+            data-category="achievements">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/certificate3.png' %}"
-            alt="English Course Achievement"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/certificate3.png' %}"
+                    alt="English Course Achievement"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/certificate3.png' %}"
-                data-title="English Course Achievement"
-                data-category="Achievements">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/certificate3.png' %}"
+                        data-title="English Course Achievement"
+                        data-category="Achievements">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-             Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Achievements
-        </span>
-
-        <h2>
-            English Course Achievement
-        </h2>
-
-        <p>
-            Highlighting the learning journey and
-            achievements of our students.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/certificate3.png' %}"
-                data-title="English Course Achievement"
-                data-category="Achievements">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Achievements
                 </span>
 
-            </button>
+                <h2>
+                    English Course Achievement
+                </h2>
 
-        </div>
+                <p>
+                    Highlighting the learning journey and
+                    achievements of our students.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/certificate3.png' %}"
+                        data-title="English Course Achievement"
+                        data-category="Achievements">
 
-<!-- =========================
-     STATIC VOCABULARY IMAGE 1
-========================= -->
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
 
-<article
-    class="gallery-card"
-    data-category="vocabulary">
+                        <span class="gallery-arrow">
+                            →
+                        </span>
 
-    <div class="gallery-image-wrapper">
+                    </button>
 
-        <img
-            src="{% static 'images/gallery/vocabulary1.jpg' %}"
-            alt="English Vocabulary"
-            class="gallery-image"
-            loading="lazy"
-        >
+                </div>
 
-        <div class="gallery-image-overlay">
+            </div>
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/vocabulary1.jpg' %}"
-                data-title="English Vocabulary"
-                data-category="Vocabulary">
+        </article>
 
-                ↗
 
-            </button>
+        <!-- =========================================
+             STATIC VOCABULARY IMAGE 1
+        ========================================== -->
 
-        </div>
+        <article
+            class="gallery-card"
+            data-category="vocabulary">
 
-        <span class="gallery-featured">
-             Featured
-        </span>
+            <div class="gallery-image-wrapper">
 
-    </div>
+                <img
+                    src="{% static 'images/gallery/vocabulary1.jpg' %}"
+                    alt="English Vocabulary"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-    <div class="gallery-card-content">
+                <div class="gallery-image-overlay">
 
-        <span class="gallery-category">
-            Vocabulary
-        </span>
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/vocabulary1.jpg' %}"
+                        data-title="English Vocabulary"
+                        data-category="Vocabulary">
 
-        <h2>
-            English Vocabulary
-        </h2>
+                        ↗
 
-        <p>
-            Learn useful English words and improve your
-            vocabulary for everyday communication.
-        </p>
+                    </button>
 
-        <div class="gallery-card-footer">
+                </div>
 
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/vocabulary1.jpg' %}"
-                data-title="English Vocabulary"
-                data-category="Vocabulary">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Vocabulary
                 </span>
 
-            </button>
+                <h2>
+                    English Vocabulary
+                </h2>
 
-        </div>
+                <p>
+                    Learn useful English words and improve your
+                    vocabulary for everyday communication.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/vocabulary1.jpg' %}"
+                        data-title="English Vocabulary"
+                        data-category="Vocabulary">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC VOCABULARY IMAGE 2
-========================= -->
+        <!-- =========================================
+             STATIC VOCABULARY IMAGE 2
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="vocabulary">
+        <article
+            class="gallery-card"
+            data-category="vocabulary">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/vocabulary2.jpg' %}"
-            alt="Daily English Vocabulary"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/vocabulary2.jpg' %}"
+                    alt="Daily English Vocabulary"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/vocabulary2.jpg' %}"
-                data-title="Daily English Vocabulary"
-                data-category="Vocabulary">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/vocabulary2.jpg' %}"
+                        data-title="Daily English Vocabulary"
+                        data-category="Vocabulary">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-             Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Vocabulary
-        </span>
-
-        <h2>
-            Daily English Vocabulary
-        </h2>
-
-        <p>
-            Build your vocabulary with useful words
-            and expressions for daily conversations.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/vocabulary2.jpg' %}"
-                data-title="Daily English Vocabulary"
-                data-category="Vocabulary">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Vocabulary
                 </span>
 
-            </button>
+                <h2>
+                    Daily English Vocabulary
+                </h2>
 
-        </div>
+                <p>
+                    Build your vocabulary with useful words
+                    and expressions for daily conversations.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/vocabulary2.jpg' %}"
+                        data-title="Daily English Vocabulary"
+                        data-category="Vocabulary">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC VOCABULARY IMAGE 3
-========================= -->
+        <!-- =========================================
+             STATIC VOCABULARY IMAGE 3
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="vocabulary">
+        <article
+            class="gallery-card"
+            data-category="vocabulary">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/vocabulary3.jpg' %}"
-            alt="Vocabulary Learning"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/vocabulary3.jpg' %}"
+                    alt="Vocabulary Learning"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/vocabulary3.jpg' %}"
-                data-title="Vocabulary Learning"
-                data-category="Vocabulary">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/vocabulary3.jpg' %}"
+                        data-title="Vocabulary Learning"
+                        data-category="Vocabulary">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-             Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Vocabulary
-        </span>
-
-        <h2>
-            Vocabulary Learning
-        </h2>
-
-        <p>
-            Expand your English vocabulary and
-            communicate with greater confidence.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/vocabulary3.png' %}"
-                data-title="Vocabulary Learning"
-                data-category="Vocabulary">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Vocabulary
                 </span>
 
-            </button>
+                <h2>
+                    Vocabulary Learning
+                </h2>
 
-        </div>
+                <p>
+                    Expand your English vocabulary and
+                    communicate with greater confidence.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
-<!-- =========================
-     STATIC CLASSROOM IMAGE 1
-========================= -->
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/vocabulary3.jpg' %}"
+                        data-title="Vocabulary Learning"
+                        data-category="Vocabulary">
 
-<article
-    class="gallery-card"
-    data-category="classrooms">
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
 
-    <div class="gallery-image-wrapper">
+                        <span class="gallery-arrow">
+                            →
+                        </span>
 
-        <img
-            src="{% static 'images/gallery/classroom1.jpg' %}"
-            alt="English Classroom"
-            class="gallery-image"
-            loading="lazy"
-        >
+                    </button>
 
-        <div class="gallery-image-overlay">
+                </div>
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/classroom1.jpg' %}"
-                data-title="English Classroom"
-                data-category="Classrooms">
+            </div>
 
-                ↗
+        </article>
 
-            </button>
 
-        </div>
+        <!-- =========================================
+             STATIC CLASSROOM IMAGE 1
+        ========================================== -->
 
-        <span class="gallery-featured">
-             Featured
-        </span>
+        <article
+            class="gallery-card"
+            data-category="classrooms">
 
-    </div>
+            <div class="gallery-image-wrapper">
 
-    <div class="gallery-card-content">
+                <img
+                    src="{% static 'images/gallery/classroom1.jpg' %}"
+                    alt="English Classroom"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <span class="gallery-category">
-            Classrooms
-        </span>
+                <div class="gallery-image-overlay">
 
-        <h2>
-            English Classroom
-        </h2>
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/classroom1.jpg' %}"
+                        data-title="English Classroom"
+                        data-category="Classrooms">
 
-        <p>
-            Interactive classroom sessions designed to
-            improve English communication and confidence.
-        </p>
+                        ↗
 
-        <div class="gallery-card-footer">
+                    </button>
 
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/classroom1.jpg' %}"
-                data-title="English Classroom"
-                data-category="Classrooms">
+                </div>
 
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Classrooms
                 </span>
 
-            </button>
+                <h2>
+                    English Classroom
+                </h2>
 
-        </div>
+                <p>
+                    Interactive classroom sessions designed to
+                    improve English communication and confidence.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/classroom1.jpg' %}"
+                        data-title="English Classroom"
+                        data-category="Classrooms">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC CLASSROOM IMAGE 2
-========================= -->
+        <!-- =========================================
+             STATIC CLASSROOM IMAGE 2
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="classrooms">
+        <article
+            class="gallery-card"
+            data-category="classrooms">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/classroom2.jpg' %}"
-            alt="Classroom Learning Activity"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/classroom2.jpg' %}"
+                    alt="Classroom Learning Activity"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/classroom2.jpg' %}"
-                data-title="Classroom Learning Activity"
-                data-category="Classrooms">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/classroom2.jpg' %}"
+                        data-title="Classroom Learning Activity"
+                        data-category="Classrooms">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-            Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Classrooms
-        </span>
-
-        <h2>
-            Classroom Learning Activity
-        </h2>
-
-        <p>
-            Engaging learning activities that help students
-            practice English in a supportive classroom environment.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/classroom2.jpg' %}"
-                data-title="Classroom Learning Activity"
-                data-category="Classrooms">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Classrooms
                 </span>
 
-            </button>
+                <h2>
+                    Classroom Learning Activity
+                </h2>
 
-        </div>
+                <p>
+                    Engaging learning activities that help students
+                    practice English in a supportive classroom environment.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/classroom2.jpg' %}"
+                        data-title="Classroom Learning Activity"
+                        data-category="Classrooms">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC STUDENTS IMAGE 1
-========================= -->
+        <!-- =========================================
+             STATIC STUDENTS IMAGE 1
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="students">
+        <article
+            class="gallery-card"
+            data-category="students">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/students1.png' %}"
-            alt="English Students"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/students1.png' %}"
+                    alt="English Students"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/students1.png' %}"
-                data-title="English Students"
-                data-category="Students">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/students1.png' %}"
+                        data-title="English Students"
+                        data-category="Students">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-             Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Students
-        </span>
-
-        <h2>
-            English Students
-        </h2>
-
-        <p>
-            Our students actively participating in English
-            learning and communication activities.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/students1.png' %}"
-                data-title="English Students"
-                data-category="Students">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Students
                 </span>
 
-            </button>
+                <h2>
+                    English Students
+                </h2>
 
-        </div>
+                <p>
+                    Our students actively participating in English
+                    learning and communication activities.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/students1.png' %}"
+                        data-title="English Students"
+                        data-category="Students">
 
-<!-- =========================
-     STATIC CHALLENGE IMAGE 1
-========================= -->
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
 
-<article
-    class="gallery-card"
-    data-category="challenges">
+                        <span class="gallery-arrow">
+                            →
+                        </span>
 
-    <div class="gallery-image-wrapper">
+                    </button>
 
-        <img
-            src="{% static 'images/gallery/challenge1.png' %}"
-            alt="English Challenge"
-            class="gallery-image"
-            loading="lazy"
-        >
+                </div>
 
-        <div class="gallery-image-overlay">
+            </div>
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/challenge1.png' %}"
-                data-title="English Learning Challenge"
-                data-category="Challenges">
+        </article>
 
-                ↗
 
-            </button>
+        <!-- =========================================
+             STATIC CHALLENGE IMAGE 1
+        ========================================== -->
 
-        </div>
+        <article
+            class="gallery-card"
+            data-category="challenges">
 
-        <span class="gallery-featured">
-            Featured
-        </span>
+            <div class="gallery-image-wrapper">
 
-    </div>
+                <img
+                    src="{% static 'images/gallery/challenge1.png' %}"
+                    alt="English Challenge"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-    <div class="gallery-card-content">
+                <div class="gallery-image-overlay">
 
-        <span class="gallery-category">
-            Challenges
-        </span>
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/challenge1.png' %}"
+                        data-title="English Learning Challenge"
+                        data-category="Challenges">
 
-        <h2>
-            English Learning Challenge
-        </h2>
+                        ↗
 
-        <p>
-            Challenging activities designed to improve
-            English skills, confidence and communication.
-        </p>
+                    </button>
 
-        <div class="gallery-card-footer">
+                </div>
 
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/challenge1.png' %}"
-                data-title="English Learning Challenge"
-                data-category="Challenges">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Challenges
                 </span>
 
-            </button>
+                <h2>
+                    English Learning Challenge
+                </h2>
 
-        </div>
+                <p>
+                    Challenging activities designed to improve
+                    English skills, confidence and communication.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/challenge1.png' %}"
+                        data-title="English Learning Challenge"
+                        data-category="Challenges">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-<!-- =========================
-     STATIC CHALLENGE IMAGE 2
-========================= -->
+        <!-- =========================================
+             STATIC CHALLENGE IMAGE 2
+        ========================================== -->
 
-<article
-    class="gallery-card"
-    data-category="challenges">
+        <article
+            class="gallery-card"
+            data-category="challenges">
 
-    <div class="gallery-image-wrapper">
+            <div class="gallery-image-wrapper">
 
-        <img
-            src="{% static 'images/gallery/challenge2.jpg' %}"
-            alt="English Speaking Challenge"
-            class="gallery-image"
-            loading="lazy"
-        >
+                <img
+                    src="{% static 'images/gallery/challenge2.png' %}"
+                    alt="English Speaking Challenge"
+                    class="gallery-image"
+                    loading="lazy"
+                >
 
-        <div class="gallery-image-overlay">
+                <div class="gallery-image-overlay">
 
-            <button
-                type="button"
-                class="gallery-view-icon gallery-open-button"
-                aria-label="Open image"
-                data-image="{% static 'images/gallery/challenge2.jpg' %}"
-                data-title="English Speaking Challenge"
-                data-category="Challenges">
+                    <button
+                        type="button"
+                        class="gallery-view-icon gallery-open-button"
+                        aria-label="Open image"
+                        data-image="{% static 'images/gallery/challenge2.png' %}"
+                        data-title="English Speaking Challenge"
+                        data-category="Challenges">
 
-                ↗
+                        ↗
 
-            </button>
+                    </button>
 
-        </div>
+                </div>
 
-        <span class="gallery-featured">
-            Featured
-        </span>
-
-    </div>
-
-    <div class="gallery-card-content">
-
-        <span class="gallery-category">
-            Challenges
-        </span>
-
-        <h2>
-            English Speaking Challenge
-        </h2>
-
-        <p>
-            Practice speaking English through interactive
-            challenges and real-life communication activities.
-        </p>
-
-        <div class="gallery-card-footer">
-
-            <button
-                type="button"
-                class="gallery-explore-button"
-                data-image="{% static 'images/gallery/challenge2.jpg' %}"
-                data-title="English Speaking Challenge"
-                data-category="Challenges">
-
-                <span class="gallery-explore-text">
-                    VIEW MORE
+                <span class="gallery-featured">
+                    Featured
                 </span>
 
-                <span class="gallery-arrow">
-                    →
+            </div>
+
+            <div class="gallery-card-content">
+
+                <span class="gallery-category">
+                    Challenges
                 </span>
 
-            </button>
+                <h2>
+                    English Speaking Challenge
+                </h2>
 
-        </div>
+                <p>
+                    Practice speaking English through interactive
+                    challenges and real-life communication activities.
+                </p>
 
-    </div>
+                <div class="gallery-card-footer">
 
-</article>
-        <!-- =========================
+                    <button
+                        type="button"
+                        class="gallery-explore-button"
+                        data-image="{% static 'images/gallery/challenge2.png' %}"
+                        data-title="English Speaking Challenge"
+                        data-category="Challenges">
+
+                        <span class="gallery-explore-text">
+                            VIEW MORE
+                        </span>
+
+                        <span class="gallery-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================================
              STATIC REAL-LIFE IMAGE 1
-        ========================== -->
+        ========================================== -->
 
         <article
             class="gallery-card"
@@ -1126,11 +1120,10 @@
                 </div>
 
                 <span class="gallery-featured">
-                     Featured
+                    Featured
                 </span>
 
             </div>
-
 
             <div class="gallery-card-content">
 
@@ -1173,10 +1166,9 @@
         </article>
 
 
-
-        <!-- =========================
+        <!-- =========================================
              STATIC REAL-LIFE IMAGE 2
-        ========================== -->
+        ========================================== -->
 
         <article
             class="gallery-card"
@@ -1208,11 +1200,10 @@
                 </div>
 
                 <span class="gallery-featured">
-                     Featured
+                    Featured
                 </span>
 
             </div>
-
 
             <div class="gallery-card-content">
 
@@ -1255,91 +1246,7 @@
         </article>
 
 
-
-        <!-- =========================
-             STATIC AI IMAGE
-        ========================== -->
-
-        <article
-            class="gallery-card"
-            data-category="all">
-
-            <div class="gallery-image-wrapper">
-
-                <img
-                    src="{% static 'images/aiimage.jpg' %}"
-                    alt="AI Learning Activity"
-                    class="gallery-image"
-                    loading="lazy"
-                >
-
-                <div class="gallery-image-overlay">
-
-                    <button
-                        type="button"
-                        class="gallery-view-icon gallery-open-button"
-                        aria-label="Open image"
-                        data-image="{% static 'images/aiimage.jpg' %}"
-                        data-title="AI Learning Activity"
-                        data-category="Demo">
-
-                        ↗
-
-                    </button>
-
-                </div>
-
-                <span class="gallery-featured">
-                     Featured
-                </span>
-
-            </div>
-
-
-            <div class="gallery-card-content">
-
-                <span class="gallery-category">
-                    Demo
-                </span>
-
-                <h2>
-                    AI Learning Activity
-                </h2>
-
-                <p>
-                    An AI-generated visual representing learning
-                    and communication activities at Absolute English.
-                </p>
-
-                <div class="gallery-card-footer">
-
-                    <button
-                        type="button"
-                        class="gallery-explore-button"
-                        data-image="{% static 'images/aiimage.jpg' %}"
-                        data-title="AI Learning Activity"
-                        data-category="Demo">
-
-                        <span class="gallery-explore-text">
-                            VIEW MORE
-                        </span>
-
-                        <span class="gallery-arrow">
-                            →
-                        </span>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
         
-
 
     </div>
 
@@ -1353,8 +1260,6 @@
         id="galleryLightbox"
         aria-hidden="true">
 
-        <!-- CLOSE -->
-
         <button
             class="gallery-lightbox-close"
             id="galleryLightboxClose"
@@ -1365,9 +1270,6 @@
 
         </button>
 
-
-        <!-- PREVIOUS -->
-
         <button
             class="gallery-lightbox-prev"
             id="galleryLightboxPrev"
@@ -1377,9 +1279,6 @@
             ‹
 
         </button>
-
-
-        <!-- CONTENT -->
 
         <div class="gallery-lightbox-content">
 
@@ -1398,9 +1297,6 @@
             </div>
 
         </div>
-
-
-        <!-- NEXT -->
 
         <button
             class="gallery-lightbox-next"
@@ -1444,7 +1340,6 @@
 
                 </div>
 
-
                 <button
                     type="button"
                     class="gallery-recommended-close"
@@ -1456,7 +1351,6 @@
                 </button>
 
             </div>
-
 
             <div
                 class="gallery-recommended-grid"

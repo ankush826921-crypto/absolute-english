@@ -1,91 +1,56 @@
 /* =========================================================
    ABSOLUTE ENGLISH - GALLERY
-   CLEAN COMPLETE CSS
-   Blue + Cyan Professional Theme
+   HOME PAGE MATCHING UI
+   PURPLE THEME
+   CONTINUOUS HERO + FILTER BACKGROUND
+   LIGHT + DARK MODE
+   RESPONSIVE
    ========================================================= */
 
-* {
+
+/* =========================================================
+   GLOBAL BOX SIZING
+   ========================================================= */
+
+.gallery-page,
+.gallery-page * {
     box-sizing: border-box;
 }
 
 
 /* =========================================================
-   GALLERY PAGE
+   MAIN GALLERY PAGE
+   LIGHT MODE - CONTINUOUS PURPLE GRADIENT
    ========================================================= */
 
 .gallery-page {
     position: relative;
+
+    width: 100%;
     min-height: 100vh;
+
     margin: 0;
     padding: 0;
+
+    background: linear-gradient(
+        135deg,
+        #6c5ce7 0%,
+        #a29bfe 100%
+    ) !important;
+
     overflow: visible;
-
-    background:
-        linear-gradient(
-            180deg,
-            #eef7ff 0%,
-            #f7fbff 42%,
-            #ffffff 100%
-        );
 }
 
 
-/* =========================================================
-   HERO BACKGROUND
-   ========================================================= */
+/* Remove unwanted pseudo backgrounds */
 
-.gallery-page::before {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 1150px;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(238, 247, 255, 0.18),
-            rgba(247, 251, 255, 0.35),
-            rgba(255, 255, 255, 0.78)
-        ),
-        url("/static/images/gallery/bluethemebg.png");
-
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-
-    pointer-events: none;
-    z-index: 0;
-}
-
-
-/* =========================================================
-   SOFT OVERLAY
-   ========================================================= */
-
+.gallery-page::before,
 .gallery-page::after {
-    content: "";
+    display: none !important;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    content: none !important;
 
-    height: 100%;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(255, 255, 255, 0.08) 45%,
-            rgba(255, 255, 255, 0.70) 100%
-        );
-
-    pointer-events: none;
-    z-index: 1;
+    background: none !important;
 }
 
 
@@ -96,19 +61,27 @@
 .gallery-header {
     position: relative;
 
+    width: 100%;
+
+    margin: 0;
+
     padding:
-        45px
+        55px
         25px
-        35px;
+        38px;
 
     text-align: center;
 
-    z-index: 3;
+    background: transparent !important;
+
+    color: #ffffff;
+
+    z-index: 2;
 }
 
 
 /* =========================================================
-   LABEL
+   HERO LABEL
    ========================================================= */
 
 .gallery-label-wrapper {
@@ -119,35 +92,36 @@
 
     gap: 10px;
 
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 
 .gallery-label-dot {
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
 
     flex-shrink: 0;
 
     border-radius: 50%;
 
-    background: #12b8d4;
+    background: #ffffff;
 
     box-shadow:
-        0 0 0 7px rgba(18, 184, 212, 0.12);
+        0 0 0 6px rgba(255, 255, 255, 0.16),
+        0 0 18px rgba(255, 255, 255, 0.45);
 }
 
 
 .gallery-label {
     margin: 0;
 
-    color: #2563eb;
+    color: #ffffff !important;
 
-    font-size: 17px;
+    font-size: 15px;
 
     font-weight: 800;
 
-    letter-spacing: 6px;
+    letter-spacing: 5px;
 
     line-height: 1.2;
 }
@@ -158,17 +132,17 @@
    ========================================================= */
 
 .gallery-header h1 {
+    max-width: 1100px;
+
     margin: 0 auto;
 
-    max-width: 1050px;
+    color: #ffffff !important;
 
-    color: #0f172a;
-
-    font-size: clamp(58px, 7vw, 96px);
+    font-size: clamp(42px, 5vw, 68px);
 
     font-weight: 800;
 
-    line-height: 0.98;
+    line-height: 1;
 
     letter-spacing: -3px;
 }
@@ -177,11 +151,11 @@
 .gallery-header h1 span {
     display: block;
 
-    margin-top: 10px;
+    margin-top: 6px;
 
-    color: #2563eb;
+    color: #ffffff !important;
 
-    font-size: clamp(58px, 7vw, 92px);
+    font-size: clamp(40px, 5vw, 64px);
 
     font-weight: 800;
 
@@ -189,7 +163,7 @@
 
     line-height: 1.02;
 
-    letter-spacing: -4px;
+    letter-spacing: -3px;
 }
 
 
@@ -198,20 +172,20 @@
    ========================================================= */
 
 .gallery-subtitle {
-    max-width: 900px;
+    max-width: 850px;
 
     margin:
-        35px
+        18px
         auto
         0;
 
-    color: #40516b;
+    color: rgba(255, 255, 255, 0.90) !important;
 
-    font-size: 20px;
+    font-size: 16px;
 
     font-weight: 400;
 
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
 
@@ -225,40 +199,41 @@
     align-items: center;
     justify-content: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    margin-top: 32px;
+    margin-top: 24px;
 }
 
 
 .gallery-header-line span {
     display: block;
 
-    width: 28px;
+    width: 25px;
     height: 4px;
 
     border-radius: 10px;
 
-    background: #2563eb;
+    background: rgba(255, 255, 255, 0.65);
 }
 
 
 .gallery-header-line span:nth-child(2) {
-    width: 65px;
+    width: 60px;
 
-    background: #11b8d2;
+    background: #ffffff;
 }
 
 
 .gallery-header-line span:nth-child(3) {
-    width: 28px;
+    width: 25px;
 
-    background: #2563eb;
+    background: rgba(255, 255, 255, 0.65);
 }
 
 
 /* =========================================================
    FILTER SECTION
+   SAME BACKGROUND AS HERO
    ========================================================= */
 
 .gallery-filter-section {
@@ -266,42 +241,29 @@
 
     width: 100%;
 
-    margin:
-        0
-        auto
-        50px;
+    margin: 0;
 
     padding:
-        10px
-        30px;
+        18px
+        30px
+        48px;
 
-    background: transparent;
+    background: transparent !important;
 
-    border: none;
+    border: none !important;
 
-    box-shadow: none;
+    box-shadow: none !important;
 
     z-index: 3;
 }
 
 
 .gallery-filter-section::before {
-    content: "";
+    display: none !important;
 
-    position: absolute;
+    content: none !important;
 
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.05)
-        );
-
-    pointer-events: none;
-
-    z-index: 0;
+    background: none !important;
 }
 
 
@@ -315,7 +277,7 @@
 
 
 /* =========================================================
-   FILTER BUTTONS
+   FILTER WRAPPER
    ========================================================= */
 
 .gallery-filters {
@@ -328,11 +290,17 @@
 
     flex-wrap: wrap;
 
-    gap: 14px;
+    gap: 12px;
+
+    width: 100%;
 
     z-index: 2;
 }
 
+
+/* =========================================================
+   FILTER BUTTON
+   ========================================================= */
 
 .gallery-filter {
     display: inline-flex;
@@ -340,80 +308,88 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 54px;
+    min-height: 50px;
 
     padding:
         0
-        26px;
+        25px;
 
-    border: 1px solid rgba(203, 213, 225, 0.85);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.75);
 
-    border-radius: 30px;
+    border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.08) !important;
 
-    color: #475569;
+    color: #ffffff !important;
 
     font-family: inherit;
 
-    font-size: 16px;
+    font-size: 14px;
 
     font-weight: 700;
 
     cursor: pointer;
 
-    box-shadow:
-        0 8px 22px rgba(15, 23, 42, 0.08);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    box-shadow: none;
 
     transition:
-        transform 0.25s ease,
         background 0.25s ease,
         color 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-.gallery-filter:hover {
-    transform: translateY(-3px);
-
-    background: #ffffff;
-
-    color: #2563eb;
-
-    border-color: #bfdbfe;
-
-    box-shadow:
-        0 12px 28px rgba(37, 99, 235, 0.15);
-}
-
-
-.gallery-filter.active {
-    background: #2563eb;
-
-    color: #ffffff;
-
-    border-color: #2563eb;
-
-    box-shadow:
-        0 10px 24px rgba(37, 99, 235, 0.30);
-}
-
-
-.gallery-filter.active:hover {
-    background: #1d4ed8;
-
-    color: #ffffff;
-
-    transform: translateY(-2px);
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 
 /* =========================================================
-   GALLERY GRID
+   FILTER HOVER
+   ========================================================= */
+
+.gallery-filter:hover {
+    transform: translateY(-3px);
+
+    background: #ffffff !important;
+
+    color: #6c5ce7 !important;
+
+    border-color: #ffffff !important;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   ACTIVE FILTER
+   ========================================================= */
+
+.gallery-filter.active {
+    background: #ffffff !important;
+
+    color: #6c5ce7 !important;
+
+    border-color: #ffffff !important;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+.gallery-filter.active:hover {
+    background: #ffffff !important;
+
+    color: #5f45d9 !important;
+
+    border-color: #ffffff !important;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   GALLERY CONTENT AREA
    ========================================================= */
 
 .gallery-grid {
@@ -424,29 +400,22 @@
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 24px;
+    gap: 28px;
 
-    max-width: 1200px;
+    width: 100%;
+
+    max-width: 1400px;
 
     margin: 0 auto;
 
     padding:
-        40px
-        25px
-        70px;
+        60px
+        45px
+        90px;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.82),
-            #ffffff
-        );
+    background: #ffffff !important;
 
-    border-radius:
-        34px
-        34px
-        0
-        0;
+    border-radius: 0 !important;
 
     z-index: 4;
 }
@@ -461,14 +430,16 @@
 
     overflow: hidden;
 
-    background: #ffffff;
+    background: #ffffff !important;
 
-    border: 1px solid #e2e8f0;
+    border:
+        1px solid
+        #e9ecef;
 
     border-radius: 20px;
 
     box-shadow:
-        0 8px 28px rgba(15, 23, 42, 0.08);
+        0 5px 20px rgba(0, 0, 0, 0.05);
 
     transition:
         transform 0.3s ease,
@@ -477,19 +448,20 @@
 }
 
 
-.gallery-card:hover {
-    transform: translateY(-6px);
+/* LIGHT MODE CARD HOVER
+   NO GLOW - ONLY SOFT SHADOW */
 
-    border-color: #bfdbfe;
+.gallery-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #d8d0ff;
 
     box-shadow:
-        0 18px 40px rgba(37, 99, 235, 0.16);
+        0 18px 40px rgba(108, 92, 231, 0.16);
 }
 
 
-/* =========================================================
-   HIDDEN CARD
-   ========================================================= */
+/* Hidden cards */
 
 .gallery-card.gallery-hidden {
     display: none !important;
@@ -505,11 +477,11 @@
 
     width: 100%;
 
-    height: 240px;
+    height: 250px;
 
     overflow: hidden;
 
-    background: #e2e8f0;
+    background: #f3f3f7;
 }
 
 
@@ -525,7 +497,7 @@
 
     object-fit: cover;
 
-    background: #f1f5f9;
+    background: #f3f3f7;
 
     transition:
         transform 0.5s ease;
@@ -551,7 +523,7 @@
     opacity: 0;
 
     background:
-        rgba(15, 23, 42, 0.20);
+        rgba(38, 30, 80, 0.32);
 
     transition:
         opacity 0.3s ease;
@@ -580,21 +552,21 @@
     align-items: center;
     justify-content: center;
 
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
 
     margin: 0;
     padding: 0;
 
-    border: 0;
+    border: none;
 
     border-radius: 50%;
 
     background: #ffffff;
 
-    color: #2563eb;
+    color: #6c5ce7;
 
-    font-size: 22px;
+    font-size: 21px;
 
     font-weight: 700;
 
@@ -605,7 +577,7 @@
     pointer-events: auto;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.20);
+        0 8px 22px rgba(0, 0, 0, 0.20);
 
     transform: scale(0.8);
 
@@ -613,8 +585,6 @@
         transform 0.25s ease,
         background 0.25s ease,
         color 0.25s ease;
-
-    z-index: 4;
 }
 
 
@@ -624,7 +594,7 @@
 
 
 .gallery-view-icon:hover {
-    background: #2563eb;
+    background: #6c5ce7;
 
     color: #ffffff;
 
@@ -647,24 +617,29 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 38px;
+    min-height: 36px;
 
     padding:
         0
-        16px;
+        15px;
 
-    border-radius: 24px;
+    border-radius: 50px;
 
-    background: #2563eb;
+    background:
+        linear-gradient(
+            135deg,
+            #6c5ce7,
+            #a29bfe
+        );
 
     color: #ffffff;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 800;
 
     box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.30);
+        0 8px 22px rgba(108, 92, 231, 0.30);
 
     z-index: 3;
 }
@@ -675,26 +650,34 @@
    ========================================================= */
 
 .gallery-card-content {
-    padding: 20px;
+    padding: 22px;
+
+    background: #ffffff !important;
+
+    color: #171717;
 }
 
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
 
 .gallery-category {
     display: inline-flex;
 
     align-items: center;
 
-    min-height: 28px;
+    min-height: 30px;
 
     padding:
         0
-        11px;
+        12px;
 
-    border-radius: 20px;
+    border-radius: 50px;
 
-    background: #eff6ff;
+    background: #f0edff !important;
 
-    color: #2563eb;
+    color: #6c5ce7 !important;
 
     font-size: 11px;
 
@@ -706,26 +689,34 @@
 }
 
 
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
 .gallery-card-content h2 {
     margin:
-        12px
+        13px
         0
         9px;
 
-    color: #0f172a;
+    color: #171717 !important;
 
     font-size: 21px;
 
     font-weight: 800;
 
-    line-height: 1.25;
+    line-height: 1.3;
 }
 
+
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
 
 .gallery-card-content p {
     margin: 0;
 
-    color: #64748b;
+    color: #68707a !important;
 
     font-size: 14px;
 
@@ -738,11 +729,13 @@
    ========================================================= */
 
 .gallery-card-footer {
-    margin-top: 18px;
+    margin-top: 19px;
 
     padding-top: 16px;
 
-    border-top: 1px solid #e2e8f0;
+    border-top:
+        1px solid
+        #e9ecef !important;
 }
 
 
@@ -761,11 +754,11 @@
     margin: 0;
     padding: 0;
 
-    border: 0;
+    border: none;
 
     background: transparent;
 
-    color: #2563eb;
+    color: #6c5ce7 !important;
 
     font-family: inherit;
 
@@ -802,9 +795,9 @@
 
     border-radius: 50%;
 
-    background: #eff6ff;
+    background: #f0edff !important;
 
-    color: #2563eb;
+    color: #6c5ce7 !important;
 
     font-size: 18px;
 
@@ -820,16 +813,16 @@
 
 
 .gallery-explore-button:hover .gallery-arrow {
-    background: #2563eb;
+    background: #6c5ce7 !important;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
     transform: translateX(4px);
 }
 
 
 .gallery-explore-button:hover .gallery-explore-text {
-    color: #1d4ed8;
+    color: #5f45d9 !important;
 }
 
 
@@ -845,6 +838,8 @@
         30px;
 
     text-align: center;
+
+    background: #ffffff !important;
 }
 
 
@@ -859,7 +854,7 @@
 
     border-radius: 50%;
 
-    background: #eff6ff;
+    background: #f0edff;
 }
 
 
@@ -869,7 +864,7 @@
         0
         10px;
 
-    color: #0f172a;
+    color: #171717 !important;
 
     font-size: 28px;
 }
@@ -880,23 +875,20 @@
 
     margin: 0 auto;
 
-    color: #64748b;
+    color: #68707a !important;
 
     line-height: 1.6;
 }
 
 
 /* =========================================================
-   FULL SCREEN LIGHTBOX
+   LIGHTBOX
    ========================================================= */
 
 .gallery-lightbox {
     position: fixed !important;
 
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
+    inset: 0 !important;
 
     width: 100% !important;
     height: 100% !important;
@@ -910,7 +902,7 @@
     justify-content: center !important;
 
     background:
-        rgba(2, 6, 23, 0.97) !important;
+        rgba(2, 2, 8, 0.97) !important;
 
     opacity: 0 !important;
 
@@ -936,13 +928,6 @@
     pointer-events: auto !important;
 }
 
-
-/* =========================================================
-   LIGHTBOX CONTENT
-   IMPORTANT:
-   overflow MUST be visible so navigation buttons
-   cannot be clipped on mobile.
-   ========================================================= */
 
 .gallery-lightbox-content {
     position: relative !important;
@@ -971,10 +956,6 @@
 }
 
 
-/* =========================================================
-   LIGHTBOX IMAGE
-   ========================================================= */
-
 .gallery-lightbox-content img {
     display: block !important;
 
@@ -998,7 +979,7 @@
 
 
 /* =========================================================
-   LIGHTBOX CLOSE BUTTON
+   LIGHTBOX CLOSE
    ========================================================= */
 
 .gallery-lightbox-close {
@@ -1010,16 +991,17 @@
     width: 48px !important;
     height: 48px !important;
 
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
     margin: 0 !important;
     padding: 0 !important;
 
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
     border:
-        1px solid rgba(255, 255, 255, 0.45) !important;
+        1px solid
+        rgba(255, 255, 255, 0.45) !important;
 
     border-radius: 50% !important;
 
@@ -1029,10 +1011,6 @@
     color: #ffffff !important;
 
     font-size: 28px !important;
-
-    font-weight: 400 !important;
-
-    line-height: 1 !important;
 
     cursor: pointer !important;
 
@@ -1047,96 +1025,36 @@
 
 
 .gallery-lightbox-close:hover {
-    background:
-        rgba(255, 255, 255, 0.25) !important;
+    background: #6c5ce7;
 
-    transform:
-        rotate(90deg) !important;
+    transform: rotate(90deg);
 }
 
 
 /* =========================================================
-   PREVIOUS BUTTON
+   LIGHTBOX PREVIOUS / NEXT
    ========================================================= */
 
-.gallery-lightbox-prev {
-    position: fixed !important;
-
-    top: 50% !important;
-    left: 28px !important;
-
-    width: 52px !important;
-    height: 52px !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.30) !important;
-
-    border-radius: 50% !important;
-
-    background:
-        rgba(0, 0, 0, 0.30) !important;
-
-    color: #ffffff !important;
-
-    font-size: 32px !important;
-
-    line-height: 1 !important;
-
-    cursor: pointer !important;
-
-    pointer-events: auto !important;
-
-    transform:
-        translateY(-50%) !important;
-
-    z-index: 2147483647 !important;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease !important;
-}
-
-
-.gallery-lightbox-prev:hover {
-    background: #2563eb !important;
-
-    transform:
-        translateY(-50%)
-        scale(1.08) !important;
-}
-
-
-/* =========================================================
-   NEXT BUTTON
-   ========================================================= */
-
+.gallery-lightbox-prev,
 .gallery-lightbox-next {
     position: fixed !important;
 
     top: 50% !important;
-    right: 28px !important;
 
     width: 52px !important;
     height: 52px !important;
 
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
     margin: 0 !important;
     padding: 0 !important;
 
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
     border:
-        1px solid rgba(255, 255, 255, 0.30) !important;
+        1px solid
+        rgba(255, 255, 255, 0.30) !important;
 
     border-radius: 50% !important;
 
@@ -1146,8 +1064,6 @@
     color: #ffffff !important;
 
     font-size: 32px !important;
-
-    line-height: 1 !important;
 
     cursor: pointer !important;
 
@@ -1164,8 +1080,19 @@
 }
 
 
+.gallery-lightbox-prev {
+    left: 28px !important;
+}
+
+
+.gallery-lightbox-next {
+    right: 28px !important;
+}
+
+
+.gallery-lightbox-prev:hover,
 .gallery-lightbox-next:hover {
-    background: #2563eb !important;
+    background: #6c5ce7 !important;
 
     transform:
         translateY(-50%)
@@ -1197,7 +1124,7 @@
 
     margin-bottom: 6px !important;
 
-    color: #93c5fd !important;
+    color: #a29bfe !important;
 
     font-size: 13px !important;
 
@@ -1221,7 +1148,7 @@
 
 
 /* =========================================================
-   RECOMMENDED IMAGES MODAL
+   RECOMMENDED MODAL
    ========================================================= */
 
 .gallery-recommended-modal {
@@ -1239,7 +1166,7 @@
     padding: 30px;
 
     background:
-        rgba(0, 0, 0, 0.65);
+        rgba(0, 0, 0, 0.70);
 }
 
 
@@ -1257,10 +1184,10 @@
 
     background: #ffffff;
 
-    border-radius: 16px;
+    border-radius: 20px;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.30);
+        0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -1275,14 +1202,19 @@
         25px;
 
     border-bottom:
-        1px solid #dddddd;
+        1px solid
+        #e9ecef;
 }
 
 
 .gallery-recommended-header h2 {
     margin: 0;
 
+    color: #171717;
+
     font-size: 24px;
+
+    font-weight: 800;
 }
 
 
@@ -1303,9 +1235,11 @@
 
     margin-bottom: 5px;
 
+    color: #6c5ce7;
+
     font-size: 12px;
 
-    font-weight: 600;
+    font-weight: 800;
 
     letter-spacing: 1px;
 }
@@ -1319,18 +1253,33 @@
 
     border-radius: 50%;
 
-    background: #f1f1f1;
+    background: #f0edff;
+
+    color: #6c5ce7;
 
     font-size: 25px;
 
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 
 .gallery-recommended-close:hover {
-    background: #dddddd;
+    background: #6c5ce7;
+
+    color: #ffffff;
+
+    transform: rotate(90deg);
 }
 
+
+/* =========================================================
+   RECOMMENDED GRID
+   ========================================================= */
 
 .gallery-recommended-grid {
     display: grid;
@@ -1355,24 +1304,28 @@
     background: #ffffff;
 
     border:
-        1px solid #dddddd;
+        1px solid
+        #e9ecef;
 
-    border-radius: 12px;
+    border-radius: 16px;
 
     cursor: pointer;
 
     transition:
         transform 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 
 .gallery-recommended-item:hover {
     transform:
-        translateY(-4px);
+        translateY(-5px);
+
+    border-color: #d8d0ff;
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.12);
+        0 12px 28px rgba(108, 92, 231, 0.15);
 }
 
 
@@ -1392,9 +1345,11 @@
         12px
         15px;
 
+    color: #171717;
+
     font-size: 15px;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -1426,7 +1381,7 @@
 
 
 /* =========================================================
-   LIGHTBOX - PREVENT PAGE SCROLL
+   STOP PAGE SCROLL WHEN LIGHTBOX OPEN
    ========================================================= */
 
 body:has(.gallery-lightbox.active) {
@@ -1435,338 +1390,473 @@ body:has(.gallery-lightbox.active) {
 
 
 /* =========================================================
+   =========================================================
    DARK MODE
+   =========================================================
    ========================================================= */
 
-body.dark-mode .gallery-page,
-body.dark .gallery-page,
-html.dark-mode .gallery-page,
+
+/* =========================================================
+   DARK MODE MAIN PAGE
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-page,
 html.dark .gallery-page,
+html.dark-mode .gallery-page,
 body[data-theme="dark"] .gallery-page,
-html[data-theme="dark"] .gallery-page {
-    background:
-        linear-gradient(
-            180deg,
-            #0b0718 0%,
-            #120b24 45%,
-            #0f0a1c 100%
-        ) !important;
-}
+body.dark .gallery-page,
+body.dark-mode .gallery-page {
+    background: #000000 !important;
 
-
-body.dark-mode .gallery-page::before,
-body.dark .gallery-page::before,
-html.dark-mode .gallery-page::before,
-html.dark .gallery-page::before,
-body[data-theme="dark"] .gallery-page::before,
-html[data-theme="dark"] .gallery-page::before {
-    background-image:
-        linear-gradient(
-            to bottom,
-            rgba(8, 5, 20, 0.65),
-            rgba(12, 7, 25, 0.78),
-            rgba(10, 6, 20, 0.95)
-        ),
-        url("/static/images/gallery/bluethemebg.png") !important;
-}
-
-
-body.dark-mode .gallery-header h1,
-body.dark .gallery-header h1,
-html.dark-mode .gallery-header h1,
-html.dark .gallery-header h1,
-body[data-theme="dark"] .gallery-header h1,
-html[data-theme="dark"] .gallery-header h1 {
     color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-header h1 span,
-body.dark .gallery-header h1 span,
-html.dark-mode .gallery-header h1 span,
-html.dark .gallery-header h1 span,
-body[data-theme="dark"] .gallery-header h1 span,
-html[data-theme="dark"] .gallery-header h1 span {
-    color: #8b7cff !important;
+/* =========================================================
+   DARK MODE HERO
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-header,
+html.dark .gallery-header,
+html.dark-mode .gallery-header,
+body[data-theme="dark"] .gallery-header,
+body.dark .gallery-header,
+body.dark-mode .gallery-header {
+    background: #000000 !important;
 }
 
 
-body.dark-mode .gallery-label,
-body.dark .gallery-label,
-html.dark-mode .gallery-label,
+/* =========================================================
+   DARK MODE LABEL
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-label,
 html.dark .gallery-label,
+html.dark-mode .gallery-label,
 body[data-theme="dark"] .gallery-label,
-html[data-theme="dark"] .gallery-label {
-    color: #8b7cff !important;
+body.dark .gallery-label,
+body.dark-mode .gallery-label {
+    color: #7657ff !important;
 }
 
 
-body.dark-mode .gallery-subtitle,
-body.dark .gallery-subtitle,
-html.dark-mode .gallery-subtitle,
+html[data-theme="dark"] .gallery-label-dot,
+html.dark .gallery-label-dot,
+html.dark-mode .gallery-label-dot,
+body[data-theme="dark"] .gallery-label-dot,
+body.dark .gallery-label-dot,
+body.dark-mode .gallery-label-dot {
+    background: #7657ff !important;
+
+    box-shadow:
+        0 0 0 6px rgba(118, 87, 255, 0.18),
+        0 0 20px rgba(118, 87, 255, 0.65) !important;
+}
+
+
+/* =========================================================
+   DARK MODE MAIN HEADING
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-header h1,
+html.dark .gallery-header h1,
+html.dark-mode .gallery-header h1,
+body[data-theme="dark"] .gallery-header h1,
+body.dark .gallery-header h1,
+body.dark-mode .gallery-header h1 {
+    color: #ffffff !important;
+}
+
+
+html[data-theme="dark"] .gallery-header h1 span,
+html.dark .gallery-header h1 span,
+html.dark-mode .gallery-header h1 span,
+body[data-theme="dark"] .gallery-header h1 span,
+body.dark .gallery-header h1 span,
+body.dark-mode .gallery-header h1 span {
+    color: #7657ff !important;
+}
+
+
+/* =========================================================
+   DARK MODE SUBTITLE
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-subtitle,
 html.dark .gallery-subtitle,
+html.dark-mode .gallery-subtitle,
 body[data-theme="dark"] .gallery-subtitle,
-html[data-theme="dark"] .gallery-subtitle {
-    color: #c4bdd8 !important;
+body.dark .gallery-subtitle,
+body.dark-mode .gallery-subtitle {
+    color: #a7a7a7 !important;
 }
 
 
-body.dark-mode .gallery-filter,
-body.dark .gallery-filter,
-html.dark-mode .gallery-filter,
+/* =========================================================
+   DARK MODE DECORATIVE LINE
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-header-line span,
+html.dark .gallery-header-line span,
+html.dark-mode .gallery-header-line span,
+body[data-theme="dark"] .gallery-header-line span,
+body.dark .gallery-header-line span,
+body.dark-mode .gallery-header-line span {
+    background: #7657ff !important;
+
+    box-shadow:
+        0 0 10px rgba(118, 87, 255, 0.45);
+}
+
+
+html[data-theme="dark"] .gallery-header-line span:nth-child(2),
+html.dark .gallery-header-line span:nth-child(2),
+html.dark-mode .gallery-header-line span:nth-child(2),
+body[data-theme="dark"] .gallery-header-line span:nth-child(2),
+body.dark .gallery-header-line span:nth-child(2),
+body.dark-mode .gallery-header-line span:nth-child(2) {
+    background: #9b89ff !important;
+}
+
+
+/* =========================================================
+   DARK MODE FILTER SECTION
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-filter-section,
+html.dark .gallery-filter-section,
+html.dark-mode .gallery-filter-section,
+body[data-theme="dark"] .gallery-filter-section,
+body.dark .gallery-filter-section,
+body.dark-mode .gallery-filter-section {
+    background: #000000 !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   DARK MODE FILTER BUTTONS
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-filter,
 html.dark .gallery-filter,
+html.dark-mode .gallery-filter,
 body[data-theme="dark"] .gallery-filter,
-html[data-theme="dark"] .gallery-filter {
-    background:
-        rgba(35, 25, 55, 0.95) !important;
+body.dark .gallery-filter,
+body.dark-mode .gallery-filter {
+    background: #000000 !important;
 
-    color: #ddd6fe !important;
+    color: #ffffff !important;
 
-    border-color: #4c3b70 !important;
+    border:
+        1px solid
+        #666666 !important;
 
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.35) !important;
+    box-shadow: none !important;
 }
 
 
-body.dark-mode .gallery-filter:hover,
-body.dark .gallery-filter:hover,
-html.dark-mode .gallery-filter:hover,
+/* =========================================================
+   DARK MODE FILTER HOVER
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-filter:hover,
 html.dark .gallery-filter:hover,
+html.dark-mode .gallery-filter:hover,
 body[data-theme="dark"] .gallery-filter:hover,
-html[data-theme="dark"] .gallery-filter:hover {
-    background: #30204d !important;
+body.dark .gallery-filter:hover,
+body.dark-mode .gallery-filter:hover {
+    background: #7657ff !important;
 
-    color: #a78bfa !important;
+    color: #ffffff !important;
 
-    border-color: #7c5ac7 !important;
+    border-color: #7657ff !important;
+
+    box-shadow:
+        0 8px 25px rgba(118, 87, 255, 0.35) !important;
+
+    transform: translateY(-3px);
 }
 
 
-body.dark-mode .gallery-filter.active,
-body.dark .gallery-filter.active,
-html.dark-mode .gallery-filter.active,
+/* =========================================================
+   DARK MODE ACTIVE FILTER
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-filter.active,
 html.dark .gallery-filter.active,
+html.dark-mode .gallery-filter.active,
 body[data-theme="dark"] .gallery-filter.active,
-html[data-theme="dark"] .gallery-filter.active {
-    background: #6d28d9 !important;
+body.dark .gallery-filter.active,
+body.dark-mode .gallery-filter.active {
+    background: #7657ff !important;
 
     color: #ffffff !important;
 
-    border-color: #7c3aed !important;
+    border-color: #7657ff !important;
+
+    box-shadow:
+        0 8px 28px rgba(118, 87, 255, 0.45) !important;
 }
 
 
-body.dark-mode .gallery-grid,
-body.dark .gallery-grid,
-html.dark-mode .gallery-grid,
+html[data-theme="dark"] .gallery-filter.active:hover,
+html.dark .gallery-filter.active:hover,
+html.dark-mode .gallery-filter.active:hover,
+body[data-theme="dark"] .gallery-filter.active:hover,
+body.dark .gallery-filter.active:hover,
+body.dark-mode .gallery-filter.active:hover {
+    background: #7657ff !important;
+
+    color: #ffffff !important;
+
+    border-color: #7657ff !important;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   DARK MODE GALLERY GRID
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-grid,
 html.dark .gallery-grid,
+html.dark-mode .gallery-grid,
 body[data-theme="dark"] .gallery-grid,
-html[data-theme="dark"] .gallery-grid {
-    background:
-        linear-gradient(
-            180deg,
-            #100a1c 0%,
-            #0d0817 100%
-        ) !important;
+body.dark .gallery-grid,
+body.dark-mode .gallery-grid {
+    background: #000000 !important;
+
+    padding-top: 25px !important;
 }
 
 
-body.dark-mode .gallery-card,
-body.dark .gallery-card,
-html.dark-mode .gallery-card,
+/* =========================================================
+   DARK MODE CARD
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-card,
 html.dark .gallery-card,
+html.dark-mode .gallery-card,
 body[data-theme="dark"] .gallery-card,
-html[data-theme="dark"] .gallery-card {
-    background: #181126 !important;
+body.dark .gallery-card,
+body.dark-mode .gallery-card {
+    background: #111111 !important;
 
-    border-color: #302044 !important;
+    border-color: #2a2a2a !important;
+
+    color: #ffffff !important;
 
     box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.40) !important;
+        0 8px 30px rgba(0, 0, 0, 0.45);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.35s ease;
 }
 
 
-body.dark-mode .gallery-card:hover,
-body.dark .gallery-card:hover,
-html.dark-mode .gallery-card:hover,
+/* =========================================================
+   DARK MODE CARD HOVER
+   STRONG PURPLE GLOW
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-card:hover,
 html.dark .gallery-card:hover,
+html.dark-mode .gallery-card:hover,
 body[data-theme="dark"] .gallery-card:hover,
-html[data-theme="dark"] .gallery-card:hover {
-    border-color: #6848a8 !important;
+body.dark .gallery-card:hover,
+body.dark-mode .gallery-card:hover {
+    transform: translateY(-8px) !important;
+
+    border-color: #7657ff !important;
 
     box-shadow:
-        0 18px 40px rgba(91, 58, 150, 0.30) !important;
+        0 18px 42px rgba(118, 87, 255, 0.45),
+        0 0 18px rgba(118, 87, 255, 0.55),
+        0 0 40px rgba(118, 87, 255, 0.30),
+        0 0 70px rgba(118, 87, 255, 0.16) !important;
 }
 
 
-body.dark-mode .gallery-image-wrapper,
-body.dark .gallery-image-wrapper,
-html.dark-mode .gallery-image-wrapper,
-html.dark .gallery-image-wrapper,
-body[data-theme="dark"] .gallery-image-wrapper,
-html[data-theme="dark"] .gallery-image-wrapper {
-    background: #211735 !important;
+/* =========================================================
+   DARK MODE CARD CONTENT
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-card-content,
+html.dark .gallery-card-content,
+html.dark-mode .gallery-card-content,
+body[data-theme="dark"] .gallery-card-content,
+body.dark .gallery-card-content,
+body.dark-mode .gallery-card-content {
+    background: #111111 !important;
+
+    color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-category,
-body.dark .gallery-category,
-html.dark-mode .gallery-category,
-html.dark .gallery-category,
-body[data-theme="dark"] .gallery-category,
-html[data-theme="dark"] .gallery-category {
-    background: #261946 !important;
+/* =========================================================
+   DARK MODE CARD TITLE
+   ========================================================= */
 
-    color: #a78bfa !important;
-}
-
-
-body.dark-mode .gallery-card-content h2,
-body.dark .gallery-card-content h2,
-html.dark-mode .gallery-card-content h2,
+html[data-theme="dark"] .gallery-card-content h2,
 html.dark .gallery-card-content h2,
+html.dark-mode .gallery-card-content h2,
 body[data-theme="dark"] .gallery-card-content h2,
-html[data-theme="dark"] .gallery-card-content h2 {
+body.dark .gallery-card-content h2,
+body.dark-mode .gallery-card-content h2 {
     color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-card-content p,
-body.dark .gallery-card-content p,
-html.dark-mode .gallery-card-content p,
+/* =========================================================
+   DARK MODE DESCRIPTION
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-card-content p,
 html.dark .gallery-card-content p,
+html.dark-mode .gallery-card-content p,
 body[data-theme="dark"] .gallery-card-content p,
-html[data-theme="dark"] .gallery-card-content p {
-    color: #b9afca !important;
+body.dark .gallery-card-content p,
+body.dark-mode .gallery-card-content p {
+    color: #b8b8b8 !important;
 }
 
 
-body.dark-mode .gallery-card-footer,
-body.dark .gallery-card-footer,
-html.dark-mode .gallery-card-footer,
+/* =========================================================
+   DARK MODE CATEGORY
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-category,
+html.dark .gallery-category,
+html.dark-mode .gallery-category,
+body[data-theme="dark"] .gallery-category,
+body.dark .gallery-category,
+body.dark-mode .gallery-category {
+    background: #241d46 !important;
+
+    color: #b7a9ff !important;
+}
+
+
+/* =========================================================
+   DARK MODE FOOTER
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-card-footer,
 html.dark .gallery-card-footer,
+html.dark-mode .gallery-card-footer,
 body[data-theme="dark"] .gallery-card-footer,
-html[data-theme="dark"] .gallery-card-footer {
-    border-top-color: #332447 !important;
+body.dark .gallery-card-footer,
+body.dark-mode .gallery-card-footer {
+    border-top-color: #2a2a2a !important;
 }
 
 
-body.dark-mode .gallery-explore-button,
-body.dark .gallery-explore-button,
-html.dark-mode .gallery-explore-button,
+/* =========================================================
+   DARK MODE EXPLORE
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-explore-button,
 html.dark .gallery-explore-button,
+html.dark-mode .gallery-explore-button,
 body[data-theme="dark"] .gallery-explore-button,
-html[data-theme="dark"] .gallery-explore-button {
-    color: #a78bfa !important;
+body.dark .gallery-explore-button,
+body.dark-mode .gallery-explore-button {
+    color: #9b89ff !important;
 }
 
 
-body.dark-mode .gallery-arrow,
-body.dark .gallery-arrow,
-html.dark-mode .gallery-arrow,
+html[data-theme="dark"] .gallery-arrow,
 html.dark .gallery-arrow,
+html.dark-mode .gallery-arrow,
 body[data-theme="dark"] .gallery-arrow,
-html[data-theme="dark"] .gallery-arrow {
-    background: #291b46 !important;
+body.dark .gallery-arrow,
+body.dark-mode .gallery-arrow {
+    background: #241d46 !important;
 
-    color: #a78bfa !important;
+    color: #b7a9ff !important;
 }
 
 
-body.dark-mode .gallery-explore-button:hover .gallery-arrow,
-body.dark .gallery-explore-button:hover .gallery-arrow,
-html.dark-mode .gallery-explore-button:hover .gallery-arrow,
+html[data-theme="dark"] .gallery-explore-button:hover .gallery-arrow,
 html.dark .gallery-explore-button:hover .gallery-arrow,
+html.dark-mode .gallery-explore-button:hover .gallery-arrow,
 body[data-theme="dark"] .gallery-explore-button:hover .gallery-arrow,
-html[data-theme="dark"] .gallery-explore-button:hover .gallery-arrow {
-    background: #7c3aed !important;
+body.dark .gallery-explore-button:hover .gallery-arrow,
+body.dark-mode .gallery-explore-button:hover .gallery-arrow {
+    background: #7657ff !important;
 
     color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-featured,
-body.dark .gallery-featured,
-html.dark-mode .gallery-featured,
-html.dark .gallery-featured,
-body[data-theme="dark"] .gallery-featured,
-html[data-theme="dark"] .gallery-featured {
-    background: #6d28d9 !important;
+/* =========================================================
+   DARK MODE IMAGE AREA
+   ========================================================= */
+
+html[data-theme="dark"] .gallery-image-wrapper,
+html.dark .gallery-image-wrapper,
+html.dark-mode .gallery-image-wrapper,
+body[data-theme="dark"] .gallery-image-wrapper,
+body.dark .gallery-image-wrapper,
+body.dark-mode .gallery-image-wrapper {
+    background: #111111 !important;
 }
 
 
-body.dark-mode .gallery-view-icon,
-body.dark .gallery-view-icon,
-html.dark-mode .gallery-view-icon,
-html.dark .gallery-view-icon,
-body[data-theme="dark"] .gallery-view-icon,
-html[data-theme="dark"] .gallery-view-icon {
-    background: #ffffff !important;
+/* =========================================================
+   DARK MODE EMPTY STATE
+   ========================================================= */
 
-    color: #6d28d9 !important;
+html[data-theme="dark"] .gallery-empty,
+html.dark .gallery-empty,
+html.dark-mode .gallery-empty,
+body[data-theme="dark"] .gallery-empty,
+body.dark .gallery-empty,
+body.dark-mode .gallery-empty {
+    background: #000000 !important;
+
+    color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-empty h2,
-body.dark .gallery-empty h2,
-html.dark-mode .gallery-empty h2,
+html[data-theme="dark"] .gallery-empty h2,
 html.dark .gallery-empty h2,
+html.dark-mode .gallery-empty h2,
 body[data-theme="dark"] .gallery-empty h2,
-html[data-theme="dark"] .gallery-empty h2 {
+body.dark .gallery-empty h2,
+body.dark-mode .gallery-empty h2 {
     color: #ffffff !important;
 }
 
 
-body.dark-mode .gallery-empty p,
-body.dark .gallery-empty p,
-html.dark-mode .gallery-empty p,
+html[data-theme="dark"] .gallery-empty p,
 html.dark .gallery-empty p,
+html.dark-mode .gallery-empty p,
 body[data-theme="dark"] .gallery-empty p,
-html[data-theme="dark"] .gallery-empty p {
-    color: #b9afca !important;
+body.dark .gallery-empty p,
+body.dark-mode .gallery-empty p {
+    color: #b8b8b8 !important;
 }
 
 
-body.dark-mode .gallery-recommended-box,
-body.dark .gallery-recommended-box,
-html.dark-mode .gallery-recommended-box,
-html.dark .gallery-recommended-box,
-body[data-theme="dark"] .gallery-recommended-box,
-html[data-theme="dark"] .gallery-recommended-box {
-    background: #181126 !important;
+/* =========================================================
+   DARK MODE BODY
+   ========================================================= */
 
-    color: #ffffff !important;
-}
-
-
-body.dark-mode .gallery-recommended-header,
-body.dark .gallery-recommended-header,
-html.dark-mode .gallery-recommended-header,
-html.dark .gallery-recommended-header,
-body[data-theme="dark"] .gallery-recommended-header,
-html[data-theme="dark"] .gallery-recommended-header {
-    border-bottom-color: #332447 !important;
-}
-
-
-body.dark-mode .gallery-recommended-header h2,
-body.dark .gallery-recommended-header h2,
-html.dark-mode .gallery-recommended-header h2,
-html.dark .gallery-recommended-header h2,
-body[data-theme="dark"] .gallery-recommended-header h2,
-html[data-theme="dark"] .gallery-recommended-header h2 {
-    color: #ffffff !important;
-}
-
-
-body.dark-mode .gallery-recommended-header p,
-body.dark .gallery-recommended-header p,
-html.dark-mode .gallery-recommended-header p,
-html.dark .gallery-recommended-header p,
-body[data-theme="dark"] .gallery-recommended-header p,
-html[data-theme="dark"] .gallery-recommended-header p {
-    color: #aaa0bd !important;
+html[data-theme="dark"],
+html.dark,
+html.dark-mode,
+body[data-theme="dark"],
+body.dark,
+body.dark-mode {
+    background: #000000;
 }
 
 
@@ -1777,32 +1867,39 @@ html[data-theme="dark"] .gallery-recommended-header p {
 @media (max-width: 1100px) {
 
     .gallery-header {
-        padding-top: 100px;
+        padding-top: 45px;
     }
+
 
     .gallery-header h1 {
-        font-size: 70px;
+        font-size: 58px;
     }
+
 
     .gallery-header h1 span {
-        font-size: 68px;
+        font-size: 56px;
     }
 
+
     .gallery-subtitle {
-        font-size: 18px;
+        font-size: 15px;
     }
+
 
     .gallery-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
-        padding-left: 25px;
-        padding-right: 25px;
+        padding:
+            50px
+            25px
+            70px;
     }
 
+
     .gallery-filter {
-        padding-left: 21px;
-        padding-right: 21px;
+        padding-left: 22px;
+        padding-right: 22px;
     }
 }
 
@@ -1813,50 +1910,36 @@ html[data-theme="dark"] .gallery-recommended-header p {
 
 @media (max-width: 700px) {
 
-    .gallery-page::before {
-        height: 700px;
-
-        background-position:
-            center top;
-
-        background-size:
-            auto 700px;
-    }
-
-
-    .gallery-page::after {
-        height: 700px;
-    }
-
-
     .gallery-header {
         padding:
-            45px
+            42px
             18px
-            25px;
+            30px;
+
+        background: transparent !important;
     }
 
 
     .gallery-label-wrapper {
-        margin-bottom: 22px;
+        margin-bottom: 20px;
     }
 
 
     .gallery-label {
-        font-size: 12px;
+        font-size: 11px;
 
-        letter-spacing: 4px;
+        letter-spacing: 3px;
     }
 
 
     .gallery-label-dot {
-        width: 10px;
-        height: 10px;
+        width: 9px;
+        height: 9px;
     }
 
 
     .gallery-header h1 {
-        font-size: 48px;
+        font-size: 40px;
 
         line-height: 1.02;
 
@@ -1865,90 +1948,59 @@ html[data-theme="dark"] .gallery-recommended-header p {
 
 
     .gallery-header h1 span {
-        margin-top: 6px;
+        margin-top: 4px;
 
-        font-size: 45px;
+        font-size: 38px;
 
         letter-spacing: -2px;
     }
 
 
     .gallery-subtitle {
-        margin-top: 25px;
+        margin-top: 16px;
 
-        font-size: 15px;
+        font-size: 14px;
 
         line-height: 1.6;
     }
 
 
     .gallery-header-line {
-        margin-top: 25px;
+        margin-top: 19px;
     }
 
 
-    /* =====================================================
-       MOBILE FILTERS
-       ===================================================== */
+    /* FILTER */
 
     .gallery-filter-section {
-        width: 92%;
+        margin: 0;
 
-        margin:
-            0
-            auto
-            35px;
-
-        padding: 0 !important;
+        padding:
+            5px
+            15px
+            40px !important;
 
         background: transparent !important;
-
-        border: none !important;
-
-        box-shadow: none !important;
-    }
-
-
-    .gallery-filter-section::before {
-        display: none;
     }
 
 
     .gallery-filters {
-        display: flex;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        align-items: center;
-
-        gap: 10px;
-
-        padding: 0 !important;
-
-        background: transparent !important;
-
-        border: none !important;
-
-        box-shadow: none !important;
+        gap: 9px;
     }
 
 
     .gallery-filter {
-        min-height: 46px;
+        min-height: 44px;
 
         padding:
             0
-            16px;
+            15px;
 
-        font-size: 13px;
+        font-size: 12px;
     }
 
 
-    /* =====================================================
-       MOBILE GRID
-       ===================================================== */
+    /* GALLERY */
 
     .gallery-grid {
         grid-template-columns: 1fr;
@@ -1956,22 +2008,34 @@ html[data-theme="dark"] .gallery-recommended-header p {
         gap: 22px;
 
         padding:
-            35px
+            40px
             18px
             60px;
 
-        border-radius:
-            24px
-            24px
-            0
-            0;
+        background: #ffffff !important;
     }
 
+
+    /* DARK MOBILE GRID */
+
+    html[data-theme="dark"] .gallery-grid,
+    html.dark .gallery-grid,
+    html.dark-mode .gallery-grid,
+    body[data-theme="dark"] .gallery-grid,
+    body.dark .gallery-grid,
+    body.dark-mode .gallery-grid {
+        background: #000000 !important;
+    }
+
+
+    /* IMAGE */
 
     .gallery-image-wrapper {
         height: 250px;
     }
 
+
+    /* CARD */
 
     .gallery-card-content {
         padding: 20px;
@@ -1979,43 +2043,26 @@ html[data-theme="dark"] .gallery-recommended-header p {
 
 
     .gallery-card-content h2 {
-        font-size: 21px;
+        font-size: 20px;
     }
 
 
-    /* =====================================================
-       MOBILE LIGHTBOX
-       ===================================================== */
+    .gallery-card-content p {
+        font-size: 14px;
+    }
+
+
+    /* LIGHTBOX */
 
     .gallery-lightbox {
-        position: fixed !important;
-
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-
         width: 100vw !important;
         height: 100vh !important;
 
         padding: 10px !important;
-
-        overflow: hidden !important;
-
-        z-index: 2147483647 !important;
     }
 
 
-    /*
-       IMPORTANT:
-       Do NOT clip the lightbox content.
-       This allows the previous/next buttons
-       to remain visible above the image.
-    */
-
     .gallery-lightbox-content {
-        position: relative !important;
-
         width: 100% !important;
         height: 100% !important;
 
@@ -2023,16 +2070,8 @@ html[data-theme="dark"] .gallery-recommended-header p {
         max-height: 100vh !important;
 
         overflow: visible !important;
-
-        z-index: 2147483647 !important;
     }
 
-
-    /*
-       Smaller mobile image.
-       This creates enough space for the
-       left and right navigation buttons.
-    */
 
     .gallery-lightbox-content img {
         max-width: 84vw !important;
@@ -2043,13 +2082,7 @@ html[data-theme="dark"] .gallery-recommended-header p {
     }
 
 
-    /* =====================================================
-       MOBILE CLOSE BUTTON
-       ===================================================== */
-
     .gallery-lightbox-close {
-        position: fixed !important;
-
         top: 12px !important;
         right: 12px !important;
 
@@ -2057,143 +2090,41 @@ html[data-theme="dark"] .gallery-recommended-header p {
         height: 44px !important;
 
         font-size: 27px !important;
-
-        z-index: 2147483647 !important;
-
-        pointer-events: auto !important;
     }
 
 
-    /* =====================================================
-       MOBILE PREVIOUS BUTTON
-       ===================================================== */
-
     .gallery-lightbox-prev {
-        position: fixed !important;
-
         top: 50% !important;
         left: 10px !important;
 
         width: 44px !important;
         height: 44px !important;
 
-        margin: 0 !important;
-        padding: 0 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        border:
-            1px solid rgba(255, 255, 255, 0.45) !important;
-
-        border-radius: 50% !important;
-
-        background:
-            rgba(0, 0, 0, 0.55) !important;
-
-        color: #ffffff !important;
-
         font-size: 30px !important;
 
-        line-height: 1 !important;
-
-        cursor: pointer !important;
-
-        pointer-events: auto !important;
-
-        transform:
-            translateY(-50%) !important;
-
-        z-index: 2147483647 !important;
-
         visibility: visible !important;
-
         opacity: 1 !important;
     }
 
 
-    .gallery-lightbox-prev:hover {
-        background: #2563eb !important;
-
-        transform:
-            translateY(-50%)
-            scale(1.05) !important;
-    }
-
-
-    /* =====================================================
-       MOBILE NEXT BUTTON
-       ===================================================== */
-
     .gallery-lightbox-next {
-        position: fixed !important;
-
         top: 50% !important;
         right: 10px !important;
 
         width: 44px !important;
         height: 44px !important;
 
-        margin: 0 !important;
-        padding: 0 !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        border:
-            1px solid rgba(255, 255, 255, 0.45) !important;
-
-        border-radius: 50% !important;
-
-        background:
-            rgba(0, 0, 0, 0.55) !important;
-
-        color: #ffffff !important;
-
         font-size: 30px !important;
 
-        line-height: 1 !important;
-
-        cursor: pointer !important;
-
-        pointer-events: auto !important;
-
-        transform:
-            translateY(-50%) !important;
-
-        z-index: 2147483647 !important;
-
         visibility: visible !important;
-
         opacity: 1 !important;
     }
 
 
-    .gallery-lightbox-next:hover {
-        background: #2563eb !important;
-
-        transform:
-            translateY(-50%)
-            scale(1.05) !important;
-    }
-
-
-    /* =====================================================
-       MOBILE CAPTION
-       ===================================================== */
-
     .gallery-lightbox-caption {
-        position: relative !important;
-
         width: 90% !important;
 
         margin-top: 12px !important;
-
-        z-index: 2147483647 !important;
     }
 
 
@@ -2207,9 +2138,7 @@ html[data-theme="dark"] .gallery-recommended-header p {
     }
 
 
-    /* =====================================================
-       MOBILE RECOMMENDED
-       ===================================================== */
+    /* RECOMMENDED MODAL */
 
     .gallery-recommended-modal {
         padding: 15px;
@@ -2246,33 +2175,53 @@ html[data-theme="dark"] .gallery-recommended-header p {
 @media (max-width: 450px) {
 
     .gallery-header {
-        padding-top: 40px;
+        padding:
+            38px
+            15px
+            27px;
+
+        background: transparent !important;
     }
 
 
     .gallery-header h1 {
-        font-size: 40px;
+        font-size: 34px;
     }
 
 
     .gallery-header h1 span {
-        font-size: 37px;
+        font-size: 32px;
     }
 
 
     .gallery-subtitle {
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+
+    .gallery-filter-section {
+        padding-bottom: 35px !important;
+
+        background: transparent !important;
     }
 
 
     .gallery-filter {
-        min-height: 42px;
+        min-height: 41px;
 
         padding:
             0
-            14px;
+            13px;
 
-        font-size: 12px;
+        font-size: 11px;
+    }
+
+
+    .gallery-grid {
+        padding:
+            35px
+            15px
+            55px;
     }
 
 
@@ -2280,8 +2229,6 @@ html[data-theme="dark"] .gallery-recommended-header p {
         height: 220px;
     }
 
-
-    /* EXTRA SMALL SCREEN LIGHTBOX FIX */
 
     .gallery-lightbox-content img {
         max-width: 80vw !important;
@@ -2318,5 +2265,55 @@ html[data-theme="dark"] .gallery-recommended-header p {
         height: 40px !important;
 
         font-size: 24px !important;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .gallery-header h1 {
+        font-size: 30px;
+    }
+
+
+    .gallery-header h1 span {
+        font-size: 28px;
+    }
+
+
+    .gallery-label {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .gallery-filter {
+        min-height: 39px;
+
+        padding:
+            0
+            11px;
+
+        font-size: 10px;
+    }
+
+
+    .gallery-image-wrapper {
+        height: 200px;
+    }
+
+
+    .gallery-card-content {
+        padding: 18px;
+    }
+
+
+    .gallery-card-content h2 {
+        font-size: 18px;
     }
 }
