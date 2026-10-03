@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("contactForm");
-    const successMessage = document.getElementById("successMessage");
     const submitButton = document.querySelector(".contact-submit-btn");
 
-    if (!form || !successMessage || !submitButton) {
+    if (!form || !submitButton) {
         return;
     }
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
         const fullName = document.getElementById("fullName");
         const email = document.getElementById("email");
         const subject = document.getElementById("subject");
@@ -28,35 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+        if (email.value.trim() && !email.validity.valid) {
+            email.style.borderColor = "#ef476f";
+            isValid = false;
+        }
+
         if (!consent.checked) {
             consent.focus();
             isValid = false;
         }
 
         if (!isValid) {
-            successMessage.classList.remove("show");
+            event.preventDefault();
             return;
         }
 
         submitButton.disabled = true;
-
         submitButton.innerHTML = `
-            <span>Message Ready</span>
-            <i class="fas fa-check"></i>
+            <span>Sending...</span>
+            <i class="fas fa-spinner fa-spin"></i>
         `;
-
-        successMessage.classList.add("show");
-
-        setTimeout(function () {
-            form.reset();
-
-            submitButton.disabled = false;
-
-            submitButton.innerHTML = `
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-            `;
-        }, 2500);
     });
 
 });

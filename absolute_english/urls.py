@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 from apps import views
@@ -12,7 +12,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('trainers/', views.trainers, name='trainers'),
     path('gallery/', views.gallery, name='gallery'),
-    path('contact/', views.contact, name='contact'),
+    path('contact/', include('apps.enquiries.urls')),
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', views.enroll, name='enroll'),
 ]
