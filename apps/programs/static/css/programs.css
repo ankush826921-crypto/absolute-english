@@ -3265,3 +3265,49 @@ html[data-theme="dark"] .batch-card span {
     }
 
 }
+/* ==============================
+   SINGLE PROGRAM CARD FIX
+   ============================== */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    justify-items: center;
+}
+
+.course-card {
+    width: 100%;
+    max-width: 390px;
+}
+
+/* Jab sirf 1 program ho */
+.course-grid .course-card:only-child {
+    grid-column: 2;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-grid .course-card:only-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid .course-card:only-child {
+        grid-column: auto;
+    }
+
+    .course-card {
+        max-width: 100%;
+    }
+}
