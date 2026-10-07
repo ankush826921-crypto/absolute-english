@@ -1,234 +1,76 @@
 (function () {
     "use strict";
 
-    // ==============================
-    // API
-    // ==============================
-
     const api = window.LinguaFacultyAPI;
+    if (!api) return;
+    const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[character]);
 
-    if (!api) {
-        console.error(
-            "LinguaFacultyAPI not found. Make sure api.js loads before faculty-courses.js."
-        );
-        return;
+    function createCourseCard(course, trainer) {
+        const title = course.title || course.name || "Course title to be added";
+        const englishType = course.english_type || course.englishType || course.language || "English type to be added";
+        const level = course.level || "Level to be added";
+        const meta = [
+            ["English type", englishType],
+            ["Duration", course.duration || "To be added"],
+            ["Instructor", course.instructor || trainer.name || "To be added"],
+            ["Level", level]
+        ];
+        const highlights = Array.isArray(course.highlights) && course.highlights.length
+            ? `<ul class="faculty-course-highlights">${course.highlights.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul>`
+            : '<p class="faculty-detail-placeholder">Course highlights to be added</p>';
+        const demoBadge = course.demo ? '<span class="faculty-course-demo-badge">DEMO COURSE</span>' : "";
+        return `
+            <article class="faculty-course-card">
+                ${demoBadge}
+                <p class="faculty-eyebrow">${escapeHTML(englishType)}</p>
+                <h2>${escapeHTML(title)}</h2>
+                <p class="faculty-course-description">${escapeHTML(course.description || "Course description to be added")}</p>
+                <dl class="faculty-course-meta">${meta.map(([label, value]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join("")}</dl>
+                <h3>Course highlights</h3>
+                ${highlights}
+                <a class="faculty-button faculty-button--primary" href="/faculty/trial/class/?teacher=${encodeURIComponent(trainer.id)}">Ask about this course</a>
+            </article>`;
     }
 
-
-    // ==============================
-    // PAGE INITIALIZATION
-    // ==============================
-
     document.addEventListener("DOMContentLoaded", async () => {
-
-        // ==============================
-        // DOM ELEMENTS
-        // ==============================
-
+        const params = new URLSearchParams(window.location.search);
+        const trainerId = params.get("instructor") || params.get("teacher") || params.get("id") || "1";
         const loading = document.querySelector("#courses-loading");
         const grid = document.querySelector("#course-grid");
         const empty = document.querySelector("#courses-empty");
         const error = document.querySelector("#courses-error");
         const title = document.querySelector("#courses-title");
         const subtitle = document.querySelector("#courses-subtitle");
-        const backButton = document.querySelector("#courses-back");
-        const emptyTrial = document.querySelector("#empty-trial");
+        if (!loading || !grid || !empty || !error) return;
 
-
-        // ==============================
-        // GET INSTRUCTOR ID
-        // ==============================
-
-        const params = new URLSearchParams(
-            window.location.search
-        );
-
-        const teacherId = params.get("instructor") || params.get("teacher");
-
-
-        // ==============================
-        // CHECK REQUIRED ELEMENTS
-        // ==============================
-
-        if (!loading || !grid) {
-            console.error(
-                "Courses page elements not found."
-            );
-            return;
-        }
-
-
-        // ==============================
-        // CHECK INSTRUCTOR ID
-        // ==============================
-
-        if (!teacherId) {
-
-            loading.hidden = true;
-
-            if (error) {
-                error.hidden = false;
-            }
-
-            return;
-        }
-
-
-        // ==============================
-        // LOAD COURSES
-        // ==============================
-
-        try {
-
-            const courses =
-                await api.getCoursesByTeacher(
-                    teacherId
-                );
-
-
-            // Hide loading
-
-            loading.hidden = true;
-
-
-            // ==============================
-            // NO COURSES
-            // ==============================
-
-            if (!courses || courses.length === 0) {
-
-                if (empty) {
-                    empty.hidden = false;
-                }
-
-                return;
-            }
-
-
-            // ==============================
-            // UPDATE HEADER
-            // ==============================
-
+        async function loadCourses() {
+            loading.hidden = false;
+            empty.hidden = true;
+            error.hidden = true;
+            grid.replaceChildren();
             try {
-
-                const teacher =
-                    await api.getTeacher(
-                        teacherId
-                    );
-
-                if (teacher) {
-
-                    if (title) {
-                        title.textContent =
-                            `${teacher.name}'s Courses`;
-                    }
-
-                    if (subtitle) {
-                        subtitle.textContent =
-                            `Explore courses taught by ${teacher.name}.`;
-                    }
-
+                const [trainer, courses] = await Promise.all([
+                    api.getTeacher(trainerId),
+                    api.getCoursesByTeacher(trainerId)
+                ]);
+                if (title) title.textContent = trainer.name ? `${trainer.name}’s English courses` : "English courses";
+                if (subtitle) subtitle.textContent = trainer.demo ? "Fictional sample courses for frontend testing." : (trainer.name ? `Courses led by ${trainer.name}.` : "Course details will appear here when they are available.");
+                if (!Array.isArray(courses) || !courses.length) {
+                    empty.hidden = false;
+                    return;
                 }
-
-            } catch (teacherError) {
-
-                console.warn(
-                    "Teacher information could not be loaded:",
-                    teacherError
-                );
-
-            }
-
-
-            // ==============================
-            // RENDER COURSES
-            // ==============================
-
-            grid.innerHTML = courses
-                .map(createCourseCard)
-                .join("");
-
-
-        } catch (err) {
-
-            console.error(
-                "Unable to load courses:",
-                err
-            );
-
-
-            // Hide loading
-
-            loading.hidden = true;
-
-
-            // Show error
-
-            if (error) {
+                grid.innerHTML = courses.map((course) => createCourseCard(course, trainer)).join("");
+            } catch (loadError) {
+                console.error("Unable to load courses:", loadError);
                 error.hidden = false;
+            } finally {
+                loading.hidden = true;
             }
-
         }
 
+        document.querySelector("[data-retry-courses]")?.addEventListener("click", loadCourses);
+        loadCourses();
     });
-
-
-    // ==============================
-    // CREATE COURSE CARD
-    // ==============================
-
-    function createCourseCard(course) {
-
-        return `
-            <article class="faculty-course-card">
-
-                <div class="faculty-course-card__top">
-
-                    <h2>
-                        ${course.name}
-                    </h2>
-
-                    <span class="faculty-level">
-                        ${course.level}
-                    </span>
-
-                </div>
-
-
-                <p>
-                    ${course.description}
-                </p>
-
-
-                <div class="faculty-course-meta">
-
-                    <span>
-                        <strong>Duration:</strong>
-                        ${course.duration}
-                    </span>
-
-                    <span>
-                        <strong>Language:</strong>
-                        ${course.language}
-                    </span>
-
-                    <span>
-                        <strong>Mode:</strong>
-                        ${course.mode}
-                    </span>
-
-                </div>
-
-
-                 <a
-                     href="/trial/class/"
-                     class="faculty-button faculty-button--primary"
-                 >
-                     Trial Class
-                 </a>
-
-            </article>
-        `;
-    }
-
 })();

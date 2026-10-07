@@ -1,0 +1,354 @@
+/* ==========================================================
+   ABSOLUTE ENGLISH - ENROLL PAGE STYLES
+   Scoped under #absoluteEnglishEnroll
+   Purple/Violet Theme — Home Page Theme
+   ========================================================== */
+
+/* ---------- LIGHT MODE ---------- */
+
+#absoluteEnglishEnroll {
+
+    --aee-primary: #6c5ce7;
+    --aee-primary-dark: #5a4bd1;
+
+    --aee-text: #2d3436;
+    --aee-muted: #636e72;
+
+    --aee-bg: #f8f7ff;
+    --aee-card-bg: #ffffff;
+
+    --aee-input-bg: #ffffff;
+    --aee-input-text: #2d3436;
+    --aee-input-border: #e9e3ff;
+
+    --aee-placeholder: #9ca3af;
+
+    --aee-section-bg: linear-gradient(
+        135deg,
+        #f8f7ff 0%,
+        #ffffff 100%
+    );
+
+    --aee-radius: 18px;
+
+    --aee-shadow: 0 8px 25px rgba(108, 92, 231, 0.08);
+
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: var(--aee-text);
+}
+
+
+/* ---------- DARK MODE ---------- */
+
+.dark-mode #absoluteEnglishEnroll,
+[data-theme="dark"] #absoluteEnglishEnroll,
+body.dark #absoluteEnglishEnroll,
+html.dark #absoluteEnglishEnroll,
+.dark #absoluteEnglishEnroll {
+
+    --aee-primary: #a29bfe;
+    --aee-primary-dark: #8b5cf6;
+
+    --aee-text: #e8e8e8;
+    --aee-muted: #b0b0b0;
+
+    --aee-bg: #16213e;
+    --aee-card-bg: #1e1e3a;
+
+    --aee-input-bg: #14142b;
+    --aee-input-text: #e8e8e8;
+    --aee-input-border: #2d2d4a;
+
+    --aee-placeholder: #77778f;
+
+    --aee-section-bg: linear-gradient(
+        135deg,
+        #1a1a2e 0%,
+        #16213e 100%
+    );
+
+    --aee-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================================
+   SECTION
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-section {
+
+    background: var(--aee-section-bg);
+
+    min-height: 100vh;
+
+    transition: background 0.3s ease;
+}
+
+
+#absoluteEnglishEnroll .aee-section-header h2 {
+
+    font-weight: 700;
+    font-size: 2rem;
+
+    color: var(--aee-text);
+
+    margin-bottom: 2rem;
+
+    position: relative;
+
+    transition: color 0.3s ease;
+}
+
+
+#absoluteEnglishEnroll .aee-section-header h2::after {
+
+    content: '';
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        var(--aee-primary),
+        #a29bfe
+    );
+
+    border-radius: 2px;
+
+    margin: 12px auto 0;
+}
+
+
+/* ==========================================================
+   CARD
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-card {
+
+    border: 1px solid var(--aee-input-border);
+
+    border-radius: var(--aee-radius);
+
+    box-shadow: var(--aee-shadow);
+
+    background: var(--aee-card-bg);
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+}
+
+
+#absoluteEnglishEnroll .aee-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
+}
+
+
+#absoluteEnglishEnroll .aee-title {
+
+    font-weight: 600;
+
+    color: var(--aee-text);
+
+    letter-spacing: 0.3px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* ==========================================================
+   FORM LABELS
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-label {
+
+    font-weight: 500;
+
+    font-size: 0.9rem;
+
+    color: var(--aee-text);
+
+    margin-bottom: 6px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* ==========================================================
+   INPUTS & SELECTS
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-input,
+#absoluteEnglishEnroll .aee-select {
+
+    border: 1.5px solid var(--aee-input-border);
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+
+    font-size: 0.95rem;
+
+    transition: all 0.25s ease;
+
+    background-color: var(--aee-input-bg);
+
+    color: var(--aee-input-text);
+}
+
+
+#absoluteEnglishEnroll .aee-input:focus,
+#absoluteEnglishEnroll .aee-select:focus {
+
+    border-color: var(--aee-primary);
+
+    box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.20);
+
+    outline: none;
+
+    background-color: var(--aee-input-bg);
+
+    color: var(--aee-input-text);
+}
+
+
+#absoluteEnglishEnroll .aee-input::placeholder {
+
+    color: var(--aee-placeholder);
+}
+
+
+/* Dropdown options */
+
+#absoluteEnglishEnroll .aee-select option {
+
+    background-color: var(--aee-input-bg);
+
+    color: var(--aee-input-text);
+}
+
+
+/* ==========================================================
+   CHECKBOX
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-check {
+
+    padding-left: 1.8em;
+
+    margin-top: 0.5rem;
+}
+
+
+#absoluteEnglishEnroll .aee-check .form-check-input {
+
+    width: 1.15em;
+    height: 1.15em;
+
+    margin-left: -1.8em;
+    margin-top: 0.2em;
+
+    border: 1.5px solid var(--aee-input-border);
+
+    background-color: var(--aee-input-bg);
+
+    cursor: pointer;
+}
+
+
+#absoluteEnglishEnroll .aee-check .form-check-input:checked {
+
+    background-color: var(--aee-primary);
+
+    border-color: var(--aee-primary);
+}
+
+
+#absoluteEnglishEnroll .aee-check .form-check-label {
+
+    font-size: 0.9rem;
+
+    color: var(--aee-muted);
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+
+/* ==========================================================
+   SUBMIT BUTTON
+   ========================================================== */
+
+#absoluteEnglishEnroll .aee-btn-primary {
+
+    background: linear-gradient(
+        135deg,
+        #6c5ce7,
+        #a29bfe
+    );
+
+    border: none;
+
+    color: #fff;
+
+    font-weight: 600;
+
+    font-size: 1rem;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    letter-spacing: 0.5px;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 6px 18px rgba(108, 92, 231, 0.25);
+}
+
+
+#absoluteEnglishEnroll .aee-btn-primary:hover,
+#absoluteEnglishEnroll .aee-btn-primary:focus {
+
+    background: linear-gradient(
+        135deg,
+        #5a4bd1,
+        #7c3aed
+    );
+
+    color: #fff;
+
+    box-shadow: 0 10px 24px rgba(108, 92, 231, 0.4);
+
+    transform: translateY(-2px);
+}
+
+
+#absoluteEnglishEnroll .aee-btn-primary:active {
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    #absoluteEnglishEnroll .aee-section-header h2 {
+
+        font-size: 1.5rem;
+    }
+
+    #absoluteEnglishEnroll .aee-card .card-body {
+
+        padding: 1.5rem !important;
+    }
+}

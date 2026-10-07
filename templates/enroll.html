@@ -5,76 +5,104 @@
 {% block page_title %}Enroll Now{% endblock %}
 {% block breadcrumb_current %}Enroll{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/enroll.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="py-5">
-    <div class="container">
-        <div class="section-header text-center">
-            <h2>Start Your Language Journey Today</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card shadow">
-                    <div class="card-body p-5">
-                        <h4 class="text-center mb-4">Enrollment Form</h4>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" placeholder="First name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" placeholder="Last name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" placeholder="Enter email">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" placeholder="Enter phone">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Select Language</label>
-                                    <select class="form-select">
-                                        <option>Spanish</option>
-                                        <option>French</option>
-                                        <option>German</option>
-                                        <option>Italian</option>
-                                        <option>Japanese</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Select Level</label>
-                                    <select class="form-select">
-                                        <option>A1 - Beginner</option>
-                                        <option>A2 - Elementary</option>
-                                        <option>B1 - Intermediate</option>
-                                        <option>B2 - Upper Intermediate</option>
-                                        <option>C1 - Advanced</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Address</label>
-                                    <input type="text" class="form-control" placeholder="Enter address">
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="terms">
-                                        <label class="form-check-label" for="terms">
-                                            I agree to the Terms and Conditions
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary w-100">Enroll Now</button>
-                                </div>
+<div id="absoluteEnglishEnroll">
+
+    <section class="aee-section py-5">
+        <div class="container">
+            <div class="aee-section-header text-center">
+                <h2>Start Your Language Journey Today</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card aee-card shadow">
+                        <div class="card-body p-5">
+
+                            <h4 class="aee-title text-center mb-4">Enrollment Form</h4>
+
+                            {% if success %}
+                            <div class="alert alert-success text-center">
+                                ✅ Enrollment Successful! We will contact you soon.
                             </div>
-                        </form>
+                            {% endif %}
+
+                            <form id="aeeEnrollForm" method="POST">
+                                {% csrf_token %}
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">First Name</label>
+                                        <input type="text" name="first_name" class="form-control aee-input" placeholder="First name" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">Last Name</label>
+                                        <input type="text" name="last_name" class="form-control aee-input" placeholder="Last name" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">Email Address</label>
+                                        <input type="email" name="email" class="form-control aee-input" placeholder="Enter email" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">Phone Number</label>
+                                        <input type="tel" name="phone" class="form-control aee-input" placeholder="Enter phone" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">Select Language</label>
+                                        <select name="language" class="form-select aee-select">
+                                            <option value="American English">American English</option>
+                                            <option value="British English">British English</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label aee-label">Select Level</label>
+                                        <select name="level" class="form-select aee-select">
+                                            <option value="A1 - Beginner">A1 - Beginner</option>
+                                            <option value="A2 - Elementary">A2 - Elementary</option>
+                                            <option value="B1 - Intermediate">B1 - Intermediate</option>
+                                            <option value="B2 - Upper Intermediate">B2 - Upper Intermediate</option>
+                                            <option value="C1 - Advanced">C1 - Advanced</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label aee-label">Address</label>
+                                        <input type="text" name="address" class="form-control aee-input" placeholder="Enter address" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check aee-check">
+                                            <input class="form-check-input" type="checkbox" name="agree_terms" id="aeeTerms" required>
+                                            <label class="form-check-label" for="aeeTerms">
+                                                I agree to the Terms and Conditions
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" class="btn aee-btn-primary w-100">
+                                            Enroll Now
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</div>
 {% endblock %}

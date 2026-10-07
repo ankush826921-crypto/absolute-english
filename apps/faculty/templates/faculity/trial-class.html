@@ -1,268 +1,70 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    Book a Trial Class | Absolute English
-{% endblock title %}
+{% block title %}Book a Trial Class | Absolute English{% endblock %}
 
 {% block content %}
-
 <div class="faculty-page faculty-trial-page">
-
-    <section class="faculty-shell">
-
-        <!-- Back to Faculty -->
-        <a
-            href="{% url 'faculty' %}"
-            class="faculty-back-link"
-        >
-            ← Back to Faculty
-        </a>
-
+    <div class="faculty-shell faculty-subpage-shell">
+        <a href="{% url 'faculty' %}" class="faculty-back-link">← Back to faculty</a>
         <div class="faculty-trial-layout">
+            <section class="faculty-trial-intro" aria-labelledby="trial-title">
+                <p class="faculty-eyebrow">Start speaking with confidence</p>
+                <h1 id="trial-title">Book your trial class</h1>
+                <p>Share your goals and preferred time. The team can follow up about American or British English lessons.</p>
+                <div class="faculty-trial-note"><span class="faculty-language-card__mark" aria-hidden="true">AE</span><div><strong>One dedicated English trainer</strong><span>American English · British English</span></div></div>
+            </section>
 
-            <!-- Left: Introduction -->
-            <div class="faculty-trial-intro">
-
-                <p class="faculty-eyebrow">
-                    Start speaking with confidence
-                </p>
-
-                <h1>
-                    Book your trial class
-                </h1>
-
-                <p>
-                    Meet your instructor, discuss your goals,
-                    and receive a personalized learning recommendation.
-                </p>
-
-                <!-- Selected Teacher -->
-                <div
-                    class="faculty-trial-teacher"
-                    id="trial-teacher"
-                    hidden
-                >
-                </div>
-
-            </div>
-
-
-            <!-- Right: Trial Form -->
-            <div class="faculty-form-panel">
-
-                <!-- Loading -->
-                <div
-                    class="faculty-state faculty-state--loading"
-                    id="trial-loading"
-                    role="status"
-                >
-                    <span class="faculty-spinner"></span>
-                    Preparing your form…
-                </div>
-
-
-                <!-- Form -->
-                <form
-                    id="trial-form"
-                    novalidate
-                    hidden
-                >
-
-                    <!-- Form Status -->
-                    <div
-                        class="faculty-form__notice"
-                        id="form-status"
-                        role="status"
-                        hidden
-                    >
-                    </div>
-
-
+            <section class="faculty-form-panel" aria-label="Trial class request form">
+                <div class="faculty-state faculty-state--loading" id="trial-loading" role="status"><span class="faculty-spinner" aria-hidden="true"></span> Preparing your form…</div>
+                <form id="trial-form" novalidate hidden>
+                    {% csrf_token %}
+                    <div class="faculty-form__notice" id="form-status" role="status" aria-live="polite" hidden></div>
+                    <input type="hidden" name="teacher" value="1">
                     <div class="faculty-form__grid">
-
-                        <!-- Student Name -->
-                        <label>
-                            Student name
-
-                            <input
-                                name="student_name"
-                                required
-                                autocomplete="name"
-                            >
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-student-name">Student name <span aria-hidden="true">*</span>
+                            <input id="trial-student-name" name="student_name" type="text" autocomplete="name" required>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Email -->
-                        <label>
-                            Email
-
-                            <input
-                                name="email"
-                                type="email"
-                                required
-                                autocomplete="email"
-                            >
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-email">Email <span aria-hidden="true">*</span>
+                            <input id="trial-email" name="email" type="email" autocomplete="email" required>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Phone -->
-                        <label>
-                            Phone
-
-                            <input
-                                name="phone"
-                                type="tel"
-                                required
-                                autocomplete="tel"
-                            >
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-phone">Phone <span aria-hidden="true">*</span>
+                            <input id="trial-phone" name="phone" type="tel" autocomplete="tel" required>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Language -->
-                        <label>
-                            Selected language
-
-                            <select
-                                name="language"
-                                id="trial-language"
-                                required
-                            >
+                        <label for="trial-language">English type <span aria-hidden="true">*</span>
+                            <select id="trial-language" name="english_type" required>
+                                <option value="">Choose an English type</option>
                             </select>
-
-                            <span class="faculty-field-error"></span>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Instructor -->
-                        <label>
-                            Instructor
-
-                            <select
-                                name="teacher"
-                                id="trial-teacher-select"
-                                required
-                            >
-                            </select>
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-course">Course (optional)
+                            <select id="trial-course" name="course"><option value="">I would like to discuss course options</option></select>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Course -->
-                        <label>
-                            Course
-
-                            <select
-                                name="course"
-                                id="trial-course"
-                                required
-                            >
-                                <option value="">
-                                    Select a course
-                                </option>
-                            </select>
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-date">Preferred date <span aria-hidden="true">*</span>
+                            <input id="trial-date" name="preferred_date" type="date" required>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Preferred Date -->
-                        <label>
-                            Preferred date
-
-                            <input
-                                name="preferred_date"
-                                type="date"
-                                required
-                            >
-
-                            <span class="faculty-field-error"></span>
+                        <label for="trial-time">Preferred time <span aria-hidden="true">*</span>
+                            <input id="trial-time" name="preferred_time" type="time" required>
+                            <span class="faculty-field-error" aria-live="polite"></span>
                         </label>
-
-
-                        <!-- Preferred Time -->
-                        <label>
-                            Preferred time
-
-                            <select
-                                name="preferred_time"
-                                required
-                            >
-                                <option value="">
-                                    Select a time
-                                </option>
-
-                                <option>09:00 AM</option>
-                                <option>11:00 AM</option>
-                                <option>03:00 PM</option>
-                                <option>05:00 PM</option>
-                                <option>07:00 PM</option>
-                            </select>
-
-                            <span class="faculty-field-error"></span>
-                        </label>
-
                     </div>
-
-
-                    <!-- Message -->
-                    <label>
-                        Message
-
-                        <textarea
-                            name="message"
-                            rows="4"
-                            placeholder="Tell us what you'd like to achieve (optional)"
-                        ></textarea>
+                    <label class="faculty-form__message" for="trial-message">Message (optional)
+                        <textarea id="trial-message" name="message" rows="4" placeholder="Tell us what you would like to achieve."></textarea>
                     </label>
-
-
-                    <!-- Submit -->
-                    <button
-                        class="faculty-button faculty-button--primary faculty-form__submit"
-                        type="submit"
-                    >
-                        <span>Book my trial class</span>
-                    </button>
-
+                    <button class="faculty-button faculty-button--primary faculty-form__submit" type="submit"><span>Book my trial class</span></button>
+                    <p class="faculty-form__helper">Your request will be saved securely for review.</p>
                 </form>
-
-
-                <!-- Error State -->
-                <div
-                    class="faculty-state faculty-state--error"
-                    id="trial-error"
-                    hidden
-                >
-                    <h2>
-                        We couldn’t prepare the form
-                    </h2>
-
-                    <p>
-                        Please return to the faculty page and try again.
-                    </p>
-
-                    <a
-                        class="faculty-button faculty-button--primary"
-                        href="{% url 'faculty' %}"
-                    >
-                        Browse Faculty
-                    </a>
+                <div class="faculty-state faculty-state--error" id="trial-error" role="alert" hidden>
+                    <h2>We couldn’t prepare the form</h2><p>Please return to the Faculty page and try again.</p>
+                    <a class="faculty-button faculty-button--primary" href="{% url 'faculty' %}">Back to faculty</a>
                 </div>
-
-            </div>
-
+            </section>
         </div>
-
-    </section>
+    </div>
 </div>
-
-
 {% endblock content %}
