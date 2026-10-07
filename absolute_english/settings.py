@@ -11,6 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 
+
+ALLOWED_HOSTS = ['*']
+
 # =========================================================
 # SECURITY
 # =========================================================
@@ -18,6 +21,7 @@ SECRET_KEY = os.getenv(
     'SECRET_KEY',
     'django-insecure-1234567890abcdefghijklmnopqrstuvwxyz'  # Fallback for local
 )
+
 
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
@@ -58,9 +62,22 @@ INSTALLED_APPS = [
 ]
 
 
+AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = [
+    'apps.accounts.backends.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+
 # =========================================================
 # MIDDLEWARE – Whitenoise add karo (position matters!)
 # =========================================================
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',   # ← MUST be after SecurityMiddleware
@@ -165,3 +182,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # DEFAULT PRIMARY KEY
 # =========================================================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ── DRF: always respond with JSON, never HTML browsable API ──────────────────
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
+}

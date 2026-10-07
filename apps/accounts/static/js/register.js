@@ -1,6 +1,6 @@
 /* =========================================
    ABSOLUTE ENGLISH — REGISTER PAGE
-   Multi-Step Flow + 6-Box OTP
+   Multi-Step Flow + Real Backend OTP & Auth
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (step) step.hidden = (i + 1 !== n);
         });
 
-        // Smooth scroll card to top
         const card = form.closest(".auth-card");
         if (card) {
             card.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* =========================================
-       Registration Fields
+       Fields
        ========================================= */
     const fullName = document.querySelector("#fullName");
     const email = document.querySelector("#registerEmail");
@@ -59,12 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
        State
        ========================================= */
     let phoneVerified = false;
-    let otpSent = false;
-    const DEMO_OTP = "123456";
+    let isSendingOtp = false;
 
-    /* =========================================
-       6-BOX OTP — Behaviour
-       ========================================= */
     const syncHiddenOtp = () => {
         if (otpHidden) {
             otpHidden.value = [...otpBoxes].map(b => b.value).join("");
@@ -172,141 +167,141 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* =========================================
-       Send OTP → Go to Step 2
+       Send OTP via API
        ========================================= */
-    const sendOtp = () => {
-        otpSent = true;
+    const sendOtp = async () => {
+        if (isSendingOtp) return;
+        isSendingOtp = true;
         phoneVerified = false;
         clearOtpBoxes();
 
-        // Show phone number in step 2
-        if (otpPhoneDisplay && phone.value.trim()) {
-            otpPhoneDisplay.textContent = `Enter the 6-digit code sent to ${phone.value.trim()}`;
+        const phoneVal = phone.value.trim();
+        if (otpPhoneDisplay) {
+            otpPhoneDisplay.textContent = `Enter the 6-digit code sent to ${phoneVal}`;
         }
 
-        if (otpAlert) {
-            AuthUI.clearAlert(otpAlert);
-            AuthUI.showAlert(
-                otpAlert,
-                "OTP sent. For this demo, use 123456.",
-                "success"
-            );
+        try {
+            const { ok, result } = await AuthUI.postApi('/accounts/api/send-otp/', {
+                target: phoneVal,
+                purpose: 'registration'
+            });
+
+            if (ok && result.status === 'success') {
+                if (otpAlert) {
+                    AuthUI.clearAlert(otpAlert);
+                    AuthUI.showAlert(otpAlert, result.message || "OTP code sent to your phone number via SMS.", "success");
+                }
+                if (resendMessage) resendMessage.textContent = "";
+
+                goToStep(2);
+                setTimeout(() => otpBoxes[0]?.focus(), 350);
+            } else {
+                let errMsg = "Failed to send OTP.";
+                if (result.errors?.target) errMsg = Array.isArray(result.errors.target) ? result.errors.target[0] : result.errors.target;
+                else if (result.message) errMsg = result.message;
+
+                AuthUI.setFieldState(phone.closest(".field"), errMsg);
+                AuthUI.showAlert(alertBox, errMsg);
+            }
+        } catch (err) {
+            AuthUI.showAlert(alertBox, "Failed to connect to server. Please try again.");
+        } finally {
+            isSendingOtp = false;
         }
-        if (resendMessage) resendMessage.textContent = "";
-
-        // 🎯 GO TO STEP 2
-        goToStep(2);
-
-        setTimeout(() => otpBoxes[0]?.focus(), 350);
     };
 
     /* =========================================
-       Phone Blur → Trigger OTP
+       Send OTP Button Click
        ========================================= */
-    if (phone) {
-        phone.addEventListener("input", () => {
-            // If user edits phone, reset verification
-            if (phoneVerified) {
-                phoneVerified = false;
-                otpSent = false;
-                clearOtpBoxes();
-            }
-        });
-
-        phone.addEventListener("blur", () => {
-            if (phoneVerified) return;
-            if (!phone.value.trim()) return;
-
-            if (!AuthUI.validatePhone(phone.value)) {
-                AuthUI.setFieldState(phone.closest(".field"), "Enter a valid phone number.");
+    const sendOtpBtn = document.querySelector("#sendRegistrationOtpBtn");
+    if (sendOtpBtn) {
+        sendOtpBtn.addEventListener("click", () => {
+            AuthUI.clearAlert(alertBox);
+            if (!validateBasicFields()) {
+                AuthUI.showAlert(alertBox, "Please fill in all highlighted fields correctly.");
                 return;
             }
-
-            AuthUI.setFieldState(phone.closest(".field"), "");
             sendOtp();
         });
     }
 
-    /* =========================================
-       Back to Step 1
-       ========================================= */
+    if (phone) {
+        phone.addEventListener("input", () => {
+            AuthUI.clearAlert(alertBox);
+            AuthUI.setFieldState(phone.closest(".field"));
+            if (phoneVerified) {
+                phoneVerified = false;
+                clearOtpBoxes();
+            }
+        });
+    }
+
     if (backToStep1) {
         backToStep1.addEventListener("click", () => {
             clearOtpBoxes();
             if (otpAlert) AuthUI.clearAlert(otpAlert);
+            AuthUI.clearAlert(alertBox);
             goToStep(1);
             phone?.focus();
         });
     }
 
     /* =========================================
-       Verify OTP → Go to Step 3
+       Verify OTP Button
        ========================================= */
     if (verifyOtpButton) {
-        verifyOtpButton.addEventListener("click", () => {
+        verifyOtpButton.addEventListener("click", async () => {
             if (otpAlert) AuthUI.clearAlert(otpAlert);
 
             const entered = otpHidden ? otpHidden.value.trim() : "";
 
-            if (!entered) {
+            if (!entered || !/^\d{6}$/.test(entered)) {
                 otpBoxes.forEach(b => b.classList.add("is-invalid"));
-                AuthUI.showAlert(otpAlert, "Enter the 6-digit OTP.");
+                AuthUI.showAlert(otpAlert, "Please enter a valid 6-digit OTP.");
                 return;
             }
 
-            if (!/^\d{6}$/.test(entered)) {
-                otpBoxes.forEach(b => b.classList.add("is-invalid"));
-                AuthUI.showAlert(otpAlert, "OTP must be exactly 6 digits.");
-                return;
+            verifyOtpButton.disabled = true;
+
+            try {
+                const { ok, result } = await AuthUI.postApi('/accounts/api/verify-otp/', {
+                    target: phone.value.trim(),
+                    otp: entered,
+                    purpose: 'registration'
+                });
+
+                if (ok && result.status === 'success') {
+                    phoneVerified = true;
+                    otpBoxes.forEach(b => b.classList.remove("is-invalid"));
+                    AuthUI.showAlert(otpAlert, "Phone verified successfully ✓", "success");
+
+                    setTimeout(() => {
+                        goToStep(3);
+                        password?.focus();
+                        AuthUI.showAlert(alertBox, "Phone verified. Create your password to finish.", "success");
+                    }, 600);
+                } else {
+                    otpBoxes.forEach(b => b.classList.add("is-invalid"));
+                    AuthUI.showAlert(otpAlert, result.message || "Invalid OTP code. Please try again.", "error");
+                }
+            } catch (err) {
+                AuthUI.showAlert(otpAlert, "Network error. Please try again.", "error");
+            } finally {
+                verifyOtpButton.disabled = false;
             }
-
-            if (entered !== DEMO_OTP) {
-                otpBoxes.forEach(b => b.classList.add("is-invalid"));
-                AuthUI.showAlert(otpAlert, "Invalid OTP. Please check and try again.");
-                return;
-            }
-
-            /* SUCCESS */
-            phoneVerified = true;
-            otpBoxes.forEach(b => b.classList.remove("is-invalid"));
-
-            AuthUI.showAlert(otpAlert, "Phone verified ✓", "success");
-
-            setTimeout(() => {
-                // 🎯 GO TO STEP 3
-                goToStep(3);
-                password?.focus();
-                AuthUI.showAlert(alertBox, "Phone verified. Create your account.", "success");
-            }, 700);
         });
     }
 
-    /* =========================================
-       Resend OTP
-       ========================================= */
     if (resendOtpButton) {
         resendOtpButton.addEventListener("click", () => {
             if (!AuthUI.validatePhone(phone.value)) {
                 if (resendMessage) resendMessage.textContent = "Enter a valid phone number first.";
                 return;
             }
-
-            phoneVerified = false;
-            clearOtpBoxes();
-
-            if (otpAlert) {
-                AuthUI.clearAlert(otpAlert);
-                AuthUI.showAlert(otpAlert, "New OTP sent. For demo, use 123456.", "success");
-            }
-            if (resendMessage) resendMessage.textContent = "A new OTP has been sent.";
-
-            setTimeout(() => otpBoxes[0]?.focus(), 250);
+            sendOtp();
         });
     }
 
-    /* =========================================
-       Password Meter
-       ========================================= */
     if (password) {
         password.addEventListener("input", () => {
             AuthUI.updatePasswordMeter(password, fill, label);
@@ -320,26 +315,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* =========================================
-       Clear validation while typing
-       ========================================= */
     [fullName, email, phone, confirm].forEach((input) => {
         if (!input) return;
         input.addEventListener("input", () => {
+            AuthUI.clearAlert(alertBox);
             AuthUI.setFieldState(input.closest(".field"));
         });
     });
 
     /* =========================================
-       Submit
+       Final Account Creation Submit
        ========================================= */
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
         AuthUI.clearAlert(alertBox);
 
         if (!phoneVerified) {
-            // Should not happen since we control steps, but safety net
             goToStep(2);
+            AuthUI.showAlert(otpAlert, "Please verify your phone number first.");
             return;
         }
 
@@ -350,14 +343,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!validatePasswordFields()) return;
 
-        if (createAccountButton) createAccountButton.classList.add("is-loading");
+        if (createAccountButton) {
+            createAccountButton.disabled = true;
+            createAccountButton.classList.add("is-loading");
+        }
 
-        setTimeout(() => {
-            if (createAccountButton) createAccountButton.classList.remove("is-loading");
-            AuthUI.markDemoSuccess(
-                "Account verified! Backend connection coming soon."
-            );
-        }, 1000);
+        try {
+            const { ok, result } = await AuthUI.postApi('/accounts/api/register/', {
+                full_name: fullName.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                password: password.value,
+                confirm_password: confirm.value
+            });
+
+            if (ok && result.status === 'success') {
+                AuthUI.showAlert(alertBox, "Account created successfully! Redirecting…", "success");
+                setTimeout(() => {
+                    window.location.href = result.redirect_url || "/";
+                }, 800);
+            } else {
+                let errMsg = result.message || "Failed to create account.";
+                if (result.errors) {
+                    if (result.errors.email) errMsg = Array.isArray(result.errors.email) ? result.errors.email[0] : result.errors.email;
+                    else if (result.errors.phone) errMsg = Array.isArray(result.errors.phone) ? result.errors.phone[0] : result.errors.phone;
+                    else if (result.errors.password) errMsg = Array.isArray(result.errors.password) ? result.errors.password[0] : result.errors.password;
+                    else if (typeof result.errors === 'string') errMsg = result.errors;
+                }
+                AuthUI.showAlert(alertBox, errMsg, "error");
+            }
+        } catch (err) {
+            AuthUI.showAlert(alertBox, "An unexpected error occurred during account creation.", "error");
+        } finally {
+            if (createAccountButton) {
+                createAccountButton.disabled = false;
+                createAccountButton.classList.remove("is-loading");
+            }
+        }
     });
 
 });
