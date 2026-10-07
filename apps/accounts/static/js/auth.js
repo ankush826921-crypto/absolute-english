@@ -151,6 +151,45 @@
     markDemoSuccess(message = "Demo action completed.") {
       const alert = $(".form-alert");
       this.showAlert(alert, message, "success");
+    },
+
+    getCsrfToken() {
+      // Try cookie first (correct length: 'csrftoken=' = 9 chars)
+      const name = 'csrftoken=';
+      if (document.cookie) {
+        for (const raw of document.cookie.split(';')) {
+          const cookie = raw.trim();
+          if (cookie.startsWith(name)) {
+            return decodeURIComponent(cookie.slice(name.length));
+          }
+        }
+      }
+      // Fallback: hidden input in the form
+      const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+      return csrfInput ? csrfInput.value : '';
+    },
+
+    async postApi(url, data) {
+      const response = await fetch(url, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": this.getCsrfToken(),
+          "X-Requested-With": "XMLHttpRequest",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      let result;
+      try {
+        result = await response.json();
+      } catch (_) {
+        // Response was not JSON (e.g. CSRF failure HTML page or redirect).
+        // Treat as a server-side error so the caller shows a clean message.
+        result = { status: 'error', message: response.status === 403 ? 'CSRF error — please refresh the page and try again.' : 'Server returned an unexpected response. Please try again.' };
+      }
+      return { ok: response.ok, status: response.status, result };
     }
   };
 

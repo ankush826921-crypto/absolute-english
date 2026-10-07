@@ -1,6 +1,6 @@
 /* =========================================
    ABSOLUTE ENGLISH — PASSWORD RECOVERY
-   Forgot · Verify OTP · Reset
+   Forgot · Verify OTP · Reset (Real Backend API)
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function showAlert(element, message, type = "error") {
         if (!element) return;
         element.textContent = message;
-        element.className = `form-alert ${type}`;
+        element.className = `form-alert ${type} is-visible`;
     }
 
     function clearAlert(element) {
@@ -30,14 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       1. FORGOT PASSWORD
+       1. FORGOT PASSWORD FORM
        ========================================= */
 
     if (forgotForm) {
         const emailInput = document.getElementById("forgotEmail");
         const alertBox = document.getElementById("forgotAlert");
 
-        // Clear validation on typing
         if (emailInput) {
             emailInput.addEventListener("input", () => {
                 clearAlert(alertBox);
@@ -48,21 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        forgotForm.addEventListener("submit", (event) => {
+        forgotForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             clearAlert(alertBox);
 
             const email = emailInput ? emailInput.value.trim() : "";
             const field = emailInput ? emailInput.closest(".field") : null;
 
-            // Required
             if (!email) {
                 if (field) field.classList.add("is-invalid");
                 showAlert(alertBox, "Please enter your email address.", "error");
                 return;
             }
 
-            // Valid email
             if (!isValidEmail(email)) {
                 if (field) field.classList.add("is-invalid");
                 showAlert(alertBox, "Please enter a valid email address.", "error");
@@ -71,21 +68,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (field) field.classList.add("is-valid");
 
-            showAlert(
-                alertBox,
-                "Verification code sent. Opening next step…",
-                "success"
-            );
+            const submitBtn = forgotForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add("is-loading");
+            }
 
-            setTimeout(() => {
-                window.location.href = "/accounts/verify-otp/";
-            }, 700);
+            try {
+                const { ok, result } = await AuthUI.postApi('/accounts/api/forgot-password/', { email });
+
+                if (ok && result.status === 'success') {
+                    showAlert(alertBox, result.message || "Verification code sent to your email.", "success");
+
+                    setTimeout(() => {
+                        window.location.href = result.redirect_url || "/accounts/verify-otp/";
+                    }, 800);
+                } else {
+                    let errMsg = result.message || "Email address not found.";
+                    if (result.errors?.email) {
+                        errMsg = Array.isArray(result.errors.email) ? result.errors.email[0] : result.errors.email;
+                    }
+                    if (field) field.classList.add("is-invalid");
+                    showAlert(alertBox, errMsg, "error");
+                }
+            } catch (err) {
+                showAlert(alertBox, "Network error. Please try again.", "error");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove("is-loading");
+                }
+            }
         });
     }
 
-
     /* =========================================
-       2. OTP VERIFICATION (6-BOX)
+       2. OTP VERIFICATION FORM
        ========================================= */
 
     if (otpForm) {
@@ -107,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
             syncHidden();
         };
 
-        // Behaviour per box
         otpBoxes.forEach((box, index) => {
             box.addEventListener("input", (e) => {
                 const val = e.target.value.replace(/\D/g, "");
@@ -161,11 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Auto-focus first box
         setTimeout(() => otpBoxes[0]?.focus(), 300);
 
-        // Submit
-        otpForm.addEventListener("submit", (event) => {
+        otpForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             clearAlert(alertBox);
 
@@ -177,28 +192,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            showAlert(alertBox, "OTP verified successfully.", "success");
+            const submitBtn = otpForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add("is-loading");
+            }
 
-            setTimeout(() => {
-                window.location.href = "/accounts/reset-password/";
-            }, 700);
+            try {
+                const { ok, result } = await AuthUI.postApi('/accounts/api/verify-otp/', {
+                    otp: otp,
+                    purpose: 'password_reset'
+                });
+
+                if (ok && result.status === 'success') {
+                    showAlert(alertBox, "OTP verified successfully.", "success");
+                    setTimeout(() => {
+                        window.location.href = result.redirect_url || "/accounts/reset-password/";
+                    }, 700);
+                } else {
+                    otpBoxes.forEach(b => b.classList.add("is-invalid"));
+                    showAlert(alertBox, result.message || "Invalid OTP. Please check and try again.", "error");
+                }
+            } catch (err) {
+                showAlert(alertBox, "Server error. Please try again.", "error");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove("is-loading");
+                }
+            }
         });
 
-        // Resend
         const resendButton = document.getElementById("resendOtp");
-
         if (resendButton) {
-            resendButton.addEventListener("click", () => {
+            resendButton.addEventListener("click", async () => {
                 clearBoxes();
-                showAlert(alertBox, "A new OTP has been sent.", "success");
+                clearAlert(alertBox);
+
+                try {
+                    const { ok, result } = await AuthUI.postApi('/accounts/api/send-otp/', {
+                        purpose: 'password_reset'
+                    });
+
+                    if (ok && result.status === 'success') {
+                        showAlert(alertBox, result.message || "A new OTP code has been sent to your email.", "success");
+                    } else {
+                        showAlert(alertBox, result.message || "Failed to resend OTP.", "error");
+                    }
+                } catch (err) {
+                    showAlert(alertBox, "Failed to resend OTP.", "error");
+                }
                 setTimeout(() => otpBoxes[0]?.focus(), 250);
             });
         }
     }
 
-
     /* =========================================
-       3. RESET PASSWORD
+       3. RESET PASSWORD FORM
        ========================================= */
 
     if (resetForm) {
@@ -208,35 +258,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const fill = document.getElementById("passwordMeterFill");
         const label = document.getElementById("passwordMeterLabel");
 
-        // Password meter
         if (password && fill && label && window.AuthUI) {
             password.addEventListener("input", () => {
                 AuthUI.updatePasswordMeter(password, fill, label);
 
-                // Live confirm check
                 if (confirmPassword && confirmPassword.value) {
                     const field = confirmPassword.closest(".field");
                     if (field) {
-                        field.classList.toggle(
-                            "is-invalid",
-                            confirmPassword.value !== password.value
-                        );
-                        field.classList.toggle(
-                            "is-valid",
-                            confirmPassword.value === password.value
-                        );
+                        field.classList.toggle("is-invalid", confirmPassword.value !== password.value);
+                        field.classList.toggle("is-valid", confirmPassword.value === password.value);
                     }
                 }
             });
         }
 
-        // Clear alerts on typing
         [password, confirmPassword].forEach(input => {
             if (!input) return;
             input.addEventListener("input", () => clearAlert(alertBox));
         });
 
-        resetForm.addEventListener("submit", (event) => {
+        resetForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             clearAlert(alertBox);
 
@@ -253,11 +294,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            showAlert(alertBox, "Password updated successfully.", "success");
+            const submitBtn = resetForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add("is-loading");
+            }
 
-            setTimeout(() => {
-                window.location.href = "/accounts/password-success/";
-            }, 700);
+            try {
+                const { ok, result } = await AuthUI.postApi('/accounts/api/reset-password/', {
+                    password: passwordValue,
+                    confirm_password: confirmValue
+                });
+
+                if (ok && result.status === 'success') {
+                    showAlert(alertBox, "Password updated successfully!", "success");
+                    setTimeout(() => {
+                        window.location.href = result.redirect_url || "/accounts/password-success/";
+                    }, 700);
+                } else {
+                    let errMsg = result.message || "Failed to reset password.";
+                    if (result.errors) {
+                        if (result.errors.password) errMsg = Array.isArray(result.errors.password) ? result.errors.password[0] : result.errors.password;
+                        else if (result.errors.confirm_password) errMsg = Array.isArray(result.errors.confirm_password) ? result.errors.confirm_password[0] : result.errors.confirm_password;
+                    }
+                    showAlert(alertBox, errMsg, "error");
+                }
+            } catch (err) {
+                showAlert(alertBox, "An unexpected error occurred.", "error");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove("is-loading");
+                }
+            }
         });
     }
 

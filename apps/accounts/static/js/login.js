@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const email = document.querySelector("#loginEmail");
   const password = document.querySelector("#loginPassword");
+  const remember = form.querySelector('input[name="remember"]');
   const alert = document.querySelector("#loginAlert");
 
   const validate = () => {
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     AuthUI.clearAlert(alert);
 
@@ -45,7 +46,43 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Frontend-only demo: no real authentication request is made.
-    AuthUI.markDemoSuccess("Login details look valid. Backend authentication is not connected yet.");
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("is-loading");
+    }
+
+    try {
+      const { ok, result } = await AuthUI.postApi('/accounts/api/login/', {
+        email: email.value.trim(),
+        password: password.value,
+        remember: remember ? remember.checked : false
+      });
+
+      if (ok && result.status === 'success') {
+        AuthUI.showAlert(alert, result.message || "Logged in successfully!", "success");
+        setTimeout(() => {
+          window.location.href = result.redirect_url || "/";
+        }, 500);
+      } else {
+        let errMsg = "Invalid email or password.";
+        if (result.message) {
+          errMsg = result.message;
+        } else if (result.errors) {
+          if (typeof result.errors === 'string') errMsg = result.errors;
+          else if (result.errors.detail) errMsg = Array.isArray(result.errors.detail) ? result.errors.detail[0] : result.errors.detail;
+          else if (result.errors.email) errMsg = Array.isArray(result.errors.email) ? result.errors.email[0] : result.errors.email;
+          else if (result.errors.non_field_errors) errMsg = result.errors.non_field_errors[0];
+        }
+        AuthUI.showAlert(alert, errMsg, "error");
+      }
+    } catch (err) {
+      AuthUI.showAlert(alert, "An error occurred. Please check your network connection.", "error");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("is-loading");
+      }
+    }
   });
 });
