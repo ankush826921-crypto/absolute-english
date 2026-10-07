@@ -26,3 +26,12 @@ def book_demo(request):
 
 def enroll(request):
     return render(request, 'enroll.html')
+
+def english(request):
+    return render(request,'english.html')
+
+def spanish(request):
+    return render(request,'spanish.html')
+
+def french(request):
+    return render(request,'french.html')

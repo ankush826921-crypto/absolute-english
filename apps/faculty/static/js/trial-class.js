@@ -1,4 +1,133 @@
-(function(){"use strict";const api=window.LinguaFacultyAPI;if(!api)return;document.addEventListener("DOMContentLoaded",async()=>{const $=s=>document.querySelector(s),form=$("#trial-form"),loading=$("#trial-loading"),fatal=$("#trial-error"),teacherSelect=$("#trial-teacher-select"),language=$("#trial-language"),course=$("#trial-course"),teacherCard=$("#trial-teacher"),status=$("#form-status"),params=new URLSearchParams(location.search);let teachers=[];
-const option=(v,label,selected=false)=>`<option value="${v}" ${selected?"selected":""}>${label}</option>`;function setStatus(message,type){status.textContent=message;status.className=`faculty-form__notice faculty-form__notice--${type}`;status.hidden=false}function clearErrors(){form.querySelectorAll(".faculty-field-error").forEach(x=>x.textContent="");form.querySelectorAll(".is-invalid").forEach(x=>x.classList.remove("is-invalid"))}function setCourses(){const chosen=teacherSelect.value;course.innerHTML=option("","Select a course");api.getCoursesByTeacher(chosen).then(items=>{items.forEach(c=>course.insertAdjacentHTML("beforeend",option(c.id,c.name,String(c.id)===params.get("course"))));}).catch(()=>{});const teacher=teachers.find(t=>String(t.id)===chosen);if(teacher){language.value=teacher.language;teacherCard.hidden=false;teacherCard.innerHTML=`<img src="${teacher.image}" alt="${teacher.name}"><div><strong>Your selected instructor</strong><span>${teacher.name} · ${teacher.designation}</span></div>`}}
-try{teachers=await api.getTeachers();language.innerHTML=option("","Select a language")+[...new Set(teachers.map(t=>t.language))].map(x=>option(x,x)).join("");teacherSelect.innerHTML=option("","Select an instructor")+teachers.map(t=>option(t.id,`${t.name} — ${t.language}`,String(t.id)===params.get("teacher"))).join("");const initial=teacherSelect.value;if(initial)setCourses();teacherSelect.addEventListener("change",()=>{params.delete("course");setCourses()});loading.hidden=true;form.hidden=false}catch(e){loading.hidden=true;fatal.hidden=false;return}
-form.preferred_date.min=new Date().toISOString().split("T")[0];form.addEventListener("submit",async e=>{e.preventDefault();clearErrors();status.hidden=true;const data=Object.fromEntries(new FormData(form).entries());let valid=true;const required=["student_name","email","phone","language","teacher","course","preferred_date","preferred_time"];required.forEach(name=>{const field=form.elements[name],value=String(data[name]||"").trim();let message=!value?"This field is required.":"";if(name==="email"&&value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))message="Enter a valid email address.";if(name==="phone"&&value&&!/^[0-9+()\s-]{7,20}$/.test(value))message="Enter a valid phone number.";if(message){valid=false;field.classList.add("is-invalid");field.closest("label").querySelector(".faculty-field-error").textContent=message}});if(!valid){setStatus("Please correct the highlighted fields.","error");return}const submit=form.querySelector("button[type=submit]"),label=submit.querySelector("span");submit.disabled=true;label.textContent="Submitting…";try{const result=await api.submitTrialRequest(data);form.reset();teacherCard.hidden=true;setStatus(result.mode==="mock"?"Development mode: your request was saved to this browser’s local mock queue. No live booking was sent.":"Your trial class request has been received.","success")}catch(err){setStatus("We couldn’t submit your request. Please try again.","error")}finally{submit.disabled=false;label.textContent="Book my trial class"}})})})();
+(function () {
+    "use strict";
+
+    const api = window.LinguaFacultyAPI;
+    if (!api) return;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const form = document.querySelector("#trial-form");
+        const loading = document.querySelector("#trial-loading");
+        const fatalError = document.querySelector("#trial-error");
+        const status = document.querySelector("#form-status");
+        const courseSelect = document.querySelector("#trial-course");
+        const params = new URLSearchParams(window.location.search);
+        const trainerId = params.get("teacher") || params.get("instructor") || params.get("id") || "1";
+        if (!form || !loading || !fatalError || !status) return;
+
+        const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        })[character]);
+        const setStatus = (message, kind) => {
+            status.textContent = message;
+            status.className = `faculty-form__notice faculty-form__notice--${kind}`;
+            status.hidden = false;
+        };
+
+        try {
+            const languageSelect = form.elements.english_type;
+            const englishTypes = api.getEnglishTypes ? api.getEnglishTypes() : ["American English", "British English"];
+            englishTypes.forEach((englishType) => {
+                const option = document.createElement("option");
+                option.value = englishType;
+                option.textContent = englishType;
+                languageSelect.append(option);
+            });
+            const courses = await api.getCoursesByTeacher(trainerId);
+            if (Array.isArray(courses) && courseSelect) {
+                courses.forEach((course) => {
+                    const option = document.createElement("option");
+                    option.value = course.id ?? course.slug ?? course.title ?? course.name ?? "";
+                    option.textContent = course.title || course.name || "Course";
+                    courseSelect.append(option);
+                });
+            }
+            loading.hidden = true;
+            form.hidden = false;
+        } catch (loadError) {
+            console.error("Unable to prepare the trial request form:", loadError);
+            loading.hidden = true;
+            fatalError.hidden = false;
+            return;
+        }
+
+        const dateField = form.elements.preferred_date;
+        const today = new Date();
+        dateField.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            status.hidden = true;
+            form.querySelectorAll(".faculty-field-error").forEach((error) => { error.textContent = ""; });
+            form.querySelectorAll(".is-invalid").forEach((field) => field.classList.remove("is-invalid"));
+
+            const formData = Object.fromEntries(new FormData(form).entries());
+
+const payload = {
+    student_name: formData.student_name,
+    email: formData.email,
+    phone: formData.phone,
+    faculty: trainerId,
+    course: formData.course || "",
+    english_type: formData.english_type === "American English"
+        ? "american"
+        : "british",
+    preferred_date: formData.preferred_date,
+    preferred_time: formData.preferred_time,
+    message: formData.message || ""
+};
+            let valid = true;
+            for (const field of form.querySelectorAll("[required]")) {
+                const message = field.value.trim() ? "" : "This field is required.";
+                if (!message) continue;
+                valid = false;
+                field.classList.add("is-invalid");
+                field.parentElement.querySelector(".faculty-field-error").textContent = message;
+            }
+
+            const email = form.elements.email;
+            if (email.value && !email.validity.valid) {
+                valid = false;
+                email.classList.add("is-invalid");
+                email.parentElement.querySelector(".faculty-field-error").textContent = "Enter a valid email address.";
+            }
+            const phone = form.elements.phone;
+            if (phone.value && !/^[0-9+()\s.-]{7,24}$/.test(phone.value.trim())) {
+                valid = false;
+                phone.classList.add("is-invalid");
+                phone.parentElement.querySelector(".faculty-field-error").textContent = "Enter a valid phone number.";
+            }
+            if (dateField.value && dateField.value < dateField.min) {
+                valid = false;
+                dateField.classList.add("is-invalid");
+                dateField.parentElement.querySelector(".faculty-field-error").textContent = "Choose today or a future date.";
+            }
+            if (!valid) {
+                setStatus("Please correct the highlighted fields.", "error");
+                form.querySelector(".is-invalid")?.focus();
+                return;
+            }
+
+            const button = form.querySelector("[type=submit]");
+            const buttonLabel = button.querySelector("span");
+            button.disabled = true;
+            button.setAttribute("aria-busy", "true");
+            buttonLabel.textContent = "Submitting…";
+            try {
+                const result = await api.submitTrialRequest(payload);
+                if (result?.mode === "preview") {
+                    setStatus("Your request passed frontend validation. It has not been sent or saved; Django submission can be connected later.", "success");
+                } else {
+                    setStatus("Your trial class request has been received.", "success");
+                    form.reset();
+                }
+            } catch (submitError) {
+                console.error("Unable to submit the trial request:", submitError);
+                setStatus("We couldn’t submit your request. Please try again.", "error");
+            } finally {
+                button.disabled = false;
+                button.removeAttribute("aria-busy");
+                buttonLabel.textContent = "Book my trial class";
+            }
+        });
+    });
+})();

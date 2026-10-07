@@ -5,111 +5,9 @@
 
 
 /* =========================================================
-   GLOBAL
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1f2937;
-    background: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font-family: inherit;
-}
-
-.container {
-    width: 92%;
-    max-width: 1180px;
-    margin: 0 auto;
-}
-
-
-/* =========================================================
    BUTTONS
 ========================================================= */
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    padding: 13px 25px;
-
-    border-radius: 10px;
-    border: 2px solid transparent;
-
-    font-size: 15px;
-    font-weight: 700;
-
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: #6d28d9;
-    color: #ffffff;
-
-    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.22);
-}
-
-.btn-primary:hover {
-    background: #5b21b6;
-    transform: translateY(-3px);
-
-    box-shadow: 0 14px 28px rgba(109, 40, 217, 0.30);
-}
-
-.btn-secondary {
-    background: #ffffff;
-    color: #6d28d9;
-
-    border-color: #8b5cf6;
-}
-
-.btn-secondary:hover {
-    background: #f5f3ff;
-    transform: translateY(-3px);
-}
-
-.btn-view {
-    background: #f5f3ff;
-    color: #6d28d9;
-
-    border-color: #ddd6fe;
-}
-
-.btn-view:hover {
-    background: #ede9fe;
-    border-color: #8b5cf6;
-
-    transform: translateY(-3px);
-}
-
-.btn-enquire {
-    background: #6d28d9;
-    color: #ffffff;
-
-    border-color: #6d28d9;
-}
 
 .btn-enquire:hover {
     background: #5b21b6;
@@ -2824,10 +2722,6 @@ button {
    DARK MODE - PROGRAMS PAGE
    ========================================================= */
 
-html[data-theme="dark"] body {
-    background: #100a1f !important;
-    color: #f5f3ff !important;
-}
 
 /* MAIN SECTIONS */
 html[data-theme="dark"] .available-programs,

@@ -72,6 +72,7 @@ Programs | Absolute English
         </div>
 
 
+
         <!-- COURSE FILTER -->
 
         <div class="course-filter">
@@ -104,6 +105,9 @@ Programs | Absolute English
 
 
         <!-- DATABASE PROGRAMS -->
+
+
+        <!-- COURSE CARDS -->
 
         <div class="course-grid">
 
@@ -153,6 +157,7 @@ Programs | Absolute English
 
                     <div class="course-highlights">
 
+
                         {% for highlight in program.highlights.splitlines %}
 
                             {% if highlight %}
@@ -164,6 +169,10 @@ Programs | Absolute English
                             {% endif %}
 
                         {% endfor %}
+
+                        <span>Speaking Practice</span>
+                        <span>Assessments</span>
+
 
                     </div>
 

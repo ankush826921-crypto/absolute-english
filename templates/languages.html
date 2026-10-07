@@ -1,143 +1,278 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Languages - Absolute English{% endblock %}
-{% block page_title %}Languages We Teach{% endblock %}
-{% block breadcrumb_current %}Languages{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/languages.css' %}">
+{% block title %}
+Languages - Absolute English
 {% endblock %}
 
+{% block page_title %}
+Languages We Teach
+{% endblock %}
+
+{% block breadcrumb_current %}
+Languages
+{% endblock %}
+
+
 {% block content %}
-<section class="py-5">
-    <div class="container">
-        <div class="section-header text-center">
-            <h2>Languages We Teach</h2>
-            <p class="text-muted">Choose from our wide range of language courses</p>
-        </div>
 
-        <!-- ===== HORIZONTAL SCROLL WRAPPER ===== -->
-        <div class="languages-scroll-wrapper">
-            <!-- Left Scroll Button -->
-            <button class="scroll-btn scroll-btn-left" id="scrollLeft">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+<!-- =========================================
+     HERO SECTION — PREMIUM
+========================================= -->
+<section class="aex-language-hero">
 
-            <!-- Scrollable Container -->
-            <div class="languages-scroll-container" id="scrollContainer">
+    <!-- Animated Background -->
+    <div class="aex-hero-bg" aria-hidden="true">
+        <span class="aex-orb aex-orb-1"></span>
+        <span class="aex-orb aex-orb-2"></span>
+        <span class="aex-orb aex-orb-3"></span>
+        <span class="aex-grid-lines"></span>
+    </div>
 
-                <!-- English -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-gb fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>English</h3>
-                    <p>Learn English and open doors to global opportunities.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
+    <div class="aex-container">
+        <div class="aex-hero-content">
 
-                <!-- Spanish -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-es fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Spanish</h3>
-                    <p>Learn Spanish and explore new cultures across 20+ countries.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- French -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-fr fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>French</h3>
-                    <p>Learn French and open doors to the world of art and culture.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- German -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-de fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>German</h3>
-                    <p>Learn German and build your future in Europe's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Italian -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-it fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Italian</h3>
-                    <p>Learn Italian and experience the beauty of art, music, and food.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Japanese -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-jp fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Japanese</h3>
-                    <p>Learn Japanese and explore the rich culture and technology.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Mandarin -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-cn fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Mandarin</h3>
-                    <p>Learn Mandarin and open doors to the world's largest economy.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Arabic -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-sa fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Arabic</h3>
-                    <p>Learn Arabic and explore the rich culture of the Middle East.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Russian -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-ru fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Russian</h3>
-                    <p>Learn Russian and explore the vast culture and literature.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
-                <!-- Portuguese -->
-                <div class="language-scroll-card">
-                    <div class="language-icon">
-                        <span class="fi fi-pt fis" style="font-size: 3rem;"></span>
-                    </div>
-                    <h3>Portuguese</h3>
-                    <p>Learn Portuguese and explore Brazil and beyond.</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-
+            <!-- Pulse Badge -->
+            <div class="aex-hero-label">
+                <span class="aex-pulse-dot"></span>
+                Explore Global Languages
             </div>
 
-            <!-- Right Scroll Button -->
-            <button class="scroll-btn scroll-btn-right" id="scrollRight">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <h1>
+                Learn a new language.
+                <span>Open new doors.</span>
+            </h1>
+
+            <p>
+                From English to Japanese — start your journey with expert
+                instructors and courses designed for real-world fluency.
+            </p>
+
+            <!-- Buttons -->
+            <div class="aex-hero-actions">
+                <a href="#languages" class="aex-primary-btn">
+                    <i class="fas fa-compass"></i>
+                    Explore Languages
+                </a>
+                <a href="{% url 'book_demo' %}" class="aex-secondary-btn">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Free Trial
+                </a>
+            </div>
+
+
+
         </div>
     </div>
 </section>
-{% endblock %}
 
-{% block extra_js %}
-<script src="{% static 'js/languages.js' %}"></script>
+
+<!-- =====================================================
+     LANGUAGES SECTION
+===================================================== -->
+
+<section class="aex-languages-section" id="languages">
+    <div class="aex-container">
+
+        <div class="aex-section-header">
+            <span class="aex-section-label">OUR COURSES</span>
+            <h2>Languages We Teach</h2>
+            <p>
+                Choose the English variant that fits your
+                communication, education and professional goals.
+            </p>
+        </div>
+
+        <div class="aex-language-grid">
+
+            <!-- American English -->
+            <div class="aex-language-card">
+                <div class="aex-country-logo">
+                    <span class="fi fi-us fis"></span>
+                </div>
+                <span class="aex-language-type">UNITED STATES</span>
+                <h3>American English</h3>
+                <p>
+                    Learn the English commonly used across the
+                    United States with practical vocabulary,
+                    pronunciation and everyday expressions.
+                </p>
+                <div class="aex-language-tags">
+                    <span>Speaking</span>
+                    <span>Vocabulary</span>
+                    <span>Pronunciation</span>
+                </div>
+                <a href="{% url 'american' %}" class="aex-learn-btn">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- British English -->
+            <div class="aex-language-card">
+                <div class="aex-country-logo">
+                    <span class="fi fi-gb fis"></span>
+                </div>
+                <span class="aex-language-type">UNITED KINGDOM</span>
+                <h3>British English</h3>
+                <p>
+                    Develop your British English with clear
+                    pronunciation, grammar, vocabulary and
+                    expressions used in the United Kingdom.
+                </p>
+                <div class="aex-language-tags">
+                    <span>Speaking</span>
+                    <span>Grammar</span>
+                    <span>Vocabulary</span>
+                </div>
+                <a href="{% url 'british' %}" class="aex-learn-btn">
+                    Learn More
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     WHY LEARN WITH US
+===================================================== -->
+
+<section class="aex-why-section" id="why-us">
+    <div class="aex-container">
+
+        <div class="aex-section-header">
+            <span class="aex-section-label">WHY ABSOLUTE ENGLISH</span>
+            <h2>Learn English For Real Life</h2>
+            <p>
+                Go beyond textbooks and develop English skills
+                that you can use confidently in everyday situations.
+            </p>
+        </div>
+
+        <div class="aex-features-grid">
+
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-comments"></i></div>
+                <h3>Real Conversations</h3>
+                <p>
+                    Practice natural conversations and learn how
+                    English is actually used in daily life.
+                </p>
+            </div>
+
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-volume-high"></i></div>
+                <h3>Better Pronunciation</h3>
+                <p>
+                    Improve your pronunciation, clarity and speaking
+                    confidence through focused practice.
+                </p>
+            </div>
+
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-book-open"></i></div>
+                <h3>Practical Vocabulary</h3>
+                <p>
+                    Build useful vocabulary for conversations,
+                    education, travel and professional situations.
+                </p>
+            </div>
+
+            <div class="aex-feature-card">
+                <div class="aex-feature-icon"><i class="fas fa-user-check"></i></div>
+                <h3>Confidence Building</h3>
+                <p>
+                    Develop the confidence to express your thoughts
+                    clearly and communicate without hesitation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     WHAT YOU WILL LEARN
+===================================================== -->
+
+<section class="aex-learning-section">
+    <div class="aex-container">
+
+        <div class="aex-learning-wrapper">
+
+            <div class="aex-learning-content">
+                <span class="aex-section-label">YOUR LEARNING JOURNEY</span>
+                <h2>More Than Just Grammar</h2>
+                <p>
+                    Our language programs focus on the skills you
+                    actually need to communicate effectively.
+                </p>
+
+                <div class="aex-learning-list">
+                    <div class="aex-learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Everyday English Communication</span>
+                    </div>
+                    <div class="aex-learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Speaking & Conversation Practice</span>
+                    </div>
+                    <div class="aex-learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Grammar & Sentence Structure</span>
+                    </div>
+                    <div class="aex-learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Vocabulary & Expressions</span>
+                    </div>
+                    <div class="aex-learning-item">
+                        <i class="fas fa-check"></i>
+                        <span>Pronunciation & Fluency</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aex-learning-box">
+                <div class="aex-learning-box-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>Find Your English</h3>
+                <p>
+                    Choose your preferred English variant and
+                    start building skills that last.
+                </p>
+                <a href="#languages" class="aex-primary-btn">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="aex-cta-section">
+    <div class="aex-cta-content">
+        <span class="aex-section-label">START YOUR JOURNEY</span>
+        <h2>Ready to Improve Your English?</h2>
+        <p>
+            Choose your language course and take the next
+            step toward confident communication.
+        </p>
+        <a href="#languages" class="aex-primary-btn">
+            Explore Courses
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
 {% endblock %}

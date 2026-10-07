@@ -1,12 +1,37 @@
-/* --- Base Variables for About Page --- */
+/* --- Base Variables & Theming --- */
 :root {
+    /* Light Theme Palette (Default) */
     --about-primary: #1e3a8a;
     --about-secondary: #f59e0b;
     --about-text-dark: #1f2937;
     --about-text-light: #6b7280;
+    --about-bg-main: #ffffff;
     --about-bg-light: #f9fafb;
     --about-white: #ffffff;
+    --about-card-bg: #ffffff;
+    --about-cta-bg: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    --about-cta-text: #6b7280;
     --about-transition: all 0.3s ease-in-out;
+}
+
+/* Dark Theme Palette */
+[data-theme="dark"], .dark {
+    --about-primary: #3b82f6; /* Lighter blue for dark mode visibility */
+    --about-secondary: #fbbf24;
+    --about-text-dark: #f3f4f6;
+    --about-text-light: #9ca3af;
+    --about-bg-main: #111827;
+    --about-bg-light: #1f2937;
+    --about-white: #111827;
+    --about-card-bg: #1f2937;
+    --about-cta-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    --about-cta-text: #9ca3af;
+}
+
+body {
+    background-color: var(--about-bg-main);
+    color: var(--about-text-dark);
+    transition: var(--about-transition);
 }
 
 /* --- Animations --- */
@@ -30,7 +55,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--about-white);
+    color: #ffffff;
     padding: 0 20px;
     margin-bottom: 50px;
 }
@@ -38,7 +63,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 15px;
-    color: var(--about-white);
+    color: #ffffff;
 }
 .about-hero p {
     font-size: 1.1rem;
@@ -102,7 +127,7 @@
     gap: 30px;
 }
 .about-card {
-    background: var(--about-white);
+    background: var(--about-card-bg);
     padding: 40px 30px;
     border-radius: 12px;
     text-align: center;
@@ -133,7 +158,7 @@
 /* --- Why Absolute English --- */
 .why-us {
     background: var(--about-bg-light);
-    padding: 20px 0;
+    padding: 40px 0;
 }
 .features-grid {
     display: grid;
@@ -147,7 +172,7 @@
 }
 .feature-icon {
     background: var(--about-primary);
-    color: var(--about-white);
+    color: #ffffff;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -176,7 +201,7 @@
 /* --- Achievements / Highlights --- */
 .achievements {
     background: var(--about-primary);
-    color: var(--about-white);
+    color: #ffffff;
     padding: 60px 20px;
 }
 .stats-grid {
@@ -200,7 +225,7 @@
 
 /* --- CTA Section --- */
 .about-cta {
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background: var(--about-cta-bg);
     text-align: center;
     border-radius: 20px;
     margin-bottom: 60px;
@@ -213,7 +238,7 @@
 }
 .about-cta p {
     font-size: 1.1rem;
-    color: var(--about-text-light);
+    color: var(--about-cta-text);
     margin: 0;
 }
 
