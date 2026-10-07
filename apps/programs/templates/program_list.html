@@ -11,9 +11,12 @@ Programs | Absolute English
 
 {% block content %}
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="program-hero">
+
     <div class="container">
 
         <div class="hero-content">
@@ -32,104 +35,149 @@ Programs | Absolute English
             </p>
 
             <div class="hero-buttons">
+
                 <a href="#programs" class="btn btn-primary">
                     Explore Programs
                 </a>
+
             </div>
 
         </div>
 
     </div>
+
 </section>
 
 
-<!-- ================= AVAILABLE PROGRAMS ================= -->
+<!-- =========================
+     AVAILABLE PROGRAMS
+========================= -->
 
 <section class="available-programs" id="programs">
 
     <div class="container">
 
-        <!-- SECTION HEADING -->
         <div class="section-heading">
+
             <span>Our Programs</span>
 
-            <h2>Available Courses</h2>
+            <h2>
+                Available Courses
+            </h2>
 
             <p>
                 Choose a program according to your English level and learning goals.
             </p>
+
         </div>
 
 
         <!-- COURSE FILTER -->
+
         <div class="course-filter">
 
-            <button class="filter-btn active" data-filter="all">
+            <button
+                class="filter-btn active"
+                data-filter="all">
                 All
             </button>
 
-            <button class="filter-btn" data-filter="beginner">
+            <button
+                class="filter-btn"
+                data-filter="beginner">
                 Beginner
             </button>
 
-            <button class="filter-btn" data-filter="intermediate">
+            <button
+                class="filter-btn"
+                data-filter="intermediate">
                 Intermediate
             </button>
 
-            <button class="filter-btn" data-filter="advanced">
+            <button
+                class="filter-btn"
+                data-filter="advanced">
                 Advanced
             </button>
 
         </div>
 
 
-        <!-- COURSE CARDS -->
+        <!-- DATABASE PROGRAMS -->
+
         <div class="course-grid">
 
+            {% for program in programs %}
 
-            <!-- COURSE 1 -->
-            <article class="course-card" data-level="beginner">
+            <article
+                class="course-card"
+                data-level="{{ program.level|lower }}">
 
                 <div class="course-card-content">
 
                     <span class="course-level">
-                        Beginner
+                        {{ program.level }}
                     </span>
 
+
                     <h3>
-                        English Communication Program
+                        {{ program.name }}
                     </h3>
 
+
                     <p class="course-description">
-                        Improve everyday English communication,
-                        confidence and fluency.
+                        {{ program.short_description }}
                     </p>
 
+
+                    <!-- DURATION -->
 
                     <div class="course-info">
 
                         <div class="info-item">
-                            <span class="info-icon">◷</span>
-                            <span>12 Weeks</span>
+
+                            <span class="info-icon">
+                                ◷
+                            </span>
+
+                            <span>
+                                {{ program.duration }}
+                            </span>
+
                         </div>
 
                     </div>
 
 
+                    <!-- HIGHLIGHTS -->
+
                     <div class="course-highlights">
 
-                        <span>Live Classes</span>
-                        <span>Speaking Practice</span>
-                        <span>Assessments</span>
+                        {% for highlight in program.highlights.splitlines %}
+
+                            {% if highlight %}
+
+                                <span>
+                                    {{ highlight }}
+                                </span>
+
+                            {% endif %}
+
+                        {% endfor %}
 
                     </div>
+
+
+                    <!-- VIEW DETAILS -->
 
                     <div class="course-actions">
 
                         <a
-                            href="{% url 'program_detail' %}"
+                            href="{% url 'program_detail' program.id %}"
                             class="btn btn-view">
+
                             View Details
+
                         </a>
 
                     </div>
@@ -139,107 +187,17 @@ Programs | Absolute English
             </article>
 
 
-            <!-- COURSE 2 -->
-            <article class="course-card" data-level="intermediate">
+            {% empty %}
 
-                <div class="course-card-content">
+            <div class="no-programs">
 
-                    <span class="course-level">
-                        Intermediate
-                    </span>
+                <p>
+                    No programs are currently available.
+                </p>
 
-                    <h3>
-                        Fluency Development Program
-                    </h3>
+            </div>
 
-                    <p class="course-description">
-                        Improve fluency, vocabulary and
-                        natural English communication.
-                    </p>
-
-
-                    <div class="course-info">
-
-                        <div class="info-item">
-                            <span class="info-icon">◷</span>
-                            <span>12 Weeks</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="course-highlights">
-
-                        <span>Fluency Practice</span>
-                        <span>Vocabulary</span>
-                        <span>Group Discussion</span>
-
-                    </div>
-
-                    <div class="course-actions">
-
-                        <a
-                            href="{% url 'program_detail' %}"
-                            class="btn btn-view">
-                            View Details
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- COURSE 3 -->
-            <article class="course-card" data-level="advanced">
-
-                <div class="course-card-content">
-
-                    <span class="course-level">
-                        Advanced
-                    </span>
-
-                    <h3>
-                        Professional English Program
-                    </h3>
-
-                    <p class="course-description">
-                        Develop professional English and
-                        workplace communication skills.
-                    </p>
-
-
-                    <div class="course-info">
-
-                        <div class="info-item">
-                            <span class="info-icon">◷</span>
-                            <span>12 Weeks</span>
-                        </div>
-                    </div>
-
-
-                    <div class="course-highlights">
-
-                        <span>Business English</span>
-                        <span>Presentations</span>
-                        <span>Interview Skills</span>
-
-                    </div>
-
-                    <div class="course-actions">
-
-                        <a
-                            href="{% url 'program_detail' %}"
-                            class="btn btn-view">
-                            View Details
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
+            {% endfor %}
 
         </div>
 
@@ -248,87 +206,14 @@ Programs | Absolute English
 </section>
 
 
-
-<!-- ================= COURSE LEVEL ================= -->
-
-<section class="course-level-section">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>
-                Choose Your Level
-            </span>
-
-            <h2>
-                Course Duration & Level
-            </h2>
-
-        </div>
+<!-- =========================
+     COURSE LEVEL
+========================= -->
 
 
-        <div class="level-grid">
-
-            <div class="level-card">
-
-                <h3>
-                    Beginner
-                </h3>
-
-                <p>
-                    Build English basics and improve everyday communication.
-                </p>
-
-                <strong>
-                    12 Weeks
-                </strong>
-
-            </div>
-
-
-            <div class="level-card">
-
-                <h3>
-                    Intermediate
-                </h3>
-
-                <p>
-                    Improve fluency and communication confidence.
-                </p>
-
-                <strong>
-                    12 Weeks
-                </strong>
-
-            </div>
-
-
-            <div class="level-card">
-
-                <h3>
-                    Advanced
-                </h3>
-
-                <p>
-                    Develop professional English and workplace skills.
-                </p>
-
-                <strong>
-                    12 Weeks
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= COURSE HIGHLIGHTS ================= -->
+<!-- =========================
+     COURSE HIGHLIGHTS
+========================= -->
 
 <section class="highlights-section">
 
@@ -356,8 +241,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Learn through interactive live sessions
-                    with instructors.
+                    Learn through interactive live sessions with instructors.
                 </p>
 
             </div>
@@ -370,8 +254,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Practice English through conversations
-                    and activities.
+                    Practice English through conversations and activities.
                 </p>
 
             </div>
@@ -384,8 +267,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Reinforce your learning with practical
-                    assignments.
+                    Reinforce your learning with practical assignments.
                 </p>
 
             </div>
@@ -398,8 +280,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Track your improvement through regular
-                    assessments.
+                    Track your improvement through regular assessments.
                 </p>
 
             </div>
@@ -412,8 +293,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Receive a certificate after successful
-                    completion of the program.
+                    Receive a certificate after successful completion of the program.
                 </p>
 
             </div>
@@ -425,8 +305,9 @@ Programs | Absolute English
 </section>
 
 
-
-<!-- ================= LEARNING OUTCOMES ================= -->
+<!-- =========================
+     LEARNING OUTCOMES
+========================= -->
 
 <section class="learning-outcomes-section">
 
@@ -454,8 +335,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Speak English confidently in everyday
-                    conversations.
+                    Speak English confidently in everyday conversations.
                 </p>
 
             </div>
@@ -468,8 +348,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Improve your ability to understand
-                    spoken English.
+                    Improve your ability to understand spoken English.
                 </p>
 
             </div>
@@ -482,8 +361,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Improve reading comprehension and
-                    vocabulary.
+                    Improve reading comprehension and vocabulary.
                 </p>
 
             </div>
@@ -509,8 +387,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Develop confidence while communicating
-                    in English.
+                    Develop confidence while communicating in English.
                 </p>
 
             </div>
@@ -522,8 +399,9 @@ Programs | Absolute English
 </section>
 
 
-
-<!-- ================= FEATURES ================= -->
+<!-- =========================
+     PROGRAM FEATURES
+========================= -->
 
 <section class="features-section">
 
@@ -551,8 +429,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Learn from experienced English
-                    communication instructors.
+                    Learn from experienced English communication instructors.
                 </p>
 
             </div>
@@ -565,8 +442,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Choose learning options that fit
-                    your schedule.
+                    Choose learning options that fit your schedule.
                 </p>
 
             </div>
@@ -579,8 +455,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Monitor your learning progress and
-                    improvement.
+                    Monitor your learning progress and improvement.
                 </p>
 
             </div>
@@ -593,8 +468,7 @@ Programs | Absolute English
                 </h3>
 
                 <p>
-                    Learn through practical activities,
-                    discussions and exercises.
+                    Learn through practical activities, discussions and exercises.
                 </p>
 
             </div>
@@ -606,8 +480,9 @@ Programs | Absolute English
 </section>
 
 
-
-<!-- ================= BATCH INFORMATION ================= -->
+<!-- =========================
+     BATCH INFORMATION
+========================= -->
 
 <section class="batch-section">
 
@@ -685,9 +560,7 @@ Programs | Absolute English
 
 </section>
 
-
 {% endblock content %}
-
 
 
 {% block extra_js %}
