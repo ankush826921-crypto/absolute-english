@@ -1,0 +1,627 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ program.name }} | Absolute English
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/program-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     COURSE HERO
+========================= -->
+
+<section class="course-hero">
+
+    <div class="container hero-container">
+
+        <div class="hero-content">
+
+            <span class="course-badge">
+                {{ program.level }}
+            </span>
+
+            <h1>
+                {{ program.name }}
+            </h1>
+
+            <p>
+                {{ program.short_description }}
+            </p>
+
+            <div class="course-meta">
+
+                <div class="meta-item">
+
+                    <span class="meta-label">
+                        Duration
+                    </span>
+
+                    <strong>
+                        {{ program.duration }}
+                    </strong>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <span class="meta-label">
+                        Level
+                    </span>
+
+                    <strong>
+                        {{ program.level }}
+                    </strong>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <span class="meta-label">
+                        Mode
+                    </span>
+
+                    <strong>
+                        {{ program.mode }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-primary enquire-btn">
+
+                Enquire Now →
+
+            </button>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="hero-circle"></div>
+
+            <div class="hero-card">
+
+                <div class="hero-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Learn
+                </h3>
+
+                <p>
+                    Speak with confidence
+                </p>
+
+            </div>
+
+            <div class="hero-small-card">
+
+                <span>✓</span>
+                Practical Learning
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT PROGRAM
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                About The Program
+            </span>
+
+            <h2>
+                {{ program.name }}
+            </h2>
+
+            <p>
+                {{ program.description }}
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p>
+                {{ program.description }}
+            </p>
+
+            <p>
+                This program is designed to help learners improve their
+                communication skills through practical learning,
+                activities and real-life situations.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHAT YOU WILL LEARN
+========================= -->
+
+<section class="section light-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                What You Will Learn
+            </span>
+
+            <h2>
+                Build All-Round English Skills
+            </h2>
+
+        </div>
+
+
+        <div class="learning-grid">
+
+            <div class="learning-card">
+
+                <h3>
+                    Speaking
+                </h3>
+
+                <p>
+                    Improve fluency, pronunciation and confidence
+                    through practical speaking activities.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <h3>
+                    Listening
+                </h3>
+
+                <p>
+                    Develop listening skills and understand
+                    conversations more effectively.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <h3>
+                    Reading
+                </h3>
+
+                <p>
+                    Improve vocabulary, comprehension and
+                    reading ability.
+                </p>
+
+            </div>
+
+
+            <div class="learning-card">
+
+                <h3>
+                    Writing
+                </h3>
+
+                <p>
+                    Learn to write clear and effective English
+                    for everyday and professional situations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KEY FEATURES
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                Key Features
+            </span>
+
+            <h2>
+                Learn Better With Practical Training
+            </h2>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            {% for highlight in highlights %}
+
+                {% if highlight %}
+
+                <div class="feature-card">
+
+                    <h3>
+                        {{ highlight }}
+                    </h3>
+
+                    <p>
+                        Practical learning experience designed
+                        to help you improve your skills.
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COURSE CURRICULUM
+========================= -->
+
+<section class="section light-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                Course Curriculum
+            </span>
+
+            <h2>
+                What You Will Study
+            </h2>
+
+        </div>
+
+
+        <div class="curriculum">
+
+            {% for item in curriculum %}
+
+                {% if item %}
+
+                <div class="curriculum-item">
+
+                    <span>
+                        {{ forloop.counter|stringformat:"02d" }}
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            {{ item }}
+                        </h3>
+
+                        <p>
+                            Practical lessons and activities
+                            related to this program module.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LEARNING OUTCOMES
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                Learning Outcomes
+            </span>
+
+            <h2>
+                After Completing This Program
+            </h2>
+
+        </div>
+
+
+        <div class="outcomes-list">
+
+            {% for outcome in learning_outcomes %}
+
+                {% if outcome %}
+
+                <div class="outcome-item">
+                    ✓ {{ outcome }}
+                </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BATCH INFORMATION
+========================= -->
+
+<section class="section light-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                Batch Information
+            </span>
+
+            <h2>
+                Join Our Upcoming Batch
+            </h2>
+
+        </div>
+
+
+        <div class="batch-info">
+
+            <div>
+
+                <strong>
+                    Start Date
+                </strong>
+
+                <span>
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Class Timing
+                </strong>
+
+                <span>
+                    Flexible Batches
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Mode
+                </strong>
+
+                <span>
+                    {{ program.mode }}
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Seats
+                </strong>
+
+                <span>
+                    Limited Seats
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="final-cta">
+
+    <div class="container">
+
+        <h2>
+            Ready to Improve Your English?
+        </h2>
+
+        <p>
+            Start your learning journey with Absolute English.
+        </p>
+
+        <button
+            type="button"
+            class="btn btn-light enquire-btn">
+
+            Enquire Now
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ENQUIRY POPUP
+========================= -->
+
+<div
+    class="enquiry-overlay"
+    id="enquiryPopup">
+
+    <div class="enquiry-modal">
+
+        <button
+            type="button"
+            class="close-enquiry"
+            id="closeEnquiry">
+
+            &times;
+
+        </button>
+
+
+        <h2>
+            Enquire Now
+        </h2>
+
+        <p>
+            Fill in your details and our team will contact you soon.
+        </p>
+
+
+        {% if success %}
+
+        <div class="success-message">
+            {{ success }}
+        </div>
+
+        {% endif %}
+
+
+        <form
+            id="enquiryForm"
+            method="POST">
+
+            {% csrf_token %}
+
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required>
+
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required>
+
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Your Phone Number"
+                required>
+
+
+            <select
+                id="course"
+                name="course"
+                required>
+
+                <option
+                    value="{{ program.name }}"
+                    selected>
+
+                    {{ program.name }}
+
+                </option>
+
+            </select>
+
+
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                rows="4"></textarea>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Submit Enquiry
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'js/program-detail.js' %}"></script>
+
+{% endblock extra_js %}

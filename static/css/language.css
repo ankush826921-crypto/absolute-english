@@ -1,248 +1,1562 @@
-/* ========================================
-   LANGUAGES PAGE - COMPLETE CSS
-   ======================================== */
+/* =========================================================
+   ABSOLUTE ENGLISH — LANGUAGES PAGE
+   PREFIX: aex-
+   Theme: Light (white + blue) ↔ Dark (black + blue)
+   Uses [data-theme="dark"] — no body class needed
+========================================================= */
 
-/* ===== HORIZONTAL SCROLL WRAPPER ===== */
-.languages-scroll-wrapper {
+
+/* =========================================================
+   1. THEME VARIABLES
+========================================================= */
+
+/* LIGHT MODE (Default) */
+:root {
+    --aex-bg-main:        #ffffff;
+    --aex-bg-soft:        #f7f7f7;
+    --aex-bg-card:        #ffffff;
+    --aex-bg-elevated:    #f5f5f5;
+
+    --aex-text-main:      #111111;
+    --aex-text-body:      #555555;
+    --aex-text-muted:     #666666;
+    --aex-text-soft:      #333333;
+
+    --aex-border-main:    #dddddd;
+    --aex-border-soft:    #e5e5e5;
+    --aex-border-section: #e5e5e5;
+
+    --aex-accent:         #1677ff;
+    --aex-accent-hover:   #0d5ecc;
+    --aex-accent-text:    #ffffff;
+
+    --aex-shadow-card:    0 18px 40px rgba(0, 0, 0, 0.08);
+    --aex-shadow-btn:     0 8px 22px rgba(22, 119, 255, 0.28);
+
+    --aex-glow-strong:    0.06;
+    --aex-glow-soft:      0.03;
+
+    --aex-ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+    --aex-ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Section spacing (single source of truth) */
+    --aex-section-pad:    60px;
+    --aex-section-pad-sm: 40px;
+    --aex-section-pad-xs: 30px;
+}
+
+/* =========================================================
+   SECTION PADDING — auto adjust on all breakpoints
+========================================================= */
+
+@media (max-width: 900px) {
+    :root {
+        --aex-section-pad: var(--aex-section-pad-sm);
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --aex-section-pad: var(--aex-section-pad-xs);
+    }
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+    --aex-bg-main:        #050505;
+    --aex-bg-soft:        #0b0b0b;
+    --aex-bg-card:        #101010;
+    --aex-bg-elevated:    #181818;
+
+    --aex-text-main:      #ffffff;
+    --aex-text-body:      #a5a5a5;
+    --aex-text-muted:     #999999;
+    --aex-text-soft:      #c5c5c5;
+
+    --aex-border-main:    #292929;
+    --aex-border-soft:    #303030;
+    --aex-border-section: #1d1d1d;
+
+    --aex-accent:         #1677ff;
+    --aex-accent-hover:   #ffffff;
+    --aex-accent-text:    #ffffff;
+
+    --aex-shadow-card:    0 18px 40px rgba(22, 119, 255, 0.12);
+    --aex-shadow-btn:     0 8px 22px rgba(22, 119, 255, 0.35);
+
+    --aex-glow-strong:    0.16;
+    --aex-glow-soft:      0.08;
+}
+
+
+/* =========================================================
+   2. PAGE SCOPE — only languages page
+========================================================= */
+
+.languages-page {
+    background: var(--aex-bg-main);
+    color: var(--aex-text-body);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.languages-page *,
+.languages-page *::before,
+.languages-page *::after {
+    box-sizing: border-box;
+}
+
+.aex-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* =========================================================
+   HERO SECTION — PREMIUM BOLD
+========================================================= */
+
+.aex-language-hero {
     position: relative;
-    padding: 0 50px;
-}
+    padding: 100px 20px 90px;
+    overflow: hidden;
+    isolation: isolate;
 
-/* ===== SCROLL CONTAINER ===== */
-.languages-scroll-container {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    padding: 20px 10px;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    cursor: grab;
-}
+    /* STRONG visible gradient — blue dominates */
+    background:
+        radial-gradient(
+            ellipse 900px 600px at 90% 0%,
+            rgba(22, 119, 255, 0.28) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 800px 600px at 0% 100%,
+            rgba(120, 80, 255, 0.22) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 1200px 500px at 50% -10%,
+            rgba(22, 119, 255, 0.15) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            #eef4ff 0%,
+            #f5f8ff 30%,
+            #eef2fb 70%,
+            #e8effc 100%
+        );
 
-.languages-scroll-container:active {
-    cursor: grabbing;
-}
-
-.languages-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-/* ===== LANGUAGE CARD ===== */
-.language-scroll-card {
-    flex: 0 0 280px;
-    min-width: 280px;
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 20px;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--aex-border-section);
+
+    transition: background 0.6s var(--aex-ease-smooth);
 }
 
-.language-scroll-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(108, 92, 231, 0.15);
-    border-color: #6c5ce7;
+
+/* DARK MODE — Rich, colorful, deep */
+[data-theme="dark"] .aex-language-hero {
+    background:
+        radial-gradient(
+            ellipse 900px 600px at 90% 0%,
+            rgba(22, 119, 255, 0.35) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 800px 600px at 0% 100%,
+            rgba(130, 80, 255, 0.28) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 1200px 500px at 50% -10%,
+            rgba(22, 119, 255, 0.20) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            #02020a 0%,
+            #04040f 40%,
+            #06061a 100%
+        );
 }
 
-.language-scroll-card .language-icon {
-    margin-bottom: 1.5rem;
-}
 
-.language-scroll-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: #2d3436;
-}
+/* =========================================================
+   ANIMATED BACKGROUND LAYER
+========================================================= */
 
-.language-scroll-card p {
-    color: #636e72;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-}
-
-/* ===== SCROLL BUTTONS ===== */
-.scroll-btn {
+.aex-hero-bg {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FLOATING ORBS — Visible on BOTH themes
+========================================================= */
+
+.aex-orb {
+    position: absolute;
     border-radius: 50%;
-    border: 2px solid #6c5ce7;
-    background: #ffffff;
-    color: #6c5ce7;
+    filter: blur(90px);
+    will-change: transform;
+}
+
+/* Light mode orbs — clearly visible */
+.aex-orb-1 {
+    width: 450px;
+    height: 450px;
+    top: -150px;
+    left: -100px;
+    background: radial-gradient(
+        circle,
+        rgba(22, 119, 255, 0.55) 0%,
+        rgba(22, 119, 255, 0.25) 40%,
+        transparent 70%
+    );
+    animation: aexOrbFloat1 18s ease-in-out infinite;
+}
+
+.aex-orb-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -130px;
+    right: -80px;
+    background: radial-gradient(
+        circle,
+        rgba(130, 80, 255, 0.50) 0%,
+        rgba(130, 80, 255, 0.20) 40%,
+        transparent 70%
+    );
+    animation: aexOrbFloat2 22s ease-in-out infinite;
+}
+
+.aex-orb-3 {
+    width: 320px;
+    height: 320px;
+    top: 30%;
+    right: 25%;
+    background: radial-gradient(
+        circle,
+        rgba(22, 119, 255, 0.40) 0%,
+        transparent 65%
+    );
+    animation: aexOrbFloat3 26s ease-in-out infinite;
+}
+
+/* Dark mode orbs — brighter */
+[data-theme="dark"] .aex-orb-1 {
+    background: radial-gradient(
+        circle,
+        rgba(22, 119, 255, 0.70) 0%,
+        rgba(22, 119, 255, 0.30) 40%,
+        transparent 70%
+    );
+}
+
+[data-theme="dark"] .aex-orb-2 {
+    background: radial-gradient(
+        circle,
+        rgba(150, 100, 255, 0.60) 0%,
+        rgba(150, 100, 255, 0.25) 40%,
+        transparent 70%
+    );
+}
+
+[data-theme="dark"] .aex-orb-3 {
+    background: radial-gradient(
+        circle,
+        rgba(22, 119, 255, 0.55) 0%,
+        transparent 65%
+    );
+}
+
+
+@keyframes aexOrbFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(60px, -50px) scale(1.12); }
+    66%      { transform: translate(-40px, 40px) scale(0.90); }
+}
+
+@keyframes aexOrbFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(-55px, 45px) scale(1.10); }
+    66%      { transform: translate(35px, -35px) scale(0.92); }
+}
+
+@keyframes aexOrbFloat3 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50%      { transform: translate(-40px, -30px) scale(1.20); opacity: 0.9; }
+}
+
+
+/* =========================================================
+   GRID LINES — Visible pattern
+========================================================= */
+
+.aex-grid-lines {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(22, 119, 255, 0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 119, 255, 0.10) 1px, transparent 1px);
+
+    background-size: 52px 52px;
+
+    mask-image: radial-gradient(
+        ellipse 90% 80% at center,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.5) 45%,
+        transparent 80%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse 90% 80% at center,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.5) 45%,
+        transparent 80%
+    );
+}
+
+[data-theme="dark"] .aex-grid-lines {
+    background-image:
+        linear-gradient(rgba(90, 150, 255, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90, 150, 255, 0.14) 1px, transparent 1px);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.aex-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+    animation: aexHeroFadeIn 0.9s var(--aex-ease-smooth);
+}
+
+@keyframes aexHeroFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================================
+   PULSE BADGE
+========================================================= */
+
+.aex-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 28px;
+    padding: 10px 20px 10px 14px;
+
+    background: rgba(22, 119, 255, 0.12);
+    border: 1px solid rgba(22, 119, 255, 0.35);
+    border-radius: 40px;
+
+    color: #1566dd;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 4px 16px rgba(22, 119, 255, 0.12);
+
+    transition: all 0.4s var(--aex-ease-smooth);
+    cursor: default;
+}
+
+[data-theme="dark"] .aex-hero-label {
+    background: rgba(22, 119, 255, 0.14);
+    border-color: rgba(90, 150, 255, 0.40);
+    color: #6da3ff;
+    box-shadow: 0 4px 20px rgba(22, 119, 255, 0.20);
+}
+
+.aex-hero-label:hover {
+    background: rgba(22, 119, 255, 0.20);
+    border-color: rgba(22, 119, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(22, 119, 255, 0.25);
+}
+
+.aex-pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00e676;
+    box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.30);
+    animation: aexPulse 2s ease-in-out infinite;
+}
+
+@keyframes aexPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.30); }
+    50%      { box-shadow: 0 0 0 9px rgba(0, 230, 118, 0.05); }
+}
+
+
+/* =========================================================
+   HERO HEADING — Gradient second line
+========================================================= */
+
+.aex-hero-content h1 {
+    margin: 0 auto 24px;
+
+    color: #0f1828;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 850;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+[data-theme="dark"] .aex-hero-content h1 {
+    color: #ffffff;
+}
+
+.aex-hero-content h1 span {
+    display: block;
+
+    background: linear-gradient(
+        120deg,
+        #1566dd 0%,
+        #3b82f6 35%,
+        #7c5cff 70%,
+        #1566dd 100%
+    );
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: aexGradientShift 6s ease infinite;
+}
+
+[data-theme="dark"] .aex-hero-content h1 span {
+    background: linear-gradient(
+        120deg,
+        #4d8dff 0%,
+        #6da3ff 35%,
+        #a58cff 70%,
+        #4d8dff 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes aexGradientShift {
+    0%, 100% { background-position: 0% center; }
+    50%      { background-position: 100% center; }
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.aex-hero-content p {
+    max-width: 640px;
+    margin: 0 auto 38px;
+
+    color: #4a5568;
+    font-size: 17px;
+    line-height: 1.7;
+    font-weight: 400;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+[data-theme="dark"] .aex-hero-content p {
+    color: #b8c1d4;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.aex-hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-bottom: 52px;
+}
+
+.aex-hero-actions .aex-primary-btn,
+.aex-hero-actions .aex-secondary-btn {
+    padding: 15px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 12px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aex-hero-actions .aex-primary-btn {
+    background: linear-gradient(135deg, #1566dd 0%, #3b82f6 100%);
+    border: 1px solid transparent;
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(22, 119, 255, 0.35),
+        0 2px 6px rgba(22, 119, 255, 0.20);
+}
+
+.aex-hero-actions .aex-primary-btn:hover {
+    background: linear-gradient(135deg, #0d5ecc 0%, #1e6fdd 100%);
+    transform: translateY(-3px);
+    box-shadow:
+        0 14px 36px rgba(22, 119, 255, 0.45),
+        0 4px 10px rgba(22, 119, 255, 0.25);
+}
+
+.aex-hero-actions .aex-secondary-btn {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1.5px solid rgba(22, 119, 255, 0.35);
+    color: #1566dd;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 4px 16px rgba(22, 119, 255, 0.08);
+}
+
+[data-theme="dark"] .aex-hero-actions .aex-secondary-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(90, 150, 255, 0.40);
+    color: #6da3ff;
+    box-shadow: 0 4px 16px rgba(22, 119, 255, 0.12);
+}
+
+.aex-hero-actions .aex-secondary-btn:hover {
+    background: rgba(22, 119, 255, 0.10);
+    border-color: #1566dd;
+    color: #1566dd;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(22, 119, 255, 0.20);
+}
+
+[data-theme="dark"] .aex-hero-actions .aex-secondary-btn:hover {
+    background: rgba(90, 150, 255, 0.15);
+    border-color: #6da3ff;
+    color: #6da3ff;
+}
+
+.aex-hero-actions i {
+    font-size: 14px;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .aex-language-hero {
+        padding: 75px 20px 70px;
+    }
+
+    .aex-hero-content h1 {
+        font-size: clamp(36px, 7vw, 54px);
+    }
+
+    .aex-hero-content p {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .aex-hero-actions {
+        margin-bottom: 40px;
+    }
+
+    .aex-hero-stats {
+        gap: 22px;
+        padding: 18px 30px;
+    }
+
+    .aex-stat strong {
+        font-size: 22px;
+    }
+
+    .aex-orb-1 { width: 350px; height: 350px; }
+    .aex-orb-2 { width: 320px; height: 320px; }
+    .aex-orb-3 { display: none; }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .aex-language-hero {
+        padding: 55px 18px 55px;
+    }
+
+    .aex-hero-label {
+        font-size: 10px;
+        padding: 8px 16px 8px 12px;
+        margin-bottom: 22px;
+        letter-spacing: 1.5px;
+    }
+
+    .aex-hero-content h1 {
+        font-size: 34px;
+        margin-bottom: 18px;
+        letter-spacing: -0.02em;
+    }
+
+    .aex-hero-content p {
+        font-size: 14px;
+        line-height: 1.65;
+        margin-bottom: 26px;
+    }
+
+    .aex-hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 32px;
+    }
+
+    .aex-hero-actions .aex-primary-btn,
+    .aex-hero-actions .aex-secondary-btn {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 14px 22px;
+    }
+
+    /* Stats — compact */
+    .aex-hero-stats {
+        gap: 14px;
+        padding: 16px 18px;
+        border-radius: 24px;
+        width: 100%;
+        max-width: 360px;
+        flex-wrap: wrap;
+    }
+
+    .aex-stat strong {
+        font-size: 18px;
+    }
+
+    .aex-stat span {
+        font-size: 9px;
+        letter-spacing: 0.4px;
+    }
+
+    .aex-stat-divider {
+        height: 28px;
+    }
+
+    .aex-orb {
+        filter: blur(70px);
+    }
+
+    .aex-orb-1 { width: 260px; height: 260px; }
+    .aex-orb-2 { width: 240px; height: 240px; }
+    .aex-orb-3 { display: none; }
+
+    .aex-grid-lines {
+        background-size: 36px 36px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+    .aex-hero-content h1 {
+        font-size: 30px;
+    }
+
+    .aex-hero-stats {
+        gap: 10px;
+        padding: 14px 14px;
+    }
+
+    .aex-stat strong {
+        font-size: 16px;
+    }
+
+    .aex-stat span {
+        font-size: 8.5px;
+    }
+
+    .aex-orb-1 { width: 220px; height: 220px; }
+    .aex-orb-2 { width: 200px; height: 200px; }
+}
+
+
+/* =========================================================
+   4. BUTTONS
+========================================================= */
+
+.aex-hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.aex-primary-btn,
+.aex-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 24px;
+
+    border-radius: 9px;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    transition: all 0.35s var(--aex-ease-smooth);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.aex-primary-btn {
+    background: var(--aex-accent);
+    border: 1px solid var(--aex-accent);
+    color: var(--aex-accent-text);
+}
+
+.aex-primary-btn:hover {
+    background: var(--aex-accent-hover);
+    border-color: var(--aex-accent-hover);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--aex-shadow-btn);
+}
+
+.aex-secondary-btn {
+    background: transparent;
+    border: 1px solid var(--aex-border-soft);
+    color: var(--aex-text-main);
+}
+
+.aex-secondary-btn:hover {
+    border-color: var(--aex-accent);
+    color: var(--aex-accent);
+    background: rgba(22, 119, 255, 0.06);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   5. SECTION HEADER
+========================================================= */
+
+.aex-section-header {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.aex-section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: var(--aex-accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-section-header h2 {
+    margin: 0 0 12px;
+
+    color: var(--aex-text-main);
+
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-section-header p {
+    max-width: 620px;
+    margin: 0 auto;
+
+    color: var(--aex-text-muted);
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   6. LANGUAGES SECTION
+========================================================= */
+
+.aex-languages-section {
+    padding: var(--aex-section-pad) 0;
+    background: var(--aex-bg-main);
+    transition: background 0.5s var(--aex-ease-smooth);
+}
+
+.aex-language-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 320px));
+    justify-content: center;
+    gap: 36px;
+}
+
+
+/* =========================================================
+   7. LANGUAGE CARD
+========================================================= */
+
+.aex-language-card {
+    position: relative;
+    padding: 32px 26px;
+
+    background: var(--aex-bg-card);
+
+    border: 1px solid var(--aex-border-main);
+    border-radius: 20px;
+
+    text-align: center;
+    overflow: hidden;
+
+    transition:
+        transform 0.4s var(--aex-ease-smooth),
+        border-color 0.4s var(--aex-ease-smooth),
+        box-shadow 0.4s var(--aex-ease-smooth),
+        background 0.5s var(--aex-ease-smooth);
+
+    cursor: pointer;
+}
+
+.aex-language-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        var(--aex-accent),
+        rgba(22, 119, 255, 0.3)
+    );
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--aex-ease-smooth);
+}
+
+.aex-language-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--aex-accent);
+    box-shadow: 0 20px 50px var(--aex-shadow-card);
+}
+
+.aex-language-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   COUNTRY FLAG LOGO
+========================================================= */
+
+.aex-country-logo {
+    width: 80px;
+    height: 80px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    font-size: 18px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-}
 
-.scroll-btn:hover {
-    background: #6c5ce7;
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-}
+    margin: 0 auto 18px;
 
-.scroll-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
+    background: var(--aex-bg-elevated);
+    border: 2px solid var(--aex-border-soft);
+    border-radius: 50%;
 
-.scroll-btn:disabled:hover {
-    transform: translateY(-50%) scale(1);
-    background: #ffffff;
-    color: #6c5ce7;
-}
-
-.scroll-btn-left {
-    left: 0;
-}
-
-.scroll-btn-right {
-    right: 0;
-}
-
-/* ===== SECTION HEADER ===== */
-.section-header {
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #2d3436;
+    overflow: hidden;
     position: relative;
-    display: inline-block;
+
+    transition: all 0.4s var(--aex-ease-bounce);
 }
 
-.section-header h2::after {
-    content: '';
+/* Flag icon styling */
+.aex-country-logo .fi {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Make flag fill circle properly */
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-    border-radius: 2px;
+    inset: 0;
+
+    /* Optional: subtle scale to remove flag border */
+    transform: scale(1.5);
 }
 
-.section-header .text-muted {
-    color: #636e72;
-    font-size: 1.1rem;
+/* Hover effect */
+.aex-language-card:hover .aex-country-logo {
+    transform: scale(1.10) rotate(3deg);
+    border-color: var(--aex-accent);
+    box-shadow: 0 8px 25px var(--aex-shadow-btn);
 }
 
-/* ========================================
-   DARK MODE SUPPORT
-   ======================================== */
-
-[data-theme="dark"] .language-scroll-card {
-    background: #1e1e3a;
-    border-color: #2d2d4a;
+/* Dark mode */
+[data-theme="dark"] .aex-country-logo {
+    border-color: var(--aex-border-soft);
 }
 
-[data-theme="dark"] .language-scroll-card h3 {
-    color: #e8e8e8;
+[data-theme="dark"] .aex-language-card:hover .aex-country-logo {
+    border-color: var(--aex-accent);
 }
 
-[data-theme="dark"] .language-scroll-card p {
-    color: #b0b0b0;
+
+/* =========================================================
+   9. LANGUAGE TEXT
+========================================================= */
+
+.aex-language-type {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--aex-accent);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-[data-theme="dark"] .scroll-btn {
-    background: #1a1a2e;
-    border-color: #a29bfe;
-    color: #a29bfe;
+.aex-language-card h3 {
+    margin: 0 0 12px;
+
+    color: var(--aex-text-main);
+
+    font-size: 23px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-[data-theme="dark"] .scroll-btn:hover {
-    background: #a29bfe;
-    color: #1a1a2e;
+.aex-language-card p {
+    max-width: 280px;
+    margin: 0 auto 20px;
+
+    color: var(--aex-text-muted);
+
+    font-size: 13px;
+    line-height: 1.75;
+
+    transition: color 0.5s var(--aex-ease-smooth);
 }
 
-[data-theme="dark"] .section-header h2 {
-    color: #e8e8e8;
+
+/* =========================================================
+   10. TAGS
+========================================================= */
+
+.aex-language-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
 }
 
-[data-theme="dark"] .section-header .text-muted {
-    color: #b0b0b0;
+.aex-language-tags span {
+    padding: 6px 12px;
+
+    background: var(--aex-bg-elevated);
+    border: 1px solid var(--aex-border-soft);
+    border-radius: 20px;
+
+    color: var(--aex-text-soft);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    transition: all 0.3s var(--aex-ease-smooth);
+    cursor: default;
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
+.aex-language-tags span:hover {
+    background: var(--aex-accent);
+    border-color: var(--aex-accent);
+    color: var(--aex-accent-text);
+    transform: translateY(-2px);
+}
 
-@media (max-width: 992px) {
-    .language-scroll-card {
-        flex: 0 0 250px;
-        min-width: 250px;
+
+/* =========================================================
+   11. LEARN BUTTON
+========================================================= */
+
+.aex-learn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 11px 22px;
+
+    background: var(--aex-accent);
+    border: 1px solid var(--aex-accent);
+    border-radius: 9px;
+
+    color: var(--aex-accent-text);
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    transition: all 0.35s var(--aex-ease-smooth);
+    cursor: pointer;
+}
+
+.aex-learn-btn:hover {
+    background: var(--aex-accent-hover);
+    border-color: var(--aex-accent-hover);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px var(--aex-shadow-btn);
+}
+
+.aex-learn-btn i {
+    transition: transform 0.35s var(--aex-ease-smooth);
+}
+
+.aex-learn-btn:hover i {
+    transform: translateX(6px);
+}
+
+
+/* =========================================================
+   12. WHY SECTION
+========================================================= */
+
+.aex-why-section {
+    padding: var(--aex-section-pad) 0;
+    background: var(--aex-bg-soft);
+
+    border-top: 1px solid var(--aex-border-section);
+    border-bottom: 1px solid var(--aex-border-section);
+
+    transition:
+        background 0.5s var(--aex-ease-smooth),
+        border-color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   13. FEATURES
+========================================================= */
+
+.aex-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.aex-feature-card {
+    padding: 28px 22px;
+
+    background: var(--aex-bg-card);
+    border: 1px solid var(--aex-border-main);
+    border-radius: 16px;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.4s var(--aex-ease-smooth);
+}
+
+.aex-feature-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+
+    background: var(--aex-accent);
+
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--aex-ease-smooth);
+}
+
+.aex-feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--aex-accent);
+    box-shadow: 0 18px 40px var(--aex-shadow-card);
+}
+
+.aex-feature-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.aex-feature-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    background: rgba(22, 119, 255, 0.10);
+    border: 1px solid rgba(22, 119, 255, 0.35);
+    border-radius: 12px;
+
+    color: var(--aex-accent);
+    font-size: 18px;
+
+    transition: all 0.4s var(--aex-ease-bounce);
+}
+
+.aex-feature-card:hover .aex-feature-icon {
+    transform: scale(1.12) rotate(-5deg);
+    background: var(--aex-accent);
+    color: var(--aex-accent-text);
+    border-color: var(--aex-accent);
+    box-shadow: 0 6px 18px var(--aex-shadow-btn);
+}
+
+.aex-feature-card h3 {
+    margin: 0 0 10px;
+
+    color: var(--aex-text-main);
+
+    font-size: 17px;
+    font-weight: 700;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-feature-card p {
+    margin: 0;
+
+    color: var(--aex-text-muted);
+
+    font-size: 12px;
+    line-height: 1.75;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   14. LEARNING SECTION
+========================================================= */
+
+.aex-learning-section {
+    padding: var(--aex-section-pad) 0;
+    background: var(--aex-bg-main);
+    transition: background 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-wrapper {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.aex-learning-content h2 {
+    margin: 0 0 14px;
+
+    color: var(--aex-text-main);
+
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-content > p {
+    max-width: 560px;
+    margin: 0 0 28px;
+
+    color: var(--aex-text-muted);
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.aex-learning-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--aex-text-soft);
+
+    font-size: 14px;
+
+    transition: all 0.3s var(--aex-ease-smooth);
+    cursor: default;
+}
+
+.aex-learning-item:hover {
+    color: var(--aex-text-body);
+    transform: translateX(5px);
+}
+
+.aex-learning-item i {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: var(--aex-accent);
+    border-radius: 50%;
+
+    color: var(--aex-accent-text);
+
+    font-size: 10px;
+
+    transition: all 0.35s var(--aex-ease-bounce);
+}
+
+.aex-learning-item:hover i {
+    transform: scale(1.15) rotate(360deg);
+}
+
+
+/* =========================================================
+   15. LEARNING BOX
+========================================================= */
+
+.aex-learning-box {
+    padding: 40px 32px;
+
+    background: var(--aex-bg-card);
+    border: 1px solid var(--aex-border-main);
+    border-radius: 20px;
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.4s var(--aex-ease-smooth);
+}
+
+.aex-learning-box:hover {
+    border-color: var(--aex-accent);
+    box-shadow: 0 22px 50px var(--aex-shadow-card);
+    transform: translateY(-4px);
+}
+
+.aex-learning-box-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    background: var(--aex-accent);
+    border-radius: 50%;
+
+    color: var(--aex-accent-text);
+    font-size: 26px;
+
+    transition: all 0.5s var(--aex-ease-bounce);
+    position: relative;
+    z-index: 1;
+}
+
+.aex-learning-box:hover .aex-learning-box-icon {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 10px 30px var(--aex-shadow-btn);
+}
+
+.aex-learning-box h3 {
+    margin: 0 0 12px;
+
+    color: var(--aex-text-main);
+
+    font-size: 23px;
+    font-weight: 750;
+
+    position: relative;
+    z-index: 1;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-learning-box p {
+    margin: 0 auto 24px;
+
+    color: var(--aex-text-muted);
+
+    font-size: 13px;
+    line-height: 1.75;
+
+    position: relative;
+    z-index: 1;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   16. CTA SECTION
+========================================================= */
+
+.aex-cta-section {
+    padding: var(--aex-section-pad) 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(22, 119, 255, var(--aex-glow-strong)),
+            transparent 50%
+        ),
+        var(--aex-bg-soft);
+
+    border-top: 1px solid var(--aex-border-section);
+    text-align: center;
+
+    transition:
+        background 0.5s var(--aex-ease-smooth),
+        border-color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-cta-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.aex-cta-content h2 {
+    margin: 0 0 14px;
+
+    color: var(--aex-text-main);
+
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+.aex-cta-content p {
+    margin: 0 auto 26px;
+
+    color: var(--aex-text-muted);
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    transition: color 0.5s var(--aex-ease-smooth);
+}
+
+
+/* =========================================================
+   17. RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    :root {
+        --aex-section-pad: var(--aex-section-pad-sm);
+    }
+
+    .aex-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .aex-learning-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .aex-learning-box {
+        max-width: 480px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .aex-language-grid {
+        gap: 28px;
+    }
+
+    .aex-section-header h2 {
+        font-size: 32px;
+    }
+
+    .aex-learning-content h2 {
+        font-size: 32px;
+    }
+
+    .aex-cta-content h2 {
+        font-size: 32px;
     }
 }
 
-@media (max-width: 768px) {
-    .languages-scroll-wrapper {
-        padding: 0 40px;
+
+/* =========================================================
+   18. RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    :root {
+        --aex-section-pad: var(--aex-section-pad-xs);
     }
 
-    .language-scroll-card {
-        flex: 0 0 230px;
-        min-width: 230px;
-        padding: 1.5rem;
+    .aex-container {
+        padding: 0 18px;
     }
 
-    .language-scroll-card h3 {
-        font-size: 1.1rem;
+    .aex-language-hero {
+        padding: 60px 18px 65px;
     }
 
-    .language-scroll-card p {
-        font-size: 0.85rem;
+    .aex-hero-content h1 {
+        font-size: 38px;
     }
 
-    .scroll-btn {
-        width: 35px;
-        height: 35px;
+    .aex-hero-content p {
         font-size: 14px;
     }
 
-    .section-header h2 {
-        font-size: 2rem;
+    .aex-hero-actions {
+        flex-direction: column;
+    }
+
+    .aex-primary-btn,
+    .aex-secondary-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .aex-section-header h2 {
+        font-size: 28px;
+    }
+
+    .aex-language-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin: 0 auto;
+        gap: 22px;
+    }
+
+    .aex-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aex-learning-content h2 {
+        font-size: 28px;
+    }
+
+    .aex-cta-content h2 {
+        font-size: 28px;
     }
 }
 
-@media (max-width: 576px) {
-    .languages-scroll-wrapper {
-        padding: 0 30px;
+
+/* =========================================================
+   19. RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+    .aex-hero-content h1 {
+        font-size: 32px;
     }
 
-    .language-scroll-card {
-        flex: 0 0 200px;
-        min-width: 200px;
-        padding: 1.2rem;
+    .aex-language-card {
+        padding: 26px 20px;
     }
 
-    .language-scroll-card h3 {
-        font-size: 1rem;
+    .aex-learning-box {
+        padding: 32px 22px;
+    }
+}
+
+
+/* =========================================================
+   20. ACCESSIBILITY — Reduced Motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .aex-language-hero *,
+    .aex-feature-card *,
+    .aex-language-card {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 
-    .language-scroll-card p {
-        font-size: 0.8rem;
-    }
-
-    .scroll-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
-    }
-
-    .section-header h2 {
-        font-size: 1.6rem;
+    .languages-page {
+        scroll-behavior: auto !important;
     }
 }

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our English Trainer | Absolute English{% endblock %}
+
+{% block content %}
+<div class="faculty-page">
+    <section class="faculty-hero" aria-labelledby="faculty-title">
+        <div class="faculty-shell faculty-hero__content">
+            <p class="faculty-eyebrow">Absolute English · Faculty</p>
+            <h1 id="faculty-title">Learn English with personal guidance</h1>
+            <p>Meet our English trainer and explore lessons in American and British English.</p>
+            <a class="faculty-button faculty-button--primary" href="#trainer-profile">Meet your trainer</a>
+        </div>
+    </section>
+
+    <section class="faculty-stats" aria-label="English learning options">
+        <div class="faculty-shell faculty-stats__grid">
+            <article class="faculty-stat"><strong>1</strong><span>Dedicated trainer</span></article>
+            <article class="faculty-stat"><strong>2</strong><span>English varieties</span></article>
+            <article class="faculty-stat"><strong>US</strong><span>American English</span></article>
+            <article class="faculty-stat"><strong>UK</strong><span>British English</span></article>
+        </div>
+    </section>
+
+    <section class="faculty-section" id="trainer-profile" aria-labelledby="trainer-heading">
+        <div class="faculty-shell">
+            <header class="faculty-section__heading">
+                <p class="faculty-eyebrow">Your learning partner</p>
+                <h2 id="trainer-heading">Meet your English trainer</h2>
+                <p>One-to-one guidance for your English learning goals.</p>
+            </header>
+
+            
+            <div class="faculty-state faculty-state--loading" id="faculty-loading" role="status">
+                <span class="faculty-spinner" aria-hidden="true"></span> Loading trainer profile…
+            </div>
+            <div id="faculty-card" class="faculty-single-trainer" aria-live="polite"></div>
+            <div class="faculty-state faculty-state--error" id="faculty-error" role="alert" hidden>
+                <h3>Trainer profile unavailable</h3>
+                <p>Please try again in a moment.</p>
+                <button class="faculty-button faculty-button--outline" type="button" data-retry-faculty>Try again</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="faculty-section faculty-section--soft" aria-labelledby="english-types-title">
+        <div class="faculty-shell">
+            <header class="faculty-section__heading">
+                <p class="faculty-eyebrow">Choose your focus</p>
+                <h2 id="english-types-title">American or British English</h2>
+                <p>Explore the English variety that best supports your goals.</p>
+            </header>
+            <div class="faculty-language-grid">
+                <article class="faculty-language-card">
+                    <span class="faculty-language-card__mark" aria-hidden="true">US</span>
+                    <div><h3>American English</h3><p>Build confidence with American pronunciation, vocabulary, and everyday communication.</p></div>
+                    {% comment %} <a class="faculty-button faculty-button--outline" href="{% url 'american' %}">Explore American English</a> {% endcomment %}
+                </article>
+                <article class="faculty-language-card">
+                    <span class="faculty-language-card__mark" aria-hidden="true">UK</span>
+                    <div><h3>British English</h3><p>Develop British pronunciation, vocabulary, and communication skills.</p></div>
+                    {% comment %} <a class="faculty-button faculty-button--outline" href="{% url 'british' %}">Explore British English</a> {% endcomment %}
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="faculty-cta">
+        <div class="faculty-shell faculty-cta__content">
+            <div><p class="faculty-eyebrow">Start with a conversation</p><h2>Book a trial English class</h2><p>Tell us what you want to learn and when you are available.</p></div>
+            <a class="faculty-button faculty-button--light" href="{% url 'trial-class' %}?teacher=1">Book Trial Class</a>
+        </div>
+    </section>
+</div>
+{% endblock content %}

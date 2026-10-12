@@ -1,6 +1,28 @@
-/* ========================================
-   HERO SECTION
-======================================== */
+/* =========================================================
+   ABSOLUTE ENGLISH — HOME PAGE
+   Clean · Organized · Section-Wise
+=========================================================
+
+   TABLE OF CONTENTS
+   ─────────────────────────────────────────────
+   01. HERO SECTION
+   02. SECTION HEADER
+   03. LANGUAGES SECTION
+   04. COURSES SECTION
+   05. TESTIMONIALS SECTION
+   06. FEATURE CARDS
+   07. CTA SECTION
+   08. SCROLL BUTTONS (Shared)
+   09. SECTION PADDING UTILITIES
+   10. GLOBAL RESPONSIVE — TABLET
+   11. GLOBAL RESPONSIVE — MOBILE
+   12. GLOBAL RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+
+/* =========================================================
+   01. HERO SECTION
+========================================================= */
 
 .hero-section {
     position: relative;
@@ -13,6 +35,7 @@
     padding: 60px 0;
 }
 
+/* ── Slideshow ── */
 .hero-slideshow {
     position: absolute;
     top: 0;
@@ -41,19 +64,12 @@
 }
 
 @keyframes zoomIn {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
+/* ── Overlay ── */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -69,6 +85,7 @@
     z-index: 1;
 }
 
+/* ── Content ── */
 .hero-section .hero-content {
     position: relative;
     z-index: 2;
@@ -120,6 +137,7 @@
     line-height: 1.6;
 }
 
+/* ── Hero Buttons ── */
 .hero-section .btn-primary {
     background: linear-gradient(135deg, #6c5ce7, #a29bfe);
     border: none;
@@ -160,6 +178,7 @@
     margin-right: 8px;
 }
 
+/* ── Hero Stats ── */
 .hero-stats {
     display: flex;
     gap: 3rem;
@@ -179,6 +198,7 @@
     font-weight: 500;
 }
 
+/* ── Hero Image ── */
 .hero-image {
     animation: float 6s ease-in-out infinite;
 }
@@ -190,15 +210,11 @@
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
 }
 
+/* ── Hero Indicators ── */
 .hero-indicators {
     position: absolute;
     bottom: 15px;
@@ -227,9 +243,9 @@
 }
 
 
-/* ========================================
-   SECTION HEADER
-======================================== */
+/* =========================================================
+   02. SECTION HEADER
+========================================================= */
 
 .section-header {
     margin-bottom: 3rem;
@@ -264,51 +280,44 @@
 }
 
 
-/* ========================================
-   LANGUAGES SCROLL
-======================================== */
+/* =========================================================
+   03. LANGUAGES SECTION
+========================================================= */
 
+/* ── Wrapper ── */
 .languages-scroll-wrapper {
     position: relative;
-    padding: 0 50px;
+    padding: 0;
 }
 
+/* ── Container (Centered + Responsive) ── */
 .languages-scroll-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    gap: 25px;
 
     padding: 20px 10px;
 
-    scroll-behavior: smooth;
-
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    cursor: grab;
-    user-select: none;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.languages-scroll-container:active {
-    cursor: grabbing;
-}
-
-.languages-scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
-
+/* ── Language Card ── */
 .language-scroll-card {
-    flex: 0 0 280px;
-    min-width: 280px;
+    flex: 0 1 320px;
+    width: 100%;
+    max-width: 380px;
+
     background: #ffffff;
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
+
     transition: all 0.3s ease;
+
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     border: 1px solid #e9ecef;
 }
@@ -336,11 +345,7 @@
     line-height: 1.5;
 }
 
-
-/* ========================================
-   LANGUAGE CARDS
-======================================== */
-
+/* ── Generic Language Card (grid-based) ── */
 .language-card {
     background: var(--bg-white, #ffffff);
     padding: 2rem;
@@ -374,9 +379,14 @@
 }
 
 
-/* ========================================
-   COURSES SCROLL
-======================================== */
+/* =========================================================
+   04. COURSES SECTION
+========================================================= */
+
+/* ═══════════════════════════════════════
+   4A. HORIZONTAL SCROLL (Old Style)
+═══════════════════════════════════════ */
+
 .courses-scroll-wrapper {
     position: relative;
     padding: 0 50px;
@@ -399,6 +409,7 @@
     display: none;
 }
 
+/* ── Course Scroll Card ── */
 .course-scroll-card {
     flex: 0 0 280px;
     min-width: 280px;
@@ -494,6 +505,7 @@
     text-decoration: none;
 }
 
+/* ── Featured Card ── */
 .course-scroll-card.featured {
     background: linear-gradient(135deg, #6c5ce7, #a29bfe);
     color: white;
@@ -538,107 +550,182 @@
     color: #6c5ce7;
 }
 
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid #6c5ce7;
+/* ═══════════════════════════════════════
+   4B. HOME COURSE GRID (Program Style)
+═══════════════════════════════════════ */
+
+.course-grid-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.home-course-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 24px 24px;
+
     background: #ffffff;
+    border: 1px solid #e9e3ff;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.06);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+
+    overflow: hidden;
+}
+
+.home-course-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: linear-gradient(90deg, #6c5ce7, #8b5cf6, #a78bfa);
+}
+
+.home-course-card:hover {
+    transform: translateY(-8px);
+    border-color: #a78bfa;
+    box-shadow: 0 18px 40px rgba(108, 92, 231, 0.15);
+}
+
+.home-course-level {
+    display: inline-block;
+    width: fit-content;
+
+    padding: 5px 14px;
+    margin-bottom: 14px;
+
+    border-radius: 50px;
+
+    background: #ede9fe;
     color: #6c5ce7;
+
+    border: 1px solid #ddd6fe;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+.home-course-card h4 {
+    margin: 0 0 10px;
+
+    color: #24113f;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.home-course-description {
+    margin: 0 0 16px;
+
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.home-course-info {
     display: flex;
     align-items: center;
+
+    padding: 10px 12px;
+    margin-bottom: 14px;
+
+    background: #faf9ff;
+    border: 1px solid #eee9fb;
+    border-radius: 10px;
+
+    color: #475569;
+    font-size: 13px;
+}
+
+.home-course-info i {
+    color: #6c5ce7;
+    margin-right: 8px;
+}
+
+.home-course-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-bottom: 20px;
+}
+
+.home-course-highlights span {
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    background: #f3efff;
+    border: 1px solid #e5dcff;
+
+    color: #6c5ce7;
+
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.home-course-btn {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    cursor: pointer;
+    gap: 8px;
+
+    margin-top: auto;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #6c5ce7, #8b5cf6);
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
     transition: all 0.3s ease;
-    z-index: 10;
-    font-size: 18px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+
+    box-shadow: 0 6px 18px rgba(108, 92, 231, 0.25);
 }
 
-.scroll-btn:hover {
-    background: #6c5ce7;
-    color: white;
-    transform: translateY(-50%) scale(1.1);
+.home-course-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(108, 92, 231, 0.4);
+    background: linear-gradient(135deg, #5a4bd1, #7c3aed);
 }
 
-.scroll-btn-left {
-    left: 0;
+.home-course-btn i {
+    transition: transform 0.3s ease;
 }
 
-.scroll-btn-right {
-    right: 0;
+.home-course-btn:hover i {
+    transform: translateX(4px);
 }
 
-.scroll-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
 
-@media (max-width: 768px) {
-    .courses-scroll-wrapper {
-        padding: 0 40px;
-    }
-    .course-scroll-card {
-        flex: 0 0 240px;
-        min-width: 240px;
-        min-height: 330px;
-        padding: 1.5rem 1.2rem;
-    }
-    .scroll-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
-}
+/* =========================================================
+   05. TESTIMONIALS SECTION
+========================================================= */
 
-@media (max-width: 576px) {
-    .courses-scroll-wrapper {
-        padding: 0 30px;
-    }
-    .course-scroll-card {
-        flex: 0 0 210px;
-        min-width: 210px;
-        min-height: 300px;
-        padding: 1.2rem 1rem;
-    }
-    .course-scroll-card h4 {
-        font-size: 1rem;
-    }
-    .course-scroll-card p {
-        font-size: 0.75rem;
-    }
-    .course-scroll-card .course-level {
-        font-size: 0.9rem;
-        padding: 3px 14px;
-    }
-    .course-scroll-card .course-meta span {
-        font-size: 0.7rem;
-    }
-    .course-scroll-card .btn-enroll {
-        font-size: 0.75rem;
-        padding: 8px 16px;
-        max-width: 140px;
-    }
-    .course-scroll-card .featured-badge {
-        font-size: 0.65rem;
-        padding: 4px 12px;
-        top: -10px;
-        right: -10px;
-    }
-    .scroll-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
-    }
-}
-
-/* ========================================
-   TESTIMONIALS SCROLL
-======================================== */
-
+/* ── Wrapper + Container ── */
 .testimonials-scroll-wrapper {
     position: relative;
     padding: 0 50px;
@@ -658,11 +745,12 @@
     display: none;
 }
 
+/* ── Testimonial Card (Compact) ── */
 .testimonial-scroll-card {
-    flex: 0 0 320px;
-    min-width: 320px;
+    flex: 0 0 280px;
+    min-width: 280px;
+    padding: 1.5rem 1.25rem;
     background: #ffffff;
-    padding: 2rem;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s ease;
@@ -677,44 +765,43 @@
 }
 
 .testimonial-scroll-card .testimonial-avatar {
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
 }
 
 .testimonial-scroll-card .testimonial-avatar img {
-    border: 4px solid #6c5ce7;
+    width: 60px !important;
+    height: 60px !important;
+    border: 3px solid #6c5ce7;
     padding: 2px;
 }
 
 .testimonial-scroll-card .testimonial-rating {
     color: #f1c40f;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
 }
 
 .testimonial-scroll-card blockquote {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #2d3436;
     font-style: italic;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    min-height: 80px;
+    margin-bottom: 1rem;
+    line-height: 1.55;
+    min-height: auto;
 }
 
 .testimonial-scroll-card h5 {
-    font-size: 1.1rem;
-    margin-bottom: 0;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
     color: #2d3436;
 }
 
 .testimonial-scroll-card .text-muted {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #636e72;
 }
 
-
-/* ========================================
-   TESTIMONIAL CARDS
-======================================== */
-
+/* ── Generic Testimonial Card ── */
 .testimonial-card {
     background: var(--bg-white, #ffffff);
     padding: 3rem;
@@ -751,9 +838,100 @@
 }
 
 
-/* ========================================
-   SCROLL BUTTONS
-======================================== */
+/* =========================================================
+   06. FEATURE CARDS
+========================================================= */
+
+.feature-card {
+    background: var(--bg-white, #ffffff);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px var(--shadow-color, rgba(0, 0, 0, 0.05));
+    height: 100%;
+    border: 1px solid var(--border-color, #e9ecef);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-color, rgba(0, 0, 0, 0.1));
+    border-color: var(--primary-color, #6c5ce7);
+}
+
+.feature-icon {
+    color: var(--primary-color, #6c5ce7);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark, #2d3436);
+}
+
+.feature-card p {
+    color: var(--text-light, #636e72);
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   07. CTA SECTION
+========================================================= */
+
+.cta-section {
+    background: linear-gradient(
+        135deg,
+        var(--gradient-start, #6c5ce7),
+        var(--gradient-end, #a29bfe)
+    );
+    color: white;
+    padding: 40px 0 35px;
+}
+
+.cta-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section .lead {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.cta-buttons .btn {
+    margin: 0 10px;
+    padding: 15px 35px;
+}
+
+.cta-buttons .btn-light {
+    background: white;
+    color: var(--primary-color, #6c5ce7);
+    border: none;
+}
+
+.cta-buttons .btn-light:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-buttons .btn-outline-light {
+    border-color: white;
+    color: white;
+}
+
+.cta-buttons .btn-outline-light:hover {
+    background: white;
+    color: var(--primary-color, #6c5ce7);
+}
+
+
+/* =========================================================
+   08. SCROLL BUTTONS (Shared)
+========================================================= */
 
 .scroll-btn {
     position: absolute;
@@ -801,101 +979,30 @@
 }
 
 
-/* ========================================
-   FEATURE CARDS
-======================================== */
+/* =========================================================
+   09. SECTION PADDING UTILITIES
+========================================================= */
 
-.feature-card {
-    background: var(--bg-white, #ffffff);
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px var(--shadow-color, rgba(0, 0, 0, 0.05));
-    height: 100%;
-    border: 1px solid var(--border-color, #e9ecef);
+/* Reduce Bootstrap default py-5 (48px) */
+.languages-section.py-5,
+.courses-section.py-5,
+.testimonials-section.py-5,
+.why-choose-section.py-5 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
 }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px var(--shadow-color, rgba(0, 0, 0, 0.1));
-    border-color: var(--primary-color, #6c5ce7);
-}
-
-.feature-icon {
-    color: var(--primary-color, #6c5ce7);
-    margin-bottom: 1.5rem;
-}
-
-.feature-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark, #2d3436);
-}
-
-.feature-card p {
-    color: var(--text-light, #636e72);
-    font-size: 0.95rem;
+/* Section header extra gap */
+.section-header {
+    margin-bottom: 2rem !important;
 }
 
 
-/* ========================================
-   CTA SECTION
-======================================== */
+/* =========================================================
+   10. DARK MODE — ALL SECTIONS
+========================================================= */
 
-.cta-section {
-    background: linear-gradient(
-        135deg,
-        var(--gradient-start, #6c5ce7),
-        var(--gradient-end, #a29bfe)
-    );
-    color: white;
-    padding: 50px 0 45px;
-}
-
-.cta-section h2 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.cta-section .lead {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-}
-
-.cta-buttons .btn {
-    margin: 0 10px;
-    padding: 15px 35px;
-}
-
-.cta-buttons .btn-light {
-    background: white;
-    color: var(--primary-color, #6c5ce7);
-    border: none;
-}
-
-.cta-buttons .btn-light:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.cta-buttons .btn-outline-light {
-    border-color: white;
-    color: white;
-}
-
-.cta-buttons .btn-outline-light:hover {
-    background: white;
-    color: var(--primary-color, #6c5ce7);
-}
-
-
-/* ========================================
-   DARK MODE SUPPORT
-======================================== */
-
+/* ── Hero ── */
 [data-theme="dark"] .hero-section {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
@@ -912,60 +1019,43 @@
     color: #b0b0b0;
 }
 
+/* ── Section Header ── */
+[data-theme="dark"] .section-header h2 {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .section-header .text-muted {
+    color: #b0b0b0;
+}
+
+/* ── Languages ── */
 [data-theme="dark"] .language-card,
-[data-theme="dark"] .course-card,
-[data-theme="dark"] .feature-card,
-[data-theme="dark"] .testimonial-card {
+[data-theme="dark"] .language-scroll-card {
     background: #1e1e3a;
     border-color: #2d2d4a;
 }
 
 [data-theme="dark"] .language-card h3,
-[data-theme="dark"] .course-card h4,
-[data-theme="dark"] .feature-card h4,
-[data-theme="dark"] .testimonial-card h5,
-[data-theme="dark"] .section-header h2 {
+[data-theme="dark"] .language-scroll-card h3 {
     color: #e8e8e8;
 }
 
 [data-theme="dark"] .language-card p,
-[data-theme="dark"] .course-card p,
-[data-theme="dark"] .feature-card p,
-[data-theme="dark"] .testimonial-card blockquote {
+[data-theme="dark"] .language-scroll-card p {
     color: #b0b0b0;
 }
 
-[data-theme="dark"] .course-meta span {
-    color: #b0b0b0;
-}
-
-[data-theme="dark"] .bg-light {
-    background-color: #16213e !important;
-}
-
-
-/* Scroll / separated-card dark mode */
-
-[data-theme="dark"] .language-scroll-card,
-[data-theme="dark"] .course-scroll-card,
-[data-theme="dark"] .testimonial-scroll-card,
-[data-theme="dark"] .feature-card {
+/* ── Courses Scroll ── */
+[data-theme="dark"] .course-scroll-card {
     background: #1e1e3a;
     border-color: #2d2d4a;
 }
 
-[data-theme="dark"] .language-scroll-card h3,
-[data-theme="dark"] .course-scroll-card h4,
-[data-theme="dark"] .testimonial-scroll-card blockquote,
-[data-theme="dark"] .testimonial-scroll-card h5,
-[data-theme="dark"] .feature-card h4,
-[data-theme="dark"] .section-header h2 {
+[data-theme="dark"] .course-scroll-card h4 {
     color: #e8e8e8;
 }
 
-[data-theme="dark"] .language-scroll-card p,
-[data-theme="dark"] .course-scroll-card p,
-[data-theme="dark"] .feature-card p {
+[data-theme="dark"] .course-scroll-card p {
     color: #b0b0b0;
 }
 
@@ -977,6 +1067,78 @@
     background: linear-gradient(135deg, #2d1b69, #4a2b8a);
 }
 
+/* ── Home Course Card ── */
+[data-theme="dark"] .home-course-card {
+    background: #1e1e3a;
+    border-color: #2d2d4a;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .home-course-card:hover {
+    background: #252550;
+    border-color: #a29bfe;
+    box-shadow: 0 18px 40px rgba(108, 92, 231, 0.25);
+}
+
+[data-theme="dark"] .home-course-level {
+    background: #35205a;
+    color: #c4b5fd;
+    border-color: #4c2d73;
+}
+
+[data-theme="dark"] .home-course-card h4 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .home-course-description {
+    color: #b0b0b0;
+}
+
+[data-theme="dark"] .home-course-info {
+    background: #14142b;
+    border-color: #2d2d4a;
+    color: #c4b5fd;
+}
+
+[data-theme="dark"] .home-course-info i {
+    color: #a29bfe;
+}
+
+[data-theme="dark"] .home-course-highlights span {
+    background: #35205a;
+    border-color: #4c2d73;
+    color: #c4b5fd;
+}
+
+/* ── Testimonials ── */
+[data-theme="dark"] .testimonial-scroll-card,
+[data-theme="dark"] .testimonial-card {
+    background: #1e1e3a;
+    border-color: #2d2d4a;
+}
+
+[data-theme="dark"] .testimonial-scroll-card h5,
+[data-theme="dark"] .testimonial-scroll-card blockquote,
+[data-theme="dark"] .testimonial-card h5,
+[data-theme="dark"] .testimonial-card blockquote {
+    color: #e8e8e8;
+}
+
+/* ── Feature Cards ── */
+[data-theme="dark"] .feature-card {
+    background: #1e1e3a;
+    border-color: #2d2d4a;
+}
+
+[data-theme="dark"] .feature-card h4 {
+    color: #e8e8e8;
+}
+
+[data-theme="dark"] .feature-card p {
+    color: #b0b0b0;
+}
+
+/* ── Scroll Buttons ── */
 [data-theme="dark"] .scroll-btn {
     background: #1a1a2e;
     border-color: #a29bfe;
@@ -994,27 +1156,33 @@
     border-color: #444;
 }
 
-[data-theme="dark"] .section-header .text-muted {
-    color: #b0b0b0;
+/* ── Bootstrap bg-light override ── */
+[data-theme="dark"] .bg-light {
+    background-color: #16213e !important;
 }
 
-[data-theme="dark"] .course-scroll-card {
+/* ── Generic course-card dark ── */
+[data-theme="dark"] .course-card {
     background: #1e1e3a;
     border-color: #2d2d4a;
 }
 
-[data-theme="dark"] .course-scroll-card h4 {
+[data-theme="dark"] .course-card h4 {
     color: #e8e8e8;
 }
 
-[data-theme="dark"] .course-scroll-card p {
+[data-theme="dark"] .course-card p {
+    color: #b0b0b0;
+}
+
+[data-theme="dark"] .course-meta span {
     color: #b0b0b0;
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* =========================================================
+   11. GLOBAL RESPONSIVE — TABLET
+========================================================= */
 
 @media (max-width: 992px) {
     .hero-title {
@@ -1027,7 +1195,17 @@
 }
 
 
+@media (max-width: 900px) {
+    /* Home Course Grid — 2 columns */
+    .course-grid-home {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+
 @media (max-width: 768px) {
+    /* Hero */
     .hero-section {
         padding: 40px 0;
         min-height: 35vh;
@@ -1059,10 +1237,12 @@
         margin-top: 2rem;
     }
 
+    /* Section Header */
     .section-header h2 {
         font-size: 2rem;
     }
 
+    /* Cards */
     .language-card,
     .course-card,
     .feature-card {
@@ -1073,8 +1253,25 @@
         padding: 2rem;
     }
 
+    /* Testimonial card */
+    .testimonial-scroll-card {
+        flex: 0 0 240px;
+        min-width: 240px;
+        padding: 1.25rem 1rem;
+    }
+
+    .testimonial-scroll-card .testimonial-avatar img {
+        width: 54px !important;
+        height: 54px !important;
+    }
+
+    .testimonial-scroll-card blockquote {
+        font-size: 0.8rem;
+    }
+
+    /* CTA */
     .cta-section {
-        padding: 40px 0 35px;
+        padding: 30px 0 25px !important;
     }
 
     .cta-section h2 {
@@ -1092,32 +1289,80 @@
         font-size: 0.95rem;
     }
 
+    /* Wrappers */
     .languages-scroll-wrapper,
     .courses-scroll-wrapper,
     .testimonials-scroll-wrapper {
         padding: 0 40px;
     }
 
-    .language-scroll-card,
+    /* Languages container */
+    .languages-scroll-container {
+        gap: 20px;
+        padding: 16px 8px;
+    }
+
+    .language-scroll-card {
+        flex: 0 1 280px;
+        max-width: 340px;
+        padding: 1.75rem 1.5rem;
+    }
+
+    /* Course Scroll */
     .course-scroll-card {
-        flex: 0 0 230px;
-        min-width: 230px;
+        flex: 0 0 240px;
+        min-width: 240px;
+        min-height: 330px;
+        padding: 1.5rem 1.2rem;
     }
 
-    .testimonial-scroll-card {
-        flex: 0 0 280px;
-        min-width: 280px;
-    }
-
+    /* Scroll Buttons */
     .scroll-btn {
         width: 35px;
         height: 35px;
         font-size: 14px;
     }
+
+    /* Section Padding */
+    .languages-section.py-5,
+    .courses-section.py-5,
+    .testimonials-section.py-5,
+    .why-choose-section.py-5 {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .section-header {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+
+/* =========================================================
+   12. GLOBAL RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+    /* Home Course Grid — 1 column */
+    .course-grid-home {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .home-course-card {
+        padding: 24px 20px 20px;
+    }
+
+    .home-course-card h4 {
+        font-size: 18px;
+    }
 }
 
 
 @media (max-width: 576px) {
+    /* Hero */
     .hero-title {
         font-size: 1.8rem;
     }
@@ -1147,8 +1392,32 @@
         font-size: 0.8rem;
     }
 
+    /* Section Header */
     .section-header h2 {
         font-size: 1.6rem;
+    }
+
+    /* Languages */
+    .languages-scroll-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 12px 8px;
+    }
+
+    .language-scroll-card {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 360px;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .language-scroll-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .language-scroll-card p {
+        font-size: 0.9rem;
     }
 
     .language-card {
@@ -1159,6 +1428,45 @@
         font-size: 1.2rem;
     }
 
+    /* Course Scroll */
+    .course-scroll-card {
+        flex: 0 0 210px;
+        min-width: 210px;
+        min-height: 300px;
+        padding: 1.2rem 1rem;
+    }
+
+    .course-scroll-card h4 {
+        font-size: 1rem;
+    }
+
+    .course-scroll-card p {
+        font-size: 0.75rem;
+    }
+
+    .course-scroll-card .course-level {
+        font-size: 0.9rem;
+        padding: 3px 14px;
+    }
+
+    .course-scroll-card .course-meta span {
+        font-size: 0.7rem;
+    }
+
+    .course-scroll-card .btn-enroll {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+        max-width: 140px;
+    }
+
+    .course-scroll-card .featured-badge {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+        top: -10px;
+        right: -10px;
+    }
+
+    /* Generic course card */
     .course-card {
         padding: 1.5rem;
     }
@@ -1172,8 +1480,25 @@
         flex-wrap: wrap;
     }
 
-    .feature-card {
-        padding: 1.5rem;
+    /* Testimonials */
+    .testimonial-scroll-card {
+        flex: 0 0 220px;
+        min-width: 220px;
+        padding: 1rem 0.9rem;
+    }
+
+    .testimonial-scroll-card .testimonial-avatar img {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    .testimonial-scroll-card blockquote {
+        font-size: 0.78rem;
+        line-height: 1.5;
+    }
+
+    .testimonial-scroll-card h5 {
+        font-size: 0.9rem;
     }
 
     .testimonial-card {
@@ -1184,12 +1509,18 @@
         font-size: 0.95rem;
     }
 
+    /* Feature Cards */
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    /* CTA */
     .cta-section {
-        padding: 30px 0 25px;
+        padding: 25px 0 20px !important;
     }
 
     .cta-section h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     .cta-section .lead {
@@ -1199,52 +1530,56 @@
     .cta-buttons .btn {
         padding: 10px 20px;
         font-size: 0.85rem;
+        width: 100%;
+        margin: 5px 0;
     }
 
+    /* Wrappers */
     .languages-scroll-wrapper,
     .courses-scroll-wrapper,
     .testimonials-scroll-wrapper {
         padding: 0 30px;
     }
 
-    .language-scroll-card,
-    .course-scroll-card {
-        flex: 0 0 200px;
-        min-width: 200px;
-    }
-
-    .testimonial-scroll-card {
-        flex: 0 0 260px;
-        min-width: 260px;
-    }
-
-    .course-scroll-card h4 {
-        font-size: 1.1rem;
-    }
-
-    .course-scroll-card p {
-        font-size: 0.8rem;
-    }
-
+    /* Scroll Buttons */
     .scroll-btn {
         width: 30px;
         height: 30px;
         font-size: 12px;
     }
 
+    /* Hero Buttons */
     .hero-buttons .btn {
         width: 100%;
         display: block;
         margin-right: 0;
     }
 
-    .cta-section h2 {
-        font-size: 1.8rem;
+    /* Section Padding */
+    .languages-section.py-5,
+    .courses-section.py-5,
+    .testimonials-section.py-5,
+    .why-choose-section.py-5 {
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
     }
 
-    .cta-buttons .btn {
-        width: 100%;
-        margin: 5px 0;
+    .section-header {
+        margin-bottom: 1.25rem !important;
     }
 }
 
+
+/* =========================================================
+   13. GLOBAL RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+    .language-scroll-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .language-scroll-card h3 {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Account | Absolute English{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-page {
+        background-color: var(--bg-light);
+        min-height: 80vh;
+        padding: 48px 0 70px;
+    }
+
+    .profile-card {
+        max-width: 680px;
+        margin: 0 auto;
+        background: var(--bg-white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 8px 30px var(--shadow-color);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 26px;
+        margin-bottom: 26px;
+    }
+
+    .profile-avatar {
+        width: 72px;
+        height: 72px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .profile-info h2 {
+        margin: 0 0 6px;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+    }
+
+    .profile-info p {
+        margin: 0;
+        color: var(--text-light);
+        font-size: 0.88rem;
+    }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .detail-card {
+        background: var(--bg-light);
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .detail-card label {
+        font-size: 0.72rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+        display: block;
+        font-weight: 600;
+    }
+
+    .detail-card span {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    .profile-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-dashboard {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        color: #fff;
+        border: none;
+        padding: 11px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .btn-dashboard:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px var(--shadow-hover);
+    }
+
+    .btn-home-back {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+        padding: 11px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .btn-home-back:hover {
+        background: var(--border-color);
+        color: var(--text-dark);
+    }
+
+    .btn-signout {
+        background: #fef2f2;
+        color: #ef4444;
+        border: 1px solid #fecaca;
+        padding: 11px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .btn-signout:hover {
+        background: #ef4444;
+        color: #fff;
+        border-color: #ef4444;
+    }
+
+    [data-theme="dark"] .detail-card {
+        background: #1e1e3a;
+        border-color: #2d2d4a;
+    }
+
+    [data-theme="dark"] .btn-home-back {
+        background: #1e1e3a;
+        border-color: #2d2d4a;
+        color: #e8e8e8;
+    }
+
+    [data-theme="dark"] .btn-home-back:hover {
+        background: #2d2d4a;
+    }
+
+    [data-theme="dark"] .btn-signout {
+        background: rgba(239,68,68,0.12);
+        border-color: rgba(239,68,68,0.3);
+    }
+
+    @media (max-width: 576px) {
+        .profile-grid { grid-template-columns: 1fr; }
+        .profile-card { padding: 24px 18px; }
+        .profile-actions { flex-direction: column; }
+        .btn-dashboard, .btn-home-back, .btn-signout { justify-content: center; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="profile-page">
+    <div class="container">
+        <div class="profile-card fade-in">
+
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h2>{{ request.user.get_full_name|default:request.user.username }}</h2>
+                    <p><i class="fas fa-envelope me-1"></i> {{ request.user.email }}</p>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+                <div class="detail-card">
+                    <label>Username</label>
+                    <span>{{ request.user.username }}</span>
+                </div>
+                <div class="detail-card">
+                    <label>Phone Number</label>
+                    <span>{{ request.user.phone|default:"Not specified" }}</span>
+                </div>
+                <div class="detail-card">
+                    <label>Phone Verified</label>
+                    <span>
+                        {% if request.user.is_phone_verified %}
+                            <i class="fas fa-check-circle text-success"></i> Verified
+                        {% else %}
+                            <i class="fas fa-times-circle text-muted"></i> Pending
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="detail-card">
+                    <label>Member Since</label>
+                    <span>{{ request.user.created_at|date:"M d, Y" }}</span>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <a href="{% url 'accounts:dashboard' %}" class="btn-dashboard">
+                    <i class="fas fa-columns"></i> My Dashboard
+                </a>
+                <a href="{% url 'home' %}" class="btn-home-back">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <a href="{% url 'accounts:logout' %}" class="btn-signout">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

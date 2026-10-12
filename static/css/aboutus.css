@@ -1,0 +1,251 @@
+/* --- Base Variables & Theming --- */
+:root {
+    /* Light Theme Palette (Default) */
+    --about-primary: #1e3a8a;
+    --about-secondary: #f59e0b;
+    --about-text-dark: #1f2937;
+    --about-text-light: #6b7280;
+    --about-bg-main: #ffffff;
+    --about-bg-light: #f9fafb;
+    --about-white: #ffffff;
+    --about-card-bg: #ffffff;
+    --about-cta-bg: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    --about-cta-text: #6b7280;
+    --about-transition: all 0.3s ease-in-out;
+}
+
+/* Dark Theme Palette */
+[data-theme="dark"], .dark {
+    --about-primary: #3b82f6; /* Lighter blue for dark mode visibility */
+    --about-secondary: #fbbf24;
+    --about-text-dark: #f3f4f6;
+    --about-text-light: #9ca3af;
+    --about-bg-main: #111827;
+    --about-bg-light: #1f2937;
+    --about-white: #111827;
+    --about-card-bg: #1f2937;
+    --about-cta-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    --about-cta-text: #9ca3af;
+}
+
+body {
+    background-color: var(--about-bg-main);
+    color: var(--about-text-dark);
+    transition: var(--about-transition);
+}
+
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Hero Banner --- */
+.about-hero {
+    position: relative;
+    background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+.about-hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #e5e7eb;
+}
+
+/* --- Layout Container --- */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+.about-section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--about-primary);
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+}
+.about-section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--about-secondary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* --- About Introduction --- */
+.about-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+.about-img img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.about-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--about-primary);
+}
+.about-text p {
+    color: var(--about-text-light);
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* --- Vision, Mission, Values (Cards) --- */
+.vmv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.about-card {
+    background: var(--about-card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--about-transition);
+    border-bottom: 4px solid transparent;
+}
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-bottom: 4px solid var(--about-secondary);
+}
+.about-card i {
+    font-size: 2.5rem;
+    color: var(--about-secondary);
+    margin-bottom: 20px;
+}
+.about-card h3 {
+    font-size: 1.4rem;
+    color: var(--about-primary);
+    margin-bottom: 15px;
+}
+.about-card p {
+    color: var(--about-text-light);
+    line-height: 1.6;
+}
+
+/* --- Why Absolute English --- */
+.why-us {
+    background: var(--about-bg-light);
+    padding: 40px 0;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+.feature-icon {
+    background: var(--about-primary);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: var(--about-transition);
+}
+.feature-item:hover .feature-icon {
+    background: var(--about-secondary);
+    transform: rotate(360deg);
+}
+.feature-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--about-primary);
+}
+.feature-content p {
+    color: var(--about-text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Achievements / Highlights --- */
+.achievements {
+    background: var(--about-primary);
+    color: #ffffff;
+    padding: 60px 20px;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.stat-item h2 {
+    font-size: 2.8rem;
+    color: var(--about-secondary);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.stat-item p {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* --- CTA Section --- */
+.about-cta {
+    background: var(--about-cta-bg);
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 60px;
+    padding: 50px 20px;
+}
+.about-cta h2 {
+    font-size: 2.2rem;
+    color: var(--about-primary);
+    margin-bottom: 15px;
+}
+.about-cta p {
+    font-size: 1.1rem;
+    color: var(--about-cta-text);
+    margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .about-hero h1 { font-size: 2.2rem; }
+    .about-intro { grid-template-columns: 1fr; }
+    .about-section-title { font-size: 1.8rem; }
+    .about-cta h2 { font-size: 1.8rem; }
+}

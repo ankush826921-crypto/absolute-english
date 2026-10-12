@@ -1,0 +1,484 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Dashboard | Absolute English{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ======================================
+       DASHBOARD — uses project CSS variables
+    ====================================== */
+
+    .dash-page {
+        background-color: var(--bg-light);
+        min-height: 80vh;
+        padding: 36px 0 60px;
+    }
+
+    /* Welcome Hero */
+    .welcome-hero {
+        background: linear-gradient(135deg, #4c3ae3, #6c5ce7, #8c7ae6);
+        color: #ffffff;
+        border-radius: 20px;
+        padding: 36px 40px;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(108, 92, 231, 0.28);
+    }
+
+    .welcome-hero::after {
+        content: '';
+        position: absolute;
+        top: -55%;
+        right: -8%;
+        width: 320px;
+        height: 320px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.18);
+        backdrop-filter: blur(8px);
+        padding: 5px 16px;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 14px;
+        letter-spacing: 0.3px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+        color: #ffffff;
+    }
+
+    .hero-sub {
+        color: rgba(255,255,255,0.75);
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    /* Cards */
+    .dash-card {
+        background: var(--bg-white);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px var(--shadow-color);
+        padding: 26px;
+        margin-bottom: 26px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dash-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px var(--shadow-hover);
+    }
+
+    /* Card Section Header */
+    .card-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .card-section-title h5 {
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin: 0;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .card-section-title h5 i {
+        color: var(--primary-color);
+    }
+
+    /* Live Class Card */
+    .live-card {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #ffffff;
+        border: none;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+    }
+
+    .live-card:hover {
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .live-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #ef4444;
+        color: #ffffff;
+        padding: 4px 13px;
+        border-radius: 50px;
+        font-size: 0.73rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.5; }
+    }
+
+    .btn-join-live {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #ffffff;
+        border: none;
+        padding: 11px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        font-size: 0.92rem;
+    }
+
+    .btn-join-live:hover {
+        background: linear-gradient(135deg, #059669, #047857);
+        color: #ffffff;
+        transform: scale(1.04);
+        box-shadow: 0 8px 22px rgba(16,185,129,0.4);
+    }
+
+    /* Info rows inside course card */
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 0;
+        border-bottom: 1px dashed var(--border-color);
+    }
+
+    .info-row:last-of-type { border-bottom: none; }
+
+    .info-label {
+        color: var(--text-light);
+        font-size: 0.88rem;
+        font-weight: 500;
+    }
+
+    .info-val {
+        font-weight: 700;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        text-align: right;
+        max-width: 55%;
+    }
+
+    /* Progress bar */
+    .progress-track {
+        height: 9px;
+        border-radius: 50px;
+        background: var(--border-color);
+        overflow: hidden;
+        margin-top: 4px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        border-radius: 50px;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    }
+
+    /* Test items */
+    .test-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px;
+        background: var(--bg-light);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        transition: background 0.2s ease;
+    }
+
+    .test-item:last-child { margin-bottom: 0; }
+
+    .test-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background: #ede9fe;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+    }
+
+    .test-title {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        margin-bottom: 2px;
+    }
+
+    .test-meta {
+        font-size: 0.78rem;
+        color: var(--text-light);
+    }
+
+    .badge-done {
+        background: #dcfce7;
+        color: #15803d;
+        font-weight: 700;
+        padding: 5px 13px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    .btn-start-test {
+        background: var(--primary-color);
+        color: #ffffff;
+        border: none;
+        padding: 7px 18px;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .btn-start-test:hover {
+        background: var(--primary-dark);
+        color: #ffffff;
+    }
+
+    /* Study Material rows */
+    .material-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 14px;
+        background: var(--bg-light);
+        border-radius: 11px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        text-decoration: none;
+        transition: background 0.2s ease;
+        cursor: pointer;
+    }
+
+    .material-row:last-child { margin-bottom: 0; }
+
+    .material-row:hover {
+        background: #ede9fe;
+        border-color: var(--primary-light);
+    }
+
+    .material-info .mat-title {
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: var(--text-dark);
+    }
+
+    .material-info small {
+        color: var(--text-light);
+        font-size: 0.76rem;
+    }
+
+    /* Dark mode overrides */
+    [data-theme="dark"] .welcome-hero {
+        background: linear-gradient(135deg, #2d1b69, #4c3ae3, #6c5ce7);
+    }
+
+    [data-theme="dark"] .live-card {
+        background: linear-gradient(135deg, #0a0f1c, #0f172a);
+    }
+
+    [data-theme="dark"] .test-item,
+    [data-theme="dark"] .material-row {
+        background: #1e1e3a;
+        border-color: #2d2d4a;
+    }
+
+    [data-theme="dark"] .test-item:hover,
+    [data-theme="dark"] .material-row:hover {
+        background: #2a2050;
+    }
+
+    [data-theme="dark"] .test-icon {
+        background: #2d2d4a;
+        color: var(--primary-light);
+    }
+
+    [data-theme="dark"] .badge-done {
+        background: #14532d;
+        color: #86efac;
+    }
+
+    @media (max-width: 576px) {
+        .hero-title { font-size: 1.5rem; }
+        .welcome-hero { padding: 24px 20px; }
+        .info-val { max-width: 50%; font-size: 0.82rem; }
+        .test-item { flex-wrap: wrap; gap: 10px; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="dash-page">
+    <div class="container">
+
+        <!-- Welcome Hero -->
+        <div class="welcome-hero fade-in">
+            <span class="hero-badge"><i class="fas fa-graduation-cap me-1"></i> Student Portal Active</span>
+            <h1 class="hero-title">Welcome back, {{ user.get_full_name|default:user.username }}!</h1>
+            <p class="hero-sub">Track your batch, attend live classes, and complete your fluency assessments — all in one place.</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- ============ LEFT COLUMN ============ -->
+            <div class="col-lg-7">
+
+                <!-- Live Class Card -->
+                <div class="dash-card live-card">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="live-indicator"><i class="fas fa-circle" style="font-size:0.5rem;"></i> Live Now</span>
+                        <span style="color:rgba(255,255,255,0.5); font-size:0.82rem;"><i class="fas fa-clock me-1"></i> Interactive Session</span>
+                    </div>
+
+                    <h4 class="fw-bold mb-2" style="color:#ffffff;">{{ live_class.topic }}</h4>
+                    <p class="mb-4" style="color:rgba(255,255,255,0.6); font-size:0.9rem;">
+                        <i class="fas fa-chalkboard-teacher me-2"></i>Instructor: <strong style="color:rgba(255,255,255,0.85);">{{ live_class.instructor }}</strong>
+                    </p>
+
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill" style="font-size:0.78rem;">
+                            <i class="fas fa-video me-1"></i> HD Live Stream
+                        </span>
+                        <a href="{{ live_class.meeting_link }}" target="_blank" rel="noopener noreferrer" class="btn-join-live">
+                            <i class="fas fa-video"></i> Join Live Class
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course & Batch Card -->
+                <div class="dash-card">
+                    <div class="card-section-title">
+                        <h5><i class="fas fa-book-open"></i> Course &amp; Batch Details</h5>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill fw-bold" style="font-size:0.78rem;">
+                            {{ enrollment.get_status_display }}
+                        </span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-graduation-cap me-2"></i>Enrolled Program</span>
+                        <span class="info-val" style="color:var(--primary-color);">{{ enrollment.course_name }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-users me-2"></i>Assigned Batch</span>
+                        <span class="info-val">{{ enrollment.batch_name }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-user-tie me-2"></i>Lead Trainer</span>
+                        <span class="info-val">{{ enrollment.trainer_name }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fas fa-calendar-alt me-2"></i>Enrollment Date</span>
+                        <span class="info-val">{{ enrollment.enrolled_at|date:"M d, Y" }}</span>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">Course Progress</span>
+                            <span style="font-size:0.85rem; font-weight:700; color:var(--primary-color);">{{ enrollment.progress_percent }}% Completed</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width:{{ enrollment.progress_percent }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ============ RIGHT COLUMN ============ -->
+            <div class="col-lg-5">
+
+                <!-- Tests & Quizzes Card -->
+                <div class="dash-card">
+                    <div class="card-section-title">
+                        <h5><i class="fas fa-laptop-code"></i> Live Tests &amp; Quizzes</h5>
+                        <span class="badge px-2 py-1 rounded-pill fw-bold" style="background:#ede9fe;color:var(--primary-color);font-size:0.75rem;">Assessments</span>
+                    </div>
+
+                    {% for test in tests %}
+                    <div class="test-item">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="test-icon">
+                                <i class="fas {% if test.status == 'completed' %}fa-check-circle text-success{% else %}fa-file-signature{% endif %}"></i>
+                            </div>
+                            <div>
+                                <div class="test-title">{{ test.title }}</div>
+                                <div class="test-meta"><i class="fas fa-question-circle me-1"></i>{{ test.total_questions }} Qs &nbsp;|&nbsp; {{ test.duration_minutes }} Mins</div>
+                            </div>
+                        </div>
+                        <div>
+                            {% if test.status == 'completed' %}
+                                <span class="badge-done"><i class="fas fa-trophy me-1"></i> {{ test.score }}/{{ test.total_marks }}</span>
+                            {% else %}
+                                <a href="#" class="btn-start-test" onclick="alert('Starting: {{ test.title|escapejs }}. Good luck!'); return false;">Start Test</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted text-center py-3 mb-0">No tests available right now.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Study Materials Card -->
+                <div class="dash-card">
+                    <div class="card-section-title">
+                        <h5><i class="fas fa-file-pdf"></i> Study Material &amp; Resources</h5>
+                    </div>
+
+                    <div class="material-row" onclick="alert('Downloading Grammar & Vocabulary PDF...'); return false;">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fas fa-file-pdf text-danger fs-4"></i>
+                            <div class="material-info">
+                                <div class="mat-title">Grammar &amp; Daily Vocabulary PDF</div>
+                                <small>Module 1–4 &nbsp;|&nbsp; 4.2 MB</small>
+                            </div>
+                        </div>
+                        <i class="fas fa-download" style="color:var(--text-light);"></i>
+                    </div>
+
+                    <div class="material-row" onclick="alert('Opening Recorded Lectures Archive...'); return false;">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fas fa-photo-film text-primary fs-4"></i>
+                            <div class="material-info">
+                                <div class="mat-title">Class Recorded Video Archives</div>
+                                <small>Watch past live sessions</small>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right" style="color:var(--text-light);"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
