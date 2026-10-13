@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path("", views.program_list, name="program_list"),
-    path("detail/", views.program_detail, name="program_detail"),
-    path("detail/<int:program_id>/", views.program_detail, name="program_detail_with_id"),
+    # Yahan humne program_detail ko id wala path de diya hai
+    path("detail/<int:program_id>/", views.program_detail, name="program_detail"),
 ]
