@@ -38,7 +38,7 @@ urlpatterns = [
 
     # Apps
     path('accounts/', include('apps.accounts.urls')),
-    path('programs/', include('apps.programs.urls')),
+    path('programs/', include(('apps.programs.urls', 'programs'), namespace='programs')),
     path('faculty/', include('apps.faculty.urls')),
     path('testimonials/', include('apps.testimonials.urls')),
     path('enquiries/', include('apps.enquiries.urls')),
