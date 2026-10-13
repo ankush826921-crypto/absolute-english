@@ -78,12 +78,12 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
+
                         <form id="contactForm" method="post" action="{% url 'contact' %}" novalidate>
                             {% csrf_token %}
-=======
+
                         <form id="contactForm" novalidate>
->>>>>>> origin/main
+
 
                             <div class="row g-4">
 
@@ -98,24 +98,24 @@
                                         <input
                                             type="text"
                                             id="fullName"
-<<<<<<< HEAD
+
                                             name="full_name"
                                             placeholder="Enter your full name"
                                             value="{{ form.full_name.value|default_if_none:'' }}"
-=======
+
                                             name="fullName"
                                             placeholder="Enter your full name"
->>>>>>> origin/main
+
                                             autocomplete="name"
                                             required
                                         >
                                     </div>
-<<<<<<< HEAD
+
                                     {% if form.full_name.errors %}
                                         <small style="color:#ef476f;">{{ form.full_name.errors }}</small>
                                     {% endif %}
-=======
->>>>>>> origin/main
+
+
                                 </div>
 
                                 <!-- EMAIL -->
@@ -131,20 +131,18 @@
                                             id="email"
                                             name="email"
                                             placeholder="Enter your email address"
-<<<<<<< HEAD
+
                                             value="{{ form.email.value|default_if_none:'' }}"
-=======
->>>>>>> origin/main
+
                                             autocomplete="email"
                                             required
                                         >
                                     </div>
-<<<<<<< HEAD
+
                                     {% if form.email.errors %}
                                         <small style="color:#ef476f;">{{ form.email.errors }}</small>
                                     {% endif %}
-=======
->>>>>>> origin/main
+
                                 </div>
 
                                 <!-- PHONE -->
@@ -160,7 +158,7 @@
                                             id="phone"
                                             name="phone"
                                             placeholder="Enter your phone number"
-<<<<<<< HEAD
+
                                             value="{{ form.phone.value|default_if_none:'' }}"
                                             autocomplete="tel"
                                         >
@@ -168,11 +166,11 @@
                                     {% if form.phone.errors %}
                                         <small style="color:#ef476f;">{{ form.phone.errors }}</small>
                                     {% endif %}
-=======
+
                                             autocomplete="tel"
                                         >
                                     </div>
->>>>>>> origin/main
+
                                 </div>
 
                                 <!-- SUBJECT -->
@@ -186,29 +184,28 @@
 
                                         <select id="subject" name="subject" required>
                                             <option value="">Select a subject</option>
-<<<<<<< HEAD
+
                                             <option value="course" {% if form.subject.value == 'course' %}selected{% endif %}>Course Enquiry</option>
                                             <option value="admission" {% if form.subject.value == 'admission' %}selected{% endif %}>Admission</option>
                                             <option value="demo" {% if form.subject.value == 'demo' %}selected{% endif %}>Free Demo</option>
                                             <option value="general" {% if form.subject.value == 'general' %}selected{% endif %}>General Query</option>
                                             <option value="other" {% if form.subject.value == 'other' %}selected{% endif %}>Other</option>
-=======
+
                                             <option value="course">Course Enquiry</option>
                                             <option value="admission">Admission</option>
                                             <option value="demo">Free Demo</option>
                                             <option value="general">General Query</option>
                                             <option value="other">Other</option>
->>>>>>> origin/main
+
                                         </select>
 
                                         <i class="fas fa-chevron-down select-arrow"></i>
                                     </div>
-<<<<<<< HEAD
+
                                     {% if form.subject.errors %}
                                         <small style="color:#ef476f;">{{ form.subject.errors }}</small>
                                     {% endif %}
-=======
->>>>>>> origin/main
+
                                 </div>
 
                                 <!-- MESSAGE -->
@@ -226,16 +223,16 @@
                                             rows="6"
                                             placeholder="Write your message here..."
                                             required
-<<<<<<< HEAD
+
                                         >{{ form.message.value|default_if_none:'' }}</textarea>
                                     </div>
                                     {% if form.message.errors %}
                                         <small style="color:#ef476f;">{{ form.message.errors }}</small>
                                     {% endif %}
-=======
+
                                         ></textarea>
                                     </div>
->>>>>>> origin/main
+
                                 </div>
 
                             </div>
@@ -244,21 +241,20 @@
                             <div class="form-footer">
 
                                 <label class="consent-label">
-<<<<<<< HEAD
+
                                     <input type="checkbox" id="consent" name="consent" {% if form.consent.value %}checked{% endif %}>
-=======
+
                                     <input type="checkbox" id="consent">
->>>>>>> origin/main
+
                                     <span class="custom-checkbox"></span>
                                     <span>
                                         I agree to be contacted via email or phone.
                                     </span>
-<<<<<<< HEAD
+
                                     {% if form.consent.errors %}
                                         <small style="color:#ef476f;">{{ form.consent.errors }}</small>
                                     {% endif %}
-=======
->>>>>>> origin/main
+
                                 </label>
 
                                 <button
@@ -271,7 +267,7 @@
 
                             </div>
 
-<<<<<<< HEAD
+
                             {% if messages %}
                                 {% for message in messages %}
                                     <div
@@ -304,7 +300,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-=======
+
                             <!-- FRONTEND SUCCESS MESSAGE -->
                             <div
                                 class="form-message success-message"
@@ -321,7 +317,7 @@
                                     </span>
                                 </div>
                             </div>
->>>>>>> origin/main
+
 
                         </form>
                     </div>
@@ -434,13 +430,11 @@
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
 
-<<<<<<< HEAD
+
                                 <a href="#" aria-label="Twitter">
                                     <i class="fab fa-x-twitter"></i>
                                 </a>
-=======
-                                
->>>>>>> origin/main
+
 
                             </div>
 
