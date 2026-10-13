@@ -7,7 +7,6 @@ from apps import views
 
 
 urlpatterns = [
-
     path('admin/', admin.site.urls),
 
     # Main pages
@@ -16,15 +15,19 @@ urlpatterns = [
     path('courses/', views.courses, name='courses'),
     path('about/', views.about, name='about'),
     path('trainers/', views.trainers, name='trainers'),
+
+    # Gallery and Contact Us
     path('gallery/', include('apps.gallery.urls')),
-    path('contact/', views.contact, name='contact'),
+    path('contact/', include('apps.enquiries.urls')),
+
     path('book-demo/', views.book_demo, name='book_demo'),
     path('enroll/', include('apps.enroll.urls')),
+
     path(
         'trial/class/',
         RedirectView.as_view(
             url='/faculty/trial/class/',
-            query_string=True,   # ← query params preserve karega (?teacher=1)
+            query_string=True,
             permanent=False,
         ),
     ),
@@ -46,10 +49,10 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(
         settings.STATIC_URL,
-        document_root=settings.STATIC_ROOT
+        document_root=settings.STATIC_ROOT,
     )
 
     urlpatterns += static(
         settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
+        document_root=settings.MEDIA_ROOT,
     )

@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Your apps
+    # Project apps
     'apps.accounts',
     'apps.programs',
     'apps.faculty',
@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'apps.chatbot',
     'apps.enroll',
 ]
-
 
 AUTH_USER_MODEL = 'accounts.User'
 
