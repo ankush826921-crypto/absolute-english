@@ -106,408 +106,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ========================================
-// LANGUAGES - TRUE INFINITE LOOP
-// (Auto-Scroll + Buttons)
+// LANGUAGES SECTION
+// AUTO-SCROLL: OFF
+// BUTTONS: REMOVED
 // ========================================
 
-document.addEventListener('DOMContentLoaded', function () {
+// No JavaScript is required for the language
+// cards anymore.
+//
+// The language cards are now static.
+// Their position/centering is handled by home.css.
 
-    const container = document.getElementById('homeScrollContainer');
-    const leftBtn = document.getElementById('homeScrollLeft');
-    const rightBtn = document.getElementById('homeScrollRight');
-
-    if (!container) return;
-
-    // Clone cards for infinite loop
-    const cards = container.children;
-    const totalCards = cards.length;
-
-    for (let i = 0; i < totalCards; i++) {
-
-        const clone = cards[i].cloneNode(true);
-        container.appendChild(clone);
-    }
-
-    let scrollInterval;
-    let isHovered = false;
-    let speed = 1.5;
-    let isTransitioning = false;
-
-    function autoScroll() {
-
-        if (!isHovered && container && !isTransitioning) {
-
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            const currentScroll = container.scrollLeft;
-
-            if (currentScroll >= maxScroll / 2) {
-
-                isTransitioning = true;
-
-                container.scrollTo({
-                    left: 0,
-                    behavior: 'instant'
-                });
-
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 50);
-
-            } else {
-
-                container.scrollBy({
-                    left: 1 * speed,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-
-    function startScroll() {
-
-        if (scrollInterval) {
-            clearInterval(scrollInterval);
-        }
-
-        scrollInterval = setInterval(autoScroll, 25);
-    }
-
-    function stopScroll() {
-
-        if (scrollInterval) {
-
-            clearInterval(scrollInterval);
-            scrollInterval = null;
-        }
-    }
-
-
-    // Mouse Events
-
-    container.addEventListener('mouseenter', function () {
-
-        isHovered = true;
-        stopScroll();
-    });
-
-    container.addEventListener('mouseleave', function () {
-
-        isHovered = false;
-        startScroll();
-    });
-    // ========================================
-// MOUSE / TRACKPAD HORIZONTAL SCROLL
-// ========================================
-
-container.addEventListener('wheel', function (e) {
-
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-
-        container.scrollLeft += e.deltaY;
-    }
-
-}, { passive: false });
 
 
 // ========================================
-// MOUSE DRAG SCROLL
+// COURSES SECTION
+// AUTO-SCROLL: OFF
+// BUTTONS: REMOVED
 // ========================================
 
-let isDragging = false;
-let startX = 0;
-let startScrollLeft = 0;
+// No JavaScript is required for the course
+// cards anymore.
+//
+// The course cards are now static.
+// Their position/centering is handled by home.css.
 
-container.addEventListener('mousedown', function (e) {
-
-    isDragging = true;
-    startX = e.pageX;
-    startScrollLeft = container.scrollLeft;
-
-    container.style.cursor = 'grabbing';
-
-    stopScroll();
-
-});
-
-container.addEventListener('mousemove', function (e) {
-
-    if (!isDragging) return;
-
-    e.preventDefault();
-
-    const x = e.pageX;
-    const walk = x - startX;
-
-    container.scrollLeft = startScrollLeft - walk;
-
-});
-
-container.addEventListener('mouseup', function () {
-
-    isDragging = false;
-
-    container.style.cursor = 'grab';
-
-    setTimeout(startScroll, 3000);
-
-});
-
-container.addEventListener('mouseleave', function () {
-
-    if (isDragging) {
-        isDragging = false;
-        container.style.cursor = 'grab';
-        startScroll();
-    }
-
-});
-
-
-    // Touch Events
-
-    container.addEventListener('touchstart', function () {
-
-        isHovered = true;
-        stopScroll();
-    });
-
-    container.addEventListener('touchend', function () {
-
-        setTimeout(function () {
-
-            isHovered = false;
-            startScroll();
-
-        }, 3000);
-    });
-
-
-    // ========================================
-    // SCROLL BUTTONS
-    // ========================================
-
-    if (leftBtn) {
-
-        leftBtn.addEventListener('click', function () {
-
-            container.scrollBy({
-                left: -320,
-                behavior: 'smooth'
-            });
-
-            stopScroll();
-
-            setTimeout(startScroll, 3000);
-        });
-    }
-
-    if (rightBtn) {
-
-        rightBtn.addEventListener('click', function () {
-
-            container.scrollBy({
-                left: 320,
-                behavior: 'smooth'
-            });
-
-            stopScroll();
-
-            setTimeout(startScroll, 3000);
-        });
-    }
-
-
-    // Update button states
-
-    function updateButtons() {
-
-        if (!leftBtn || !rightBtn) return;
-
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-
-        leftBtn.disabled = scrollLeft <= 10;
-        rightBtn.disabled = scrollLeft >= maxScroll - 10;
-    }
-
-    container.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-
-    setTimeout(updateButtons, 100);
-
-    startScroll();
-
-});
-
-
-// ========================================
-// COURSES - TRUE INFINITE LOOP
-// (Auto-Scroll + Buttons)
-// ========================================
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const container = document.getElementById('coursesScrollContainer');
-    const leftBtn = document.getElementById('coursesScrollLeft');
-    const rightBtn = document.getElementById('coursesScrollRight');
-
-    if (!container) return;
-
-    // Clone cards for infinite loop
-    const cards = container.children;
-    const totalCards = cards.length;
-
-    for (let i = 0; i < totalCards; i++) {
-
-        const clone = cards[i].cloneNode(true);
-        container.appendChild(clone);
-    }
-
-    let scrollInterval;
-    let isHovered = false;
-    let speed = 1.5;
-    let isTransitioning = false;
-
-    function autoScroll() {
-
-        if (!isHovered && container && !isTransitioning) {
-
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            const currentScroll = container.scrollLeft;
-
-            if (currentScroll >= maxScroll / 2) {
-
-                isTransitioning = true;
-
-                container.scrollTo({
-                    left: 0,
-                    behavior: 'instant'
-                });
-
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 50);
-
-            } else {
-
-                container.scrollBy({
-                    left: 1 * speed,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-
-    function startScroll() {
-
-        if (scrollInterval) {
-            clearInterval(scrollInterval);
-        }
-
-        scrollInterval = setInterval(autoScroll, 25);
-    }
-
-    function stopScroll() {
-
-        if (scrollInterval) {
-
-            clearInterval(scrollInterval);
-            scrollInterval = null;
-        }
-    }
-
-
-    // Mouse Events
-
-    container.addEventListener('mouseenter', function () {
-
-        isHovered = true;
-        stopScroll();
-    });
-
-    container.addEventListener('mouseleave', function () {
-
-        isHovered = false;
-        startScroll();
-    });
-
-
-    // Touch Events
-
-    container.addEventListener('touchstart', function () {
-
-        isHovered = true;
-        stopScroll();
-    });
-
-    container.addEventListener('touchend', function () {
-
-        setTimeout(function () {
-
-            isHovered = false;
-            startScroll();
-
-        }, 3000);
-    });
-
-
-    // ========================================
-    // SCROLL BUTTONS
-    // ========================================
-
-    if (leftBtn) {
-
-        leftBtn.addEventListener('click', function () {
-
-            container.scrollBy({
-                left: -320,
-                behavior: 'smooth'
-            });
-
-            stopScroll();
-
-            setTimeout(startScroll, 3000);
-        });
-    }
-
-    if (rightBtn) {
-
-        rightBtn.addEventListener('click', function () {
-
-            container.scrollBy({
-                left: 320,
-                behavior: 'smooth'
-            });
-
-            stopScroll();
-
-            setTimeout(startScroll, 3000);
-        });
-    }
-
-
-    // Update button states
-
-    function updateButtons() {
-
-        if (!leftBtn || !rightBtn) return;
-
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-
-        leftBtn.disabled = scrollLeft <= 10;
-        rightBtn.disabled = scrollLeft >= maxScroll - 10;
-    }
-
-    container.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-
-    setTimeout(updateButtons, 100);
-
-    startScroll();
-
-});
 
 
 // ========================================
@@ -524,7 +147,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!container || !leftBtn || !rightBtn) return;
 
 
-    // Left Button
+    // ========================================
+    // LEFT BUTTON
+    // ========================================
 
     leftBtn.addEventListener('click', function () {
 
@@ -532,10 +157,13 @@ document.addEventListener('DOMContentLoaded', function () {
             left: -320,
             behavior: 'smooth'
         });
+
     });
 
 
-    // Right Button
+    // ========================================
+    // RIGHT BUTTON
+    // ========================================
 
     rightBtn.addEventListener('click', function () {
 
@@ -543,10 +171,13 @@ document.addEventListener('DOMContentLoaded', function () {
             left: 320,
             behavior: 'smooth'
         });
+
     });
 
 
-    // Update button states
+    // ========================================
+    // UPDATE BUTTON STATES
+    // ========================================
 
     function updateButtons() {
 
@@ -563,7 +194,9 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(updateButtons, 100);
 
 
-    // Keyboard Controls
+    // ========================================
+    // KEYBOARD CONTROLS
+    // ========================================
 
     document.addEventListener('keydown', function (e) {
 
@@ -587,7 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 left: 320,
                 behavior: 'smooth'
             });
+
         }
+
     });
 
 });
@@ -602,13 +237,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
 
+    if (!slides.length || !dots.length) return;
+
     let currentSlide = 0;
     let slideInterval;
 
     const slideDelay = 5000;
 
 
-    // Show Slide
+    // ========================================
+    // SHOW SLIDE
+    // ========================================
 
     function showSlide(index) {
 
@@ -627,7 +266,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // Next Slide
+    // ========================================
+    // NEXT SLIDE
+    // ========================================
 
     function nextSlide() {
 
@@ -637,7 +278,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // Start Autoplay
+    // ========================================
+    // START AUTOPLAY
+    // ========================================
 
     function startAutoplay() {
 
@@ -649,7 +292,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // Stop Autoplay
+    // ========================================
+    // STOP AUTOPLAY
+    // ========================================
 
     function stopAutoplay() {
 
@@ -661,7 +306,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // Dot Click Events
+    // ========================================
+    // DOT CLICK EVENTS
+    // ========================================
 
     dots.forEach((dot, index) => {
 
@@ -673,29 +320,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
             startAutoplay();
         });
+
     });
 
 
-    // Hero Mouse / Touch Events
+    // ========================================
+    // HERO MOUSE / TOUCH EVENTS
+    // ========================================
 
     const heroSection = document.getElementById('heroSection');
 
     if (heroSection) {
 
-        heroSection.addEventListener('mouseenter', stopAutoplay);
+        heroSection.addEventListener(
+            'mouseenter',
+            stopAutoplay
+        );
 
-        heroSection.addEventListener('mouseleave', startAutoplay);
+        heroSection.addEventListener(
+            'mouseleave',
+            startAutoplay
+        );
 
-        heroSection.addEventListener('touchstart', stopAutoplay);
+        heroSection.addEventListener(
+            'touchstart',
+            stopAutoplay
+        );
 
-        heroSection.addEventListener('touchend', function () {
+        heroSection.addEventListener(
+            'touchend',
+            function () {
 
-            setTimeout(startAutoplay, 3000);
-        });
+                setTimeout(startAutoplay, 3000);
+
+            }
+        );
     }
 
 
-    // Hero Keyboard Controls
+    // ========================================
+    // HERO KEYBOARD CONTROLS
+    // ========================================
 
     document.addEventListener('keydown', function (e) {
 
@@ -718,14 +383,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             startAutoplay();
         }
+
     });
 
 
-    // Initialize
+    // ========================================
+    // INITIALIZE
+    // ========================================
 
     showSlide(0);
-
     startAutoplay();
 
 });
-

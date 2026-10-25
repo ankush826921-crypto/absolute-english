@@ -1,7 +1,6 @@
 /* ========================================
    HERO SECTION
 ======================================== */
-
 .hero-section {
     position: relative;
     overflow: hidden;
@@ -1248,3 +1247,91 @@
     }
 }
 
+/* ========================================
+   LANGUAGE + COURSE CAROUSEL MODIFICATIONS
+   ======================================== */
+
+/* No visible navigation arrows/buttons */
+.languages-scroll-wrapper .scroll-btn,
+.courses-scroll-wrapper .scroll-btn {
+    display: none !important;
+}
+
+/* Center the cards instead of starting from the left */
+.languages-scroll-container,
+.courses-scroll-container {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Auto-scroll is disabled; keep normal manual horizontal scrolling available
+   if the cards ever become wider than the viewport. */
+.languages-scroll-container,
+.courses-scroll-container {
+    scroll-behavior: smooth;
+}
+
+/* Don't show a grab cursor because these sections are no longer drag-to-auto-scroll */
+.languages-scroll-container,
+.courses-scroll-container {
+    cursor: default;
+    user-select: auto;
+}
+
+.languages-scroll-container:active {
+    cursor: default;
+}
+/* ========================================
+   FINAL CENTER FIX
+   LANGUAGE + COURSE CARDS
+   ======================================== */
+
+.languages-scroll-container,
+.courses-scroll-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch;
+
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   LANGUAGE CARDS
+   ======================================== */
+
+.languages-scroll-container .language-scroll-card {
+    flex: 0 0 280px;
+}
+
+
+/* ========================================
+   COURSE CARDS
+   ======================================== */
+
+.courses-scroll-container .course-scroll-card {
+    flex: 0 0 280px;
+}
+
+
+/* ========================================
+   MOBILE
+   On small screens allow normal
+   horizontal scrolling
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .languages-scroll-container,
+    .courses-scroll-container {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+    }
+
+}
